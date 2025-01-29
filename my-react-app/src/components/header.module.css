@@ -1,0 +1,50 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   background-color: white;
+}
+.nav1{
+    display: flex;
+    align-items: center; 
+    color: gray; 
+}
+.div:hover{
+    color: rgb(42, 41, 41) ;
+}
+.div{
+    padding: 20px;
+    background-color: white;
+    cursor: pointer;
+}
+.h1{
+    margin: 10px;
+    color: orange;
+}
+.section{
+    color: rgb(0, 0, 0);
+    background-color: white;
+   
+}
+.h3 ,.h2{font-size: 15px;
+    font-weight: 500;
+    background-color: white;
+    cursor: pointer;
+}
+.h1{
+    background-color: white;
+    cursor: pointer;
+}
+.h2{
+    background-color: white;
+}
+*{
+    background-color: rgb(243, 243, 247);
+}
+.h3:hover{
+    color: orange;
+}
+
+@media screen and (max-width: 400px ) {
+    
+}
