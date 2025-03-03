@@ -1,0 +1,35 @@
+.footer{
+background-color: white;
+margin-top: 70px;
+padding-bottom: 50px;
+}
+.rows{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1044px;
+    margin-left: 280px;
+    background-color: white;
+}
+.footer div, .footer h4, .footer h5, .footer p{
+    background-color: white;
+}
+.footer h5:hover, .footer p:hover{
+text-decoration: underline;
+color: blue;
+}
+.footer h5, .footer p{
+    cursor: pointer;
+}
+.icon3{
+    background-color: white;
+    margin-right:10px;
+    color: #2070d1;
+    font-size: 20px;
+    cursor: pointer;
+}
+.footer h4{
+    font-size: 20px;
+}
+.icon3:hover{
+transform:scale(150%) ;
+}

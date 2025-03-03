@@ -1,0 +1,34 @@
+.news{
+    margin-top:50px;
+    margin-left: 280px;
+    max-width: 1044px;
+    width: 100%;
+    background-color: white;
+}
+.news p{
+    background-color: white;
+    color:gray;
+}
+.news a{
+    background-color: white;
+    color: blue;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+}
+.news a:hover{
+    text-decoration: underline;
+}
+.news h4{
+    background-color: white;
+    font-weight: normal;
+}
+
+.news article{
+    background-color: white;
+    padding: 40px;
+}
+h1{
+    padding-bottom: 30px;
+    font-size: 30px;
+}

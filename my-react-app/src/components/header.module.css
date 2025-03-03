@@ -3,11 +3,16 @@
     justify-content: space-around;
     align-items: center;
    background-color: white;
+
+}
+*{
+    font-family: Georgia , Helvetica, serif;
 }
 .nav1{
     display: flex;
     align-items: center; 
     color: gray; 
+  
 }
 .div:hover{
     color: rgb(42, 41, 41) ;
@@ -20,16 +25,23 @@
 .h1{
     margin: 10px;
     color: orange;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
 }
 .section{
     color: rgb(0, 0, 0);
     background-color: white;
+    padding-bottom: 20px;
    
 }
 .h3 ,.h2{font-size: 15px;
     font-weight: 500;
     background-color: white;
     cursor: pointer;
+    color: inherit;
+    text-decoration: none;
 }
 .h1{
     background-color: white;
@@ -47,4 +59,8 @@
 
 @media screen and (max-width: 400px ) {
     
+}
+.div{
+    text-decoration: none;
+    color: inherit;
 }

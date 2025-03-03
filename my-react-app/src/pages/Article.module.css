@@ -1,0 +1,25 @@
+.article{
+    margin-left: 280px;
+    margin-top: 30px;
+    max-width: 1044px;
+    width: 100%;
+  
+}
+.date{
+    color: gray;
+}
+.article p, .article h1, .article h2, .article ul, .article li, .article a{
+    background-color: white;
+}
+.article .newsLink{
+    color: gray;
+   
+    text-decoration: none;
+    background-color: rgb(243, 243, 247);
+}
+
+.article1{
+    background-color: white;
+    padding: 30px;
+    margin-top: 30px;
+}

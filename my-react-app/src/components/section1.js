@@ -22,8 +22,8 @@ export class Section1 extends Component {
   render() {
     return (
       <div className={classes.el2}>
-        <section className={classes.section2}>
-          <nav className={classes.nav}>
+        <section  className={classes.section2}>
+          <nav id="bookmark" className={classes.nav}>
             <div>Закупівлі</div>
             <div>Договори</div>
             <div>Плани</div>

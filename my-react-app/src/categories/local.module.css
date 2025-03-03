@@ -1,0 +1,115 @@
+.row{
+    max-width: 600px;
+    width: 100%;
+   
+}
+.row6{
+    max-width: 500px;
+    width: 100%;
+    margin-left: 70px;
+    background-color: white;
+    border-radius: 20px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-height: 150px;
+}
+.row6 p{
+    background-color: white;
+}
+.line{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.grid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin-left: 126px;
+}
+.news{
+max-width: 1200px;
+background-color: white;
+margin-left: 126px;
+padding: 30px;
+margin-bottom: 30px;
+margin-bottom: 50px;
+}
+.news h4, .news h2{
+background-color: white;
+}
+summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon{
+    color: gray;
+}
+.news details, .news summary, .news p,.news code, .news .icon, .news var{
+    background-color: white;
+}
+.news summary{
+    font-weight: 600;
+    padding: 10px;
+    font-size: 17px;
+}
+summary::after {
+    content: "";
+    background-image: url("./arrowd.png");
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+  
+  details[open] summary::after {
+    background-image: url("./arrow.png");
+
+  }
+  .news p{
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+  .news h2{
+    padding-left: 10px;
+  }
+  .h33 , .h44{
+    padding-left: 40px;
+  }
+  .news ul, .news li{
+    background-color: white;
+  }
+  .bookmark{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    background-color: #2070D1;
+    
+  }
+ .title{
+    color: #2070d1;
+    font-weight: 400;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    font-size: 50px;
+    margin-top: 0;
+ }
+ .container{
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-left: 126px;
+    gap: 30px;
+    margin-top: 50px;
+ }
+ .bookmark1{
+  
+    margin-left: 9px;
+  }
+  .information{
+    margin-bottom: 30px;
+  }

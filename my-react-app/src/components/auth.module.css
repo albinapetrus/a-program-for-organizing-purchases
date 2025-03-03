@@ -1,0 +1,93 @@
+.auth{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-top: 30px;
+}
+.email {
+    background-color: white ;
+    border: 1px solid gray;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  
+    border-radius: 3px;
+    width:40%
+}
+.form{
+    background-color: white;
+    padding: 50px;
+     text-align: center;
+     max-width: 500px;
+     width: 100%;
+     height: auto;
+
+}
+.label{
+    background-color: white;
+    font-family: bold;
+font-weight: 500;
+font-size: 110%;
+   
+}
+.submit{
+    border: 1px solid green;
+    background-color: greenyellow !important;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    color: darkgreen;
+    margin-top: 15px;
+    margin-bottom: 15;
+    cursor: pointer;
+}
+.text{
+    font-size: 110%;
+    
+}
+.text1{
+    padding-bottom: 15px;
+}
+.container{
+    margin-right: 28%;
+}
+.fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    align-items: start;
+    padding: 35px;
+    text-align: start;
+   
+    
+}
+.fieldset label, .fieldset input{
+background-color: white;
+
+margin-top: 5px;
+}
+.fieldset div{
+    background-color: white; 
+}
+.fieldset label{
+    margin-top: 40px;
+    font-weight: 500;
+   
+    
+}
+.fieldset input{
+    border: 1px solid gray;
+}
+.file{
+    border: none !important;
+    margin-bottom: 40px;
+}
+.fieldset input:focus{
+  
+    border: 2px solid blue!important;
+   
+}
