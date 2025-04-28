@@ -25,6 +25,7 @@ import Auth4 from "./components/auth4";
 import SideMenu from "./inner/SideMenu"; 
 import NewOne from "./customer/newOne"; 
 import MyPurch from "./customer/myPurch"; 
+import CabinetCust from "./customer/cabinetCust"; 
 
 function App() {
   const { isSideMenuOpen, setIsSideMenuOpen } = useContext(SideMenuContext); 
@@ -66,6 +67,7 @@ function App() {
           <Route path="/auth4" element={<Auth4 />} />
           <Route path="/newOne" element={<NewOne />} />
           <Route path="/myPurch" element={<MyPurch />} />
+          <Route path="/cabinetCust" element={<CabinetCust />} />
         </Routes>
         {!isSideMenuOpen && <Footer />}
       </div>

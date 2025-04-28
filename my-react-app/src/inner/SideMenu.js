@@ -53,7 +53,7 @@ function SideMenu() {
           </>) : role === 'customer' ? (<>
             <ul style={{ backgroundColor: "#fff" }} className={classes.list}>
             <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff",   fontWeight: "bold", }}> Назва моєї компанії: {companyName }</p></li>
-            <li style={{ backgroundColor: "#fff" }}  className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon}/>Кабінет</a></li>
+            <li style={{ backgroundColor: "#fff" }}  className={classes.li}><Link to="/cabinetCust" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon}/>Кабінет</Link></li>
             <li style={{ backgroundColor: "#fff" }}  className={classes.li}><Link to="/newOne" style={{ backgroundColor: "#fff" }}><LuNotebookPen   className={classes.icon}/>Зареєструвати за...</Link></li>
             <li style={{ backgroundColor: "#fff" }}  className={classes.li}><Link to="/myPurch"style={{ backgroundColor: "#fff" }}><MdOutlineEventNote  className={classes.icon}/>Мої закупівлі</Link></li>
             <li style={{ backgroundColor: "#fff" }}  className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><LuBriefcaseBusiness className={classes.icon}/>Пропозиції</a></li>

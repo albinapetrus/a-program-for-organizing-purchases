@@ -108,3 +108,38 @@ margin-top: 3em;
      margin-bottom: 2em;
 margin-left: 0.5em;
 }
+.universal p{
+    background-color: white;
+}
+
+.block2{
+    background-color: white;
+    
+    margin: 5em auto;
+    width:70%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.help{
+    background-color: white;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width:30%;
+    flex-direction: column;
+    padding: 5em 0;
+}
+.help2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    height: auto;
+}
+.buttonHelp{
+    width: 50%;
+    margin-right: 0.5em;
+}

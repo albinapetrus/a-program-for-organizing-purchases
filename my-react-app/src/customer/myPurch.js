@@ -19,12 +19,13 @@ export class myPurch extends Component {
     <col style={{width: "20%"}}/>
     <col style={{width: "20%"}}/>
   </colgroup>
-    <tr>
+   <tr>
         <th>Назва</th>
         <th>Дата завершення</th>
         <th>Статус</th>
         <th>Пропозиції</th>
-    </tr>
+        </tr>
+    <tbody>
     <tr>
         <td>Закупівля компЄютерного обладнання</td>
         <td>26.04.2025</td>
@@ -37,6 +38,7 @@ export class myPurch extends Component {
         <td>Активна</td>
         <td>7</td>
         </tr>
+        </tbody>
 </table>
 </div>
       </div>
