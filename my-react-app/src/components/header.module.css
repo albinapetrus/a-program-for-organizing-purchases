@@ -5,9 +5,7 @@
    background-color: white;
 
 }
-*{
-    font-family: Georgia , Helvetica, serif;
-}
+
 .nav1{
     display: flex;
     align-items: center; 
