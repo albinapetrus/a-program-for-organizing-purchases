@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import classes from './step4.module.css' 
 import { IoIosRocket } from "react-icons/io";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export class auth4 extends Component {
+  
   render() {
+    
     const role = localStorage.getItem('role');
     return (
       <div className={classes.step4}>
@@ -29,7 +34,7 @@ export class auth4 extends Component {
               <>
                    <h1>Кожного дня більше 11 000 постачальників чекають на пропозиції!</h1>
        <p>Ви успішно зареєстрували та активували кабінет на UkrainianTrading. Час створити вашу першу закупівлю. </p>
-       <button> Створити першу закупівлю <IoIosRocket style={{background:"#2070d1"}}/></button>
+       <button  onClick={this.handleCreateProcurementClick} > Створити першу закупівлю <IoIosRocket style={{background:"#2070d1"}}/></button>
               </>)}
       </div>
       </div>

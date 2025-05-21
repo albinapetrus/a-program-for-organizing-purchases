@@ -47,6 +47,7 @@
 }
 .h2{
     background-color: white;
+    display: block;
 }
 *{
     background-color: rgb(243, 243, 247);

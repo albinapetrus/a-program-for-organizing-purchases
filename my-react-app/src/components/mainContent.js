@@ -29,43 +29,179 @@ export class mainContent extends Component {
   render() {
     return (
       <section>
-        <img src = '/ukraniantrading1.png' alt='' className={classes.baner} width='1044px' height='100px' />
+        <Link to="/ResponsiveTextBlock">
+        <img src = '/ukraniantrading1.png' alt='' className={classes.baner} width='1044px' height='100px' /></Link>
         <div className={classes.row}>
         <p className={classes.text}> <strong> Новачок у закупівлях?</strong> Дізнайтеся про перші кроки </p>
         <ul className={classes.firstStepsInfo}>
-<div className={classes.first}><FaHandHoldingUsd className={classes.icon}/>Постачальникам </div>
-<div className={classes.first}><FaBuildingUser className={classes.icon}/>Замовникам</div>
-<div className={classes.first}><MdOutlinePeopleAlt className={classes.icon}/>Громадськості</div>
+<div className={classes.first} >    <FaHandHoldingUsd className={classes.icon}  />
+         <Link
+          to="/ProcurementInfo"
+        // !!! Застосовуємо клас діва до Link !!!
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
+                                                                // Краще це зробити через CSS
+        >
+       
+         Постачальникам
+        </Link></div>
+<div className={classes.first}><FaBuildingUser className={classes.icon}/> <Link
+          to="/CustomerInfo"
+        // !!! Застосовуємо клас діва до Link !!!
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
+                                                                // Краще це зробити через CSS
+        >
+       
+         Замовникам
+        </Link></div>
+<div className={classes.first}><MdOutlinePeopleAlt className={classes.icon}/><Link
+          to="/PublicInfo"
+        // !!! Застосовуємо клас діва до Link !!!
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
+                                                                // Краще це зробити через CSS
+        >
+       
+         Громадськості
+        </Link></div> 
 
         </ul>
         <div className={classes.row1}>
         <h3 className={classes.text1}>Категорії закупівель</h3>
         <ul className={classes.secondStepsInfo}>
-<div className={classes.second}><BsBuildingCheck className={classes.icon1}/>Будівництво</div>
-<div className={classes.second}><CiMedicalCase className={classes.icon1}/>Медицина</div>
-<div className={classes.second}><AiTwotoneDatabase  className={classes.icon1}/>Меблі</div>
-<div className={classes.second}><HiMiniComputerDesktop className={classes.icon1}/>Комп'ютерна техніка</div>
-<div className={classes.second}><LuScissors className={classes.icon1}/>Канцелярія та госптовари</div>
-<div className={classes.second}><MdOutlineEmojiTransportation className={classes.icon1}/>Транспорт та запчастини</div>
-<div className={classes.second}><SlEnergy className={classes.icon1}/>Енергетика, нафтопродукти та паливо</div>
-<div className={classes.second}><GiMetalBar  className={classes.icon1}/>Метали</div>
-<div className={classes.second}><MdOutlineElectricalServices className={classes.icon1}/>Комунальне та побутове обслуговування</div>
-<div className={classes.second}><GiTeacher className={classes.icon1}/>Навчання та консалтинг</div>
-<div className={classes.second}><TbBuildingPlus className={classes.icon1}/>Нерухомість</div>
-<div className={classes.second}><GiVillage className={classes.icon1}/>Сільське господарство</div>
-<div className={classes.second}><GiClothes className={classes.icon1}/>Одяг, взуття та текстиль</div>
-<div className={classes.second}><LiaIndustrySolid className={classes.icon1}/>Промислове обладнання та прилади</div>
-<div className={classes.second}><MdFastfood className={classes.icon1}/>Харчування</div>
-<div className={classes.second}><FaPrint className={classes.icon1}/>Поліграфія</div>
-<div className={classes.second}><MdOutlineScience className={classes.icon1}/>Науково-дослідні роботи</div>
-<div className={classes.second}><MdOutlineOtherHouses className={classes.icon1}/>Різні послуги та товари</div>
+<div className={classes.second}><BsBuildingCheck className={classes.icon1}/><Link
+          to="/ConstructionInfo"
+        // !!! Застосовуємо клас діва до Link !!!
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
+                                                                // Краще це зробити через CSS
+        >
+       
+        Будівництво
+        </Link></div>
+<div className={classes.second}>
+  <CiMedicalCase className={classes.icon1}/>
+  <Link to="/MedicineInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Медицина
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <AiTwotoneDatabase className={classes.icon1}/>
+  <Link to="/FurnitureInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Меблі
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <HiMiniComputerDesktop className={classes.icon1}/>
+  <Link to="/ComputerInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Комп'ютерна техніка
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <LuScissors className={classes.icon1}/>
+  <Link to="/StationeryInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Канцелярія та госптовари
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <MdOutlineEmojiTransportation className={classes.icon1}/>
+  <Link to="/TransportInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Транспорт та запчастини
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <SlEnergy className={classes.icon1}/>
+  <Link to="/EnergyInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Енергетика, нафтопродукти та паливо
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <GiMetalBar className={classes.icon1}/>
+  <Link to="/MetalsInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Метали
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <MdOutlineElectricalServices className={classes.icon1}/>
+  <Link to="/UtilitiesInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Комунальне та побутове обслуговування
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <GiTeacher className={classes.icon1}/>
+  <Link to="/EducationInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Навчання та консалтинг
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <TbBuildingPlus className={classes.icon1}/>
+  <Link to="/RealEstateInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Нерухомість
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <GiVillage className={classes.icon1}/>
+  <Link to="/AgricultureInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Сільське господарство
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <GiClothes className={classes.icon1}/>
+  <Link to="/ClothingInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Одяг, взуття та текстиль
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <LiaIndustrySolid className={classes.icon1}/>
+  <Link to="/EquipmentInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Промислове обладнання та прилади
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <MdFastfood className={classes.icon1}/>
+  <Link to="/FoodInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Харчування
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <FaPrint className={classes.icon1}/>
+  <Link to="/PrintingInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Поліграфія
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <MdOutlineScience className={classes.icon1}/>
+  <Link to="/ResearchInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Науково-дослідні роботи
+  </Link>
+</div>
+
+<div className={classes.second}>
+  <MdOutlineOtherHouses className={classes.icon1}/>
+  <Link to="/VariousInfo" style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}>
+    Різні послуги та товари
+  </Link>
+</div>
+
 
         </ul>
         </div>
         <div className={classes.row1}>
           <div className={classes.flex}>
           <h3 className={classes.text1}>Новини</h3>
-          <Link to ='/news'>До усіх новин </Link><HiArrowRight className={classes.point} />
+          <Link to ='/news' style={{marginBottom:"1em"}}>До усіх новин </Link><HiArrowRight className={classes.point} />
           </div>
           <div className={classes.third}>
           <article className={classes.news}>

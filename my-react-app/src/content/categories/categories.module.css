@@ -1,0 +1,107 @@
+/* CategoryInfo.module.css */
+
+/* Базові стилі для контейнера (для середніх/великих екранів) */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2em; /* Відступ всередині блоку */
+  border: 0.1em solid #1a5276; /* Колір primaryColor */
+  border-radius: 0.8em; /* Радіус скруглення */
+  background-color: #d6eaf8; /* Колір backgroundColor */
+  color: #2c3e50; /* Колір textColor */
+  width: 65%; /* Ширина 65% */
+  min-width: 30em; /* Мінімальна ширина */
+  margin: 3em auto; /* Центрування по горизонталі */
+  box-sizing: border-box; /* Включаємо padding та border у загальну ширину */
+  /* Базовий розмір шрифту контейнера, який буде масштабуватися */
+  font-size: 16px; /* Можна встановити базовий розмір у px або rem */
+}
+
+/* Стилі для головного заголовка */
+.title {
+  font-size: 1.5em; /* Відносно font-size контейнера */
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: #1a5276; /* Колір primaryColor */
+  background-color: inherit;
+}
+
+/* Стилі для підзаголовків секцій */
+.sectionTitle {
+  font-size: 1.2em; /* Відносно font-size контейнера */
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: #1a5276; /* Колір primaryColor */
+  background-color: inherit;
+}
+
+/* Стилі для тексту абзаців */
+.text {
+  font-size: 1em; /* Відносно font-size контейнера */
+  margin-bottom: 1em;
+  color: #2c3e50; /* Колір textColor */
+  line-height: 1.6;
+  background-color: inherit;
+}
+
+
+/* !!! МЕДІА-ЗАПИТИ ДЛЯ РІЗНИХ РОЗМІРІВ ЕКРАНА !!! */
+
+/* Для екранів шириною до 768px (наприклад, планшети у портретному режимі, великі телефони) */
+@media (max-width: 768px) {
+  .container {
+    width: 85%; /* Збільшуємо ширину на вузьких екранах */
+    min-width: auto; /* Прибираємо мінімальну ширину, щоб дозволити стиснення */
+    padding: 1.5em; /* Зменшуємо внутрішні відступи */
+    margin: 2em auto; /* Зменшуємо зовнішні відступи */
+    font-size: 15px; /* Трохи зменшуємо базовий розмір шрифту */
+  }
+
+  .title {
+    font-size: 1.3em; /* Зменшуємо розмір шрифту заголовка відносно нового базового */
+    margin-bottom: 0.8em;
+  }
+
+  .sectionTitle {
+    font-size: 1.1em; /* Зменшуємо розмір шрифту підзаголовків */
+    margin-top: 1em;
+    margin-bottom: 0.6em;
+  }
+
+  .text {
+    font-size: 1em; /* Розмір шрифту тексту залишається відносно нового базового */
+    margin-bottom: 0.8em;
+  }
+}
+
+/* Для екранів шириною до 480px (наприклад, телефони) */
+@media (max-width: 480px) {
+  .container {
+    width: 95%; /* Ще більше збільшуємо ширину */
+    padding: 1em; /* Ще більше зменшуємо внутрішні відступи */
+    margin: 1.5em auto; /* Ще більше зменшуємо зовнішні відступи */
+    border-radius: 0.5em; /* Зменшуємо скруглення кутів */
+    font-size: 14px; /* Ще більше зменшуємо базовий розмір шрифту */
+  }
+
+   .title {
+    font-size: 1.2em; /* Зменшуємо розмір шрифту заголовка */
+    margin-bottom: 0.6em;
+    background-color: inherit;
+  }
+
+  .sectionTitle {
+    font-size: 1em; /* Підзаголовки стають такого ж розміру, як базовий текст */
+    margin-top: 0.8em;
+    margin-bottom: 0.5em;
+    background-color: inherit;
+  }
+
+  .text {
+    font-size: 1em; /* Розмір шрифту тексту залишається відносно нового базового */
+    margin-bottom: 0.6em;
+    background-color: inherit;
+  }
+}

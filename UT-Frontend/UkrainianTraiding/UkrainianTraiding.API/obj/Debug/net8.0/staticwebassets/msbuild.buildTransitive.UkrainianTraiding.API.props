@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\UkrainianTraiding.API.props" />
+</Project>

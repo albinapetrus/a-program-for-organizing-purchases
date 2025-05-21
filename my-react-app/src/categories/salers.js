@@ -39,7 +39,7 @@ export class salers extends Component {
                Працювати в UkrainianTrading маркет можна з будь-якого акредитованого майданчика. 
                </p>
        
-               <h2 className={classes.h1}>Як купувати на Prozorro Market</h2>
+               <h2 className={classes.h1}>Як купувати на UkrainianTrading Market</h2>
                <hr className={classes.hr}></hr>
                <p>На UkrainianTrading Market можна продати товар через запит ціни пропозицій, який схожий на міні-аукціон. Кожен постачальник подає свою пропозицію, і система вибирає найкращу.</p>
        

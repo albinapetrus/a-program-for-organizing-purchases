@@ -17,7 +17,7 @@ export class header extends Component {
             <Link to ="/local"className={classes.div}>Локалізація</Link>
         </nav>
         <section className={classes.section}>
-        <h2 className={classes.h2}>Служба підтримки<br/>0-800-503-400 </h2>
+        <a href="tel:+380800503400 " className={classes.h2} style={{marginTop:"0.7em"}}>Служба підтримки<br/>0-800-503-400 </a>
         <Link to ="/auth" className={classes.h3}>Зареєструватися</Link>
         </section>
       </header>

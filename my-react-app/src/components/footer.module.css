@@ -6,19 +6,21 @@ padding-bottom: 50px;
 .rows{
     display: flex;
     justify-content: space-between;
-    max-width: 1044px;
-    margin-left: 280px;
+    max-width:  80%;
+    margin: 0 auto;
     background-color: white;
+    padding-top: 2em;
 }
 .footer div, .footer h4, .footer h5, .footer p{
     background-color: white;
 }
-.footer h5:hover, .footer p:hover{
-text-decoration: underline;
-color: blue;
-}
-.footer h5, .footer p{
+
+.footer  a{
     cursor: pointer;
+    background-color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
 }
 .icon3{
     background-color: white;
@@ -27,9 +29,22 @@ color: blue;
     font-size: 20px;
     cursor: pointer;
 }
-.footer h4{
-    font-size: 20px;
-}
+
 .icon3:hover{
 transform:scale(150%) ;
+}
+.footer a:hover{
+    color:blue;
+    text-decoration: underline;
+}
+.footer .cont a{
+    color: #2070d1!important;
+}
+.footer a{
+    color: black;
+    font-weight: 700;
+}
+.footer h5{
+    
+    font-weight: bold;
 }

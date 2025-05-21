@@ -1,4 +1,5 @@
 .baner{
+    height: 10em;
     padding-top: 72px;
     margin-left: 280px;
 }
@@ -18,7 +19,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-left: 280px;
+    margin-left: 15.5em;
 }
 .first{
     background-color: white;
@@ -68,7 +69,7 @@
             align-content: space-between;
             justify-content: flex-start;
             align-items: center;
-      
+      padding-left: 0!important;
 }
 .row1{
 width: 100%;

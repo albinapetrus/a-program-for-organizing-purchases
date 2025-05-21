@@ -55,6 +55,7 @@ summary {
     font-weight: 600;
     padding: 10px;
     font-size: 17px;
+    position: relative;
 }
 summary::after {
     content: "";
@@ -63,6 +64,8 @@ summary::after {
     width: 16px;
     height: 16px;
     display: inline-block;
+ position: absolute;
+ right: 1em;
   }
   
   details[open] summary::after {
@@ -112,4 +115,8 @@ summary::after {
   }
   .information{
     margin-bottom: 30px;
+  }
+  summary::marker{
+display: none!important;
+font-size: 0;
   }
