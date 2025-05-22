@@ -160,7 +160,7 @@ export class Form extends Component { // Зверніть увагу: назва
                 </form>
 
                 <div className={classes.container}>
-                    <p className={classes.text}> <Link to="/auth">Повернутись</Link></p>
+                  <Link to="/auth"  className={classes.text}>Повернутись</Link>
                 </div>
             </div>
         );

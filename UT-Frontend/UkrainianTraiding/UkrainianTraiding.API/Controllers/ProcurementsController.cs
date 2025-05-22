@@ -11,7 +11,9 @@ using System.IO;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using System.Globalization; // !!! ДОДАЙ ЦЕЙ using !!!
+using System.Globalization;
+using System.Linq;
+using UkrainianTraiding.API.Models.Domain.Enums; // Ensure this using is correct for your ProcurementStatus enum
 
 [Route("api/[controller]")]
 [ApiController]
@@ -31,56 +33,39 @@ public class ProcurementsController : ControllerBase
     [Authorize(Roles = "customer")]
     public async Task<IActionResult> CreateProcurement([FromForm] CreateProcurementDto procurementDto)
     {
-        // ModelState.IsValid перевірить Required та StringLength для рядків
-        // Але валідацію числових значень та їх діапазону тепер потрібно робити вручну
-
-        // !!! РУЧНЕ ПАРСЕННЯ ТА ВАЛІДАЦІЯ ЧИСЛОВИХ ПОЛІВ !!!
         double quantityOrVolume;
-        decimal estimatedBudget; // Використовуємо decimal, оскільки в моделі Procurement він decimal
+        decimal estimatedBudget;
 
-        // Парсимо QuantityOrVolume як double, використовуючи інваріантну культуру (точка як роздільник)
         if (!double.TryParse(procurementDto.QuantityOrVolume, NumberStyles.Any, CultureInfo.InvariantCulture, out quantityOrVolume))
         {
             ModelState.AddModelError(nameof(procurementDto.QuantityOrVolume), "Невірний формат для кількості/обсягу.");
         }
-        // Валідація діапазону для QuantityOrVolume
-        else if (quantityOrVolume <= 0.0) // Використовуємо 0.0 для порівняння з double
+        else if (quantityOrVolume <= 0.0)
         {
             ModelState.AddModelError(nameof(procurementDto.QuantityOrVolume), "Кількість/Обсяг має бути більше нуля.");
         }
 
-
-        // Парсимо EstimatedBudget як decimal, використовуючи інваріантну культуру
         if (!decimal.TryParse(procurementDto.EstimatedBudget, NumberStyles.Any, CultureInfo.InvariantCulture, out estimatedBudget))
         {
             ModelState.AddModelError(nameof(procurementDto.EstimatedBudget), "Невірний формат для орієнтовного бюджету.");
         }
-        // Валідація діапазону для EstimatedBudget
-        else if (estimatedBudget <= 0.0m) // Використовуємо 0.0m для порівняння з decimal
+        else if (estimatedBudget <= 0.0m)
         {
             ModelState.AddModelError(nameof(procurementDto.EstimatedBudget), "Орієнтовний бюджет має бути більше нуля.");
         }
 
-        // Перевіряємо, чи є помилки валідації після ручних перевірок та ModelState.IsValid
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState); // Повертаємо 400 з деталями всіх валідацій
+            return BadRequest(ModelState);
         }
-        // !!! КІНЕЦЬ РУЧНОГО ПАРСЕННЯ ТА ВАЛІДАЦІЇ !!!
 
-
-        // ... (логіка отримання userId з токена - залишається без змін) ...
         var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-
         if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
         {
-            return Unauthorized("Не вдалося ідентифікувати користувача."); // Або Forbid, якщо хочеш 403
+            return Unauthorized("Не вдалося ідентифікувати користувача.");
         }
-        // ... (перевірка ролі, якщо потрібна) ...
-
 
         string? documentPath = null;
-        // ... (логіка збереження файлу - залишається без змін) ...
         if (procurementDto.SupportingDocument != null && procurementDto.SupportingDocument.Length > 0)
         {
             var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "procurement_documents");
@@ -94,23 +79,21 @@ public class ProcurementsController : ControllerBase
             documentPath = "/uploads/procurement_documents/" + uniqueFileName;
         }
 
-
-        // Створюємо новий об'єкт Закупівлі
         var newProcurement = new Procurement
         {
             Id = Guid.NewGuid(),
             Name = procurementDto.Name,
             Description = procurementDto.Description,
             Category = procurementDto.Category,
-            QuantityOrVolume = quantityOrVolume, // !!! Використовуємо СПАРСЕНЕ число !!!
-            EstimatedBudget = estimatedBudget, // !!! Використовуємо СПАРСЕНЕ число !!!
+            QuantityOrVolume = quantityOrVolume,
+            EstimatedBudget = estimatedBudget,
             CompletionDate = procurementDto.CompletionDate,
             DocumentPaths = documentPath,
             UserId = userId,
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = DateTime.UtcNow,
+            Status = ProcurementStatus.Open // Set status on creation
         };
 
-        // Додаємо нову закупівлю до контексту та зберігаємо в базі даних
         _context.Procurements.Add(newProcurement);
         await _context.SaveChangesAsync();
 
@@ -118,61 +101,19 @@ public class ProcurementsController : ControllerBase
     }
 
 
-    [HttpGet("my")] // GET запит на /api/Procurements/my
-    // [Authorize] вже застосовано до всього контролера
+    [HttpGet("my")]
     [Authorize(Roles = "customer")]
     public async Task<IActionResult> GetMyProcurements()
     {
-        // !!! Отримуємо ID поточного аутентифікованого користувача з JWT токена !!!
         var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-
         if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
         {
-            // Якщо токен валідний, але claims не містять User ID (вкрай малоймовірно),
-            // або якщо User ID не є валідним GUID.
-            // Це може бути 401 або 403 залежно від точного сценарію, але 401 більш підходить,
-            // якщо проблема на етапі ідентифікації користувача з токена.
             return Unauthorized("Не вдалося ідентифікувати користувача за токеном.");
         }
 
-        // !!! Отримуємо список закупівель з бази даних, фільтруючи за UserId !!!
-        // Використовуємо LINQ для запиту
         var userProcurements = await _context.Procurements
-            .Where(p => p.UserId == userId) // Фільтруємо за ID поточного користувача
-            .OrderByDescending(p => p.CreatedAt) // Опціонально: сортуємо за датою створення
-            .Select(p => new ProcurementDto // !!! Проектуємо результат у ProcurementDto !!!
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Description = p.Description,
-                Category = p.Category,
-                QuantityOrVolume = p.QuantityOrVolume,
-                EstimatedBudget = p.EstimatedBudget,
-                CompletionDate = p.CompletionDate,
-                DocumentPaths = p.DocumentPaths,
-                CreatedAt = p.CreatedAt
-            })
-            .ToListAsync(); // Виконуємо запит та отримуємо результат як List
-
-        // Повертаємо список закупівель у відповіді 200 OK
-        return Ok(userProcurements);
-    }
-
-    [HttpGet]
-    // !!! ОБМЕЖУЄМО ДОСТУП ТІЛЬКИ КОРИСТУВАЧАМ З РОЛЛЮ "supplier" !!!
-    [Authorize(Roles = "supplier")] // Переконайся, що назва ролі точно відповідає тій, що зберігається
-    public async Task<IActionResult> GetAllProcurements()
-    {
-        // Отримувати ID користувача з токена для цього методу НЕ потрібно,
-        // оскільки ми не фільтруємо за користувачем.
-        // Атрибут [Authorize(Roles = "supplier")] вже забезпечить,
-        // що сюди потраплять тільки аутентифіковані користувачі з правильною роллю.
-
-        // !!! Отримуємо ВСІ закупівлі з бази даних !!!
-        var allProcurements = await _context.Procurements
-            // Опціонально: сортуємо, наприклад, за датою створення
+            .Where(p => p.UserId == userId)
             .OrderByDescending(p => p.CreatedAt)
-            // !!! Проектуємо результат у ProcurementDto !!!
             .Select(p => new ProcurementDto
             {
                 Id = p.Id,
@@ -183,12 +124,123 @@ public class ProcurementsController : ControllerBase
                 EstimatedBudget = p.EstimatedBudget,
                 CompletionDate = p.CompletionDate,
                 DocumentPaths = p.DocumentPaths,
-                CreatedAt = p.CreatedAt
+                CreatedAt = p.CreatedAt,
+                Status = p.Status.ToString() // Added status
             })
-            .ToListAsync(); // Виконуємо запит та отримуємо результат як List
+            .ToListAsync();
 
-        // Повертаємо список всіх закупівель у відповіді 200 OK
+        return Ok(userProcurements);
+    }
+
+    [HttpGet]
+    [Authorize(Roles = "supplier")]
+    public async Task<IActionResult> GetAllProcurements()
+    {
+        var allProcurements = await _context.Procurements
+            .OrderByDescending(p => p.CreatedAt)
+            .Select(p => new ProcurementDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Category = p.Category,
+                QuantityOrVolume = p.QuantityOrVolume,
+                EstimatedBudget = p.EstimatedBudget,
+                CompletionDate = p.CompletionDate,
+                DocumentPaths = p.DocumentPaths,
+                CreatedAt = p.CreatedAt,
+                Status = p.Status.ToString() // Added status
+            })
+            .ToListAsync();
+
         return Ok(allProcurements);
     }
-    // ... інші методи контролера
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchProcurements(
+       [FromQuery] string? name,
+       [FromQuery] string? category)
+    {
+        try
+        {
+            IQueryable<Procurement> query = _context.Procurements;
+
+            // Filter procurements by "Open" status for suppliers
+            query = query.Where(p => p.Status == ProcurementStatus.Open);
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(p => p.Name.ToLower().Contains(name.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                query = query.Where(p => p.Category.ToLower() == category.ToLower());
+            }
+
+            var procurements = await query
+                .Select(p => new ProcurementDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Category = p.Category,
+                    QuantityOrVolume = p.QuantityOrVolume,
+                    EstimatedBudget = p.EstimatedBudget,
+                    CompletionDate = p.CompletionDate,
+                    DocumentPaths = p.DocumentPaths,
+                    CreatedAt = p.CreatedAt,
+                    Status = p.Status.ToString() // Added status
+                })
+                .ToListAsync();
+
+            if (!procurements.Any())
+            {
+                return Ok(new List<ProcurementDto>());
+            }
+
+            return Ok(procurements);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при пошуку закупівель.", details = ex.Message });
+        }
+    }
+
+    // Method: Get procurement by ID
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetProcurementById(Guid id)
+    {
+        try
+        {
+            var procurement = await _context.Procurements
+                .Where(p => p.Id == id)
+                .Select(p => new ProcurementDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Category = p.Category,
+                    QuantityOrVolume = p.QuantityOrVolume,
+                    EstimatedBudget = p.EstimatedBudget,
+                    CompletionDate = p.CompletionDate,
+                    DocumentPaths = p.DocumentPaths,
+                    CreatedAt = p.CreatedAt,
+                    Status = p.Status.ToString() // Added status
+                    // CustomerCompanyName = p.Customer.CompanyName // If Procurement has Customer navigation property
+                })
+                .FirstOrDefaultAsync();
+
+            if (procurement == null)
+            {
+                return NotFound(new { message = "Закупівлю не знайдено." });
+            }
+
+            return Ok(procurement);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при отриманні закупівлі.", details = ex.Message });
+        }
+    }
 }

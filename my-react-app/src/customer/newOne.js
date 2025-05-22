@@ -326,10 +326,10 @@ export class NewOne extends Component {
 
                  {/* Місце для відображення повідомлень про помилки або успіх */}
                  {error && (
-                     <p style={{ color: 'red', marginTop: '1em' }} dangerouslySetInnerHTML={{ __html: error }}></p>
+                     <p style={{ color: 'red', marginTop: '1em', width:"70%", marginLeft:"auto", marginRight:"auto", textAlign:"center", fontWeight:"bold", height:"2em" }} dangerouslySetInnerHTML={{ __html: error }}></p>
                  )}
                  {successMessage && (
-                      <p style={{ color: 'green', marginTop: '1em' }}>{successMessage}</p>
+                      <p style={{ color: 'green', marginTop: '1em', width:"70%", marginLeft:"auto", marginRight:"auto", textAlign:"center", fontWeight:"bold", height:"2em" }}>{successMessage}</p>
                  )}
 
             </div>

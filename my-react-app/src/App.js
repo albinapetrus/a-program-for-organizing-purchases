@@ -6,10 +6,12 @@ import classes from "./index.module.css";
 
 // Імпорти ваших компонентів (не обрізаю їх)
 import Header from "./components/header";
+import MyOffersPage from './supplier/MyOffersPage';
 import Section1 from "./components/section1";
 import MainContent from "./components/mainContent";
 import Footer from "./components/footer";
 import News from "./pages/News";
+import MyProcurementsPage from './customer/MyProcurementsPage';
 import News1 from "./pages/news1";
 import News2 from "./pages/news2";
 import News3 from "./pages/news3";
@@ -36,6 +38,7 @@ import ConstructionInfo from "./content/categories/ConstructionInfo"
 import MedicineInfo from "./content/categories/MedicineInfo";
 import FurnitureInfo from "./content/categories/FurnitureInfo";
 import ComputerInfo from "./content/categories/ComputerInfo";
+import OfferCreationPage from "./supplier/OfferCreation";
 import StationeryInfo from "./content/categories/StationeryInfo";
 import TransportInfo from "./content/categories/TransportInfo";
 import EnergyInfo from "./content/categories/EnergyInfo";
@@ -43,6 +46,7 @@ import MetalsInfo from "./content/categories/MetalsInfo";
 import UtilitiesInfo from "./content/categories/UtilitiesInfo";
 import EducationInfo from "./content/categories/EducationInfo";
 import RealEstateInfo from "./content/categories/RealEstateInfo";
+import CustomerOffersPage from './customer/CustomerOffersPage';
 import AgricultureInfo from "./content/categories/AgricultureInfo";
 import ClothingInfo from "./content/categories/ClothingInfo";
 import EquipmentInfo from "./content/categories/EquipmentInfo";
@@ -51,7 +55,7 @@ import PrintingInfo from "./content/categories/PrintingInfo";
 import ResearchInfo from "./content/categories/ResearchInfo";
 import VariousInfo from "./content/categories/VariousInfo";
 import ResponsiveTextBlock from "./content/categories/ResponsiveTextBlock";
-
+import ProcurementSearch from "./supplier/ProcurementSearch";
 // !!! Обов'язково імпортуйте AuthProvider та useAuth !!!
 import { AuthProvider, useAuth } from './context/AuthContext';
 
@@ -91,12 +95,17 @@ function AppContent() {
       <Routes>
         <Route path="/" element={
           <>
-            <Section1 />
+            
             <MainContent />
           </>}
         />
         {/* Всі ваші інші маршрути тут */}
         <Route path="/news" element={<News />} />
+        <Route path="/myoffers" element={<MyOffersPage/>} />
+        <Route path="/customeroffers" element={<CustomerOffersPage/>} />
+        <Route path="/myprocurements" element={<MyProcurementsPage/>} />
+        <Route path= "/ProcurementSearch" element = {<ProcurementSearch />} />
+        <Route path= "/offercreate" element = {<OfferCreationPage/>} />
         <Route path="/news1" element={<News1 />} />
         <Route path="/news2" element={<News2 />} />
         <Route path="/news3" element={<News3 />} />

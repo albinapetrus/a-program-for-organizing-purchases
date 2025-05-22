@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import classes from './Universal.module.css'
 import { FaFolder } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 export class myPurch extends Component {
@@ -10,7 +11,15 @@ export class myPurch extends Component {
         <div className={classes.block1}>
 <div style={{backgroundColor:"white", width:"100%"}}>
     <h1 className={classes.label} ><FaFolder style={{color:" #2070d1", position:"relative", marginRight:"0.3em", marginBottom:"0.3em" }} className={classes.icon}/>Мої закупівлі</h1>
-    <button style={{ marginLeft:"31em" }} >Створити закупівлю</button>
+    <Link to="/newOne"  style={{
+    display: "block",
+    marginLeft: "31em",
+    backgroundColor: "#2070d1", // Правильно
+    textDecoration: "none",
+    color: "white",
+    borderRadius: "5px",
+    width: "10em"
+  }} >Створити закупівлю</Link>
 </div>
 <table>
 <colgroup>

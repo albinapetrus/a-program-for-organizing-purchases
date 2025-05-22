@@ -213,4 +213,10 @@ font-weight: 700!important;
     background-color: #e0e0e0!important; /* Світло-сірий */
   
   }
-  
+  .auth .errorMessage{
+    background-color: white;
+    color: red;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+  }

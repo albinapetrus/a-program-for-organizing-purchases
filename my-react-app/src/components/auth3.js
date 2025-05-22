@@ -159,7 +159,7 @@ export class Auth3 extends Component {
                     </fieldset>
                 </form>
                 {error && (
-                    <p style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: error }}></p>
+                    <p style={{ color: 'red', background:"white" }} dangerouslySetInnerHTML={{ __html: error }}></p>
                 )}
             </div>
         );

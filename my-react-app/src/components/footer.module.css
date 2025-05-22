@@ -2,6 +2,8 @@
 background-color: white;
 margin-top: 70px;
 padding-bottom: 50px;
+position:relative;
+top:2em;
 }
 .rows{
     display: flex;

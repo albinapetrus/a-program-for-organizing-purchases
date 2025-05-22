@@ -94,6 +94,9 @@ namespace UkrainianTraiding.API.Migrations
                     b.Property<double>("QuantityOrVolume")
                         .HasColumnType("float");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 

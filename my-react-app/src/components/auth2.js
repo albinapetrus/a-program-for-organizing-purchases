@@ -12,18 +12,16 @@ export class auth2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirect: false, // Стан для перенаправлення
-            selectedRole: localStorage.getItem('role') || 'supplier', // Завантажуємо з localStorage при ініціалізації (якщо зберегли з попереднього завантаження сторінки)
+            redirect: false, 
+            selectedRole: localStorage.getItem('role') || 'supplier', 
+            legalStatus: '', 
+            fullName: '', 
+            ipn: '',
+            dateOfBirth: '', 
+            passportPhoto: null, 
 
-            // !!! ДОДАНО: Поля для збору даних другого етапу !!!
-            legalStatus: '', // 'fiz' або 'ur'
-            fullName: '', // ПІБ
-            ipn: '', // ІПН
-            dateOfBirth: '', // Дата народження (формат YYYY-MM-DD)
-            passportPhoto: null, // Для збереження об'єкта файлу
-
-            error: '', // Для відображення помилок
-            loading: false, // Стан завантаження
+            error: '',
+            loading: false, 
         };
     }
 
@@ -264,46 +262,36 @@ export class auth2 extends Component {
                             required // Робимо обов'язковим (HTML5)
                         />
 
-                        {/* Поле для дати народження - Прив'язуємо до стану */}
                         <label>Вкажіть дату народження</label>
                         <input
                             type="date"
-                            name="dateOfBirth" // Ім'я відповідає полю у стані
-                            value={dateOfBirth} // Значення зі стану
-                            onChange={this.handleChange} // Обробник зміни
-                            // required // Якщо поле обов'язкове
+                            name="dateOfBirth" 
+                            value={dateOfBirth} 
+                            onChange={this.handleChange} 
                         />
 
-                        {/* Поле для завантаження фото паспорту - Прив'язуємо до стану */}
                         <label>Вставте фото паспорту для перевірки (першу сторінку)</label>
-                        {/* Label стилізований як кнопка */}
                         <label htmlFor="passportPhotoFile" className={classes.styledFile}>Завантажити</label>
-                         {/* Приховане поле input типу file */}
                         <input
                             type="file"
-                            id="passportPhotoFile" // ID, на який посилається label
-                            name="passportPhoto" // Ім'я відповідає полю у стані (буде зберігати File об'єкт)
-                            onChange={this.handleChange} // Обробник зміни (збереже файл у стані)
-                            style={{ display: "none" }} // Приховуємо стандартне поле file
-                            // required // Якщо фото обов'язкове
+                            id="passportPhotoFile" 
+                            name="passportPhoto" 
+                            onChange={this.handleChange} 
+                            style={{ display: "none" }} 
                         />
-                        {/* Відображення імені обраного файлу, якщо він обраний */}
-                         {passportPhoto && <p>Обрано файл: {passportPhoto.name}</p>}
+                         {passportPhoto && <p style={{background:"white", color:"#2070d1"}}>Обрано файл: {passportPhoto.name}</p>}
 
 
-                        {/* Кнопка відправки форми */}
                         <input
                             type="submit"
                             className={classes.submit}
-                            value={loading ? 'Відправка...' : 'Далі'} // Текст кнопки під час завантаження
-                            disabled={loading} // Вимикаємо кнопку під час завантаження
+                            value={loading ? 'Відправка...' : 'Далі'}
+                            disabled={loading} 
                         />
                     </fieldset>
                 </form>
 
-                {/* Місце для відображення помилок */}
                 {error && (
-                    // Використовуємо dangerouslySetInnerHTML для відображення помилок з <br/>, якщо вони є
                     <p style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: error }}></p>
                 )}
 

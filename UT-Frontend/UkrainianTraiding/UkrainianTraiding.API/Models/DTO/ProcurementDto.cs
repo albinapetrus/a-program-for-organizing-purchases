@@ -1,5 +1,6 @@
 ﻿// Models/DTO/ProcurementDto.cs
 using System;
+using UkrainianTraiding.API.Models.Domain.Enums;
 
 namespace UkrainianTraiding.Models.DTO // Переконайся, що простір імен відповідає
 {
@@ -14,6 +15,7 @@ namespace UkrainianTraiding.Models.DTO // Переконайся, що прос�
         public DateTime CompletionDate { get; set; }
         public string? DocumentPaths { get; set; } // Шляхи до документів
         public DateTime CreatedAt { get; set; } // Дата створення
+        public string Status { get; set; }
 
         // Зазвичай тут НЕ потрібно включати UserId або об'єкт User,
         // оскільки фронтенд вже знає, що це закупівлі поточного користувача.

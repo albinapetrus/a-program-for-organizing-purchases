@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UkrainianTraiding.API.Models.Domain.Enums;
 
 namespace UkrainianTraiding.API.Models.Domain // Переконайся, що простір імен відповідає
 {
@@ -46,5 +47,6 @@ namespace UkrainianTraiding.API.Models.Domain // Переконайся, що п
 
         // Дата створення закупівлі (опціонально)
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public ProcurementStatus Status { get; set; } = ProcurementStatus.Open;
     }
 }
