@@ -140,7 +140,7 @@ function SideMenu() {
                         <>
                             <ul style={{ backgroundColor: "#fff" }} className={classes.list}>
                                 {/* Відображаємо назву компанії, отриману з локального завантаження профілю */}
-                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: {localCompanyName || "Не вказано"}</p></li>
+                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: <span style={{color:"#2070d1", background:" white"}}>{localCompanyName || "Не вказано"}</span></p></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon} />Кабінет</a></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}>< Link to="/myoffers" style={{ backgroundColor: "#fff" }}><CiBookmarkPlus className={classes.icon} /> Мої заявки</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/ProcurementSearch" style={{ backgroundColor: "#fff" }}><IoIosSearch className={classes.icon} />Знайти закупівлю</Link></li>
@@ -151,7 +151,7 @@ function SideMenu() {
                         <>
                             <ul style={{ backgroundColor: "#fff" }} className={classes.list}>
                                 {/* Відображаємо назву компанії, отриману з локального завантаження профілю */}
-                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: {localCompanyName || "Не вказано"}</p></li>
+                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: <span style={{color:"#2070d1", background:" white"}}>{localCompanyName || "Не вказано"}</span></p></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/cabinetCust" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon} />Кабінет</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/newOne" style={{ backgroundColor: "#fff" }}><LuNotebookPen className={classes.icon} />Зареєструвати за...</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/myprocurements" style={{ backgroundColor: "#fff" }}><MdOutlineEventNote className={classes.icon} />Мої закупівлі</Link></li>
@@ -165,8 +165,8 @@ function SideMenu() {
                         </>
                     ) : null} {/* Якщо роль не customer і не supplier, нічого не показуємо */}
 
-                    <p style={{ backgroundColor: "#fff" }} className={classes.help}>Служба підтримки<br />
-                        0-800-503-400</p>
+                    <a href="tel:+380800503400 " style={{ backgroundColor: "#fff", cursor:"pointer", textDecoration:"none", color:"inherit", display:"block", marginBottom:"0.5em" }} className={classes.help}>Служба підтримки<br />
+                        0-800-503-400</a>
                     {/* Кнопка виходу, яка викликає handleLogout */}
                     <button style={{ backgroundColor: "#fff" }} className={classes.exit} onClick={handleLogout}>
                         <RxExit className={classes.icon} />
