@@ -166,8 +166,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\OffersController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAApwI8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T18:47:46.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T18:47:46.857Z"
             },
             {
               "$type": "Document",
@@ -179,8 +178,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\ProcurementsController.cs",
               "ViewState": "AgIAAGsAAAAAAAAAAAAQwH8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:56:39.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T10:56:39.39Z"
             },
             {
               "$type": "Document",
@@ -192,8 +190,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAcwDAAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:50:50.437Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T10:50:50.437Z"
             },
             {
               "$type": "Document",
@@ -205,8 +202,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\CustomerOffersController.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAUwH4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T13:02:23.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T13:02:23.022Z"
             },
             {
               "$type": "Document",
@@ -218,8 +214,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAuwBoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T18:40:06.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T18:40:06.494Z"
             },
             {
               "$type": "Document",
@@ -229,7 +224,7 @@
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
               "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T15:01:34.967Z",
               "EditorCaption": ""
@@ -244,8 +239,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Enums\\ProcurementStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T08:23:05.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T08:23:05.087Z"
             },
             {
               "$type": "Document",
@@ -257,8 +251,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Migrations\\20250522082526_AddProcurementsStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T08:25:26.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T08:25:26.925Z"
             },
             {
               "$type": "Document",
@@ -270,8 +263,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\User.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T15:35:34.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T15:35:34.967Z"
             },
             {
               "$type": "Document",
@@ -283,8 +275,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T18:39:36.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T18:39:36.134Z"
             },
             {
               "$type": "Document",
@@ -296,8 +287,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T07:06:00.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T07:06:00.812Z"
             },
             {
               "$type": "Document",
@@ -309,8 +299,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T06:35:03.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T06:35:03.004Z"
             },
             {
               "$type": "Document",
@@ -322,8 +311,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\UkrainianTraiding.API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-12T09:45:08.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T09:45:08.006Z"
             },
             {
               "$type": "Document",
@@ -347,8 +335,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\UsersController.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAgwFEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:31:16.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T14:31:16.346Z"
             },
             {
               "$type": "Document",
@@ -360,8 +347,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAMcAAAAAAAAAAAAcwOAAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T07:30:09.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T07:30:09.21Z"
             },
             {
               "$type": "Document",
@@ -373,8 +359,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:30:49.466Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T14:30:49.466Z"
             },
             {
               "$type": "Document",
@@ -386,8 +371,7 @@
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\RegisterStep2Dto.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T09:23:04.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T09:23:04.733Z"
             },
             {
               "$type": "Document",

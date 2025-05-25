@@ -1,6 +1,6 @@
 .baner{
-    height: 10em;
-    padding-top: 72px;
+    height: 6.5em;
+    /*padding-top: 72px;*/
     margin-left: 280px;
 }
 .text{
@@ -15,7 +15,7 @@
     margin: 0 auto
 }
 .firstStepsInfo{
-    max-width: 1044px;
+    max-width: 1080px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -96,7 +96,7 @@ width: 100%;
     padding: 30px 30px 30px 15px;
     background-color: white;
     max-width: 600px;
-    margin: 15px 15px 15px 40px;
+    margin: 15px 15px 15px 0;
     width: 100%;
     grid-column: 1 / 2; /* Перша колонка */
   grid-row: 1 / 3;

@@ -73,13 +73,15 @@ localStorage.setItem('companyName', companyName);
     setIsSideMenuOpen(true); 
   };
 
-  const logout = () => {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('registeringUserId'); // Залишимо, бо це з auth3.js
-   localStorage.removeItem('companyName');
-    setUser(null);
-    setIsSideMenuOpen(false); // Закриваємо сайд-меню при виході
-  };
+  const logout = () => {
+  localStorage.removeItem('jwtToken');
+  localStorage.removeItem('registeringUserId');
+  localStorage.removeItem('companyName');
+  setUser(null); // Це призводить до оновлення `isAuthenticated`
+  setIsSideMenuOpen(false);
+  console.log("AuthContext: logout() викликано."); // <-- Додайте цей лог
+  console.log("AuthContext: user після logout:", null); // <-- І цей лог
+};
 
   const toggleSideMenu = () => { // ДОДАНО: Функція для перемикання стану сайд-меню
     setIsSideMenuOpen(prev => !prev);

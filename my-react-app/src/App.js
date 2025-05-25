@@ -64,8 +64,8 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 // Він обгорнутий у <AuthProvider>, тому може використовувати useAuth().
 function AppContent() {
   // Отримуємо стан автентифікації з AuthContext
-  const { isAuthenticated, loading } = useAuth();
-
+ const { isAuthenticated, loading, user } = useAuth(); // Додайте 'user' для дебагу
+  console.log("AppContent: рендер. isAuthenticated:", isAuthenticated, "loading:", loading, "user:", user); 
   // Логіка умовного рендерингу для Header/Footer та SideMenu
   // Header та Footer відображаються, якщо користувач НЕ автентифікований
   const showHeaderFooter = !isAuthenticated;

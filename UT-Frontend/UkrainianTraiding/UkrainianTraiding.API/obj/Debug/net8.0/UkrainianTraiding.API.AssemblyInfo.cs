@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UkrainianTraiding.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c249c83c725520691cd1a74fffd858c783d133ef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66422baf3157c781a29ab40d042f8658b0e1036e")]
 [assembly: System.Reflection.AssemblyProductAttribute("UkrainianTraiding.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UkrainianTraiding.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

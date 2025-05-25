@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; // Додаємо useEffect
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { IoMdMenu } from "react-icons/io";
@@ -11,37 +11,43 @@ import { RxExit } from "react-icons/rx";
 import { MdOutlineEventNote } from "react-icons/md";
 import { LuBriefcaseBusiness } from "react-icons/lu";
 import { LuNotebookPen } from "react-icons/lu";
-// ExitButton можна видалити, якщо його функціонал повністю перенесено в handleLogout
-// import ExitButton from './ExitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Імпортуємо axios для HTTP-запитів
 
-// НЕ ВИКОРИСТОВУЄМО AuthContext напряму в цьому варіанті
-// import { useAuth } from '../context/AuthContext';
+// !!! ВАЖЛИВО: Імпортуємо useAuth з вашого AuthContext !!!
+import { useAuth } from '../context/AuthContext';
 
 
 function SideMenu() {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
 
-    // Стан для даних користувача, що завантажуються безпосередньо в цьому компоненті
-    const [userRole, setUserRole] = useState(null);
-    const [companyName, setCompanyName] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true); // Стан завантаження даних профілю
+    // !!! ОТРИМУЄМО СТАН ТА ФУНКЦІЇ З AUTHCONTEXT !!!
+    // Використовуємо 'user' з AuthContext для отримання ролі та назви компанії
+    const { logout, user, isAuthenticated, loading } = useAuth();
+
+    // Локальні стани для даних профілю, які можуть бути відсутні в токені або вимагати додаткового запиту
+    // Ініціалізуємо їх з user з AuthContext, якщо доступно, інакше null
+    const [localUserRole, setLocalUserRole] = useState(user?.role || null);
+    const [localCompanyName, setLocalCompanyName] = useState(user?.companyName || null);
+    const [profileLoading, setProfileLoading] = useState(false); // Стан завантаження даних профілю з API
 
     const toggleMenu = () => setShow(!show);
 
-    // Функція для отримання даних профілю користувача з бекенду
+    // Функція для отримання даних профілю користувача з бекенду (якщо вони не повністю містяться в токені)
     const fetchUserProfile = async () => {
-        setLoading(true); // Починаємо завантаження
-        const jwtToken = localStorage.getItem('jwtToken');
+        // Завантажуємо дані профілю, тільки якщо користувач автентифікований
+        if (!isAuthenticated) {
+            setLocalUserRole(null);
+            setLocalCompanyName(null);
+            return;
+        }
+
+        setProfileLoading(true); // Починаємо завантаження профілю
+        const jwtToken = localStorage.getItem('jwtToken'); // Беремо токен з localStorage
 
         if (!jwtToken) {
-            setIsAuthenticated(false);
-            setUserRole(null);
-            setCompanyName(null);
-            setLoading(false);
+            setProfileLoading(false);
             return;
         }
 
@@ -53,56 +59,60 @@ function SideMenu() {
             });
 
             const userData = response.data;
-            setUserRole(userData.role);
-            setCompanyName(userData.companyName);
-            setIsAuthenticated(true);
+            setLocalUserRole(userData.role);
+            setLocalCompanyName(userData.companyName);
         } catch (error) {
             console.error('Помилка завантаження профілю в SideMenu:', error.response ? error.response.data : error.message);
-            // Якщо токен недійсний або є помилка, очищаємо дані та вважаємо користувача неавтентифікованим
-            localStorage.removeItem('jwtToken');
-            localStorage.removeItem('role'); // Очищаємо, якщо раніше зберігали
-            localStorage.removeItem('companyName'); // Очищаємо, якщо раніше зберігали
-            setIsAuthenticated(false);
-            setUserRole(null);
-            setCompanyName(null);
-            // Можливо, перенаправити на сторінку логіну, якщо це критично
-            // navigate('/form');
+            // Якщо є помилка, очищаємо локальні дані, але НЕ торкаємося центрального AuthContext
+            setLocalUserRole(null);
+            setLocalCompanyName(null);
         } finally {
-            setLoading(false); // Завершуємо завантаження
+            setProfileLoading(false); // Завершуємо завантаження профілю
         }
     };
 
-    // useEffect для завантаження даних при монтуванні компонента
+    // useEffect для завантаження даних профілю, коли змінюється isAuthenticated з AuthContext
     useEffect(() => {
-        fetchUserProfile();
-
+        // Якщо AuthContext показує, що користувач залогінений, спробуємо завантажити деталі профілю
+        if (isAuthenticated && !loading) { // Переконуємось, що AuthContext закінчив завантаження
+            fetchUserProfile();
+        } else if (!isAuthenticated && !loading) {
+            // Якщо користувач розлогінився, очищаємо локальні дані
+            setLocalUserRole(null);
+            setLocalCompanyName(null);
+        }
         // Додаємо слухача для подій localStorage, щоб оновлювати меню,
         // якщо логін/виход відбувся в іншій вкладці або через інші компоненти
         const handleStorageChange = () => {
-            fetchUserProfile();
+            if (!loading) { // Запускаємо fetchUserProfile лише коли AuthContext завершив початкове завантаження
+                fetchUserProfile();
+            }
         };
         window.addEventListener('storage', handleStorageChange);
 
         return () => {
             window.removeEventListener('storage', handleStorageChange);
         };
-    }, []); // Пустий масив залежностей означає, що ефект запускається один раз при монтуванні
+    }, [isAuthenticated, loading]); // Залежимо від isAuthenticated та loading з AuthContext
+
 
     // Функція для обробки виходу з системи
     const handleLogout = () => {
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem('role');
-        localStorage.removeItem('companyName');
-        localStorage.removeItem('registeringUserId'); // Якщо використовується
-        setIsAuthenticated(false); // Оновлюємо стан в цьому компоненті
-        setUserRole(null);
-        setCompanyName(null);
-        navigate('/'); // Перенаправляємо на головну сторінку
+        console.log("Кнопка 'Вийти' натиснута в SideMenu. Викликаю logout з AuthContext.");
+        logout(); // !!! ВИКЛИКАЄМО ЦЕНТРАЛІЗОВАНУ ФУНКЦІЮ LOGOUT З AUTHCONTEXT !!!
+        
+        // Після logout() з AuthContext, `isAuthenticated` в `AppContent` стане `false`
+        // і воно негайно перерендерить хедер/футер.
+        // navigate('/') тут потрібне, щоб перевести користувача на головну сторінку.
+        navigate('/'); 
+        
         setShow(false); // Закриваємо сайд-меню після виходу
     };
 
-    // Якщо дані ще завантажуються або користувач не залогінений, то меню не показуємо
-    if (loading || !isAuthenticated) {
+    // !!! УМОВНЕ РЕНДЕРЕННЯ ТЕПЕР БАЗУЄТЬСЯ НА ДАНИХ З AUTHCONTEXT !!!
+    // Якщо AuthContext ще завантажується або користувач не залогінений, то меню не показуємо
+    // Також чекаємо на завантаження додаткових даних профілю (якщо такі є)
+    if (loading || !isAuthenticated || profileLoading) {
         return null; // Нічого не рендеримо
     }
 
@@ -125,31 +135,31 @@ function SideMenu() {
                     <button type="button" className="btn-close" style={{ fontSize: "0.5em", margin: "0.5em" }} onClick={toggleMenu}></button>
                 </div>
                 <div className="offcanvas-body" style={{ backgroundColor: "#fff" }}>
-                    {/* Використовуємо userRole, отриманий безпосередньо цим компонентом */}
-                    {userRole === 'supplier' ? (
+                    {/* Використовуємо userRole та companyName, отримані з AuthContext або з локального завантаження профілю */}
+                    {localUserRole === 'supplier' ? ( // Використовуємо localUserRole
                         <>
                             <ul style={{ backgroundColor: "#fff" }} className={classes.list}>
-                                {/* Відображаємо назву компанії, отриману безпосередньо цим компонентом */}
-                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: {companyName || "Не вказано"}</p></li>
+                                {/* Відображаємо назву компанії, отриману з локального завантаження профілю */}
+                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: {localCompanyName || "Не вказано"}</p></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon} />Кабінет</a></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}>< Link to="/myoffers" style={{ backgroundColor: "#fff" }}><CiBookmarkPlus className={classes.icon} /> Мої заявки</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/ProcurementSearch" style={{ backgroundColor: "#fff" }}><IoIosSearch className={classes.icon} />Знайти закупівлю</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><MdOutlineNotifications className={classes.icon} />Сповіщення</a></li>
                             </ul>
                         </>
-                    ) : userRole === 'customer' ? (
+                    ) : localUserRole === 'customer' ? ( // Використовуємо localUserRole
                         <>
                             <ul style={{ backgroundColor: "#fff" }} className={classes.list}>
-                                {/* Відображаємо назву компанії, отриману безпосередньо цим компонентом */}
-                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: {companyName || "Не вказано"}</p></li>
+                                {/* Відображаємо назву компанії, отриману з локального завантаження профілю */}
+                                <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: {localCompanyName || "Не вказано"}</p></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/cabinetCust" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon} />Кабінет</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/newOne" style={{ backgroundColor: "#fff" }}><LuNotebookPen className={classes.icon} />Зареєструвати за...</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/myprocurements" style={{ backgroundColor: "#fff" }}><MdOutlineEventNote className={classes.icon} />Мої закупівлі</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}>
-    <Link to="customeroffers" style={{ backgroundColor: "#fff" }}>
-        <LuBriefcaseBusiness className={classes.icon} />Пропозиції
-    </Link>
-</li>
+                                    <Link to="customeroffers" style={{ backgroundColor: "#fff" }}>
+                                        <LuBriefcaseBusiness className={classes.icon} />Пропозиції
+                                    </Link>
+                                </li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><MdOutlineNotifications className={classes.icon} />Сповіщення</a></li>
                             </ul>
                         </>
