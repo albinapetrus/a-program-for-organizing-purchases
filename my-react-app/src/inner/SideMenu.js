@@ -141,7 +141,7 @@ function SideMenu() {
                             <ul style={{ backgroundColor: "#fff" }} className={classes.list}>
                                 {/* Відображаємо назву компанії, отриману з локального завантаження профілю */}
                                 <li style={{ backgroundColor: "#fff" }}><p style={{ backgroundColor: "#fff", fontWeight: "bold", }}> Назва моєї компанії: <span style={{color:"#2070d1", background:" white"}}>{localCompanyName || "Не вказано"}</span></p></li>
-                                <li style={{ backgroundColor: "#fff" }} className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon} />Кабінет</a></li>
+                                <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/cabinetCust" style={{ backgroundColor: "#fff" }}><IoHomeOutline className={classes.icon} />Кабінет</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}>< Link to="/myoffers" style={{ backgroundColor: "#fff" }}><CiBookmarkPlus className={classes.icon} /> Мої заявки</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><Link to="/ProcurementSearch" style={{ backgroundColor: "#fff" }}><IoIosSearch className={classes.icon} />Знайти закупівлю</Link></li>
                                 <li style={{ backgroundColor: "#fff" }} className={classes.li}><a href="#" style={{ backgroundColor: "#fff" }}><MdOutlineNotifications className={classes.icon} />Сповіщення</a></li>
