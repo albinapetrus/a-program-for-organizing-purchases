@@ -6,6 +6,8 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using UkrainianTraiding.API.Data;
 using UkrainianTraiding.Services; // Для налаштування Swagger, щоб можна було передавати JWT
+using Microsoft.Extensions.FileProviders; // Додано для PhysicalFileProvider
+using System.IO; // Додано для Path.Combine
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,9 +50,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", // Назва політики
         builder => builder.WithOrigins("http://localhost:3000") // Дозволити запити тільки з цього джерела
-                          .AllowAnyMethod() // Дозволити всі HTTP методи (GET, POST, PUT, DELETE тощо)
-                          .AllowAnyHeader()); // Дозволити всі заголовки
-                                              // .AllowCredentials(); // Якщо потрібно надсилати куки або заголовки авторизації
+                            .AllowAnyMethod() // Дозволити всі HTTP методи (GET, POST, PUT, DELETE тощо)
+                            .AllowAnyHeader()); // Дозволити всі заголовки
+                                                // .AllowCredentials(); // Якщо потрібно надсилати куки або заголовки авторизації
 });
 
 builder.Services.AddControllers();
@@ -95,20 +97,24 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseStaticFiles();
+app.UseStaticFiles(); // Це віддає файли з wwwroot
+
+// !!! ЄДИНА ЗМІНА: ДОДАНО НАЛАШТУВАННЯ ДЛЯ ПАПКИ 'uploads' !!!
+// Налаштування для віддачі статичних файлів з папки 'uploads'
+// Це дозволить браузеру отримувати файли з /uploads/...
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.WebRootPath, "uploads")), // Переконайтеся, що папка 'uploads' знаходиться у 'wwwroot'
+    RequestPath = "/uploads" // Шлях, за яким файли будуть доступні в URL (наприклад, http://localhost:7000/uploads/...)
+});
+// !!! КІНЕЦЬ ЗМІНИ !!!
+
 
 app.UseCors("AllowSpecificOrigin");
 
 
 app.UseRouting();
-
-// !!! Застосування CORS політики !!!
-// Цей рядок потрібно додати! Використовуй назву політики, яку ти визначив вище
-
-
-
-
-app.UseHttpsRedirection();
 
 // !!! Важливо: UseAuthentication має бути перед UseAuthorization !!!
 app.UseAuthentication();

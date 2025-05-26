@@ -5,6 +5,7 @@ import classes from '../customer/Universal.module.css';
 import { MdOutlineEventNote } from "react-icons/md";
 
 function MyProcurementsPage() {
+    const BACKEND_BASE_URL = 'https://localhost:7078';
     const [procurements, setProcurements] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -150,7 +151,7 @@ function MyProcurementsPage() {
                                 <p><strong>Дата завершення:</strong> {new Date(procurement.completionDate).toLocaleDateString()}</p>
                                 {procurement.documentPaths && (
                                     <p>
-                                        <strong>Документ:</strong> <a href={procurement.documentPaths} target="_blank" rel="noopener noreferrer">Переглянути</a>
+                                        <strong>Документ: </strong> <a href={`${BACKEND_BASE_URL}${procurement.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                                     </p>
                                 )}
                                 <p><strong>Створено:</strong> {new Date(procurement.createdAt).toLocaleDateString()}</p>

@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import classes from '../customer/Universal.module.css';
 import { FaBoxes } from "react-icons/fa";
 
+// Додано базовий URL бекенду
+const BACKEND_BASE_URL = 'https://localhost:7078'; 
+
 // Допоміжна функція для перекладу статусу пропозиції
 const translateOfferStatus = (status) => {
     switch (status) {
@@ -29,7 +32,7 @@ function MyOffersPage() {
     // Опції для випадаючого списку фільтра статусу
     const statusFilterOptions = [
         { value: '', label: 'Всі  пропозиції' }, // Порожнє значення для відображення всіх пропозицій
-        { value: 'Submitted', label: 'Розглядаются' },
+        { value: 'Submitted', label: 'Розглядаються' },
         { value: 'Accepted', label: 'Прийняті' },
         { value: 'Rejected', label: 'Відхилені' },
     ];
@@ -106,7 +109,7 @@ function MyOffersPage() {
                 setMessage(''); // Очищаємо повідомлення, якщо пропозиції відображаються
             }
         }
-    }, [loading, error, allMyOffers, filteredOffers, selectedStatusFilter]); // Залежності для цього ефекту
+    }, [loading, error, allMyOffers, filteredOffers, selectedStatusFilter]); // Залежності для цього ефек
 
     const handleStatusFilterChange = (event) => {
         setSelectedStatusFilter(event.target.value);
@@ -121,7 +124,7 @@ function MyOffersPage() {
 
                 {/* Випадаючий список для фільтрації за статусом */}
                 <div className={classes.filterContainer} style={{ marginBottom: '1em', background:"white" }}>
-                    <label htmlFor="statusFilter" style={{ marginRight: '0.5em' }}>Статус:     </label>
+                    <label htmlFor="statusFilter" style={{ marginRight: '0.5em' }}>Статус:    </label>
                     <select
                         id="statusFilter"
                         value={selectedStatusFilter}
@@ -157,7 +160,9 @@ function MyOffersPage() {
                                         <p><strong>Повідомлення:</strong> {offer.message || 'Не вказано'}</p>
                                         {offer.offerDocumentPaths && (
                                             <p>
-                                                <strong>Документ:</strong> <a href={offer.offerDocumentPaths} target="_blank" rel="noopener noreferrer">Переглянути</a>
+                                                <strong>Документ:  </strong> 
+                                                {/* Змінено тут: додано BACKEND_BASE_URL */}
+                                                <a href={`${BACKEND_BASE_URL}${offer.offerDocumentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                                             </p>
                                         )}
                                         <p><strong>Дата пропозиції:</strong> {new Date(offer.offerDate).toLocaleDateString()}</p>

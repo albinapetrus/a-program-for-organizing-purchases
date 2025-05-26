@@ -4,6 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import classes from './Universal.module.css';
 import { FaBoxes } from "react-icons/fa";
 
+// Додано базовий URL бекенду
+const BACKEND_BASE_URL = 'https://localhost:7078';
+
 // --- Утилітарна функція для перекладу статусу закупівлі ---
 const translateProcurementStatus = (status) => {
     if (!status) return 'Невідомо';
@@ -92,9 +95,9 @@ function CustomerOffersPage() {
                 } else {
                     setDisplayedOffers(offersResponse.data);
                     if (offersResponse.data.length === 0) {
-                         setMessage('У вас ще немає пропозицій до ваших закупівель.');
+                        setMessage('У вас ще немає пропозицій до ваших закупівель.');
                     } else {
-                         setMessage('');
+                        setMessage('');
                     }
                 }
             } else {
@@ -153,7 +156,7 @@ function CustomerOffersPage() {
         const jwtToken = localStorage.getItem('jwtToken');
 
         try {
-            const response = await axios.put(`/api/offers/${offerId}/accept`, {}, {
+            const response = await axios.put(`${BACKEND_BASE_URL}/api/offers/${offerId}/accept`, {}, {
                 headers: { 'Authorization': `Bearer ${jwtToken}` }
             });
             setActionFeedback(response.data.message || 'Пропозицію успішно прийнято!');
@@ -176,7 +179,7 @@ function CustomerOffersPage() {
         const jwtToken = localStorage.getItem('jwtToken');
 
         try {
-            const response = await axios.put(`/api/offers/${offerId}/reject`, {}, {
+            const response = await axios.put(`${BACKEND_BASE_URL}/api/offers/${offerId}/reject`, {}, {
                 headers: { 'Authorization': `Bearer ${jwtToken}` }
             });
             setActionFeedback(response.data.message || 'Пропозицію успішно відхилено!');
@@ -247,7 +250,7 @@ function CustomerOffersPage() {
                                     <p><strong>Повідомлення:</strong> {offer.message || 'Не вказано'}</p>
                                     {offer.offerDocumentPaths && (
                                         <p>
-                                            <strong>Документ:</strong> <a href={offer.offerDocumentPaths} target="_blank" rel="noopener noreferrer">Переглянути</a>
+                                            <strong>Документ: </strong> <a href={`${BACKEND_BASE_URL}${offer.offerDocumentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                                         </p>
                                     )}
                                     <p><strong>Дата пропозиції:</strong> {new Date(offer.offerDate).toLocaleDateString()}</p>
@@ -283,15 +286,13 @@ function CustomerOffersPage() {
                                                 className={`${classes.submitButton} ${classes.rejectButton}`}
                                                 onClick={() => handleRejectOffer(offer.id)}
                                                 disabled={loading}
-                                               
                                             >
                                                 Відхилити
                                             </button>
-                                          
                                         </div>
-                                       
+
                                     )}
-                                       <hr/>
+                                    <hr/>
                                 </div>
                             );
                         })}

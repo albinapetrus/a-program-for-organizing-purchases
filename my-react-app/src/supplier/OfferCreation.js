@@ -4,6 +4,9 @@ import axios from 'axios';
 import classes from '../customer/Universal.module.css'; // Assuming Universal.module.css for styling
 import { GoPaperclip } from "react-icons/go"; // Icon for file attachment
 
+// !!! ВАЖЛИВО: ВКАЗАНО КОРЕКТНИЙ БАЗОВИЙ URL ВАШОГО БЕКЕНДУ: https://localhost:7078 !!!
+const BACKEND_BASE_URL = 'https://localhost:7078'; 
+
 function OfferCreationPage() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -26,7 +29,7 @@ function OfferCreationPage() {
     const [procurementDetailsError, setProcurementDetailsError] = useState('');
     const [isProcurementOpen, setIsProcurementOpen] = useState(false); // New state for procurement status
 
-    // Функція для перекладу статусу на українську (нова функція)
+    // Функція для перекладу статусу на українську
     const translateStatus = (status) => {
         if (!status) return 'Невідомо';
         switch (status.toLowerCase()) {
@@ -36,10 +39,10 @@ function OfferCreationPage() {
                 return 'Завершена';
             case 'closed':
                 return 'Закрита';
-            case 'overdue': // Додано для повноти, хоча тут може і не зустрічатись
+            case 'overdue': 
                 return 'Протермінована';
             default:
-                return status; // Повертаємо оригінал, якщо немає відповідного перекладу
+                return status; 
         }
     };
 
@@ -59,7 +62,6 @@ function OfferCreationPage() {
 
             const response = await axios.get(`/api/procurements/${procurementId}`, { headers });
             setProcurementDetails(response.data);
-            // Check if the procurement status is 'Open'
             setIsProcurementOpen(response.data.status === 'Open');
             setProcurementDetailsLoading(false);
         } catch (err) {
@@ -97,7 +99,6 @@ function OfferCreationPage() {
         setSuccessMessage('');
 
         if (!isProcurementOpen) {
-            // Використовуємо перекладений статус тут
             setError(`Ви не можете подати пропозицію на цю закупівлю, оскільки вона має статус "${procurementDetails ? translateStatus(procurementDetails.status) : 'Неактивна'}".`);
             setLoading(false);
             return;
@@ -192,17 +193,18 @@ function OfferCreationPage() {
                         <p><strong>Дата завершення:</strong> {new Date(procurementDetails.completionDate).toLocaleDateString()}</p>
                         {procurementDetails.documentPaths && (
                             <p>
-                                <strong>Документ:</strong> <a href={procurementDetails.documentPaths} target="_blank" rel="noopener noreferrer">Переглянути</a>
+                                <strong>Документ:  </strong> 
+                                {/* ОНОВЛЕНО: BACKEND_BASE_URL тепер https://localhost:7078 */}
+                                <a href={`${BACKEND_BASE_URL}${procurementDetails.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                             </p>
                         )}
                         <p><strong>Створено:</strong> {new Date(procurementDetails.createdAt).toLocaleDateString()}</p>
                         <p>
-                            <strong>Статус закупівлі:  </strong>
+                            <strong>Статус закупівлі:  </strong>
                             <span style={{ fontWeight: 'bold', color:
                                 procurementDetails.status === 'Open' ? 'green' :
-                                procurementDetails.status === 'Fulfilled' ? 'blue' : 'red' // Assuming 'Fulfilled' or 'Closed'
+                                procurementDetails.status === 'Fulfilled' ? 'blue' : 'red' 
                             }}>
-                                {/* Застосовуємо функцію перекладу тут */}
                                 {translateStatus(procurementDetails.status)}
                             </span>
                         </p>
@@ -212,7 +214,6 @@ function OfferCreationPage() {
                 {/* Offer submission form */}
                 {!isProcurementOpen && !procurementDetailsLoading && !procurementDetailsError && (
                     <p style={{ color: 'red', fontWeight: 'bold', marginTop: '1.5em' }}>
-                        {/* Використовуємо перекладений статус у повідомленні про неактивну закупівлю */}
                         Ця закупівля {procurementDetails ? `має статус "${translateStatus(procurementDetails.status)}"` : 'більше не активна'}, тому пропозиції на неї не приймаються.
                     </p>
                 )}
