@@ -33,6 +33,7 @@ wwwroot\uploads\passport_photos\8d5bf0fd-dfa8-4934-ba85-13e492210105_ифп.jpg
 wwwroot\uploads\passport_photos\987d84b0-246c-4ac2-b521-550060dc5ac9_фон2.jpg
 wwwroot\uploads\passport_photos\9e776470-92f2-4048-aac9-25d14c7af8bb_Фон 1.jpg
 wwwroot\uploads\passport_photos\cbd409f7-10f6-41ee-a906-ae46b6e77bb4_Фон 1.jpg
+wwwroot\uploads\passport_photos\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf
 wwwroot\uploads\passport_photos\d4964996-b608-4130-8304-195421dc4e09_ифп.jpg
 wwwroot\uploads\passport_photos\d6d2442a-bfd4-41b7-9db6-67a909445da0_me.jpg
 wwwroot\uploads\passport_photos\e7661984-cbf0-484c-b5d3-723f784b15bd_Фон 1.jpg

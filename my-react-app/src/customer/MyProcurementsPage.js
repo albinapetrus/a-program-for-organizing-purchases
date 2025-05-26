@@ -1,15 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import classes from '../customer/Universal.module.css'; // Assuming Universal.module.css for styling
-import { MdOutlineEventNote } from "react-icons/md"; // Icon for "My Procurements"
+import classes from '../customer/Universal.module.css';
+import { MdOutlineEventNote } from "react-icons/md";
 
 function MyProcurementsPage() {
     const [procurements, setProcurements] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const [selectedStatusFilter, setSelectedStatusFilter] = useState('all');
     const navigate = useNavigate();
+
+    // Функція для перекладу статусу на українську
+    const translateStatus = (status) => {
+        if (!status) return 'Невідомо';
+        switch (status.toLowerCase()) {
+            case 'open':
+                return 'Активна';
+            case 'fulfilled':
+                return 'Завершена';
+            case 'closed': // Додано для повноти, якщо використовується "Closed"
+                return 'Закрита';
+            case 'overdue':
+                return 'Протермінована';
+            default:
+                return status;
+        }
+    };
 
     useEffect(() => {
         const fetchMyProcurements = async () => {
@@ -60,6 +78,33 @@ function MyProcurementsPage() {
         fetchMyProcurements();
     }, [navigate]);
 
+    const handleStatusFilterChange = (event) => {
+        setSelectedStatusFilter(event.target.value);
+    };
+
+    const filteredProcurements = useMemo(() => {
+        if (selectedStatusFilter === 'all') {
+            return procurements;
+        }
+
+        const now = new Date();
+
+        return procurements.filter(p => {
+            const statusLower = p.status ? p.status.toLowerCase() : '';
+            const completionDate = p.completionDate ? new Date(p.completionDate) : null;
+
+            if (selectedStatusFilter === 'overdue') {
+                return completionDate && completionDate < now && statusLower !== 'fulfilled' && statusLower !== 'closed';
+            }
+            
+            return statusLower === selectedStatusFilter;
+        });
+    }, [procurements, selectedStatusFilter]);
+
+    const displayMessage = !loading && !error && filteredProcurements.length === 0 && !message
+        ? 'Немає закупівель для вибраного статусу.'
+        : message;
+
     return (
         <div className={classes.universal}>
             <div className={classes.block}>
@@ -67,17 +112,38 @@ function MyProcurementsPage() {
                     <MdOutlineEventNote className={classes.icon} /> Мої закупівлі
                 </h1>
 
+                {/* DROPDOWN FILTER */}
+                <div className={classes.formGroup} style={{ backgroundColor: "white" }}>
+                    <label htmlFor="statusFilter" className={classes.label}>
+                        Фільтрувати за статусом:
+                    </label>
+                    <select
+                        style={{ marginTop: "1em" }}
+                        id="statusFilter"
+                        value={selectedStatusFilter}
+                        onChange={handleStatusFilterChange}
+                        className={classes.selectField}
+                        disabled={loading}
+                    >
+                        <option value="all">Усі мої закупівлі</option>
+                        <option value="open">Активні закупівлі</option>
+                        <option value="fulfilled">Завершені закупівлі</option>
+                        <option value="closed">Закриті закупівлі</option>
+                        <option value="overdue">Протерміновані закупівлі</option>
+                    </select>
+                </div>
+
                 {loading ? (
                     <p>Завантаження ваших закупівель...</p>
                 ) : error ? (
                     <p style={{ color: 'red', marginTop: '1em' }}>{error}</p>
-                ) : message ? (
-                    <p style={{ color: 'blue', marginTop: '1em' }}>{message}</p>
+                ) : displayMessage ? (
+                    <p style={{ color: 'blue', marginTop: '1em' }}>{displayMessage}</p>
                 ) : (
                     <div className={classes.resultsContainer}>
-                        {procurements.map((procurement) => (
+                        {filteredProcurements.map((procurement) => (
                             <div key={procurement.id} className={classes.procurementCard}>
-                                <h3>{procurement.name}</h3>
+                                <h4>{procurement.name}</h4>
                                 <p><strong>Категорія:</strong> {procurement.category}</p>
                                 <p><strong>Опис:</strong> {procurement.description || 'Не вказано'}</p>
                                 <p><strong>Кількість/Обсяг:</strong> {procurement.quantityOrVolume}</p>
@@ -91,17 +157,21 @@ function MyProcurementsPage() {
                                 <p><strong>Створено:</strong> {new Date(procurement.createdAt).toLocaleDateString()}</p>
                                 <p>
                                     <strong>Статус: </strong>
-                                    <span style={{ fontWeight: 'bold', color:
-                                        procurement.status === 'Open' ? 'green' :
-                                        procurement.status === 'Fulfilled' ? 'blue' : 'red'
+                                    <span style={{ 
+                                        fontWeight: 'bold', 
+                                        color:
+                                            procurement.status && procurement.status.toLowerCase() === 'open' ? 'blue' :
+                                            procurement.status && procurement.status.toLowerCase() === 'fulfilled' ? 'green' :
+                                            'red'
                                     }}>
-                                        {procurement.status}
+                                        {translateStatus(procurement.status)}
                                     </span>
                                 </p>
-                                {/* Link to view offers for this specific procurement */}
+                                {/* The Link component correctly passes the procurement.id to the URL */}
                                 <Link
                                     to={`/my-procurements/${procurement.id}/offers`}
                                     className={classes.respondButtonLink}
+                                    style={{ textDecoration: "none" }}
                                 >
                                     <button className={classes.respondButton}>Переглянути пропозиції</button>
                                 </Link>

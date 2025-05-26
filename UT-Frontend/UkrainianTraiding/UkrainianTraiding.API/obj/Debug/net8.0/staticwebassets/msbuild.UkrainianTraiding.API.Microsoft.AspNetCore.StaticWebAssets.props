@@ -630,6 +630,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\cbd409f7-10f6-41ee-a906-ae46b6e77bb4_Фон 1.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>vrfpr5cjti</Fingerprint>
+      <Integrity>G8sTK3HL+HouOFRrzWkqWlTTPiuKgCZhxxIU+GsB7oY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\d4964996-b608-4130-8304-195421dc4e09_ифп.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>UkrainianTraiding.API</SourceId>

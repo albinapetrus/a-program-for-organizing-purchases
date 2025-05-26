@@ -1,29 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import classes from './Universal.module.css'; // Assuming Universal.module.css for styling
-import { FaBoxes } from "react-icons/fa"; // Icon for offers
+import { useNavigate, useParams } from 'react-router-dom';
+import classes from './Universal.module.css';
+import { FaBoxes } from "react-icons/fa";
+
+// --- Утилітарна функція для перекладу статусу закупівлі ---
+const translateProcurementStatus = (status) => {
+    if (!status) return 'Невідомо';
+    switch (status.toLowerCase()) {
+        case 'open':
+            return 'Активна';
+        case 'fulfilled':
+            return 'Завершена';
+        case 'overdue':
+            return 'Протермінована';
+        case 'closed':
+            return 'Закрита';
+        default:
+            return status;
+    }
+};
+// --- Кінець утилітарної функції для статусу закупівлі ---
+
+// --- НОВА Утилітарна функція для перекладу статусу пропозиції ---
+const translateOfferStatus = (status) => {
+    if (!status) return 'Невідомо';
+    switch (status.toLowerCase()) {
+        case 'submitted':
+            return 'Подано';
+        case 'accepted':
+            return 'Прийнято';
+        case 'rejected':
+            return 'Відхилено';
+        default:
+            return status;
+    }
+};
+// --- Кінець НОВОЇ утилітарної функції для статусу пропозиції ---
 
 function CustomerOffersPage() {
+    const { procurementId: urlProcurementId } = useParams();
+    console.log('CustomerOffersPage: urlProcurementId з URL:', urlProcurementId);
+
     const navigate = useNavigate();
 
-    // State for all offers for the customer's procurements
+    const [selectedProcurementId, setSelectedProcurementId] = useState(urlProcurementId || '');
+
     const [allOffers, setAllOffers] = useState([]);
-    // State for the currently displayed offers (filtered or all)
     const [displayedOffers, setDisplayedOffers] = useState([]);
-
-    // State for the list of customer's procurements (for the dropdown)
     const [customerProcurements, setCustomerProcurements] = useState([]);
-    // State for the selected procurement in the dropdown
-    const [selectedProcurementId, setSelectedProcurementId] = useState(''); // Empty string for "All Procurements"
 
-    // UI feedback states
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
-    const [actionFeedback, setActionFeedback] = useState(''); // For feedback on accept/reject actions
+    const [actionFeedback, setActionFeedback] = useState('');
 
-    // Function to fetch initial data (procurements and all offers)
     const fetchInitialData = async () => {
         setLoading(true);
         setError('');
@@ -38,20 +69,34 @@ function CustomerOffersPage() {
         }
 
         try {
-            // 1. Fetch customer's own procurements for the dropdown
             const procurementsResponse = await axios.get('/api/Procurements/my', {
                 headers: { 'Authorization': `Bearer ${jwtToken}` }
             });
             setCustomerProcurements(procurementsResponse.data);
 
-            // 2. Fetch all offers for all of customer's procurements
             const offersResponse = await axios.get('/api/customer/offers/my', {
                 headers: { 'Authorization': `Bearer ${jwtToken}` }
             });
 
             if (offersResponse.data && offersResponse.data.length > 0) {
                 setAllOffers(offersResponse.data);
-                setDisplayedOffers(offersResponse.data); // Initially display all
+
+                if (urlProcurementId) {
+                    const filtered = offersResponse.data.filter(offer => offer.procurementId === urlProcurementId);
+                    setDisplayedOffers(filtered);
+                    if (filtered.length === 0) {
+                        setMessage('Для обраної закупівлі пропозицій не знайдено.');
+                    } else {
+                        setMessage('');
+                    }
+                } else {
+                    setDisplayedOffers(offersResponse.data);
+                    if (offersResponse.data.length === 0) {
+                         setMessage('У вас ще немає пропозицій до ваших закупівель.');
+                    } else {
+                         setMessage('');
+                    }
+                }
             } else {
                 setMessage('У вас ще немає пропозицій до ваших закупівель.');
                 setAllOffers([]);
@@ -75,12 +120,10 @@ function CustomerOffersPage() {
         }
     };
 
-    // Effect to fetch data on component mount
     useEffect(() => {
         fetchInitialData();
-    }, [navigate]);
+    }, [navigate, urlProcurementId]);
 
-    // Effect to filter offers when selectedProcurementId changes
     useEffect(() => {
         if (selectedProcurementId === '') {
             setDisplayedOffers(allOffers);
@@ -100,12 +143,10 @@ function CustomerOffersPage() {
         }
     }, [selectedProcurementId, allOffers]);
 
-    // Handler for dropdown change
     const handleProcurementSelectChange = (e) => {
         setSelectedProcurementId(e.target.value);
     };
 
-    // Function to handle accepting an offer
     const handleAcceptOffer = async (offerId) => {
         setActionFeedback('');
         setLoading(true);
@@ -116,7 +157,7 @@ function CustomerOffersPage() {
                 headers: { 'Authorization': `Bearer ${jwtToken}` }
             });
             setActionFeedback(response.data.message || 'Пропозицію успішно прийнято!');
-            await fetchInitialData(); // Re-fetch all data to update statuses
+            await fetchInitialData();
         } catch (err) {
             console.error('Помилка при прийнятті пропозиції:', err.response ? err.response.data : err.message);
             let errorMessage = 'Не вдалося прийняти пропозицію. Спробуйте пізніше.';
@@ -129,7 +170,6 @@ function CustomerOffersPage() {
         }
     };
 
-    // Function to handle rejecting an offer
     const handleRejectOffer = async (offerId) => {
         setActionFeedback('');
         setLoading(true);
@@ -140,7 +180,7 @@ function CustomerOffersPage() {
                 headers: { 'Authorization': `Bearer ${jwtToken}` }
             });
             setActionFeedback(response.data.message || 'Пропозицію успішно відхилено!');
-            await fetchInitialData(); // Re-fetch all data to update statuses
+            await fetchInitialData();
         } catch (err) {
             console.error('Помилка при відхиленні пропозиції:', err.response ? err.response.data : err.message);
             let errorMessage = 'Не вдалося відхилити пропозицію. Спробуйте пізніше.';
@@ -153,7 +193,6 @@ function CustomerOffersPage() {
         }
     };
 
-
     return (
         <div className={classes.universal}>
             <div className={classes.block}>
@@ -161,8 +200,7 @@ function CustomerOffersPage() {
                     <FaBoxes className={classes.icon} /> Пропозиції до моїх закупівель
                 </h1>
 
-                {/* Dropdown for selecting a specific procurement */}
-                <div className={classes.formGroup} style={{ marginBottom: '1.5em', backgroundColor:"white" }}>
+                <div className={classes.formGroup} style={{ backgroundColor: "white" }}>
                     <label htmlFor="selectProcurement" className={classes.label}>
                         Оберіть закупівлю:
                     </label>
@@ -172,17 +210,17 @@ function CustomerOffersPage() {
                         onChange={handleProcurementSelectChange}
                         className={classes.selectField}
                         disabled={loading}
+                        style={{ marginTop: "1em" }}
                     >
                         <option value="">Всі мої закупівлі</option>
                         {customerProcurements.map((procurement) => (
                             <option key={procurement.id} value={procurement.id}>
-                                {procurement.name} ({procurement.status}) {/* Display procurement status */}
+                                {procurement.name} ({translateProcurementStatus(procurement.status)})
                             </option>
                         ))}
                     </select>
                 </div>
 
-                {/* Action feedback message */}
                 {actionFeedback && (
                     <p style={{ color: actionFeedback.includes('Помилка') ? 'red' : 'green', marginTop: '1em' }}>
                         {actionFeedback}
@@ -197,54 +235,62 @@ function CustomerOffersPage() {
                     <p style={{ color: 'blue', marginTop: '1em' }}>{message}</p>
                 ) : (
                     <div className={classes.resultsContainer}>
-                        {displayedOffers.map((offer) => (
-                            <div key={offer.id} className={classes.procurementCard}>
-                                <h3>Пропозиція до закупівлі: "{offer.procurementName || 'N/A'}"</h3>
-                                <p><strong>Від постачальника:</strong> {offer.supplierCompanyName || 'N/A'}</p>
-                                <p><strong>Запропонована ціна:</strong> ${offer.proposedPrice}</p>
-                                <p><strong>Повідомлення:</strong> {offer.message || 'Не вказано'}</p>
-                                {offer.offerDocumentPaths && (
-                                    <p>
-                                        <strong>Документ:</strong> <a href={offer.offerDocumentPaths} target="_blank" rel="noopener noreferrer">Переглянути</a>
-                                    </p>
-                                )}
-                                <p><strong>Дата пропозиції:</strong> {new Date(offer.offerDate).toLocaleDateString()}</p>
-                                <p><strong>Статус пропозиції:</strong> <span style={{ fontWeight: 'bold', color:
-                                    offer.status === 'Accepted' ? 'green' :
-                                    offer.status === 'Rejected' ? 'red' : 'orange'
-                                }}>{offer.status}</span></p>
-                                {/* Display Procurement Status for clarity */}
-                                <p>
-                                    <strong>Статус закупівлі:</strong>
-                                    <span style={{ fontWeight: 'bold', color:
-                                        (customerProcurements.find(p => p.id === offer.procurementId)?.status === 'Open') ? 'green' :
-                                        (customerProcurements.find(p => p.id === offer.procurementId)?.status === 'Fulfilled') ? 'blue' : 'red'
-                                    }}>
-                                        {customerProcurements.find(p => p.id === offer.procurementId)?.status || 'N/A'}
-                                    </span>
-                                </p>
+                        {displayedOffers.map((offer) => {
+                            const relatedProcurement = customerProcurements.find(p => p.id === offer.procurementId);
+                            const procurementStatus = relatedProcurement ? relatedProcurement.status : 'N/A';
 
-                                {/* Buttons for Accept/Reject */}
-                                {offer.status === 'Submitted' && (
-                                    <div className={classes.offerActions}>
-                                        <button
-                                            className={`${classes.submitButton} ${classes.acceptButton}`}
-                                            onClick={() => handleAcceptOffer(offer.id)}
-                                            disabled={loading}
-                                        >
-                                            Прийняти
-                                        </button>
-                                        <button
-                                            className={`${classes.submitButton} ${classes.rejectButton}`}
-                                            onClick={() => handleRejectOffer(offer.id)}
-                                            disabled={loading}
-                                        >
-                                            Відхилити
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
+                            return (
+                                <div key={offer.id} className={classes.procurementCard}>
+                                    <h4>Пропозиція до закупівлі: "{offer.procurementName || 'N/A'}"</h4>
+                                    <p><strong>Від постачальника:</strong> {offer.supplierCompanyName || 'N/A'}</p>
+                                    <p><strong>Запропонована ціна:</strong> ${offer.proposedPrice}</p>
+                                    <p><strong>Повідомлення:</strong> {offer.message || 'Не вказано'}</p>
+                                    {offer.offerDocumentPaths && (
+                                        <p>
+                                            <strong>Документ:</strong> <a href={offer.offerDocumentPaths} target="_blank" rel="noopener noreferrer">Переглянути</a>
+                                        </p>
+                                    )}
+                                    <p><strong>Дата пропозиції:</strong> {new Date(offer.offerDate).toLocaleDateString()}</p>
+                                    <p>
+                                        <strong>Статус пропозиції:</strong> <span style={{ fontWeight: 'bold', color:
+                                            offer.status && offer.status.toLowerCase() === 'accepted' ? 'green' :
+                                            offer.status && offer.status.toLowerCase() === 'rejected' ? 'red' : 'orange'
+                                        }}>
+                                            {/* Застосовуємо нову функцію перекладу */}
+                                            {translateOfferStatus(offer.status)}
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <strong>Статус закупівлі: </strong>
+                                        <span style={{ fontWeight: 'bold', color:
+                                            (procurementStatus && procurementStatus.toLowerCase() === 'open') ? 'blue' :
+                                            (procurementStatus && procurementStatus.toLowerCase() === 'fulfilled') ? 'green' : 'red'
+                                        }}>
+                                            {translateProcurementStatus(procurementStatus)}
+                                        </span>
+                                    </p>
+
+                                    {offer.status === 'Submitted' && (
+                                        <div className={classes.offerActions}>
+                                            <button
+                                                className={`${classes.submitButton} ${classes.acceptButton}`}
+                                                onClick={() => handleAcceptOffer(offer.id)}
+                                                disabled={loading}
+                                            >
+                                                Прийняти
+                                            </button>
+                                            <button
+                                                className={`${classes.submitButton} ${classes.rejectButton}`}
+                                                onClick={() => handleRejectOffer(offer.id)}
+                                                disabled={loading}
+                                            >
+                                                Відхилити
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 )}
             </div>

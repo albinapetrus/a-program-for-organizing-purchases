@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8SRhwYBOypfwH/Ts+Y607EZ01+WBiG7nNcApaXoSpZI=",
+  "Hash": "D5RiEDHdWb7Dbk06YFGAeCIXiHxgmearYzGKxoTGpTE=",
   "Source": "UkrainianTraiding.API",
   "BasePath": "_content/UkrainianTraiding.API",
   "Mode": "Default",
@@ -750,6 +750,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\passport_photos\\cbd409f7-10f6-41ee-a906-ae46b6e77bb4_Фон 1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\passport_photos\\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf",
+      "SourceId": "UkrainianTraiding.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\",
+      "BasePath": "_content/UkrainianTraiding.API",
+      "RelativePath": "uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 #[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vrfpr5cjti",
+      "Integrity": "G8sTK3HL+HouOFRrzWkqWlTTPiuKgCZhxxIU+GsB7oY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\passport_photos\\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf"
     },
     {
       "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\passport_photos\\d4964996-b608-4130-8304-195421dc4e09_ифп.jpg",
@@ -4124,6 +4145,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\passport_photos\\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "234712"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"G8sTK3HL+HouOFRrzWkqWlTTPiuKgCZhxxIU+GsB7oY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 21:05:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-G8sTK3HL+HouOFRrzWkqWlTTPiuKgCZhxxIU+GsB7oY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .vrfpr5cjti.pdf",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\passport_photos\\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "234712"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"G8sTK3HL+HouOFRrzWkqWlTTPiuKgCZhxxIU+GsB7oY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 21:05:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vrfpr5cjti"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-G8sTK3HL+HouOFRrzWkqWlTTPiuKgCZhxxIU+GsB7oY="
         }
       ]
     },

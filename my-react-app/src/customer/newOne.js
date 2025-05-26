@@ -182,7 +182,7 @@ export class NewOne extends Component {
         return (
             <div className={classes.universal}>
                 {/* Прив'язуємо метод handleSubmit до події onSubmit форми */}
-                <form className={classes.block} onSubmit={this.handleSubmit}>
+                <form className={classes.block} style={{width:"76%", paddingLeft:"17em" , paddingRight:"0"}} onSubmit={this.handleSubmit}>
                     <h1 className={`${classes.label} ${classes.labelBlue}`}>Зареєструйте нову закупівлю</h1>
 
                     {/* Поле "Назва закупівлі" - Прив'язуємо до стану */}

@@ -420,6 +420,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kf6vun4y28"},{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/cbd409f7-10f6-41ee-a906-ae46b6e77bb4_\u0424\u043E\u043D 1.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 May 2025 18:52:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-G8sTK3HL\u002BHouOFRrzWkqWlTTPiuKgCZhxxIU\u002BGsB7oY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"234712"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022G8sTK3HL\u002BHouOFRrzWkqWlTTPiuKgCZhxxIU\u002BGsB7oY=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 21:05:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .vrfpr5cjti.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\ce110c0e-213c-47d9-a76d-ee7081af07eb_Даніїл Рожко Unit 5 .pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vrfpr5cjti"},{"Name":"integrity","Value":"sha256-G8sTK3HL\u002BHouOFRrzWkqWlTTPiuKgCZhxxIU\u002BGsB7oY="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/ce110c0e-213c-47d9-a76d-ee7081af07eb_\u0414\u0430\u043D\u0456\u0457\u043B \u0420\u043E\u0436\u043A\u043E Unit 5 .pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"234712"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022G8sTK3HL\u002BHouOFRrzWkqWlTTPiuKgCZhxxIU\u002BGsB7oY=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 21:05:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/d4964996-b608-4130-8304-195421dc4e09_ифп.087b4d0cej.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\d4964996-b608-4130-8304-195421dc4e09_ифп.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

@@ -29,7 +29,6 @@ import Auth3 from "./components/auth3";
 import Auth4 from "./components/auth4";
 import SideMenu from "./inner/SideMenu"; // Шлях до SideMenu
 import NewOne from "./customer/newOne";
-import MyPurch from "./customer/myPurch";
 import CabinetCust from "./customer/cabinetCust";
 import ProcurementInfo from "./content/ProcurementInfo"
 import CustomerInfo from "./content/CustomerInfo"
@@ -122,7 +121,6 @@ function AppContent() {
         <Route path="/auth3" element={<Auth3 />} />
         <Route path="/auth4" element={<Auth4 />} />
         <Route path="/newOne" element={<NewOne />} />
-        <Route path="/myPurch" element={<MyPurch />} />
         <Route path="/cabinetCust" element={<CabinetCust />} />
         <Route path="/ProcurementInfo" element={<ProcurementInfo/>} />
         <Route path="/CustomerInfo" element={<CustomerInfo/>} />
@@ -146,6 +144,7 @@ function AppContent() {
         <Route path="/ResearchInfo" element={<ResearchInfo />} />
         <Route path="/VariousInfo" element={<VariousInfo />} />
         <Route path="/ResponsiveTextBlock" element={<ResponsiveTextBlock />} />
+          <Route path="/my-procurements/:procurementId/offers" element={<CustomerOffersPage />} />
       </Routes>
 
       {/* Рендеримо Footer, якщо showHeaderFooter є true */}
