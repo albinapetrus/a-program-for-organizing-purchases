@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classes from './Universal.module.css'; // Переконайся, що шлях до CSS правильний
 import { GoPaperclip } from "react-icons/go";
 import axios from 'axios'; // Імпортуємо axios
+import { IoCreateSharp } from "react-icons/io5";
+ import { LuNotebookPen } from "react-icons/lu";
 
 // Переконайся, що baseURL для axios встановлено глобально десь на вході в застосунок
 axios.defaults.baseURL = 'https://localhost:7078';
@@ -183,9 +185,9 @@ export class NewOne extends Component {
             <div className={classes.universal}>
                 {/* Прив'язуємо метод handleSubmit до події onSubmit форми */}
                 <form className={classes.block} style={{width:"76%", paddingLeft:"17em" , paddingRight:"0"}} onSubmit={this.handleSubmit}>
-                    <h1 className={`${classes.label} ${classes.labelBlue}`}>Зареєструйте нову закупівлю</h1>
-
+                    <h1 className={`${classes.label} ${classes.labelBlue}`}><LuNotebookPen  className={classes.icon}/> Зареєструйте нову закупівлю</h1>
                     {/* Поле "Назва закупівлі" - Прив'язуємо до стану */}
+                   
                     <label htmlFor="purch_name">Назва закупівлі:</label>
                     <input
                         type="text"

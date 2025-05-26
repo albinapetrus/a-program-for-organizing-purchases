@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: start;
     flex-direction: column;
+     box-shadow: 1px 1px 10px black;
 }
 .labelBlue{
     color: #2070d1!important;
@@ -21,7 +22,7 @@
 }
 .universal input[type="text"] , .universal select, .universal button, .universal input[type="submit"]{
     border-radius: 5px;
-    width: 70%!important;
+    width: 70%;
     height: 2em!important;
     margin-bottom: 2em;
 }
@@ -116,12 +117,13 @@ margin-left: 0.5em;
     background-color: white;
     
     margin: 5em auto;
-    width:70%;
+    width:55%;
     height:auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+     box-shadow: 1px 1px 10px black;
 }
 .help{
     background-color: white;
@@ -143,11 +145,13 @@ margin-left: 0.5em;
     margin: 1em auto;
 }
 .buttonHelp{
-    width: 50%;
+    width: 70%;
     margin-right: 0.5em;
 }
 .help2 button{
     margin-left: 1em;
+   width: 10em;
+    height: 2em;
     
 }
 .buttonHelpLink{
@@ -161,7 +165,7 @@ margin-left: 0.5em;
      padding-top:0.3em;
      padding-bottom: 0.3em;
      margin-left: 1em;
-     width: 70%;
+     width: 10em;
      max-width: 35%;
     
      
@@ -177,7 +181,7 @@ margin-left: 0.5em;
     background-color: white;
 }
 .procurementCard{
-    margin-bottom: 4em;
+    margin-bottom: 1.5em;
 }
 .resultsTitle{
     background-color: white;
@@ -196,4 +200,32 @@ margin-left: 0.5em;
 .procurementCard h4{
     color: #2070d1;
     font-weight: bold;
+}
+.resultsTitle{
+    margin: 0.5em auto 1em auto;
+    display: block;
+    width: 10em;
+}
+.textareaField{
+    width:50em;
+    margin-bottom:1em;
+}
+.inputField{
+    margin-bottom: 1em!important;
+}
+button.submitButton.rejectButton{
+    background-color: red!important;
+     padding: 0 1em!important;
+}
+button.submitButton.acceptButton{
+     background-color: green!important;
+     padding: 0 1em!important;
+}
+.offerActions {
+    display: flex;
+    gap: 1em; /* Відстань між кнопками */
+    justify-content: flex-start; /* Центрування групи кнопок по горизонталі */
+    margin-top: 1em; /* Відступ зверху від кнопок */
+    flex-wrap: wrap; /* Дозволяє кнопкам переноситися на новий рядок, якщо не вистачає місця */
+    background-color: white;
 }

@@ -20,7 +20,7 @@ function MyProcurementsPage() {
                 return 'Активна';
             case 'fulfilled':
                 return 'Завершена';
-            case 'closed': // Додано для повноти, якщо використовується "Closed"
+            case 'closed':
                 return 'Закрита';
             case 'overdue':
                 return 'Протермінована';
@@ -128,7 +128,6 @@ function MyProcurementsPage() {
                         <option value="all">Усі мої закупівлі</option>
                         <option value="open">Активні закупівлі</option>
                         <option value="fulfilled">Завершені закупівлі</option>
-                        <option value="closed">Закриті закупівлі</option>
                         <option value="overdue">Протерміновані закупівлі</option>
                     </select>
                 </div>
@@ -171,9 +170,24 @@ function MyProcurementsPage() {
                                 <Link
                                     to={`/my-procurements/${procurement.id}/offers`}
                                     className={classes.respondButtonLink}
-                                    style={{ textDecoration: "none" }}
+                                    style={{ 
+                                        textDecoration: "none", 
+                                        display: "block", // Link тепер є блочним елементом
+                                        // width: "30em" // Забрано ширину з Link, щоб кнопка контролювала свою ширину
+                                    }}
                                 >
-                                    <button className={classes.respondButton}>Переглянути пропозиції</button>
+                                    <button 
+                                        className={classes.respondButton} 
+                                        style={{
+                                            padding: "0 0.5em", // Додано трохи вертикального padding для кращого вигляду
+                                           // Кнопка займатиме всю доступну ширину батьківського Link
+                                            maxWidth: "30em", // Обмеження максимальної ширини кнопки
+                                            display: "block", // Кнопка є блочним елементом
+                                            margin: "0.5em 0" // Центрування кнопки
+                                        }}
+                                    >
+                                        Переглянути пропозиції
+                                    </button>
                                 </Link>
                                 <hr></hr>
                             </div>

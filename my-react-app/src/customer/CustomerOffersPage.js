@@ -283,11 +283,15 @@ function CustomerOffersPage() {
                                                 className={`${classes.submitButton} ${classes.rejectButton}`}
                                                 onClick={() => handleRejectOffer(offer.id)}
                                                 disabled={loading}
+                                               
                                             >
                                                 Відхилити
                                             </button>
+                                          
                                         </div>
+                                       
                                     )}
+                                       <hr/>
                                 </div>
                             );
                         })}

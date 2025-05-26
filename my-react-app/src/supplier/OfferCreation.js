@@ -26,6 +26,23 @@ function OfferCreationPage() {
     const [procurementDetailsError, setProcurementDetailsError] = useState('');
     const [isProcurementOpen, setIsProcurementOpen] = useState(false); // New state for procurement status
 
+    // Функція для перекладу статусу на українську (нова функція)
+    const translateStatus = (status) => {
+        if (!status) return 'Невідомо';
+        switch (status.toLowerCase()) {
+            case 'open':
+                return 'Активна';
+            case 'fulfilled':
+                return 'Завершена';
+            case 'closed':
+                return 'Закрита';
+            case 'overdue': // Додано для повноти, хоча тут може і не зустрічатись
+                return 'Протермінована';
+            default:
+                return status; // Повертаємо оригінал, якщо немає відповідного перекладу
+        }
+    };
+
     // Function to fetch procurement details
     const fetchProcurementDetails = async () => {
         if (!procurementId) {
@@ -80,7 +97,8 @@ function OfferCreationPage() {
         setSuccessMessage('');
 
         if (!isProcurementOpen) {
-            setError('Ви не можете подати пропозицію на цю закупівлю, оскільки вона вже закрита або виконана.');
+            // Використовуємо перекладений статус тут
+            setError(`Ви не можете подати пропозицію на цю закупівлю, оскільки вона має статус "${procurementDetails ? translateStatus(procurementDetails.status) : 'Неактивна'}".`);
             setLoading(false);
             return;
         }
@@ -126,7 +144,6 @@ function OfferCreationPage() {
             setProposedPrice('');
             setMessage('');
             setOfferDocument(null);
-            // Re-fetch procurement details to update its status if it changed (e.g., if it was the last open offer)
             await fetchProcurementDetails(); // This will re-evaluate isProcurementOpen
         } catch (err) {
             console.error('Помилка при подачі пропозиції:', err.response ? err.response.data : err.message);
@@ -157,7 +174,8 @@ function OfferCreationPage() {
                 <h1 className={`${classes.label} ${classes.labelBlue}`}>
                     Створити пропозицію для закупівлі: <br/> "{procurementDetails ? procurementDetails.name : 'Завантаження...'}"
                 </h1>
-
+            </div>
+            <div className={classes.block}>
                 {/* Display procurement details */}
                 {procurementDetailsLoading ? (
                     <p>Завантаження деталей закупівлі...</p>
@@ -179,12 +197,13 @@ function OfferCreationPage() {
                         )}
                         <p><strong>Створено:</strong> {new Date(procurementDetails.createdAt).toLocaleDateString()}</p>
                         <p>
-                            <strong>Статус закупівлі:</strong>
+                            <strong>Статус закупівлі:  </strong>
                             <span style={{ fontWeight: 'bold', color:
                                 procurementDetails.status === 'Open' ? 'green' :
                                 procurementDetails.status === 'Fulfilled' ? 'blue' : 'red' // Assuming 'Fulfilled' or 'Closed'
                             }}>
-                                {procurementDetails.status}
+                                {/* Застосовуємо функцію перекладу тут */}
+                                {translateStatus(procurementDetails.status)}
                             </span>
                         </p>
                     </div>
@@ -193,12 +212,15 @@ function OfferCreationPage() {
                 {/* Offer submission form */}
                 {!isProcurementOpen && !procurementDetailsLoading && !procurementDetailsError && (
                     <p style={{ color: 'red', fontWeight: 'bold', marginTop: '1.5em' }}>
-                        Ця закупівля {procurementDetails ? `має статус "${procurementDetails.status}"` : 'більше не активна'}, тому пропозиції на неї не приймаються.
+                        {/* Використовуємо перекладений статус у повідомленні про неактивну закупівлю */}
+                        Ця закупівля {procurementDetails ? `має статус "${translateStatus(procurementDetails.status)}"` : 'більше не активна'}, тому пропозиції на неї не приймаються.
                     </p>
                 )}
-
+            </div>
+            <div className={classes.block}>
                 <form onSubmit={handleSubmit} className={classes.form} style={{background:"white"}}>
-                    <label htmlFor="proposedPrice">Запропонована ціна ($):</label>
+                    <h2 style={{background:"white", marginBottom:"0.8em"}}>Заповніть форму:</h2>
+                    <label htmlFor="proposedPrice">Запропонована ціна ($): </label>
                     <input
                         type="number"
                         id="proposedPrice"
@@ -212,8 +234,8 @@ function OfferCreationPage() {
                         className={classes.inputField}
                         disabled={loading || !isProcurementOpen} // Disable if loading or not open
                     />
-
-                    <label htmlFor="message">Ваше повідомлення (необов'язково):</label>
+                    <br/>
+                    <label htmlFor="message">Ваше повідомлення: </label>
                     <textarea
                         id="message"
                         name="message"
@@ -224,10 +246,10 @@ function OfferCreationPage() {
                         className={classes.textareaField}
                         disabled={loading || !isProcurementOpen} // Disable if loading or not open
                     ></textarea>
-
-                    <label>Допоміжний документ (необов'язково):</label>
-                    <label htmlFor="offerDocumentFile" className={classes.styledFile} style={{ opacity: (loading || !isProcurementOpen) ? 0.6 : 1, cursor: (loading || !isProcurementOpen) ? 'not-allowed' : 'pointer' }}>
-                        <GoPaperclip className={classes.icon} /> Завантажити файл
+                    <br/>
+                    <label>Допоміжний документ: </label>
+                    <label htmlFor="offerDocumentFile" className={classes.styledFile} style={{ opacity: (loading || !isProcurementOpen) ? 0.6 : 1, cursor: (loading || !isProcurementOpen) ? 'not-allowed' : 'pointer' , display:"inline-block"}}>
+                        <GoPaperclip className={classes.icon} /> 
                     </label>
                     <input
                         type="file"
@@ -237,11 +259,11 @@ function OfferCreationPage() {
                         style={{ display: "none" }}
                         disabled={loading || !isProcurementOpen} // Disable if loading or not open
                     />
-                    {offerDocument && <p>Обраний файл: {offerDocument.name}</p>}
-
-                    <button type="submit" className={classes.submitButton} disabled={loading || !isProcurementOpen}>
+                    
+                    <button type="submit" style={{width:"33em", marginLeft:"10em"}} className={classes.submitButton} disabled={loading || !isProcurementOpen} >
                         {loading ? 'Надсилання...' : 'Надіслати пропозицію'}
                     </button>
+                    {offerDocument && <p>Обраний файл: {offerDocument.name}</p>}
                 </form>
 
                 {/* Display messages (error or success) */}

@@ -109,7 +109,7 @@ export class CabinetCustComponent extends Component {
         return (
             <div className={classes.universal}>
                 <div className={classes.block2}>
-                    <div style={{fontSize:"140%"}}className={classes.help} >
+                    <div style={{fontSize:"130%"}}className={classes.help} >
                         <h1 className={`${classes.label} ${classes.labelBlue}`}>
                             <IoPersonSharp className={classes.icon} />Ваш кабінет
                         </h1>
