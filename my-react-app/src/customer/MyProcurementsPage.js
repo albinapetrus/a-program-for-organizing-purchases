@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import classes from '../customer/Universal.module.css';
+import classes from '../customer/Universal.module.css'; // Переконайся, що шлях до CSS правильний
 import { MdOutlineEventNote } from "react-icons/md";
 
 function MyProcurementsPage() {
-    const BACKEND_BASE_URL = 'https://localhost:7078';
+    const BACKEND_BASE_URL = 'https://localhost:7078'; // Переконайся, що порт правильний
     const [procurements, setProcurements] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -41,12 +41,15 @@ function MyProcurementsPage() {
             if (!jwtToken) {
                 setError('Ви не авторизовані. Будь ласка, увійдіть.');
                 setLoading(false);
-                navigate('/form');
+                navigate('/form'); // Або інший шлях для логіну
                 return;
             }
 
             try {
-                const response = await axios.get('/api/Procurements/my', {
+                // Використовуємо відносний шлях, якщо фронтенд і бекенд на одному домені/порті під час розробки
+                // або якщо налаштований проксі. Якщо ні, то краще:
+                // const response = await axios.get(`${BACKEND_BASE_URL}/api/Procurements/my`, {
+                const response = await axios.get('/api/Procurements/my', { 
                     headers: {
                         'Authorization': `Bearer ${jwtToken}`
                     }
@@ -64,10 +67,12 @@ function MyProcurementsPage() {
                 if (err.response) {
                     if (err.response.status === 401 || err.response.status === 403) {
                         errorMessage = 'У вас немає дозволу на перегляд цієї сторінки або ваша сесія закінчилася. Будь ласка, увійдіть знову.';
-                        localStorage.removeItem('jwtToken');
-                        navigate('/form');
-                    } else if (err.response.data && err.response.data.message) {
+                        localStorage.removeItem('jwtToken'); 
+                        navigate('/form'); 
+                    } else if (err.response.data && err.response.data.message) { 
                         errorMessage = err.response.data.message;
+                    } else if (typeof err.response.data === 'string') { // Обробка, якщо помилка - просто рядок
+                        errorMessage = err.response.data;
                     }
                 }
                 setError(errorMessage);
@@ -89,13 +94,18 @@ function MyProcurementsPage() {
         }
 
         const now = new Date();
+        // Для коректного порівняння дат без врахування часу
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
 
         return procurements.filter(p => {
             const statusLower = p.status ? p.status.toLowerCase() : '';
-            const completionDate = p.completionDate ? new Date(p.completionDate) : null;
+            const completionDateObj = p.completionDate ? new Date(p.completionDate) : null;
+            const procurementCompletionDate = completionDateObj ? new Date(completionDateObj.getFullYear(), completionDateObj.getMonth(), completionDateObj.getDate()) : null;
+
 
             if (selectedStatusFilter === 'overdue') {
-                return completionDate && completionDate < now && statusLower !== 'fulfilled' && statusLower !== 'closed';
+                return procurementCompletionDate && procurementCompletionDate < today && statusLower !== 'fulfilled' && statusLower !== 'closed';
             }
             
             return statusLower === selectedStatusFilter;
@@ -113,7 +123,6 @@ function MyProcurementsPage() {
                     <MdOutlineEventNote className={classes.icon} /> Мої закупівлі
                 </h1>
 
-                {/* DROPDOWN FILTER */}
                 <div className={classes.formGroup} style={{ backgroundColor: "white" }}>
                     <label htmlFor="statusFilter" className={classes.label}>
                         Фільтрувати за статусом:
@@ -147,8 +156,18 @@ function MyProcurementsPage() {
                                 <p><strong>Категорія:</strong> {procurement.category}</p>
                                 <p><strong>Опис:</strong> {procurement.description || 'Не вказано'}</p>
                                 <p><strong>Кількість/Обсяг:</strong> {procurement.quantityOrVolume}</p>
-                                <p><strong>Орієнтовний бюджет:</strong> ${procurement.estimatedBudget}</p>
+                                <p><strong>Орієнтовний бюджет:</strong> ${procurement.estimatedBudget}</p> {/* Валюта долари */}
                                 <p><strong>Дата завершення:</strong> {new Date(procurement.completionDate).toLocaleDateString()}</p>
+                                
+
+                                {procurement.deliveryAddress && ( 
+                                    <p><strong>Адреса доставки:</strong> {procurement.deliveryAddress}</p>
+                                )}
+                                {procurement.contactPhone && ( 
+                                    <p><strong>Контактний телефон:</strong> {procurement.contactPhone}</p>
+                                )}
+                                
+
                                 {procurement.documentPaths && (
                                     <p>
                                         <strong>Документ: </strong> <a href={`${BACKEND_BASE_URL}${procurement.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
@@ -162,35 +181,32 @@ function MyProcurementsPage() {
                                         color:
                                             procurement.status && procurement.status.toLowerCase() === 'open' ? 'blue' :
                                             procurement.status && procurement.status.toLowerCase() === 'fulfilled' ? 'green' :
-                                            'red'
+                                            'red' // для 'closed', 'overdue' та інших
                                     }}>
                                         {translateStatus(procurement.status)}
                                     </span>
                                 </p>
-                                {/* The Link component correctly passes the procurement.id to the URL */}
                                 <Link
                                     to={`/my-procurements/${procurement.id}/offers`}
                                     className={classes.respondButtonLink}
                                     style={{ 
                                         textDecoration: "none", 
-                                        display: "block", // Link тепер є блочним елементом
-                                        // width: "30em" // Забрано ширину з Link, щоб кнопка контролювала свою ширину
+                                        display: "block", 
                                     }}
                                 >
                                     <button 
                                         className={classes.respondButton} 
                                         style={{
-                                            padding: "0 0.5em", // Додано трохи вертикального padding для кращого вигляду
-                                           // Кнопка займатиме всю доступну ширину батьківського Link
-                                            maxWidth: "30em", // Обмеження максимальної ширини кнопки
-                                            display: "block", // Кнопка є блочним елементом
-                                            margin: "0.5em 0" // Центрування кнопки
+                                            padding: "0 0.5em", 
+                                            maxWidth: "30em", 
+                                            display: "block", 
+                                            margin: "0.5em 0" 
                                         }}
                                     >
                                         Переглянути пропозиції
                                     </button>
                                 </Link>
-                                <hr></hr>
+                                <hr />
                             </div>
                         ))}
                     </div>

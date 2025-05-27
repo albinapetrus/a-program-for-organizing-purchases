@@ -16,6 +16,7 @@ wwwroot\uploads\offer_documents\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.j
 wwwroot\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg
 wwwroot\uploads\offer_documents\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg
 wwwroot\uploads\offer_documents\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg
+wwwroot\uploads\offer_documents\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx
 wwwroot\uploads\passport_photos\01893a5d-7575-4a1b-b2d9-71f8cf03861e_Фон 1.jpg
 wwwroot\uploads\passport_photos\0f606565-0077-4e02-97ea-dd7630107603_WIN_20231106_19_55_10_Pro.jpg
 wwwroot\uploads\passport_photos\1f192c02-1bb6-436a-8714-80a5e1acbc74_Фон 1.jpg
@@ -54,13 +55,16 @@ wwwroot\uploads\procurement_documents\3759fd27-c4df-419d-a863-8a70b7e1a6da_Фо�
 wwwroot\uploads\procurement_documents\3881da79-a641-4af3-8b48-bdfc031dbf94_Фон 1.jpg
 wwwroot\uploads\procurement_documents\451d709c-1df1-40a3-bb41-c2c5c475c95f_mynewarch.jpg
 wwwroot\uploads\procurement_documents\6860a173-b76b-42e2-921b-36e0b9f06bdd_архітектура 2025.webp
+wwwroot\uploads\procurement_documents\7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx
 wwwroot\uploads\procurement_documents\820fe13a-c997-41ed-92bd-492c31cbf0b3_Фон 1.jpg
 wwwroot\uploads\procurement_documents\9ef6c2d4-7a52-444a-9022-28310bd4d3bf_me.jpg
 wwwroot\uploads\procurement_documents\a1d45e80-9fcc-4f7e-890e-d8444e8a0158_Фон 1.jpg
 wwwroot\uploads\procurement_documents\a8164296-5d40-4f92-8320-42bbac423d1b_mynewarch.jpg
+wwwroot\uploads\procurement_documents\c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx
 wwwroot\uploads\procurement_documents\cf7e357f-5a38-44f8-830f-ded24cf59c3c_ифп.jpg
 wwwroot\uploads\procurement_documents\d796bb63-78ef-4e5d-8533-9b2322d046c1_Фон 1.jpg
 wwwroot\uploads\procurement_documents\e2e8cb82-1b4c-4528-901e-1cace62e2886_Фон 1.jpg
 wwwroot\uploads\procurement_documents\e405acc7-fce7-4da5-ba13-c1f34c8c783e_ифп.jpg
 wwwroot\uploads\procurement_documents\e657365a-4aa5-48f9-bb39-78a2bcc4dc62_WIN_20231106_20_01_58_Pro.jpg
 wwwroot\uploads\procurement_documents\ef2cc55e-c9aa-467d-9c08-06563eb6bec4_Фон 1.jpg
+wwwroot\uploads\procurement_documents\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx

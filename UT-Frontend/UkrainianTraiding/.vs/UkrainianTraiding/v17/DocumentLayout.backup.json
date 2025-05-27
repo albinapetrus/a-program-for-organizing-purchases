@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\customerofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\customerofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\offercustomerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\offercustomerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\offerdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\offerdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\offerlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\offerlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\procurementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\procurementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\supplierofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\supplierofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\offerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\offerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\domain\\offer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\domain\\offer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UkrainianTraiding.API\\Migrations\\20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\procurementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\procurementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,56 +47,52 @@
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\createofferdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\procurementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\procurementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\migrations\\20250527185403_adddeliveryaddressandcontactphonetoprocurements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\migrations\\20250527185403_adddeliveryaddressandcontactphonetoprocurements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\offerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\offerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\migrations\\20250522082526_addprocurementsstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\migrations\\20250522082526_addprocurementsstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527185442_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UkrainianTraiding.API\\Migrations\\20250527185442_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\domain\\procurement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\domain\\procurement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\domain\\enums\\procurementstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\domain\\enums\\procurementstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\customerofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\customerofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\domain\\offer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\domain\\offer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\createprocurementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\createprocurementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\offercustomerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\offercustomerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\offerlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\offerlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\ukrainiantraiding.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\ukrainiantraiding.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\updatecompanynamerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\updatecompanynamerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\userprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\userprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\migrations\\20250522082526_addprocurementsstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\migrations\\20250522082526_addprocurementsstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\domain\\enums\\procurementstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\domain\\enums\\procurementstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\ukrainiantraiding.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\ukrainiantraiding.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,10 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\controllers\\supplierofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\controllers\\supplierofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250513184323_AddOffersTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,14 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250513184052_AddOffersTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UkrainianTraiding.API\\Migrations\\20250513184052_AddOffersTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\models\\dto\\createprocurementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\models\\dto\\createprocurementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -145,6 +165,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\migrations\\20250512074106_initialcreatewithguid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\migrations\\20250512074106_initialcreatewithguid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|c:\\users\\albina\\desktop\\my projects\\a-program-for-organizing-purchases\\ut-frontend\\ukrainiantraiding\\ukrainiantraiding.api\\migrations\\20250526202805_addcompanynametouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3998CA7-7464-4757-916B-E3E05B4B539B}|UkrainianTraiding.API\\UkrainianTraiding.API.csproj|solutionrelative:ukrainiantraiding.api\\migrations\\20250526202805_addcompanynametouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -154,84 +178,278 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OffersController.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\OffersController.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\OffersController.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\OffersController.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\OffersController.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAApwI8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T18:47:46.857Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ProcurementsController.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\ProcurementsController.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\ProcurementsController.cs",
               "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\ProcurementsController.cs",
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\ProcurementsController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAQwH8AAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAD4v44AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:56:39.39Z"
+              "WhenOpened": "2025-05-12T10:56:39.39Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Procurement.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAcwDAAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:50:50.437Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "CustomerOffersController.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\CustomerOffersController.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\CustomerOffersController.cs",
               "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\CustomerOffersController.cs",
               "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\CustomerOffersController.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAUwH4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAcwHUAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T13:02:23.022Z"
+              "WhenOpened": "2025-05-14T13:02:23.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OfferDetailsDto.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferDetailsDto.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\OfferDetailsDto.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferDetailsDto.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferDetailsDto.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wBMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T22:08:20.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OfferListDto.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T06:35:03.004Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CreateOfferDto.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAuwBoAAAABAAAAAAAAAA==",
+              "Title": "OfferCustomerDto.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T18:40:06.494Z"
+              "WhenOpened": "2025-05-22T07:06:00.812Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "SupplierOffersController.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAowBwAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:01:33.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OffersController.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\OffersController.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\OffersController.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\OffersController.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\OffersController.cs",
+              "ViewState": "AgIAAFEBAAAAAAAAAAAmwHABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:47:46.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Offer.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:39:36.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Program.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Program.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T07:17:04.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ProcurementDto.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
               "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
               "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\ProcurementDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T15:01:34.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
+              "Title": "20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Migrations\\20250527221453_AddedFullSupplierAndPaymentDetailsToOffers.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T22:14:53.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20250527185403_AddDeliveryAddressAndContactPhoneToProcurements.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527185403_AddDeliveryAddressAndContactPhoneToProcurements.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250527185403_AddDeliveryAddressAndContactPhoneToProcurements.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527185403_AddDeliveryAddressAndContactPhoneToProcurements.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Migrations\\20250527185403_AddDeliveryAddressAndContactPhoneToProcurements.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T18:54:03.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20250527185442_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527185442_InitialCreate.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250527185442_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250527185442_InitialCreate.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Migrations\\20250527185442_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T18:54:42.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateOfferDto.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\CreateOfferDto.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAADMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:40:06.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Procurement.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Procurement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T10:50:50.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CreateProcurementDto.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAqwDIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T10:51:23.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "20250526202805_AddCompanyNameToUser.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250526202805_AddCompanyNameToUser.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250526202805_AddCompanyNameToUser.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250526202805_AddCompanyNameToUser.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Migrations\\20250526202805_AddCompanyNameToUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T20:28:05.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UpdateCompanyNameRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\UpdateCompanyNameRequest.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\UpdateCompanyNameRequest.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\UpdateCompanyNameRequest.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\UpdateCompanyNameRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T20:18:28.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAHoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:31:16.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\User.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\User.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\User.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T15:35:34.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
+              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
+              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
+              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:30:49.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "ProcurementStatus.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Enums\\ProcurementStatus.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\Enums\\ProcurementStatus.cs",
@@ -243,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 20,
               "Title": "20250522082526_AddProcurementsStatus.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250522082526_AddProcurementsStatus.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250522082526_AddProcurementsStatus.cs",
@@ -255,55 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\User.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\User.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\User.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\User.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T15:35:34.967Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Offer.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\Domain\\Offer.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAIwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T18:39:36.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "OfferCustomerDto.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferCustomerDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T07:06:00.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "OfferListDto.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\OfferListDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T06:35:03.004Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 22,
               "Title": "UkrainianTraiding.API.csproj",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\UkrainianTraiding.API.csproj",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\UkrainianTraiding.API.csproj",
@@ -315,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Services\\JwtService.cs",
@@ -327,19 +497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAgwFEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:31:16.346Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\AuthController.cs",
@@ -351,19 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UserProfileDto.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\UserProfileDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:30:49.466Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "RegisterStep2Dto.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\RegisterStep2Dto.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\RegisterStep2Dto.cs",
@@ -375,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 26,
               "Title": "20250513184323_AddOffersTable.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250513184323_AddOffersTable.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250513184323_AddOffersTable.cs",
@@ -386,7 +532,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "20250513190434_ChangedOffer.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250513190434_ChangedOffer.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250513190434_ChangedOffer.cs",
@@ -398,19 +544,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SupplierOffersController.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Controllers\\SupplierOffersController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAYwBwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T13:01:33.23Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 28,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Data\\ApplicationDbContext.cs",
@@ -422,7 +556,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 37,
               "Title": "20250513184337_AddOffersTable.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250513184337_AddOffersTable.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250513184337_AddOffersTable.cs",
@@ -434,7 +568,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 29,
               "Title": "20250513184052_AddOffersTable.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250513184052_AddOffersTable.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250513184052_AddOffersTable.cs",
@@ -446,19 +580,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "CreateProcurementDto.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Models\\DTO\\CreateProcurementDto.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwAkAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:51:23.349Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "20250512105522_AddProcurementsTable.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250512105522_AddProcurementsTable.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250512105522_AddProcurementsTable.cs",
@@ -470,19 +592,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Program.cs",
-              "RelativeDocumentMoniker": "UkrainianTraiding.API\\Program.cs",
-              "ToolTip": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Program.cs",
-              "RelativeToolTip": "UkrainianTraiding.API\\Program.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAAAF0AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T07:17:04.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 30,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\appsettings.json",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\appsettings.json",
@@ -494,7 +604,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 38,
               "Title": "20250512095147_ChainginUserFiels\u002BAddingstep3registration.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250512095147_ChainginUserFiels\u002BAddingstep3registration.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250512095147_ChainginUserFiels\u002BAddingstep3registration.cs",
@@ -506,7 +616,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "RegisterStep3Dto.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\RegisterStep3Dto.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\RegisterStep3Dto.cs",
@@ -518,7 +628,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "MinimumAgeAttribute.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\ValidationAttributes\\MinimumAgeAttribute.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\ValidationAttributes\\MinimumAgeAttribute.cs",
@@ -530,7 +640,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 39,
               "Title": "20250512092205_AddUserProfileFields.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250512092205_AddUserProfileFields.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250512092205_AddUserProfileFields.cs",
@@ -542,7 +652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 34,
               "Title": "20250512092919_Allowing null to user fields.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250512092919_Allowing null to user fields.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250512092919_Allowing null to user fields.cs",
@@ -554,7 +664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 40,
               "Title": "20250512074106_InitialCreateWithGuid.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Migrations\\20250512074106_InitialCreateWithGuid.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Migrations\\20250512074106_InitialCreateWithGuid.cs",
@@ -566,7 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\LoginDto.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\LoginDto.cs",
@@ -578,7 +688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\Models\\DTO\\RegisterDto.cs",
               "RelativeDocumentMoniker": "UkrainianTraiding.API\\Models\\DTO\\RegisterDto.cs",

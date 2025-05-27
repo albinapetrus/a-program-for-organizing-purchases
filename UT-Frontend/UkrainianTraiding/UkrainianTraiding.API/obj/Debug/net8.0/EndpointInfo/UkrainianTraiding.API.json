@@ -217,8 +217,14 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
+                  "PaymentEdrpou",
                   "ProcurementId",
-                  "ProposedPrice"
+                  "ProposedDeliveryDate",
+                  "ProposedPrice",
+                  "SupplierBankName",
+                  "SupplierContactPhone",
+                  "SupplierFullName",
+                  "SupplierIban"
                 ],
                 "type": "object",
                 "properties": {
@@ -237,6 +243,37 @@
                   "OfferDocument": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "SupplierContactPhone": {
+                    "pattern": "^\\+?3?8?(0\\d{9})$",
+                    "type": "string",
+                    "format": "tel"
+                  },
+                  "ProposedDeliveryDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "SupplierFullName": {
+                    "maxLength": 255,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "PaymentEdrpou": {
+                    "pattern": "^\\d{8}(\\d{2})?$",
+                    "type": "string"
+                  },
+                  "SupplierIban": {
+                    "pattern": "^UA\\d{2}[\\dA-Z]{25}$",
+                    "type": "string"
+                  },
+                  "SupplierBankName": {
+                    "maxLength": 255,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "PaymentIpn": {
+                    "pattern": "^\\d{10}(\\d{2})?$",
+                    "type": "string"
                   }
                 }
               },
@@ -251,6 +288,27 @@
                   "style": "form"
                 },
                 "OfferDocument": {
+                  "style": "form"
+                },
+                "SupplierContactPhone": {
+                  "style": "form"
+                },
+                "ProposedDeliveryDate": {
+                  "style": "form"
+                },
+                "SupplierFullName": {
+                  "style": "form"
+                },
+                "PaymentEdrpou": {
+                  "style": "form"
+                },
+                "SupplierIban": {
+                  "style": "form"
+                },
+                "SupplierBankName": {
+                  "style": "form"
+                },
+                "PaymentIpn": {
                   "style": "form"
                 }
               }
@@ -366,6 +424,18 @@
         }
       }
     },
+    "/api/Offers/customer/offers/my": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Procurements": {
       "post": {
         "tags": [
@@ -412,6 +482,16 @@
                   "SupportingDocument": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "DeliveryAddress": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "ContactPhone": {
+                    "maxLength": 20,
+                    "minLength": 0,
+                    "type": "string"
                   }
                 }
               },
@@ -435,6 +515,12 @@
                   "style": "form"
                 },
                 "SupportingDocument": {
+                  "style": "form"
+                },
+                "DeliveryAddress": {
+                  "style": "form"
+                },
+                "ContactPhone": {
                   "style": "form"
                 }
               }
@@ -531,8 +617,14 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
+                  "PaymentEdrpou",
                   "ProcurementId",
-                  "ProposedPrice"
+                  "ProposedDeliveryDate",
+                  "ProposedPrice",
+                  "SupplierBankName",
+                  "SupplierContactPhone",
+                  "SupplierFullName",
+                  "SupplierIban"
                 ],
                 "type": "object",
                 "properties": {
@@ -551,6 +643,37 @@
                   "OfferDocument": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "SupplierContactPhone": {
+                    "pattern": "^\\+?3?8?(0\\d{9})$",
+                    "type": "string",
+                    "format": "tel"
+                  },
+                  "ProposedDeliveryDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "SupplierFullName": {
+                    "maxLength": 255,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "PaymentEdrpou": {
+                    "pattern": "^\\d{8}(\\d{2})?$",
+                    "type": "string"
+                  },
+                  "SupplierIban": {
+                    "pattern": "^UA\\d{2}[\\dA-Z]{25}$",
+                    "type": "string"
+                  },
+                  "SupplierBankName": {
+                    "maxLength": 255,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "PaymentIpn": {
+                    "pattern": "^\\d{10}(\\d{2})?$",
+                    "type": "string"
                   }
                 }
               },
@@ -565,6 +688,27 @@
                   "style": "form"
                 },
                 "OfferDocument": {
+                  "style": "form"
+                },
+                "SupplierContactPhone": {
+                  "style": "form"
+                },
+                "ProposedDeliveryDate": {
+                  "style": "form"
+                },
+                "SupplierFullName": {
+                  "style": "form"
+                },
+                "PaymentEdrpou": {
+                  "style": "form"
+                },
+                "SupplierIban": {
+                  "style": "form"
+                },
+                "SupplierBankName": {
+                  "style": "form"
+                },
+                "PaymentIpn": {
                   "style": "form"
                 }
               }
@@ -606,6 +750,37 @@
         "tags": [
           "Users"
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/company-name": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanyNameRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanyNameRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanyNameRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -675,6 +850,16 @@
             "maxLength": 100,
             "minLength": 0,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCompanyNameRequest": {
+        "type": "object",
+        "properties": {
+          "companyName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using UkrainianTraiding.API.Models.Domain.Enums;
+using UkrainianTraiding.API.Models.Domain.Enums; // Переконайся, що це правильний шлях до твого enum
 
 namespace UkrainianTraiding.API.Models.Domain // Переконайся, що простір імен відповідає
 {
@@ -11,42 +11,51 @@ namespace UkrainianTraiding.API.Models.Domain // Переконайся, що п
         [Key]
         public Guid Id { get; set; }
 
-        [Required]
-        [StringLength(255)] // Обмеження на довжину назви
-        public string Name { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Назва закупівлі є обов'язковою.")]
+        [StringLength(255, ErrorMessage = "Назва закупівлі не може перевищувати 255 символів.")]
+        public string Name { get; set; } = string.Empty; // Ініціалізація, щоб уникнути попередження non-nullable
 
-        [StringLength(1000)] // Обмеження на довжину опису
-        public string? Description { get; set; } // Може бути необов'язковим
+        [StringLength(1000, ErrorMessage = "Опис закупівлі не може перевищувати 1000 символів.")]
+        public string? Description { get; set; } // Nullable, попередження немає
 
-        [Required] // Категорія обов'язкова
-        [StringLength(100)] // Довжина категорії
-        public string Category { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Категорія є обов'язковою.")]
+        [StringLength(100, ErrorMessage = "Категорія не може перевищувати 100 символів.")]
+        public string Category { get; set; } = string.Empty; // Ініціалізація
 
-        // Кількість/Обсяг
-        // Використовуй int або double залежно від типу даних
-        public double QuantityOrVolume { get; set; } // Приклад: double
+        // Кількість/Обсяг - тип double, як ти використовуєш при парсингу
+        public double QuantityOrVolume { get; set; } // Типи значень (double, decimal, int, DateTime) не викликають попередження non-nullable,
+                                                     // оскільки вони завжди мають значення за замовчуванням (0, 0.0, DateTime.MinValue і т.д.)
 
-        // Орієнтовний бюджет
-        // Використовуй decimal або double для грошових значень
-        [Column(TypeName = "decimal(18, 2)")] // Вказуємо тип у базі даних
+        // Орієнтовний бюджет - тип decimal
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal EstimatedBudget { get; set; }
 
         // Дата завершення закупівлі
-        public DateTime CompletionDate { get; set; } // Можливо, Optional якщо дата не завжди потрібна
+        public DateTime CompletionDate { get; set; }
 
         // Поле для зберігання шляхів до завантажених документів
-        // Можна зберігати один шлях або JSON масив шляхів, якщо документів декілька
-        public string? DocumentPaths { get; set; } // Приклад: зберігаємо шлях до одного файлу або JSON "[path1, path2]"
+        public string? DocumentPaths { get; set; } // Nullable
 
         // Зв'язок з користувачем, який створив закупівлю
         [Required]
-        public Guid UserId { get; set; } // Foreign Key до таблиці Users
+        public Guid UserId { get; set; } // Foreign Key до таблиці Users (або ApplicationUser)
 
         [ForeignKey("UserId")]
-        public User User { get; set; } = null!; // Навігаційна властивість до користувача
+        public virtual User User { get; set; } = null!; // `null!` приглушує попередження компілятора для non-nullable навігаційних властивостей,
+                                                        // які будуть завантажені Entity Framework. Додано `virtual` для lazy loading (якщо використовується).
 
-        // Дата створення закупівлі (опціонально)
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public ProcurementStatus Status { get; set; } = ProcurementStatus.Open;
+        // Дата створення закупівлі
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Ініціалізація
+
+        // Статус закупівлі
+        public ProcurementStatus Status { get; set; } = ProcurementStatus.Open; // Ініціалізація значенням за замовчуванням
+
+        // ----- НОВІ ПОЛЯ, ЩО ДОДАЮТЬСЯ ЗАРАЗ -----
+        [StringLength(500, ErrorMessage = "Адреса доставки не може перевищувати 500 символів.")]
+        public string? DeliveryAddress { get; set; } // Робимо nullable, оскільки на фронтенді не обов'язкове
+
+        [StringLength(20, ErrorMessage = "Контактний номер телефону не може перевищувати 20 символів.")]
+        public string? ContactPhone { get; set; }    // Робимо nullable
+        // ---------------------------------------------
     }
 }

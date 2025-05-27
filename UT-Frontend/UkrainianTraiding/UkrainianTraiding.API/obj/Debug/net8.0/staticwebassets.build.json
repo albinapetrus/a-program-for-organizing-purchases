@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+1P9MDcEMuMeHfjL1Dosf4BYAeMlhWFBFzUjFWrvCp4=",
+  "Hash": "mTBIfH8Lbx1QpFazTFWrlMx0JG5gbJnHb7BUDpbuuUQ=",
   "Source": "UkrainianTraiding.API",
   "BasePath": "_content/UkrainianTraiding.API",
   "Mode": "Default",
@@ -393,6 +393,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\offer_documents\\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx",
+      "SourceId": "UkrainianTraiding.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\",
+      "BasePath": "_content/UkrainianTraiding.API",
+      "RelativePath": "uploads/offer_documents/f7a44637-5fe0-4b02-9b17-bddd8de9858c#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g47twwrqlw",
+      "Integrity": "sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\offer_documents\\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx"
     },
     {
       "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\passport_photos\\01893a5d-7575-4a1b-b2d9-71f8cf03861e_Фон 1.jpg",
@@ -1193,6 +1214,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\procurement_documents\\6860a173-b76b-42e2-921b-36e0b9f06bdd_архітектура 2025.webp"
     },
     {
+      "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx",
+      "SourceId": "UkrainianTraiding.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\",
+      "BasePath": "_content/UkrainianTraiding.API",
+      "RelativePath": "uploads/procurement_documents/7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g47twwrqlw",
+      "Integrity": "sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\procurement_documents\\7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx"
+    },
+    {
       "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\820fe13a-c997-41ed-92bd-492c31cbf0b3_Фон 1.jpg",
       "SourceId": "UkrainianTraiding.API",
       "SourceType": "Discovered",
@@ -1275,6 +1317,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\procurement_documents\\a8164296-5d40-4f92-8320-42bbac423d1b_mynewarch.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx",
+      "SourceId": "UkrainianTraiding.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\",
+      "BasePath": "_content/UkrainianTraiding.API",
+      "RelativePath": "uploads/procurement_documents/c04c59b6-f1a1-4d2d-b288-15550e7287e4#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g47twwrqlw",
+      "Integrity": "sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\procurement_documents\\c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx"
     },
     {
       "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\cf7e357f-5a38-44f8-830f-ded24cf59c3c_ифп.jpg",
@@ -1401,6 +1464,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\procurement_documents\\ef2cc55e-c9aa-467d-9c08-06563eb6bec4_Фон 1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx",
+      "SourceId": "UkrainianTraiding.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\",
+      "BasePath": "_content/UkrainianTraiding.API",
+      "RelativePath": "uploads/procurement_documents/f9625f3e-f824-4eda-93ee-e25eb3e78116#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g47twwrqlw",
+      "Integrity": "sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\procurement_documents\\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx"
     }
   ],
   "Endpoints": [
@@ -2877,6 +2961,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-DPkxyWT/OAT7CXuFv4o52rrjKT4OtUOJehljYmfslag="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/offer_documents/f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 22:32:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/offer_documents/f7a44637-5fe0-4b02-9b17-bddd8de9858c.g47twwrqlw.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 22:32:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g47twwrqlw"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/offer_documents/f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
         }
       ]
     },
@@ -5997,6 +6163,88 @@
       ]
     },
     {
+      "Route": "uploads/procurement_documents/7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 18:45:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/procurement_documents/7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.g47twwrqlw.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 18:45:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g47twwrqlw"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/procurement_documents/7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        }
+      ]
+    },
+    {
       "Route": "uploads/procurement_documents/820fe13a-c997-41ed-92bd-492c31cbf0b3_Фон 1.jpg",
       "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\820fe13a-c997-41ed-92bd-492c31cbf0b3_Фон 1.jpg",
       "Selectors": [],
@@ -6321,6 +6569,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-8rWNluW7l6lUEBxTDgrCq08W0MOla4/2QBiz+ojvDcA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/procurement_documents/c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 19:54:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/procurement_documents/c04c59b6-f1a1-4d2d-b288-15550e7287e4.g47twwrqlw.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 19:54:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g47twwrqlw"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/procurement_documents/c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
         }
       ]
     },
@@ -6813,6 +7143,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/procurement_documents/f9625f3e-f824-4eda-93ee-e25eb3e78116.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 18:57:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/procurement_documents/f9625f3e-f824-4eda-93ee-e25eb3e78116.g47twwrqlw.docx",
+      "AssetFile": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 18:57:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g47twwrqlw"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/procurement_documents/f9625f3e-f824-4eda-93ee-e25eb3e78116.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
         }
       ]
     }

@@ -1,8 +1,9 @@
 ﻿// Models/DTO/ProcurementDto.cs
 using System;
-using UkrainianTraiding.API.Models.Domain.Enums;
+// UkrainianTraiding.API.Models.Domain.Enums; // Цей using, схоже, не потрібен тут,
+// оскільки Status вже string
 
-namespace UkrainianTraiding.Models.DTO // Переконайся, що простір імен відповідає
+namespace UkrainianTraiding.Models.DTO
 {
     public class ProcurementDto
     {
@@ -15,7 +16,13 @@ namespace UkrainianTraiding.Models.DTO // Переконайся, що прос�
         public DateTime CompletionDate { get; set; }
         public string? DocumentPaths { get; set; } // Шляхи до документів
         public DateTime CreatedAt { get; set; } // Дата створення
-        public string Status { get; set; }
+        public string Status { get; set; } = string.Empty; // Ініціалізація для non-nullable string
+        public string? CustomerCompanyName { get; set; } // Назва компанії замовника
+
+        // ----- ДОДАНО НОВІ ПОЛЯ -----
+        public string? DeliveryAddress { get; set; }
+        public string? ContactPhone { get; set; }
+        // -----------------------------
 
         // Зазвичай тут НЕ потрібно включати UserId або об'єкт User,
         // оскільки фронтенд вже знає, що це закупівлі поточного користувача.

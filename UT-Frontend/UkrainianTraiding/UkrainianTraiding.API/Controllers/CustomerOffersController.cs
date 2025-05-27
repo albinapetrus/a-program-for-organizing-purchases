@@ -120,7 +120,8 @@ public class CustomerOffersController : ControllerBase
                     Message = o.Message,
                     OfferDocumentPaths = o.OfferDocumentPaths,
                     OfferDate = o.OfferDate,
-                    Status = o.Status.ToString(), // Перетворюємо Enum на рядок
+                    Status = o.Status.ToString(), 
+                    ProposedDeliveryDate = o.ProposedDeliveryDate,
                     SupplierCompanyName = o.SupplierUser != null ? o.SupplierUser.CompanyName : "N/A - Supplier Missing"
                 })
                 .ToListAsync();

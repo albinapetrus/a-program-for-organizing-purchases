@@ -5,7 +5,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 
 // Додано базовий URL бекенду
-const BACKEND_BASE_URL = 'https://localhost:7078'; 
+const BACKEND_BASE_URL = 'https://localhost:7078';
 
 function ProcurementSearch() {
     const navigate = useNavigate();
@@ -127,7 +127,7 @@ function ProcurementSearch() {
             </div> {/* Кінець Блоку 1 */}
 
             {/* Блок 2: Повідомлення про помилки/успіх (якщо є) */}
-            {(error || message) && ( 
+            {(error || message) && (
                 <div className={classes.block} style={{ marginTop: '1em' }}>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                     {message && <p style={{ color: 'blue' }}>{message}</p>}
@@ -142,16 +142,22 @@ function ProcurementSearch() {
                         {procurements.map((procurement) => {
                             console.log('ProcurementSearch: Current procurement ID:', procurement.id);
                             return (
+                                
                                 <div key={procurement.id} className={classes.procurementCard}>
+                                    
                                     <h4 style={{background:"white"}}>{procurement.name}</h4>
+                                    {procurement.customerCompanyName && (
+                                        <p><strong>Замовник:</strong> {procurement.customerCompanyName}</p>
+                                    )}
                                     <p><strong>Категорія:</strong> {procurement.category}</p>
                                     <p><strong>Опис:</strong> {procurement.description || 'Не вказано'}</p>
+                                 
                                     <p><strong>Кількість/Обсяг:</strong> {procurement.quantityOrVolume}</p>
                                     <p><strong>Орієнтовний бюджет:</strong> ${procurement.estimatedBudget}</p>
                                     <p><strong>Дата завершення:</strong> {new Date(procurement.completionDate).toLocaleDateString()}</p>
                                     {procurement.documentPaths && (
                                         <p>
-                                            <strong>Документ: </strong> 
+                                            <strong>Документ: </strong>
                                             {/* Змінено тут: додано BACKEND_BASE_URL */}
                                             <a href={`${BACKEND_BASE_URL}${procurement.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                                         </p>

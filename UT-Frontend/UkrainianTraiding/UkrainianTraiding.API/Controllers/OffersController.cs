@@ -1,9 +1,10 @@
 ﻿// Controllers/OffersController.cs
+// Controllers/OffersController.cs
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UkrainianTraiding.API.Data;
-using UkrainianTraiding.Models.DTO; // Переконайся, що using є
-using UkrainianTraiding.API.Models.Domain; // Переконайся, що using є
+using UkrainianTraiding.Models.DTO; // Для CreateOfferDto та OfferDetailsDto
+using UkrainianTraiding.API.Models.Domain;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
@@ -13,16 +14,15 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using UkrainianTraiding.Models.DTOs;
-using UkrainianTraiding.API.Models.Domain.Enums;
+using UkrainianTraiding.API.Models.Domain.Enums; // Для ProcurementStatus та OfferStatus
 
-[Route("api/[controller]")] // Маршрут буде /api/Offers
+[Route("api/[controller]")]
 [ApiController]
-[Authorize] // Загальний Authorize для контролера - всі дії вимагають аутентифікації
+[Authorize]
 public class OffersController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
-    private readonly IWebHostEnvironment _hostingEnvironment; // Якщо обробка файлів залишиться тут
+    private readonly IWebHostEnvironment _hostingEnvironment;
 
     public OffersController(ApplicationDbContext context, IWebHostEnvironment hostingEnvironment)
     {
@@ -30,20 +30,22 @@ public class OffersController : ControllerBase
         _hostingEnvironment = hostingEnvironment;
     }
 
-    // !!! МЕТОД: Створити пропозицію (перенесено з ProcurementsController) !!!
-    // Маршрут: POST /api/Offers
     [HttpPost]
-    [Authorize(Roles = "supplier")] // Дозволити тільки постачальникам створювати пропозиції
+    [Authorize(Roles = "supplier")]
     public async Task<IActionResult> CreateOffer([FromForm] CreateOfferDto offerDto)
     {
-        decimal proposedPrice;
-        if (!decimal.TryParse(offerDto.ProposedPrice, NumberStyles.Any, CultureInfo.InvariantCulture, out proposedPrice))
+        if (!decimal.TryParse(offerDto.ProposedPrice, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal proposedPriceValue))
         {
             ModelState.AddModelError(nameof(offerDto.ProposedPrice), "Невірний формат для запропонованої ціни.");
         }
-        else if (proposedPrice < 0.0m)
+        else if (proposedPriceValue <= 0.0m)
         {
-            ModelState.AddModelError(nameof(offerDto.ProposedPrice), "Запропонована ціна не може бути від'ємною.");
+            ModelState.AddModelError(nameof(offerDto.ProposedPrice), "Запропонована ціна має бути більшою за нуль.");
+        }
+
+        if (offerDto.ProposedDeliveryDate < DateTime.Today)
+        {
+            ModelState.AddModelError(nameof(offerDto.ProposedDeliveryDate), "Пропонована дата доставки не може бути в минулому.");
         }
 
         if (!ModelState.IsValid)
@@ -57,17 +59,15 @@ public class OffersController : ControllerBase
             return Unauthorized("Не вдалося ідентифікувати постачальника за токеном.");
         }
 
-        // !!! НОВА ПЕРЕВІРКА: Чи закупівля ще відкрита для пропозицій !!!
         var procurement = await _context.Procurements.FirstOrDefaultAsync(p => p.Id == offerDto.ProcurementId);
         if (procurement == null)
         {
-            return NotFound("Закупівля з таким ID не знайдена.");
+            return NotFound(new { message = "Закупівля з таким ID не знайдена." });
         }
 
-        // Припускаємо, що Procurement має властивість Status типу ProcurementStatus
-        if (procurement.Status != ProcurementStatus.Open) // Або інший статус, що означає "відкрито"
+        if (procurement.Status != ProcurementStatus.Open)
         {
-            return BadRequest("На цю закупівлю більше не приймаються пропозиції, оскільки вона вже закрита або виконана.");
+            return BadRequest(new { message = "На цю закупівлю більше не приймаються пропозиції, оскільки вона вже не активна." });
         }
 
         string? offerDocumentPath = null;
@@ -75,7 +75,7 @@ public class OffersController : ControllerBase
         {
             var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "offer_documents");
             if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + offerDto.OfferDocument.FileName;
+            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(offerDto.OfferDocument.FileName);
             var filePath = Path.Combine(uploadsFolder, uniqueFileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
@@ -89,11 +89,18 @@ public class OffersController : ControllerBase
             Id = Guid.NewGuid(),
             ProcurementId = offerDto.ProcurementId,
             SupplierUserId = supplierUserId,
-            ProposedPrice = proposedPrice,
+            ProposedPrice = proposedPriceValue,
             Message = offerDto.Message,
             OfferDocumentPaths = offerDocumentPath,
             OfferDate = DateTime.UtcNow,
-            Status = OfferStatus.Submitted
+            Status = OfferStatus.Submitted,
+            SupplierContactPhone = offerDto.SupplierContactPhone,
+            ProposedDeliveryDate = offerDto.ProposedDeliveryDate,
+            SupplierFullName = offerDto.SupplierFullName,
+            PaymentEdrpou = offerDto.PaymentEdrpou,
+            SupplierIban = offerDto.SupplierIban,
+            SupplierBankName = offerDto.SupplierBankName,
+            PaymentIpn = offerDto.PaymentIpn
         };
 
         _context.Offers.Add(newOffer);
@@ -102,8 +109,6 @@ public class OffersController : ControllerBase
         return Ok(new { message = "Пропозицію успішно надіслано!", offerId = newOffer.Id });
     }
 
-    // !!! МЕТОД: Прийняти пропозицію (перенесено з ProcurementsController) !!!
-    // Маршрут: PUT /api/Offers/{id}/accept
     [HttpPut("{id}/accept")]
     [Authorize(Roles = "customer")]
     public async Task<IActionResult> AcceptOffer(Guid id)
@@ -115,7 +120,7 @@ public class OffersController : ControllerBase
         }
 
         var offer = await _context.Offers
-            .Include(o => o.Procurement) // Важливо включити закупівлю для перевірки власника та оновлення її статусу
+            .Include(o => o.Procurement)
             .FirstOrDefaultAsync(o => o.Id == id);
 
         if (offer == null)
@@ -135,7 +140,6 @@ public class OffersController : ControllerBase
 
         offer.Status = OfferStatus.Accepted;
 
-        // Відхилити всі інші пропозиції для цієї ж закупівлі
         var otherOffers = await _context.Offers
              .Where(o => o.ProcurementId == offer.ProcurementId && o.Id != offer.Id && o.Status == OfferStatus.Submitted)
              .ToListAsync();
@@ -145,12 +149,10 @@ public class OffersController : ControllerBase
             otherOffer.Status = OfferStatus.Rejected;
         }
 
-        // !!! НОВА ЛОГІКА: Закрити закупівлю після прийняття пропозиції !!!
-        // Припускаємо, що Procurement має властивість Status типу ProcurementStatus
         if (offer.Procurement != null)
         {
-            offer.Procurement.Status = ProcurementStatus.Fulfilled; // Або ProcurementStatus.Closed
-            _context.Procurements.Update(offer.Procurement); // Позначаємо закупівлю як змінену
+            offer.Procurement.Status = ProcurementStatus.Fulfilled;
+            _context.Procurements.Update(offer.Procurement);
         }
 
         await _context.SaveChangesAsync();
@@ -158,32 +160,25 @@ public class OffersController : ControllerBase
         return Ok(new { message = "Пропозицію успішно прийнято!", acceptedOfferId = offer.Id });
     }
 
-    // !!! МЕТОД: Відхилити пропозицію (перенесено з ProcurementsController) !!!
-    // Маршрут: PUT /api/Offers/{id}/reject
-    [HttpPut("{id}/reject")] // Приймаємо ID пропозиції як параметр маршруту
-                             // !!! ОБМЕЖУЄМО ДОСТУП ТІЛЬКИ ВЛАСНИКУ ЗАКУПІВЛІ !!!
-    [Authorize(Roles = "customer")] // Поки що загальна авторизація, перевірка власника всередині методу
-    public async Task<IActionResult> RejectOffer(Guid id) // Використовуємо "id"
+    [HttpPut("{id}/reject")]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> RejectOffer(Guid id)
     {
-        // Цей код повністю перенесено з ProcurementsController
-        // !!! Отримуємо ID поточного аутентифікованого користувача (це має бути Замовник) !!!
         var customerUserIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
         if (customerUserIdClaim == null || !Guid.TryParse(customerUserIdClaim.Value, out var customerUserId))
         {
             return Unauthorized("Не вдалося ідентифікувати користувача.");
         }
 
-        // Знаходимо пропозицію
         var offer = await _context.Offers
-             .Include(o => o.Procurement) // Важливо включити закупівлю для перевірки власника
-            .FirstOrDefaultAsync(o => o.Id == id); // Шукаємо за ID з маршруту
+             .Include(o => o.Procurement)
+            .FirstOrDefaultAsync(o => o.Id == id);
 
         if (offer == null)
         {
             return NotFound("Пропозиція з таким ID не знайдена.");
         }
 
-        // !!! ПЕРЕВІРКА АВТОРИЗАЦІЇ: Чи поточний користувач є ВЛАСНИКОМ закупівлі !!!
         if (offer.Procurement == null || offer.Procurement.UserId != customerUserId)
         {
             return Forbid("Вам заборонено відхиляти пропозиції до цієї закупівлі.");
@@ -195,60 +190,87 @@ public class OffersController : ControllerBase
         }
 
         offer.Status = OfferStatus.Rejected;
-
         await _context.SaveChangesAsync();
 
         return Ok(new { message = "Пропозицію успішно відхилено!", rejectedOfferId = offer.Id });
     }
 
-
-     [HttpGet("{id}")] // GET /api/Offers/{id}
-     [Authorize(Roles = "supplier")] // Можливо, обмежити доступ тільки постачальнику, який створив, або замовнику-власнику закупівлі
+    [HttpGet("{id}")]
+    [Authorize(Roles = "supplier,customer")]
     public async Task<IActionResult> GetOfferById(Guid id)
     {
         var offer = await _context.Offers
-             .Include(o => o.SupplierUser) // Наприклад, щоб показати, хто надіслав
-             .Include(o => o.Procurement) // Наприклад, щоб показати, до якої закупівлі
+             .Include(o => o.SupplierUser)
+             .Include(o => o.Procurement)
              .FirstOrDefaultAsync(o => o.Id == id);
 
         if (offer == null)
         {
-            return NotFound();
+            return NotFound(new { message = "Пропозицію не знайдено." });
         }
 
-        // !!! Додати перевірку авторизації: чи це пропозиція поточного користувача (постачальника),
-        // чи поточний користувач є власником закупівлі цієї пропозиції (замовника) !!!
-        var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (currentUserId == null || (!offer.SupplierUserId.ToString().Equals(currentUserId, StringComparison.OrdinalIgnoreCase) && (offer.Procurement == null || !offer.Procurement.UserId.ToString().Equals(currentUserId, StringComparison.OrdinalIgnoreCase))))
+        var currentUserIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (currentUserIdClaim == null || !Guid.TryParse(currentUserIdClaim.Value, out var currentUserId))
+        {
+            return Unauthorized("Не вдалося ідентифікувати користувача.");
+        }
+
+        bool isSupplier = offer.SupplierUserId == currentUserId;
+        bool isCustomer = offer.Procurement != null && offer.Procurement.UserId == currentUserId;
+
+        if (!isSupplier && !isCustomer)
         {
             return Forbid("Вам заборонено переглядати деталі цієї пропозиції.");
         }
 
-
-        // Проектувати у DTO для відповіді, якщо потрібно
-        // return Ok(new OfferDetailsDto { ... });
-        return Ok(offer); // Або повертати модель, якщо не чутливі дані
+        var offerDetails = new OfferDetailsDto // Використовуємо OfferDetailsDto
+        {
+            Id = offer.Id,
+            ProcurementId = offer.ProcurementId,
+            ProcurementName = offer.Procurement?.Name ?? "N/A",
+            SupplierUserId = offer.SupplierUserId,
+            SupplierCompanyName = offer.SupplierUser?.CompanyName,
+            ProposedPrice = offer.ProposedPrice,
+            Message = offer.Message,
+            OfferDocumentPaths = offer.OfferDocumentPaths,
+            OfferDate = offer.OfferDate,
+            Status = offer.Status.ToString(),
+            SupplierContactPhone = offer.SupplierContactPhone,
+            ProposedDeliveryDate = offer.ProposedDeliveryDate,
+            SupplierFullName = offer.SupplierFullName,
+            PaymentEdrpou = offer.PaymentEdrpou,
+            SupplierIban = offer.SupplierIban,
+            SupplierBankName = offer.SupplierBankName,
+            PaymentIpn = offer.PaymentIpn
+        };
+        return Ok(offerDetails);
     }
 
-    [HttpDelete("{id}")] // DELETE /api/Offers/{id}
-    [Authorize(Roles = "supplier")] // Можливо, дозволити видаляти тільки постачальнику, який її створив (якщо вона ще не прийнята)
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "supplier")]
     public async Task<IActionResult> DeleteOffer(Guid id)
     {
         var offer = await _context.Offers.FirstOrDefaultAsync(o => o.Id == id);
         if (offer == null)
         {
-            return NotFound();
+            return NotFound(new { message = "Пропозицію не знайдено." });
         }
 
-        // !!! Перевірка авторизації: чи це пропозиція поточного користувача (постачальника) !!!
-        var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (currentUserId == null || !offer.SupplierUserId.ToString().Equals(currentUserId, StringComparison.OrdinalIgnoreCase))
+        var currentUserIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (currentUserIdClaim == null || !Guid.TryParse(currentUserIdClaim.Value, out var currentUserId))
+        {
+            return Unauthorized("Не вдалося ідентифікувати користувача.");
+        }
+
+        if (offer.SupplierUserId != currentUserId)
         {
             return Forbid("Вам заборонено видаляти цю пропозицію.");
         }
-        // Додаткова перевірка статусу: чи можна видаляти пропозицію у поточному статусі
-        if (offer.Status != OfferStatus.Submitted) { return Forbid("Вам заборонено видаляти цю пропозицію."); }
 
+        if (offer.Status != OfferStatus.Submitted)
+        {
+            return BadRequest(new { message = "Неможливо видалити пропозицію, яка вже була оброблена (прийнята або відхилена)." });
+        }
 
         _context.Offers.Remove(offer);
         await _context.SaveChangesAsync();
@@ -257,33 +279,43 @@ public class OffersController : ControllerBase
     }
 
     [HttpGet("my")]
-    [Authorize(Roles = "supplier")] // Доступно лише для постачальників
+    [Authorize(Roles = "supplier")]
     public async Task<IActionResult> GetMyOffers()
     {
         try
         {
-            // Отримуємо ID поточного аутентифікованого користувача (постачальника)
             var supplierUserIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (supplierUserIdClaim == null || !Guid.TryParse(supplierUserIdClaim.Value, out var supplierUserId))
             {
                 return Unauthorized("Не вдалося ідентифікувати постачальника за токеном.");
             }
 
-            // Отримуємо пропозиції, зроблені цим постачальником
             var myOffers = await _context.Offers
                 .Where(o => o.SupplierUserId == supplierUserId)
-                .Include(o => o.Procurement) // Включаємо дані про закупівлю
-                .OrderByDescending(o => o.OfferDate) // Сортуємо за датою пропозиції
-                .Select(o => new OfferListDto // Проектуємо в OfferListDto
+                .Include(o => o.Procurement)
+                .OrderByDescending(o => o.OfferDate)
+                .Select(o => new OfferDetailsDto // Змінено на OfferDetailsDto для простоти,
+                                                 // але можна створити окремий OfferSummaryDto для списку, якщо потрібна оптимізація
                 {
                     Id = o.Id,
                     ProcurementId = o.ProcurementId,
-                    ProcurementName = o.Procurement != null ? o.Procurement.Name : "N/A", // Назва закупівлі
+                    ProcurementName = o.Procurement != null ? o.Procurement.Name : "N/A",
+                    SupplierUserId = o.SupplierUserId,
+                    SupplierCompanyName = o.SupplierUser != null ? o.SupplierUser.CompanyName : null,
                     ProposedPrice = o.ProposedPrice,
                     Message = o.Message,
                     OfferDocumentPaths = o.OfferDocumentPaths,
                     OfferDate = o.OfferDate,
-                    Status = o.Status.ToString() // Перетворюємо Enum на рядок
+                    Status = o.Status.ToString(),
+                    // Якщо для цього списку не потрібні всі реквізити, їх можна не мапити,
+                    // або створити легший DTO. Для прикладу - мапимо все.
+                    SupplierContactPhone = o.SupplierContactPhone,
+                    ProposedDeliveryDate = o.ProposedDeliveryDate,
+                    SupplierFullName = o.SupplierFullName,
+                    PaymentEdrpou = o.PaymentEdrpou,
+                    SupplierIban = o.SupplierIban,
+                    SupplierBankName = o.SupplierBankName,
+                    PaymentIpn = o.PaymentIpn
                 })
                 .ToListAsync();
 
@@ -291,9 +323,47 @@ public class OffersController : ControllerBase
         }
         catch (Exception ex)
         {
-            // Логування помилки
-            // _logger.LogError(ex, "Помилка при отриманні пропозицій постачальника.");
             return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при отриманні пропозицій.", details = ex.Message });
         }
+    }
+
+    [HttpGet("customer/offers/my")]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> GetOffersToMyProcurements()
+    {
+        var customerUserIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (customerUserIdClaim == null || !Guid.TryParse(customerUserIdClaim.Value, out var customerUserId))
+        {
+            return Unauthorized("Не вдалося ідентифікувати користувача.");
+        }
+
+        var offers = await _context.Offers
+            .Include(o => o.Procurement)
+            .Include(o => o.SupplierUser)
+            .Where(o => o.Procurement.UserId == customerUserId)
+            .OrderByDescending(o => o.OfferDate)
+            .Select(o => new OfferDetailsDto // Використовуємо OfferDetailsDto, так як замовнику, ймовірно, потрібні всі деталі
+            {
+                Id = o.Id,
+                ProcurementId = o.ProcurementId,
+                ProcurementName = o.Procurement.Name,
+                SupplierUserId = o.SupplierUserId,
+                SupplierCompanyName = o.SupplierUser != null ? o.SupplierUser.CompanyName : "Невідомий постачальник",
+                ProposedPrice = o.ProposedPrice,
+                Message = o.Message,
+                OfferDocumentPaths = o.OfferDocumentPaths,
+                OfferDate = o.OfferDate,
+                Status = o.Status.ToString(),
+                SupplierContactPhone = o.SupplierContactPhone,
+                ProposedDeliveryDate = o.ProposedDeliveryDate,
+                SupplierFullName = o.SupplierFullName,
+                PaymentEdrpou = o.PaymentEdrpou,
+                SupplierIban = o.SupplierIban,
+                SupplierBankName = o.SupplierBankName,
+                PaymentIpn = o.PaymentIpn
+            })
+            .ToListAsync();
+
+        return Ok(offers);
     }
 }

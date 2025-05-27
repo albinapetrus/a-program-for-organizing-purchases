@@ -10,6 +10,7 @@
         public decimal ProposedPrice { get; set; }
         public string? Message { get; set; }
         public string? OfferDocumentPaths { get; set; }
+        public DateTime ProposedDeliveryDate { get; set; }
         public DateTime OfferDate { get; set; }
         public string Status { get; set; } // Статус пропозиції як рядок (Submitted, Accepted, Rejected)
         public string SupplierCompanyName { get; set; }

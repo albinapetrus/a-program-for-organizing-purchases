@@ -146,6 +146,41 @@
         "Name": "OfferDocument",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      },
+      {
+        "Name": "SupplierContactPhone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProposedDeliveryDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierFullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PaymentEdrpou",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierIban",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierBankName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PaymentIpn",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -216,6 +251,16 @@
   },
   {
     "ContainingType": "OffersController",
+    "Method": "GetOffersToMyProcurements",
+    "RelativePath": "api/Offers/customer/offers/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OffersController",
     "Method": "GetMyOffers",
     "RelativePath": "api/Offers/my",
     "HttpMethod": "GET",
@@ -265,6 +310,16 @@
       {
         "Name": "SupportingDocument",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "DeliveryAddress",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactPhone",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -354,6 +409,41 @@
         "Name": "OfferDocument",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      },
+      {
+        "Name": "SupplierContactPhone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProposedDeliveryDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierFullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PaymentEdrpou",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierIban",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierBankName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PaymentIpn",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -369,6 +459,22 @@
       {
         "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UsersController",
+    "Method": "UpdateCompanyName",
+    "RelativePath": "api/Users/company-name",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "UkrainianTraiding.Models.DTOs.UpdateCompanyNameRequest",
         "IsRequired": true
       }
     ],

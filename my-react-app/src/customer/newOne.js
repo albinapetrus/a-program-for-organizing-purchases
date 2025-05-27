@@ -1,259 +1,246 @@
 import React, { Component } from 'react';
-import classes from './Universal.module.css'; // Переконайся, що шлях до CSS правильний
+import classes from './Universal.module.css';
 import { GoPaperclip } from "react-icons/go";
-import axios from 'axios'; // Імпортуємо axios
+import axios from 'axios';
 import { IoCreateSharp } from "react-icons/io5";
- import { LuNotebookPen } from "react-icons/lu";
+import { LuNotebookPen } from "react-icons/lu";
 
-// Переконайся, що baseURL для axios встановлено глобально десь на вході в застосунок
 axios.defaults.baseURL = 'https://localhost:7078';
 
 export class NewOne extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // !!! ДОДАНО: Поля для збору даних форми закупівлі !!!
-            name: '', // Назва закупівлі
-            description: '', // Опис закупівлі
-            category: '', // Категорія закупівлі
-            quantityOrVolume: '', // Кількість/Обсяг
-            estimatedBudget: '', // Орієнтовний бюджет
-            completionDate: '', // Дата завершення закупівлі (формат РРРР-ММ-ДД)
-            supportingDocument: null, // Для збереження об'єкта файлу
-
-            error: '', // Для відображення помилок
-            loading: false, // Стан завантаження
-            successMessage: '', // Для відображення повідомлення про успіх
+            name: '',
+            description: '',
+            category: '',
+            quantityOrVolume: '',
+            estimatedBudget: '',
+            completionDate: '',
+            supportingDocument: null,
+            deliveryAddress: '', // Нове поле
+            contactPhone: '',    // Нове поле
+            error: '',
+            loading: false,
+            successMessage: '',
         };
     }
 
-    // Метод для обробки зміни значень полів вводу, select та file
     handleChange = (e) => {
         const { name, value, type, files } = e.target;
 
         if (type === 'file') {
-            // Якщо поле типу file, зберігаємо об'єкт File
-            this.setState({ [name]: files[0], error: '', successMessage: '' }); // Очищаємо помилки та повідомлення при виборі файлу
+            this.setState({ [name]: files[0], error: '', successMessage: '' });
         } else {
-            // Для інших полів, зберігаємо значення
-            this.setState({ [name]: value, error: '', successMessage: '' }); // Очищаємо помилки та повідомлення при введенні
+            this.setState({ [name]: value, error: '', successMessage: '' });
         }
     };
 
-    // Метод для відправки даних нової закупівлі на бекенд
     handleSubmit = async (e) => {
         e.preventDefault();
+        const {
+            name, description, category, quantityOrVolume, estimatedBudget, completionDate,
+            supportingDocument, deliveryAddress, contactPhone // Додали нові поля
+        } = this.state;
 
-        // !!! Отримуємо всі необхідні дані зі стану !!!
-        const { name, description, category, quantityOrVolume, estimatedBudget, completionDate, supportingDocument } = this.state;
+        // Оновлена валідація, додайте перевірку нових полів, якщо вони обов'язкові
+        if (!name || !category || quantityOrVolume === '' || estimatedBudget === '' || !completionDate) {
+            this.setState({ error: "Будь ласка, заповніть всі обов'язкові поля." });
+            return;
+        }
+        // Приклад: Валідація для адреси доставки та телефону (якщо вони обов'язкові)
+        // if (!deliveryAddress) {
+        //     this.setState({ error: 'Будь ласка, вкажіть адресу доставки.' });
+        //     return;
+        // }
+        // if (!contactPhone) {
+        //     this.setState({ error: 'Будь ласка, вкажіть контактний номер телефону.' });
+        //     return;
+        // }
 
-        // Базова фронтенд валідація: перевірка на порожні обов'язкові поля
-        // (Можна розширити цю валідацію згідно правил бекенду)
-         if (!name || !category || quantityOrVolume === '' || estimatedBudget === '' || !completionDate) {
-              this.setState({ error: 'Будь ласка, заповніть всі обов\'язкові поля.' });
-              return;
-         }
-         // Якщо документ обов'язковий, додай перевірку:
-         // if (!supportingDocument) {
-         //      this.setState({ error: 'Будь ласка, завантажте супровідний документ.' });
-         //      return;
-         // }
+        // Базова валідація формату телефону (можна покращити регулярний вираз)
+        const phoneRegex = /^\+?[0-9\s\(\)-]{10,18}$/; // Дозволяє + ( ) - та цифри, довжина 10-18
+        if (contactPhone && !phoneRegex.test(contactPhone)) {
+             this.setState({ error: 'Некоректний формат номеру телефону. Введіть у форматі +380XXXXXXXXX або 0XXXXXXXXX.' });
+             return;
+        }
 
-        // Додаткова валідація для числових полів
+
         if (parseFloat(quantityOrVolume) <= 0) {
             this.setState({ error: 'Кількість/Обсяг має бути більше нуля.' });
             return;
         }
+
         if (parseFloat(estimatedBudget) <= 0) {
             this.setState({ error: 'Орієнтовний бюджет має бути більше нуля.' });
             return;
         }
 
-        this.setState({ loading: true, error: '', successMessage: '' }); // Встановлюємо стан завантаження та очищаємо повідомлення
+        this.setState({ loading: true, error: '', successMessage: '' });
 
-        // !!! Створюємо об'єкт FormData для відправки даних з файлом !!!
         const formData = new FormData();
-        formData.append('Name', name); // Назва поля відповідає полю в DTO на бекенді
-        formData.append('Description', description); // Назва поля відповідає полю в DTO на бекенді
-        formData.append('Category', category); // Назва поля відповідає полю в DTO на бекенді
-        formData.append('QuantityOrVolume', quantityOrVolume); // Назва поля відповідає полю в DTO на бекенді
-        formData.append('EstimatedBudget', estimatedBudget); // Назва поля відповідає полю в DTO на бекенді
-        // Додаємо дату, переконавшись, що формат відповідає очікуваному бекендом (YYYY-MM-DD)
+        formData.append('Name', name);
+        formData.append('Description', description);
+        formData.append('Category', category);
+        formData.append('QuantityOrVolume', quantityOrVolume);
+        formData.append('EstimatedBudget', estimatedBudget);
         if (completionDate) {
-             formData.append('CompletionDate', completionDate); // Назва поля відповідає полю в DTO на бекенді
+            formData.append('CompletionDate', completionDate);
         }
+        // Додаємо нові поля до FormData
+        formData.append('DeliveryAddress', deliveryAddress);
+        formData.append('ContactPhone', contactPhone);
 
-        // Додаємо файл, якщо він обраний
         if (supportingDocument) {
-            // 'SupportingDocument' - це ім'я поля, яке очікує бекенд у CreateProcurementDto (IFormFile)
             formData.append('SupportingDocument', supportingDocument);
         }
 
-
-        // !!! Отримуємо JWT токен з localStorage !!!
         const jwtToken = localStorage.getItem('jwtToken');
 
-        // Перевіряємо, чи є токен
         if (!jwtToken) {
             this.setState({ error: 'Ви не аутентифіковані. Будь ласка, увійдіть.', loading: false });
-            // Можливо, тут варто перенаправити на сторінку логіну
-            // return <Navigate to="/form" />; // Або інший спосіб перенаправлення
             return;
         }
 
         try {
-            // !!! Виконуємо POST запит до бекенду для створення закупівлі !!!
-            // Адреса endpoint: /api/Procurements
-            // Метод: POST
-            // Дані: formData (multipart/form-data)
-            // !!! Додаємо заголовок авторизації з JWT токеном !!!
             const response = await axios.post('/api/Procurements', formData, {
                 headers: {
-                    'Authorization': `Bearer ${jwtToken}` // Додаємо заголовок авторизації
-                    // 'Content-Type': 'multipart/form-data' // Axios додасть цей заголовок автоматично для FormData
+                    'Authorization': `Bearer ${jwtToken}`
                 }
             });
 
             console.log('Створення закупівлі успішне:', response.data);
 
-            // !!! Обробка успіху !!!
             this.setState({
                 successMessage: response.data.message || 'Закупівлю успішно створено!',
-                error: '', // Очищаємо помилки
+                error: '',
                 loading: false,
-                // Очищаємо форму після успішної відправки (опціонально)
-                 name: '',
-                 description: '',
-                 category: '',
-                 quantityOrVolume: '',
-                 estimatedBudget: '',
-                 completionDate: '',
-                 supportingDocument: null,
+                name: '',
+                description: '',
+                category: '',
+                quantityOrVolume: '',
+                estimatedBudget: '',
+                completionDate: '',
+                supportingDocument: null,
+                deliveryAddress: '', // Очищуємо нові поля
+                contactPhone: '',    // Очищуємо нові поля
             });
-
 
         } catch (error) {
             console.error('Помилка створення закупівлі:', error.response ? error.response.data : error.message);
-
-            // Обробка помилок від бекенду
             let errorMessage = 'Сталася помилка під час створення закупівлі.';
-             if (error.response && error.response.data) {
-                 if (error.response.data.errors) {
-                      // Обробка валідаційних помилок
-                      const validationErrors = error.response.data.errors;
-                       try {
-                           errorMessage = 'Помилки валідації: <br/>' +
-                               Object.entries(validationErrors)
-                                     .map(([field, errors]) =>
-                                         `<strong>${field}:</strong> ${errors.join(', ')}`
-                                     )
-                                     .join('<br/>');
-                       } catch (e) {
-                           errorMessage = 'Помилки валідації: ' + JSON.stringify(error.response.data.errors);
-                       }
-
-                 } else if (error.response.data.message) {
-                      // Обробка загального повідомлення про помилку (наприклад, відмовлено в доступі)
-                      errorMessage = error.response.data.message;
-                      // Якщо помилка 401, токен недійсний або відсутній
-                       if (error.response.status === 401) {
-                           errorMessage = 'Ви не аутентифіковані. Будь ласка, увійдіть знову.';
-                           // Можливо, тут варто очистити токен і перенаправити на логін
-                           // localStorage.removeItem('jwtToken');
-                           // this.setState({ redirect: true }); // Navigate to "/form"
-                       }
-                 } else {
-                      // Якщо data існує, але не має очікуваного формату
-                       errorMessage = JSON.stringify(error.response.data);
-                 }
-             } else if (error.message) {
-                  // Обробка мережевих помилок
-                  errorMessage = error.message;
-             }
-
-
-            this.setState({ error: errorMessage, loading: false, successMessage: '' }); // Очищаємо повідомлення про успіх
+            if (error.response && error.response.data) {
+                if (error.response.data.errors) {
+                    try {
+                        errorMessage = 'Помилки валідації: <br/>' +
+                            Object.entries(error.response.data.errors)
+                                .map(([field, errors]) =>
+                                    `<strong>${field}:</strong> ${errors.join(', ')}`
+                                )
+                                .join('<br/>');
+                    } catch (e) {
+                        errorMessage = 'Помилки валідації: ' + JSON.stringify(error.response.data.errors);
+                    }
+                } else if (error.response.data.message) {
+                    errorMessage = error.response.data.message;
+                    if (error.response.status === 401) {
+                        errorMessage = 'Ви не аутентифіковані. Будь ласка, увійдіть знову.';
+                    }
+                } else {
+                    errorMessage = JSON.stringify(error.response.data);
+                }
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+            this.setState({ error: errorMessage, loading: false, successMessage: '' });
         }
     };
 
-
     render() {
-        // !!! Отримуємо всі необхідні поля зі стану для прив'язки !!!
-        const { name, description, category, quantityOrVolume, estimatedBudget, completionDate, supportingDocument, error, loading, successMessage } = this.state;
+        const {
+            name, description, category, quantityOrVolume, estimatedBudget, completionDate,
+            supportingDocument, deliveryAddress, contactPhone, // Деструктуризуємо нові поля
+            error, loading, successMessage
+        } = this.state;
 
         return (
             <div className={classes.universal}>
-                {/* Прив'язуємо метод handleSubmit до події onSubmit форми */}
-                <form className={classes.block} style={{width:"76%", paddingLeft:"17em" , paddingRight:"0"}} onSubmit={this.handleSubmit}>
-                    <h1 className={`${classes.label} ${classes.labelBlue}`}><LuNotebookPen  className={classes.icon}/> Зареєструйте нову закупівлю</h1>
-                    {/* Поле "Назва закупівлі" - Прив'язуємо до стану */}
-                   
+                <form className={classes.block} style={{ width: "76%", paddingLeft: "17em", paddingRight: "0" }} onSubmit={this.handleSubmit}>
+                    <h1 className={`${classes.label} ${classes.labelBlue}`}><LuNotebookPen className={classes.icon} /> Зареєструйте нову закупівлю</h1>
+
                     <label htmlFor="purch_name">Назва закупівлі:</label>
                     <input
                         type="text"
                         id="purch_name"
                         placeholder="Закупівля системних ПК...."
-                        name="name" // !!! Ім'я відповідає полю в DTO на бекенді !!!
-                        value={name} // Значення зі стану
-                        onChange={this.handleChange} // Обробник зміни
-                        required // Робимо обов'язковим (HTML5)
+                        name="name"
+                        value={name}
+                        onChange={this.handleChange}
+                        required
                     />
 
-                    {/* Поле "Опис закупівлі" - Прив'язуємо до стану */}
-                    {/* Твоє поле вводу для опису має тип text, хоча зазвичай це textarea для опису */}
-                    {/* Якщо на бекенді очікується string, то input type="text" підійде, але textarea краще для довгих текстів */}
                     <label htmlFor="purch_desc">Опис закупівлі:</label>
-                     <input
-                         type="text" // Можливо, варто змінити на textarea
-                         id="purch_desc"
-                         placeholder="Тендер на закупівлю нових або в хорошому стані ....."
-                         name="description" // !!! Ім'я відповідає полю в DTO на бекенді !!!
-                         value={description} // Значення зі стану
-                         onChange={this.handleChange} // Обробник зміни
-                         // required // Якщо опис обов'язковий
-                     />
-                    {/* Якщо використовуєш textarea: */}
-                    {/*
-                     <textarea
-                         id="purch_desc"
-                         placeholder="Тендер на закупівлю нових або в хорошому стані ....."
-                         name="description" // Ім'я відповідає полю в DTO на бекенді
-                         value={description} // Значення зі стану
-                         onChange={this.handleChange} // Обробник зміни
-                         // required // Якщо опис обов'язковий
-                     ></textarea>
-                    */}
+                    <textarea // Змінив input на textarea для опису, це більш логічно
+                        id="purch_desc"
+                        placeholder="Тендер на закупівлю нових або в хорошому стані ....."
+                        name="description"
+                        value={description}
+                        onChange={this.handleChange}
+                        rows={4} // Додано атрибут для висоти textarea
+                        style={{width:"70%", marginBottom:"1em"}}
+                        required
+                    />
+
+                    {/* НОВЕ ПОЛЕ: Адреса доставки */}
+                    <label htmlFor="delivery_address">Адрес доставки:</label>
+                    <textarea
+                        id="delivery_address"
+                        placeholder="Місто, вулиця, будинок, квартира, відділення пошти..."
+                        name="deliveryAddress"
+                        value={deliveryAddress}
+                        onChange={this.handleChange}
+                        rows={3}
+                        style={{width:"70%", marginBottom:"1em"}}
+                        required
+                        
+                    />
+
+                    {/* НОВЕ ПОЛЕ: Контактний номер телефону */}
+                    <label htmlFor="contact_phone">Контактний номер телефону:</label>
+                    <input
+                        type="tel" // Спеціальний тип для телефонів, дає кращу UX на мобільних
+                        id="contact_phone"
+                        placeholder="+380 XX XXX XX XX"
+                        name="contactPhone"
+                        value={contactPhone}
+                        onChange={this.handleChange}
+                         style={{width:"70%", background:"rgb(243, 243, 247)", color:"black", border:"1px solid gray", height:"2em", marginBottom:"1em", paddingLeft:"0.5em"}}
+                         required // Якщо поле обов'язкове
+                         pattern="^\+?[0-9\s\(\)-]{10,18}$" // Можна додати патерн для HTML5 валідації
+                    />
 
 
-                    {/* Поле "Додайте супровідні документи" - Прив'язуємо до стану */}
                     <label>Додайте супровідні документи:</label>
-                    {/* Label стилізований як кнопка */}
                     <label htmlFor="supportingDocumentFile" className={classes.styledFile}><GoPaperclip className={classes.icon} /></label>
-                    {/* Приховане поле input типу file */}
                     <input
                         type="file"
-                        id="supportingDocumentFile" // ID, на який посилається label
-                        name="supportingDocument" // !!! Ім'я відповідає полю в DTO на бекенді (IFormFile) !!!
-                        onChange={this.handleChange} // Обробник зміни (збереже файл у стані)
-                        style={{ display: "none" }} // Приховуємо стандартне поле file
-                        // required // Якщо документ обов'язковий
+                        id="supportingDocumentFile"
+                        name="supportingDocument"
+                        onChange={this.handleChange}
+                        style={{ display: "none" }}
+                        required
                     />
-                    {/* Відображення імені обраного файлу, якщо він обраний */}
                     {supportingDocument && <p>Обрано файл: {supportingDocument.name}</p>}
 
-
-                    {/* Випадаючий список категорій - Прив'язуємо до стану */}
                     <label>Вкажіть категорію</label>
                     <select
                         id="purch_category"
-                        name="category" // !!! Ім'я відповідає полю в DTO на бекенді !!!
-                        value={category} // Значення зі стану
-                        onChange={this.handleChange} // Обробник зміни
-                        required // Робимо обов'язковим (HTML5)
+                        name="category"
+                        value={category}
+                        onChange={this.handleChange}
+                        required
                     >
-                        {/* Опція за замовчуванням або порожня */}
-                        <option value="" disabled hidden>Оберіть категорію</option> {/* Приклад */}
-                        {/* Опції категорій (збігаються з auth3, можна винести в окремий масив) */}
+                        <option value="" disabled hidden>Оберіть категорію</option>
                         <option value="Будівництво">Будівництво</option>
                         <option value="Медицина">Медицина</option>
                         <option value="Меблі">Меблі</option>
@@ -275,65 +262,57 @@ export class NewOne extends Component {
                     </select>
 
                     <div style={{ backgroundColor: "#fff", marginBottom: "2em" }}>
-                        {/* Поле "Кількість/Обсяг" - Прив'язуємо до стану */}
                         <label>Кількість/Обсяг</label>
                         <input
                             type="number"
                             id="purch_amount"
-                            name="quantityOrVolume" // !!! Ім'я відповідає полю в DTO на бекенді !!!
-                            value={quantityOrVolume} // Значення зі стану
-                            onChange={this.handleChange} // Обробник зміни
-                            required // Робимо обов'язковим (HTML5)
+                            name="quantityOrVolume"
+                            value={quantityOrVolume}
+                            onChange={this.handleChange}
+                            required
                             style={{ marginRight: "1em", marginLeft: "0.5em", height: "2em", width: "15%" }}
-                            min="0" // Додаємо HTML5 валідацію мінімального значення
+                            min="0"
                         />
 
-                        {/* Поле "Орієнтовний бюджет" - Прив'язуємо до стану */}
                         <label>Орієнтовний бюджет($)</label>
                         <input
                             type="number"
                             id="purch_budget"
-                            name="estimatedBudget" // !!! Ім'я відповідає полю в DTO на бекенді !!!
-                            value={estimatedBudget} // Значення зі стану
-                            onChange={this.handleChange} // Обробник зміни
-                            required // Робимо обов'язковим (HTML5)
+                            name="estimatedBudget"
+                            value={estimatedBudget}
+                            onChange={this.handleChange}
+                            required
                             style={{ marginLeft: "0.5em", height: "2em", width: "15%" }}
-                            min="0" // Додаємо HTML5 валідацію мінімального значення
+                            min="0"
                         />
                     </div>
 
                     <div style={{ backgroundColor: "#fff" }}>
-                        {/* Поле "Завершення закупівлі" - Прив'язуємо до стану */}
                         <label>Завершення закупівлі:</label>
                         <input
                             type="date"
                             id="purch_deadline"
-                            name="completionDate" // !!! Ім'я відповідає полю в DTO на бекенді !!!
-                            value={completionDate} // Значення зі стану
-                            onChange={this.handleChange} // Обробник зміни
-                            required // Робимо обов'язковим (HTML5)
+                            name="completionDate"
+                            value={completionDate}
+                            onChange={this.handleChange}
+                            required
                         />
                     </div>
 
-                    {/* Кнопка відправки форми */}
                     <input
                         type="submit"
-                        className={classes.submit} // Якщо ти використовуєш клас submit для стилізації кнопки
-                        value={loading ? 'Надсилання...' : 'Надіслати'} // Текст кнопки під час завантаження
-                        disabled={loading} // Вимикаємо кнопку під час завантаження
-                        // placeholder="Створити закупівлю" // placeholder для type="submit" не має ефекту
+                        className={classes.submit}
+                        value={loading ? 'Надсилання...' : 'Надіслати'}
+                        disabled={loading}
                     />
-
                 </form>
 
-                 {/* Місце для відображення повідомлень про помилки або успіх */}
-                 {error && (
-                     <p style={{ color: 'red', marginTop: '1em', width:"70%", marginLeft:"auto", marginRight:"auto", textAlign:"center", fontWeight:"bold", height:"2em" }} dangerouslySetInnerHTML={{ __html: error }}></p>
-                 )}
-                 {successMessage && (
-                      <p style={{ color: 'green', marginTop: '1em', width:"70%", marginLeft:"auto", marginRight:"auto", textAlign:"center", fontWeight:"bold", height:"2em" }}>{successMessage}</p>
-                 )}
-
+                {error && (
+                    <p style={{ color: 'red', marginTop: '1em', width: "70%", marginLeft: "auto", marginRight: "auto", textAlign: "center", fontWeight: "bold", height: "auto", minHeight: "2em", padding: "0.5em 0" }} dangerouslySetInnerHTML={{ __html: error }}></p>
+                )}
+                {successMessage && (
+                    <p style={{ color: 'green', marginTop: '1em', width: "70%", marginLeft: "auto", marginRight: "auto", textAlign: "center", fontWeight: "bold", height: "2em" }}>{successMessage}</p>
+                )}
             </div>
         );
     }

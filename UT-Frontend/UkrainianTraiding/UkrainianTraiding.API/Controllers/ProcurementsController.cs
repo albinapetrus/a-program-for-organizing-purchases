@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UkrainianTraiding.API.Data;
-using UkrainianTraiding.Models.DTO;
+using UkrainianTraiding.Models.DTO; // Правильний простір імен для ProcurementDto
 using UkrainianTraiding.API.Models.Domain;
 using System.Security.Claims;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore; // Потрібно для .Include()
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading.Tasks;
@@ -13,7 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using UkrainianTraiding.API.Models.Domain.Enums; // Ensure this using is correct for your ProcurementStatus enum
+using UkrainianTraiding.API.Models.Domain.Enums;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -33,9 +33,13 @@ public class ProcurementsController : ControllerBase
     [Authorize(Roles = "customer")]
     public async Task<IActionResult> CreateProcurement([FromForm] CreateProcurementDto procurementDto)
     {
-        double quantityOrVolume;
-        decimal estimatedBudget;
+        // Ти вже маєш CreateProcurementDto, який містить DeliveryAddress та ContactPhone.
+        // Тобі не потрібно тут їх окремо оголошувати.
 
+        double quantityOrVolume; // Тип double для кількості/обсягу
+        decimal estimatedBudget; // Тип decimal для бюджету
+
+        // Парсинг та валідація QuantityOrVolume
         if (!double.TryParse(procurementDto.QuantityOrVolume, NumberStyles.Any, CultureInfo.InvariantCulture, out quantityOrVolume))
         {
             ModelState.AddModelError(nameof(procurementDto.QuantityOrVolume), "Невірний формат для кількості/обсягу.");
@@ -45,6 +49,7 @@ public class ProcurementsController : ControllerBase
             ModelState.AddModelError(nameof(procurementDto.QuantityOrVolume), "Кількість/Обсяг має бути більше нуля.");
         }
 
+        // Парсинг та валідація EstimatedBudget
         if (!decimal.TryParse(procurementDto.EstimatedBudget, NumberStyles.Any, CultureInfo.InvariantCulture, out estimatedBudget))
         {
             ModelState.AddModelError(nameof(procurementDto.EstimatedBudget), "Невірний формат для орієнтовного бюджету.");
@@ -54,6 +59,7 @@ public class ProcurementsController : ControllerBase
             ModelState.AddModelError(nameof(procurementDto.EstimatedBudget), "Орієнтовний бюджет має бути більше нуля.");
         }
 
+        // Якщо є помилки валідації після парсингу
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -65,17 +71,22 @@ public class ProcurementsController : ControllerBase
             return Unauthorized("Не вдалося ідентифікувати користувача.");
         }
 
-        string? documentPath = null;
+        string? documentPath = null; // Зберігає шлях до ОДНОГО файлу
         if (procurementDto.SupportingDocument != null && procurementDto.SupportingDocument.Length > 0)
         {
             var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "procurement_documents");
             if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + procurementDto.SupportingDocument.FileName;
+
+            // Важливо: уникати збереження оригінального імені файлу напряму,
+            // щоб запобігти можливим проблемам з безпекою або конфліктам імен.
+            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(procurementDto.SupportingDocument.FileName);
             var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await procurementDto.SupportingDocument.CopyToAsync(stream);
             }
+            // Зберігаємо відносний шлях, доступний з веб-сервера
             documentPath = "/uploads/procurement_documents/" + uniqueFileName;
         }
 
@@ -85,13 +96,19 @@ public class ProcurementsController : ControllerBase
             Name = procurementDto.Name,
             Description = procurementDto.Description,
             Category = procurementDto.Category,
-            QuantityOrVolume = quantityOrVolume,
-            EstimatedBudget = estimatedBudget,
+            QuantityOrVolume = quantityOrVolume,   // Використовуємо спарсенe значення
+            EstimatedBudget = estimatedBudget,     // Використовуємо спарсенe значення
             CompletionDate = procurementDto.CompletionDate,
-            DocumentPaths = documentPath,
+            DocumentPaths = documentPath,          // Тут DocumentPaths, а не SupportingDocumentPath
+
+            // ----- ДОДАЄМО НОВІ ПОЛЯ -----
+            DeliveryAddress = procurementDto.DeliveryAddress, // Пряме присвоєння, оскільки тип string
+            ContactPhone = procurementDto.ContactPhone,       // Пряме присвоєння, оскільки тип string
+            // -----------------------------
+
             UserId = userId,
             CreatedAt = DateTime.UtcNow,
-            Status = ProcurementStatus.Open // Set status on creation
+            Status = ProcurementStatus.Open
         };
 
         _context.Procurements.Add(newProcurement);
@@ -124,6 +141,8 @@ public class ProcurementsController : ControllerBase
                 EstimatedBudget = p.EstimatedBudget,
                 CompletionDate = p.CompletionDate,
                 DocumentPaths = p.DocumentPaths,
+                DeliveryAddress = p.DeliveryAddress,
+                ContactPhone = p.ContactPhone,
                 CreatedAt = p.CreatedAt,
                 Status = p.Status.ToString() // Added status
             })

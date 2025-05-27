@@ -12,7 +12,7 @@ namespace UkrainianTraiding.Models.DTO // Переконайся, що прос�
         public string Name { get; set; } = string.Empty;
 
         [StringLength(1000, ErrorMessage = "Опис закупівлі не може перевищувати 1000 символів.")]
-        public string? Description { get; set; }
+        public string? Description { get; set; } // nullable string (string?) означає, що поле може бути відсутнім або null
 
         [Required(ErrorMessage = "Категорія обов'язкова.")]
         [StringLength(100, ErrorMessage = "Категорія не може перевищувати 100 символів.")]
@@ -33,9 +33,19 @@ namespace UkrainianTraiding.Models.DTO // Переконайся, що прос�
         public DateTime CompletionDate { get; set; }
 
         [DataType(DataType.Upload)]
-        public IFormFile? SupportingDocument { get; set; }
+        public IFormFile? SupportingDocument { get; set; } // nullable IFormFile (IFormFile?) означає, що файл може бути не завантажений
 
         // Якщо документів декілька:
         // public List<IFormFile>? SupportingDocuments { get; set; }
+
+        // ----- НОВІ ПОЛЯ -----
+        [StringLength(500, ErrorMessage = "Адреса доставки не може перевищувати 500 символів.")]
+        public string? DeliveryAddress { get; set; } // Додаємо поле для адреси доставки, робимо його nullable (string?)
+
+        [StringLength(20, ErrorMessage = "Номер телефону не може перевищувати 20 символів.")]
+        // Для більш строгої валідації телефону можна використовувати регулярний вираз з [RegularExpression(...)]
+        // або атрибут [Phone] якщо він доступний і підходить
+        public string? ContactPhone { get; set; }    // Додаємо поле для контактного телефону, робимо його nullable (string?)
+        // ----------------------
     }
 }
