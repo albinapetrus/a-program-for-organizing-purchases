@@ -33,13 +33,9 @@ public class ProcurementsController : ControllerBase
     [Authorize(Roles = "customer")]
     public async Task<IActionResult> CreateProcurement([FromForm] CreateProcurementDto procurementDto)
     {
-        // Ти вже маєш CreateProcurementDto, який містить DeliveryAddress та ContactPhone.
-        // Тобі не потрібно тут їх окремо оголошувати.
+        double quantityOrVolume;
+        decimal estimatedBudget;
 
-        double quantityOrVolume; // Тип double для кількості/обсягу
-        decimal estimatedBudget; // Тип decimal для бюджету
-
-        // Парсинг та валідація QuantityOrVolume
         if (!double.TryParse(procurementDto.QuantityOrVolume, NumberStyles.Any, CultureInfo.InvariantCulture, out quantityOrVolume))
         {
             ModelState.AddModelError(nameof(procurementDto.QuantityOrVolume), "Невірний формат для кількості/обсягу.");
@@ -49,7 +45,6 @@ public class ProcurementsController : ControllerBase
             ModelState.AddModelError(nameof(procurementDto.QuantityOrVolume), "Кількість/Обсяг має бути більше нуля.");
         }
 
-        // Парсинг та валідація EstimatedBudget
         if (!decimal.TryParse(procurementDto.EstimatedBudget, NumberStyles.Any, CultureInfo.InvariantCulture, out estimatedBudget))
         {
             ModelState.AddModelError(nameof(procurementDto.EstimatedBudget), "Невірний формат для орієнтовного бюджету.");
@@ -59,7 +54,6 @@ public class ProcurementsController : ControllerBase
             ModelState.AddModelError(nameof(procurementDto.EstimatedBudget), "Орієнтовний бюджет має бути більше нуля.");
         }
 
-        // Якщо є помилки валідації після парсингу
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -71,22 +65,17 @@ public class ProcurementsController : ControllerBase
             return Unauthorized("Не вдалося ідентифікувати користувача.");
         }
 
-        string? documentPath = null; // Зберігає шлях до ОДНОГО файлу
+        string? documentPath = null;
         if (procurementDto.SupportingDocument != null && procurementDto.SupportingDocument.Length > 0)
         {
             var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "procurement_documents");
             if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
-
-            // Важливо: уникати збереження оригінального імені файлу напряму,
-            // щоб запобігти можливим проблемам з безпекою або конфліктам імен.
             var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(procurementDto.SupportingDocument.FileName);
             var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await procurementDto.SupportingDocument.CopyToAsync(stream);
             }
-            // Зберігаємо відносний шлях, доступний з веб-сервера
             documentPath = "/uploads/procurement_documents/" + uniqueFileName;
         }
 
@@ -96,16 +85,12 @@ public class ProcurementsController : ControllerBase
             Name = procurementDto.Name,
             Description = procurementDto.Description,
             Category = procurementDto.Category,
-            QuantityOrVolume = quantityOrVolume,   // Використовуємо спарсенe значення
-            EstimatedBudget = estimatedBudget,     // Використовуємо спарсенe значення
+            QuantityOrVolume = quantityOrVolume,
+            EstimatedBudget = estimatedBudget,
             CompletionDate = procurementDto.CompletionDate,
-            DocumentPaths = documentPath,          // Тут DocumentPaths, а не SupportingDocumentPath
-
-            // ----- ДОДАЄМО НОВІ ПОЛЯ -----
-            DeliveryAddress = procurementDto.DeliveryAddress, // Пряме присвоєння, оскільки тип string
-            ContactPhone = procurementDto.ContactPhone,       // Пряме присвоєння, оскільки тип string
-            // -----------------------------
-
+            DocumentPaths = documentPath,
+            DeliveryAddress = procurementDto.DeliveryAddress,
+            ContactPhone = procurementDto.ContactPhone,
             UserId = userId,
             CreatedAt = DateTime.UtcNow,
             Status = ProcurementStatus.Open
@@ -130,6 +115,7 @@ public class ProcurementsController : ControllerBase
 
         var userProcurements = await _context.Procurements
             .Where(p => p.UserId == userId)
+            .Include(p => p.User) // Додано Include для завантаження User
             .OrderByDescending(p => p.CreatedAt)
             .Select(p => new ProcurementDto
             {
@@ -144,7 +130,9 @@ public class ProcurementsController : ControllerBase
                 DeliveryAddress = p.DeliveryAddress,
                 ContactPhone = p.ContactPhone,
                 CreatedAt = p.CreatedAt,
-                Status = p.Status.ToString() // Added status
+                Status = p.Status.ToString(),
+                // Маппінг CustomerName (або CompanyName) з пов'язаного User
+                CustomerName = p.User != null ? p.User.CompanyName : "Невідомий замовник"
             })
             .ToListAsync();
 
@@ -152,10 +140,11 @@ public class ProcurementsController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize(Roles = "supplier")]
+    [Authorize(Roles = "supplier")] // Якщо постачальникам теж треба бачити ім'я замовника
     public async Task<IActionResult> GetAllProcurements()
     {
         var allProcurements = await _context.Procurements
+            .Include(p => p.User) // Додано Include для завантаження User
             .OrderByDescending(p => p.CreatedAt)
             .Select(p => new ProcurementDto
             {
@@ -167,8 +156,12 @@ public class ProcurementsController : ControllerBase
                 EstimatedBudget = p.EstimatedBudget,
                 CompletionDate = p.CompletionDate,
                 DocumentPaths = p.DocumentPaths,
+                DeliveryAddress = p.DeliveryAddress, // Додав, якщо потрібно
+                ContactPhone = p.ContactPhone,     // Додав, якщо потрібно
                 CreatedAt = p.CreatedAt,
-                Status = p.Status.ToString() // Added status
+                Status = p.Status.ToString(),
+                // Маппінг CustomerName (або CompanyName) з пов'язаного User
+                CustomerName = p.User != null ? p.User.CompanyName : "Інформація про замовника відсутня"
             })
             .ToListAsync();
 
@@ -176,15 +169,16 @@ public class ProcurementsController : ControllerBase
     }
 
     [HttpGet("search")]
+    [AllowAnonymous] // Якщо пошук доступний для всіх, інакше [Authorize] або [Authorize(Roles="supplier")]
     public async Task<IActionResult> SearchProcurements(
        [FromQuery] string? name,
        [FromQuery] string? category)
     {
         try
         {
-            IQueryable<Procurement> query = _context.Procurements;
+            IQueryable<Procurement> query = _context.Procurements
+                                                .Include(p => p.User); // Додано Include
 
-            // Filter procurements by "Open" status for suppliers
             query = query.Where(p => p.Status == ProcurementStatus.Open);
 
             if (!string.IsNullOrWhiteSpace(name))
@@ -197,7 +191,8 @@ public class ProcurementsController : ControllerBase
                 query = query.Where(p => p.Category.ToLower() == category.ToLower());
             }
 
-            var procurements = await query
+            var procurementsDto = await query
+                .OrderByDescending(p => p.CreatedAt)
                 .Select(p => new ProcurementDto
                 {
                     Id = p.Id,
@@ -208,32 +203,32 @@ public class ProcurementsController : ControllerBase
                     EstimatedBudget = p.EstimatedBudget,
                     CompletionDate = p.CompletionDate,
                     DocumentPaths = p.DocumentPaths,
+                    DeliveryAddress = p.DeliveryAddress,
+                    ContactPhone = p.ContactPhone,
                     CreatedAt = p.CreatedAt,
-                    Status = p.Status.ToString() // Added status
+                    Status = p.Status.ToString(),
+                    CustomerName = p.User != null ? p.User.CompanyName : "Інформація про замовника відсутня"
                 })
                 .ToListAsync();
 
-            if (!procurements.Any())
-            {
-                return Ok(new List<ProcurementDto>());
-            }
-
-            return Ok(procurements);
+            return Ok(procurementsDto); // Повертаємо список, навіть якщо він порожній
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"Error in SearchProcurements: {ex.ToString()}"); // Логування помилки
             return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при пошуку закупівель.", details = ex.Message });
         }
     }
 
-    // Method: Get procurement by ID
     [HttpGet("{id}")]
+    // [AllowAnonymous] // Якщо деталі закупівлі можуть переглядати всі
     public async Task<IActionResult> GetProcurementById(Guid id)
     {
         try
         {
-            var procurement = await _context.Procurements
+            var procurementDto = await _context.Procurements // Змінив назву змінної
                 .Where(p => p.Id == id)
+                .Include(p => p.User) // Додано Include для завантаження User
                 .Select(p => new ProcurementDto
                 {
                     Id = p.Id,
@@ -244,21 +239,25 @@ public class ProcurementsController : ControllerBase
                     EstimatedBudget = p.EstimatedBudget,
                     CompletionDate = p.CompletionDate,
                     DocumentPaths = p.DocumentPaths,
+                    DeliveryAddress = p.DeliveryAddress,
+                    ContactPhone = p.ContactPhone,
                     CreatedAt = p.CreatedAt,
-                    Status = p.Status.ToString() // Added status
-                    // CustomerCompanyName = p.Customer.CompanyName // If Procurement has Customer navigation property
+                    Status = p.Status.ToString(),
+                    // Маппінг CustomerName (або CompanyName) з пов'язаного User
+                    CustomerName = p.User != null ? p.User.CompanyName : "Інформація про замовника відсутня"
                 })
                 .FirstOrDefaultAsync();
 
-            if (procurement == null)
+            if (procurementDto == null)
             {
                 return NotFound(new { message = "Закупівлю не знайдено." });
             }
 
-            return Ok(procurement);
+            return Ok(procurementDto);
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"Error in GetProcurementById: {ex.ToString()}"); // Логування помилки
             return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при отриманні закупівлі.", details = ex.Message });
         }
     }

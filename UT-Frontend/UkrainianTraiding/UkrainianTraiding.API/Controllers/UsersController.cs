@@ -120,4 +120,5 @@ public class UsersController : ControllerBase
             return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при оновленні профілю.", details = ex.Message });
         }
     }
+
 }

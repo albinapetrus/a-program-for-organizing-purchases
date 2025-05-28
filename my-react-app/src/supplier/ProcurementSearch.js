@@ -146,8 +146,8 @@ function ProcurementSearch() {
                                 <div key={procurement.id} className={classes.procurementCard}>
                                     
                                     <h4 style={{background:"white"}}>{procurement.name}</h4>
-                                    {procurement.customerCompanyName && (
-                                        <p><strong>Замовник:</strong> {procurement.customerCompanyName}</p>
+                                    {procurement.customerName && (
+                                        <p><strong>Замовник:</strong> {procurement.customerName}</p>
                                     )}
                                     <p><strong>Категорія:</strong> {procurement.category}</p>
                                     <p><strong>Опис:</strong> {procurement.description || 'Не вказано'}</p>

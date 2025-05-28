@@ -12,10 +12,13 @@ wwwroot\uploads\offer_documents\6a84eac6-0513-43a1-98da-b42970efd0cb_Фон 1.jp
 wwwroot\uploads\offer_documents\6f40046e-fca7-49e1-b236-1ca01b19cc93_Фон 1.jpg
 wwwroot\uploads\offer_documents\8f3157d3-47d4-4b5b-aa93-ba26419747f4_Фон 1.jpg
 wwwroot\uploads\offer_documents\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg
+wwwroot\uploads\offer_documents\a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx
 wwwroot\uploads\offer_documents\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.jpg
 wwwroot\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg
+wwwroot\uploads\offer_documents\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx
 wwwroot\uploads\offer_documents\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg
 wwwroot\uploads\offer_documents\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg
+wwwroot\uploads\offer_documents\ec0bbe70-45cf-4906-895d-dbbdcd721fcc.docx
 wwwroot\uploads\offer_documents\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx
 wwwroot\uploads\passport_photos\01893a5d-7575-4a1b-b2d9-71f8cf03861e_Фон 1.jpg
 wwwroot\uploads\passport_photos\0f606565-0077-4e02-97ea-dd7630107603_WIN_20231106_19_55_10_Pro.jpg

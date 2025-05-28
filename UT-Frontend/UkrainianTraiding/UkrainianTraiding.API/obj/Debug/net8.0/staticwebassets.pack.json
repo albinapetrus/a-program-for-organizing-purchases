@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg"
     },
     {
+      "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx",
+      "PackagePath": "staticwebassets\\uploads\\offer_documents\\a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx"
+    },
+    {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.jpg",
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.jpg"
     },
@@ -65,12 +69,20 @@
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg"
     },
     {
+      "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx",
+      "PackagePath": "staticwebassets\\uploads\\offer_documents\\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx"
+    },
+    {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg",
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg"
     },
     {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg",
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\ec0bbe70-45cf-4906-895d-dbbdcd721fcc.docx",
+      "PackagePath": "staticwebassets\\uploads\\offer_documents\\ec0bbe70-45cf-4906-895d-dbbdcd721fcc.docx"
     },
     {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx",

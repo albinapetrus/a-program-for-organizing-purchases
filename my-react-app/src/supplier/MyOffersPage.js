@@ -22,6 +22,18 @@ const translateOfferStatus = (status) => {
     }
 };
 
+ const translateStatus = (status) => {
+        if (!status) return 'Невідомо';
+        switch (status.toLowerCase()) {
+            case 'open': return 'Активна';
+            case 'fulfilled': return 'Завершена';
+            case 'closed': return 'Закрита';
+            case 'overdue': return 'Протермінована';
+            default: return status;
+        }
+    };
+
+
 function MyOffersPage() {
     const [allMyOffers, setAllMyOffers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -240,7 +252,7 @@ function MyOffersPage() {
                         ) : selectedProcurement ? (
                             <>
                                 <h2 className={classes.modalTitle}>{selectedProcurement.name}</h2>
-                                <p><strong>Замовник:</strong> {selectedProcurement.customerCompanyName || 'Не вказано'}</p>
+                                <p><strong>Замовник:</strong> {selectedProcurement.customerName || 'Не вказано'}</p>
                                 <p><strong>Опис:</strong> {selectedProcurement.description || 'Не вказано'}</p>
                                 <p><strong>Категорія:</strong> {selectedProcurement.category}</p>
                                 <p><strong>Кількість/Обсяг:</strong> {selectedProcurement.quantityOrVolume}</p>
@@ -252,7 +264,7 @@ function MyOffersPage() {
                                         <a href={`${BACKEND_BASE_URL}${selectedProcurement.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                                     </p>
                                 )}
-                                <p><strong>Статус закупівлі:</strong> {selectedProcurement.status}</p>
+                                <p><strong>Статус закупівлі: </strong>{translateStatus(selectedProcurement.status)}</p>
                             </>
                         ) : (
                             <p>Не вдалося завантажити деталі закупівлі.</p>
