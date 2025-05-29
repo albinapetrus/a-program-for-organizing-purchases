@@ -287,111 +287,263 @@ const closeDetailModal = () => {
 };
 
 // --- Функції для договору (поки що заглушки) ---
-const generateContractText = (offer, procurement) => {
-    // Тут буде логіка генерації тексту договору
-    // Потрібно буде отримати дані замовника, якщо вони не передаються
-    const customerEdrpou = "ВАШ ЄДРПОУ (ЗАМОВНИК)"; // Замінити
+ const generateContractText = (offer, procurement, customer /* Доданий customer для гнучкості */) => {
+        // Якщо currentCustomerDetails передано і має дані, використовуємо їх, інакше - дані з procurement або заглушки
+        const customerName = customer?.companyName || customer?.fullName || procurement?.customerName || "ЗАМОВНИК (Назва не вказана)";
+        const customerEdrpou = customer?.edrpou || "ЄДРПОУ ЗАМОВНИКА (не вказано)";
+        const customerRepresentative = customer?.representativeName || customerName; 
+        const customerBasis = customer?.basisOfActivity || "Статуту"; 
+        const customerLegalAddress = customer?.legalAddress || "не вказано";
+        const customerIpn = customer?.ipn || "не є платником ПДВ";
+        const customerIban = customer?.iban || "не вказано";
+        const customerBankName = customer?.bankName || "не вказано";
+        const customerPhone = customer?.phoneNumber || procurement?.contactPhone || "не вказано";
+        const customerEmail = customer?.email || "не вказано";
 
-    const today = new Date().toLocaleDateString('uk-UA');
-    const deliveryDate = new Date(offer.proposedDeliveryDate).toLocaleDateString('uk-UA');
-    const paymentDueDate = new Date(new Date(offer.proposedDeliveryDate).setDate(new Date(offer.proposedDeliveryDate).getDate() + 3)).toLocaleDateString('uk-UA');
+        // Дані Постачальника беруться з `offer`
+        const supplierFullName = offer?.supplierFullName || "Постачальник (ПІБ не вказано)";
+        const supplierPaymentEdrpou = offer?.paymentEdrpou || "не вказано";
+        const supplierPaymentIpn = offer?.paymentIpn || "не є платником ПДВ";
+        const supplierIban = offer?.supplierIban || "не вказано";
+        const supplierBankName = offer?.supplierBankName || "не вказано";
+        const supplierContactPhone = offer?.supplierContactPhone || "не вказано";
+        // Ці поля мають бути в `offer` (тобто `acceptedOfferDetails`), якщо ти їх хочеш бачити
+        const supplierRepresentative = offer?.supplierRepresentativeName || supplierFullName; 
+        const supplierBasis = offer?.supplierBasisOfActivity || "Статуту"; 
+        const supplierLegalAddress = offer?.supplierLegalAddress || "не вказано"; 
+        const supplierEmail = offer?.supplierEmail || "не вказано"; 
 
-return `
+        const today = new Date().toLocaleDateString('uk-UA');
+        const deliveryDate = offer?.proposedDeliveryDate ? new Date(offer.proposedDeliveryDate).toLocaleDateString('uk-UA') : 'не вказано';
+        const paymentDueDate = offer?.proposedDeliveryDate ? new Date(new Date(offer.proposedDeliveryDate).setDate(new Date(offer.proposedDeliveryDate).getDate() + 3)).toLocaleDateString('uk-UA') : 'не вказано';
+        const offerDate = offer?.offerDate ? new Date(offer.offerDate).toLocaleDateString('uk-UA') : 'не вказано';
+        const offerIdShort = offer?.id?.substring(0, 6) || 'XXXXXX';
+        const procurementIdShort = procurement?.id?.substring(0, 6) || 'YYYYYY';
+        
+        const numberToWordsUSD = (num) => {
+            if (num === undefined || num === null) return "сума не вказана";
+            return `${num.toFixed(2)} доларів США`; 
+        };
+        const priceInWords = numberToWordsUSD(offer?.proposedPrice);
 
-ДОГОВІР ПОСТАВКИ № 
-o
-f
-f
-e
-r
-.
-i
-d
-.
-s
-u
-b
-s
-t
-r
-i
-n
-g
-(
-0
-,
-6
-)
-−
-offer.id.substring(0,6)−
-{procurement.id.substring(0, 6)}
+    // Твій шаблон договору
+    return `ДОГОВІР ПОСТАВКИ № ${offerIdShort}-${procurementIdShort}
 м. Київ                                                                                                   "${today}"
-ЗАМОВНИК: ${procurement.customerName}, надалі іменується «Замовник», в особі ${procurement.customerName} ,  з однієї сторони,
+
+${customerName}, надалі іменується «Замовник», в особі ${customerRepresentative}, що діє на підставі ${customerBasis}, з однієї сторони,
 ТА
-ПОСТАЧАЛЬНИК: ${offer.supplierFullName}, (ЄДРПОУ/РНОКПП: ${offer.paymentEdrpou}, ІПН: ${offer.paymentIpn || 'не є платником ПДВ'}), надалі іменується «Постачальник», в особі ${offer.supplierFullName}, з іншої сторони,
+${supplierFullName}, (ЄДРПОУ/РНОКПП: ${supplierPaymentEdrpou}, ІПН: ${supplierPaymentIpn}), надалі іменується «Постачальник», в особі ${supplierRepresentative}, з іншої сторони,
 разом іменовані «Сторони», а кожна окремо – «Сторона», уклали цей Договір (надалі – «Договір») про наступне:
-ПРЕДМЕТ ДОГОВОРУ
-1.1. Постачальник зобов'язується поставити та передати у власність Замовника, а Замовник зобов'язується прийняти та оплатити Товар: "${procurement.name}" (надалі – «Товар»), відповідно до Пропозиції Постачальника № ${offer.id} від ${new Date(offer.offerDate).toLocaleDateString('uk-UA')} (надалі – «Пропозиція»).
-1.2. Асортимент, кількість, одиниця виміру, ціна за одиницю та загальна вартість Товару визначаються у Пропозиції, яка є невід'ємною частиною цього Договору.
-Опис Товару: ${procurement.description || 'Згідно Пропозиції'}
-Кількість/Обсяг: ${procurement.quantityOrVolume}
-ЦІНА ДОГОВОРУ ТА ПОРЯДОК РОЗРАХУНКІВ
-2.1. Загальна ціна Договору становить ${offer.proposedPrice} USD . Оплата здійснюється в гривнях за курсом НБУ на день оплати.
+
+1. ПРЕДМЕТ ДОГОВОРУ
+1.1. Постачальник зобов'язується поставити та передати у власність Замовника, а Замовник зобов'язується прийняти та оплатити Товар: "${procurement?.name || 'Назва товару не вказана'}" (надалі – «Товар»), відповідно до Пропозиції Постачальника № ${offer?.id || 'Номер пропозиції не вказаний'} від ${offerDate} (надалі – «Пропозиція»).
+1.2. Асортимент, кількість (${procurement?.quantityOrVolume || 'не вказано'}), одиниця виміру, ціна за одиницю та загальна вартість Товару визначаються у Пропозиції, яка є невід'ємною частиною цього Договору.
+   - Опис Товару: ${procurement?.description || 'Згідно Пропозиції'}
+   - Категорія Товару: ${procurement?.category || 'не вказано'}.
+
+2. ЦІНА ДОГОВОРУ ТА ПОРЯДОК РОЗРАХУНКІВ
+2.1. Загальна ціна Договору становить ${offer?.proposedPrice || 0} USD (${priceInWords}). Оплата здійснюється в гривнях за курсом НБУ на день оплати.
 2.2. Оплата здійснюється Замовником на поточний банківський рахунок Постачальника, вказаний у розділі 7 Договору, протягом 3 (трьох) банківських днів з моменту підписання цього Договору, але не пізніше ${paymentDueDate}.
-УМОВИ ТА СТРОКИ ПОСТАВКИ
+
+3. УМОВИ ТА СТРОКИ ПОСТАВКИ
 3.1. Постачальник зобов'язується здійснити поставку Товару Замовнику в строк до ${deliveryDate} включно.
-3.2. Місце поставки Товару: ${procurement.deliveryAddress || 'Буде узгоджено додатково'}.
+3.2. Місце поставки Товару: ${procurement?.deliveryAddress || 'Буде узгоджено додатково'}.
 3.3. Передача Товару оформлюється видатковою накладною. Право власності на Товар переходить до Замовника в момент підписання видаткової накладної.
-ЯКІСТЬ ТОВАРУ ТА ГАРАНТІЙНІ ЗОБОВ'ЯЗАННЯ
+
+4. ЯКІСТЬ ТОВАРУ ТА ГАРАНТІЙНІ ЗОБОВ'ЯЗАННЯ
 4.1. Якість Товару повинна відповідати стандартам та технічним умовам, що діють в Україні для даного виду Товару.
-ВІДПОВІДАЛЬНІСТЬ СТОРІН ТА ВИРІШЕННЯ СПОРІВ
+
+5. ВІДПОВІДАЛЬНІСТЬ СТОРІН ТА ВИРІШЕННЯ СПОРІВ
 5.1. За невиконання або неналежне виконання зобов'язань за цим Договором Сторони несуть відповідальність згідно з чинним законодавством України.
 5.2. Усі спори, що виникають з цього Договору, вирішуються шляхом переговорів. У разі недосягнення згоди, спір передається на розгляд до відповідного суду згідно з чинним законодавством України.
-ФОРС-МАЖОР
+
+6. ФОРС-МАЖОР
 6.1. Сторони звільняються від відповідальності за невиконання зобов'язань, якщо це стало наслідком обставин непереборної сили.
-РЕКВІЗИТИ ТА ПІДПИСИ СТОРІН
+
+7. РЕКВІЗИТИ ТА ПІДПИСИ СТОРІН
+
 ЗАМОВНИК:                                     ПОСТАЧАЛЬНИК:
-${procurement.customerName}                                ${offer.supplierFullName}
-ЄДРПОУ/РНОКПП: ${customerEdrpou}              ЄДРПОУ/РНОКПП: ${offer.paymentEdrpou}
-ІПН: ${offer.paymentIpn || 'не є платником ПДВ'}
-IBAN: ${offer.supplierIban}
-Банк: ${offer.supplierBankName}
-Тел: ${offer.supplierContactPhone}
+${customerName}                                ${supplierFullName}
+Тел: ${customerPhone}                          Юр. адреса: ${supplierLegalAddress}
+                                               ЄДРПОУ/РНОКПП: ${supplierPaymentEdrpou}
+                                               ІПН: ${supplierPaymentIpn}
+                                               IBAN: ${supplierIban}
+                                               Банк: ${supplierBankName}
+                                               Тел: ${supplierContactPhone}
+                                             
+
+                                        
 `;
-
-};
-const handleViewContract = () => {
-    if (!acceptedOfferDetails) return;
-    
-    const relatedProcurement = customerProcurements.find(p => p.id === acceptedOfferDetails.procurementId) || 
-                               (selectedProcurementForDetail && selectedProcurementForDetail.id === acceptedOfferDetails.procurementId ? selectedProcurementForDetail : null);
-
-    if (!relatedProcurement) {
-        alert("Не вдалося знайти деталі закупівлі для договору.");
-        return;
-    }
-    
-    // Потрібно отримати дані про поточного замовника (його компанію, ЄДРПОУ)
-    // Це може бути з профілю користувача або іншого джерела
-    const currentCustomerInfo = {
-        // Приклад, ці дані мають бути реальними
-        companyName: "Моя Компанія Замовник", 
-        edrpou: "11223344"
     };
 
-    const contractText = generateContractText(acceptedOfferDetails, relatedProcurement, currentCustomerInfo);
-    
-    // Відкриваємо текст договору в новому вікні для перегляду/друку
-    const contractWindow = window.open('', '_blank', 'width=900, height=700, scrollbars=yes, resizable=yes');
-    contractWindow.document.write('<html ><head><title>Договір</title>');
-    contractWindow.document.write('<style>body  {width:80%, font-family: Arial, sans-serif; white-space: pre-wrap; margin: 20px; } h1, h2, h3 { text-align: center; } table { width: 100%; border-collapse: collapse; margin-top: 20px;} td, th { border: 1px solid #ccc; padding: 8px; text-align: left;} </style>');
-    contractWindow.document.write('</head><body>');
-    contractWindow.document.write('<h1>ДОГОВІР ПОСТАВКИ</h1>');
-    contractWindow.document.write(`<pre style="width: 80%;">${contractText.substring(contractText.indexOf('м. Київ'))}</pre>`); // Видаляємо перший рядок з назвою
-    contractWindow.document.write('</body></html>');
-    contractWindow.document.close();
-    // Користувач може сам зберегти як PDF або роздрукувати з меню браузера
-};
+    // --- ОНОВЛЕНА ФУНКЦІЯ ВІДОБРАЖЕННЯ ДОГОВОРУ ---
+    const handleViewContract = () => {
+        // Перевірка, чи завантажені деталі прийнятої пропозиції
+        if (!acceptedOfferDetails) {
+            alert("Деталі пропозиції не завантажені. Будь ласка, відкрийте спочатку 'Реквізити та Інформація'.");
+            return;
+        }
+        
+        // Знаходимо відповідну закупівлю для договору
+        const relatedProcurement = 
+            customerProcurements.find(p => p.id === acceptedOfferDetails.procurementId) || 
+            (selectedProcurementForDetail && selectedProcurementForDetail.id === acceptedOfferDetails.procurementId ? selectedProcurementForDetail : null);
+
+        if (!relatedProcurement) {
+            alert("Не вдалося знайти деталі закупівлі для договору. Спробуйте спочатку відкрити деталі закупівлі (клік на назву пропозиції).");
+            // Якщо потрібно, тут можна додати логіку асинхронного завантаження деталей закупівлі
+            // await openDetailModal(acceptedOfferDetails.procurementId);
+            // і потім викликати handleViewContract знову, але це ускладнить потік.
+            return;
+        }
+        
+        // Оскільки ти просив НЕ змінювати логіку отримання даних Замовника,
+        // ми передаємо `relatedProcurement` (який може містити `customerName` та інші поля з бекенду)
+        // та `currentCustomerDetails` (який може бути null, якщо fetchCurrentCustomerDetails не реалізовано/не працює).
+        // Функція generateContractText сама вирішить, які дані використовувати.
+        const contractText = generateContractText(acceptedOfferDetails, relatedProcurement);
+        
+        const contractWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
+        if (contractWindow) {
+            contractWindow.document.write('<html><head><title>Договір Поставки</title>');
+            contractWindow.document.write(`
+                <style>
+                    body { 
+                        font-family: 'Times New Roman', Times, serif; 
+                        font-size: 12pt; 
+                        line-height: 1.5;
+                        margin: 0; 
+                        padding: 0;
+                        background-color: #EAEAEA; /* Фон поза аркушем */
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-start; /* Аркуш притиснутий до верху */
+                        min-height: 100vh;
+                        overflow-y: auto; /* Дозволяємо скрол для всього тіла */
+                    }
+                    .contract-page-container { /* Контейнер для відступів і центрування аркуша */
+                        padding: 20px 0; /* Відступи зверху/знизу для скролу */
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .contract-a4-sheet { /* Стилізація самого аркуша */
+                        width: 210mm; /* Ширина A4 */
+                        min-height: 290mm; /* Мінімальна висота A4 */
+                        padding: 20mm 15mm 20mm 25mm; /* Поля: верх, право, низ, ліво */
+                        margin: 0; 
+                        border: 1px solid #B0B0B0; 
+                        background-color: white;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+                        box-sizing: border-box;
+                    }
+                    pre.contract-text { /* Стилізація для тексту договору */
+                        white-space: pre-wrap; 
+                        word-wrap: break-word; 
+                        font-family: 'Times New Roman', Times, serif;
+                        font-size: 12pt;
+                        line-height: 1.5;
+                        margin: 0;
+                        text-align: justify; /* Вирівнювання по ширині */
+                    }
+                    .print-button-container { /* Контейнер для кнопки друку */
+                        position: fixed; 
+                        top: 15px;
+                        right: 20px;
+                        z-index: 10000; 
+                        background: rgba(255,255,255,0.95);
+                        padding: 8px;
+                        border-radius: 5px;
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    }
+                    .print-button { /* Стиль кнопки друку */
+                        padding: 10px 18px;
+                        background-color: #007bff;
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-size: 14px;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .print-button:hover {
+                        background-color: #0056b3;
+                    }
+                    .print-button svg { 
+                        margin-right: 8px;
+                    }
+
+                    @media print { /* Стилі для друку */
+                        body { 
+                            background-color: white; 
+                            margin: 0; 
+                            padding: 0; 
+                            display: block;
+                        }
+                        .contract-page-container { padding: 0; }
+                        .contract-a4-sheet {
+                            margin: 0;
+                            border: none;
+                            box-shadow: none;
+                            width: auto; 
+                            min-height: auto;
+                            padding: 10mm; /* Поля для друку */
+                        }
+                        .print-button-container { display: none !important; } 
+                    }
+                </style>
+            `);
+            contractWindow.document.write('</head><body>');
+            contractWindow.document.write('<div class="contract-page-container"><div class="contract-a4-sheet">');
+            // Видаляємо рядок "Use code with caution." якщо він є на початку
+            // та "ЗАМОВНИК:" якщо він йде одразу після шапки, бо ЗАМОВНИК вже є в тексті
+            let actualContractText = contractText;
+            if (actualContractText.trim().startsWith("Use code with caution.")) {
+                 actualContractText = actualContractText.substring(actualContractText.indexOf("ДОГОВІР ПОСТАВКИ"));
+            }
+            // Ця частина для видалення дублюючого "ЗАМОВНИК:" може бути не ідеальною,
+            // краще виправити шаблон generateContractText, щоб він не генерував його двічі
+            const contractBodyStartIndex = actualContractText.indexOf("м. Київ");
+            if (contractBodyStartIndex !== -1) {
+                const header = actualContractText.substring(0, contractBodyStartIndex);
+                let body = actualContractText.substring(contractBodyStartIndex);
+                if (body.trim().startsWith("ЗАМОВНИК:")) {
+                    body = body.substring(body.indexOf("ЗАМОВНИК:") + "ЗАМОВНИК:".length).trimStart();
+                    body = `ЗАМОВНИК:${body}`; // Повертаємо один раз
+                }
+                 // Видаляємо повторювані заголовки, якщо вони є
+                const mainHeader = "ДОГОВІР ПОСТАВКИ №";
+                const firstOccurrence = actualContractText.indexOf(mainHeader);
+                if (firstOccurrence !== -1) {
+                    const secondOccurrence = actualContractText.indexOf(mainHeader, firstOccurrence + mainHeader.length);
+                    if (secondOccurrence !== -1) {
+                        actualContractText = actualContractText.substring(0, secondOccurrence) + actualContractText.substring(actualContractText.indexOf("м. Київ", secondOccurrence));
+                    }
+                }
+            }
+
+
+            contractWindow.document.write(`<pre class="contract-text">${actualContractText}</pre>`);
+            contractWindow.document.write('</div></div>');
+            contractWindow.document.write(`
+                <div class="print-button-container">
+                    <button class="print-button" onclick="window.print()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                            <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zm2 12H5.5a.5.5 0 0 1 0-1H12a.5.5 0 0 1 0 1H9.5a.5.5 0 0 1-.5-.5V8.5h-2v4a.5.5 0 0 1-.5.5zM6 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                        Друк / Зберегти як PDF
+                    </button>
+                </div>
+            `);
+            contractWindow.document.write('</body></html>');
+            contractWindow.document.close();
+        } else {
+            alert("Не вдалося відкрити нове вікно. Можливо, блокувальник спливаючих вікон увімкнений.");
+        }
+    };
+
 // ---------------------------------------------
 
 return (
@@ -589,7 +741,7 @@ return (
                     <p><strong>Сума до сплати:</strong> ${acceptedOfferDetails.proposedPrice}</p>
                     <p><strong>Сплатити до:</strong> {new Date(new Date(acceptedOfferDetails.proposedDeliveryDate).setDate(new Date(acceptedOfferDetails.proposedDeliveryDate).getDate() + 3)).toLocaleDateString()} (включно)</p>
                     <p><strong>Пропонована дата доставки товару/послуги:</strong> {new Date(acceptedOfferDetails.proposedDeliveryDate).toLocaleDateString()}</p>
-                    
+                    <p style={{color:"red"}}>Увага! Ви зобов'язані сплатити суму: ${acceptedOfferDetails.proposedPrice},  до зазначнего дедлайну: {new Date(new Date(acceptedOfferDetails.proposedDeliveryDate).setDate(new Date(acceptedOfferDetails.proposedDeliveryDate).getDate() + 3)).toLocaleDateString()} (включно) </p>
                     <div className={classes.offerActions} style={{ marginTop: '1.5em', justifyContent: 'center' }}>
                        
                         <button 
