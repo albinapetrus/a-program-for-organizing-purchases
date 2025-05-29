@@ -238,6 +238,7 @@ public class OffersController : ControllerBase
             SupplierContactPhone = offer.SupplierContactPhone,
             ProposedDeliveryDate = offer.ProposedDeliveryDate,
             SupplierFullName = offer.SupplierFullName,
+            CustomerContactPhone = offer.Procurement != null ? offer.Procurement.ContactPhone : null,
             PaymentEdrpou = offer.PaymentEdrpou,
             SupplierIban = offer.SupplierIban,
             SupplierBankName = offer.SupplierBankName,

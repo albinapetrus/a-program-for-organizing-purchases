@@ -17,6 +17,7 @@ namespace UkrainianTraiding.Models.DTO // Або DTOs
 
         // --- Повні деталі постачальника та реквізити ---
         public string SupplierContactPhone { get; set; } = string.Empty;
+        public string CustomerContactPhone { get; set; } = string.Empty;
         public DateTime ProposedDeliveryDate { get; set; }
         public string SupplierFullName { get; set; } = string.Empty;
         public string PaymentEdrpou { get; set; } = string.Empty;

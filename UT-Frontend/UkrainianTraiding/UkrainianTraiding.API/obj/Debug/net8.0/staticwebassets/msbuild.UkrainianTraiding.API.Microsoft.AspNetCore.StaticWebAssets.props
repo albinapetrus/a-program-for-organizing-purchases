@@ -306,6 +306,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/offer_documents/d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>g47twwrqlw</Fingerprint>
+      <Integrity>sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx'))">
       <SourceType>Package</SourceType>
       <SourceId>UkrainianTraiding.API</SourceId>

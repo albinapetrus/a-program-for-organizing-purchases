@@ -165,7 +165,7 @@ export class NewOne extends Component {
 
         return (
             <div className={classes.universal}>
-                <form className={classes.block} style={{ width: "76%", paddingLeft: "17em", paddingRight: "0" }} onSubmit={this.handleSubmit}>
+                <form className={classes.block} style={{ width: "60%", paddingLeft: "13em", paddingRight: "0" }} onSubmit={this.handleSubmit}>
                     <h1 className={`${classes.label} ${classes.labelBlue}`}><LuNotebookPen className={classes.icon} /> Зареєструйте нову закупівлю</h1>
 
                     <label htmlFor="purch_name">Назва закупівлі:</label>

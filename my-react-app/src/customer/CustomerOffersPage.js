@@ -471,9 +471,9 @@ return (
                                         <button 
                                             className={classes.detailsButton} // Використовуй або створи схожий стиль
                                             onClick={() => openAcceptedOfferDetailsModal(offer.id)}
-                                            style={{marginRight: '10px', paddingLeft:"0.5em", paddingRight:"0.5em" , width:"40em"}}
+                                            style={{ paddingLeft:"0.5em", paddingRight:"0.5em" , width:"40em"}}
                                         >
-                                           <FaInfoCircle style={{marginRight: '5px', background:"#2070d1", }} /> Реквізити та Інформація
+                                           <FaInfoCircle style={{marginRight: '5px', background:"#2070d1" }} /> Реквізити та Інформація
                                         </button>
                                        
                                     </div>

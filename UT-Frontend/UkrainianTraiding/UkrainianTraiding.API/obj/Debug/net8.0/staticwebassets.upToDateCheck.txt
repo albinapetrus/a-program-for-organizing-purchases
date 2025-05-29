@@ -15,6 +15,7 @@ wwwroot\uploads\offer_documents\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg
 wwwroot\uploads\offer_documents\a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx
 wwwroot\uploads\offer_documents\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.jpg
 wwwroot\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg
+wwwroot\uploads\offer_documents\d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx
 wwwroot\uploads\offer_documents\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx
 wwwroot\uploads\offer_documents\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg
 wwwroot\uploads\offer_documents\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg

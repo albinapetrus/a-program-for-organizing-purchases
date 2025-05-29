@@ -1397,6 +1397,88 @@
       ]
     },
     {
+      "Route": "uploads/offer_documents/d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx",
+      "AssetFile": "uploads/offer_documents/d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 07:52:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/offer_documents/d49f5468-15ff-4c08-b5b8-3c792cb18e70.g47twwrqlw.docx",
+      "AssetFile": "uploads/offer_documents/d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "776899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 07:52:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g47twwrqlw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/offer_documents/d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx"
+        }
+      ]
+    },
+    {
       "Route": "uploads/offer_documents/d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx",
       "AssetFile": "uploads/offer_documents/d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx",
       "Selectors": [],

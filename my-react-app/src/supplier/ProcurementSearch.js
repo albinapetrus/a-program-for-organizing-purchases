@@ -109,7 +109,7 @@ function ProcurementSearch() {
                             value={searchCategory}
                             onChange={(e) => setSearchCategory(e.target.value)}
                             className={classes.selectField}
-                            style={{marginTop:"0", marginLeft:"0.5em", marginRight:"10em"}}
+                            style={{marginTop:"0", marginLeft:"0.5em", marginRight:"2.5em", width:"25em"}}
                         >
                             <option value="">Всі категорії</option>
                             {categories.map((cat, index) => (

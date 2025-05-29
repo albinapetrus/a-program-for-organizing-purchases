@@ -279,7 +279,7 @@ function OfferCreationPage() {
             </div>
 
             {/* Форма створення пропозиції */}
-            <div className={classes.block}>
+            <div style={{paddingLeft:"4em"}}className={classes.block}>
                 {/* Змінено onSubmit форми на handleOpenSubmitConfirmModal */}
                 <form onSubmit={handleOpenSubmitConfirmModal} className={classes.form} style={{background:"white"}}>
                     <h2 style={{background:"white", marginBottom:"0.8em"}}>Заповніть форму пропозиції:</h2>
@@ -299,27 +299,27 @@ function OfferCreationPage() {
                     <h3 style={{background:"white", marginTop:"1.5em", marginBottom:"0.5em"}}>Реквізити для оплати:</h3>
                     
                     <label htmlFor="supplierFullName">Повне найменування (ФОП/ТОВ): </label>
-                    <input type="text" id="supplierFullName"  style={{width:"63%"}} name="supplierFullName" value={supplierFullName} onChange={handleChange} placeholder="Наприклад, ФОП Іванов Іван Іванович" required className={classes.inputField} disabled={loading || !isProcurementOpen} />
+                    <input type="text" id="supplierFullName"  style={{width:"64%"}} name="supplierFullName" value={supplierFullName} onChange={handleChange} placeholder="Наприклад, ФОП Іванов Іван Іванович" required className={classes.inputField} disabled={loading || !isProcurementOpen} />
                     <br/>
 
                     <label htmlFor="paymentEdrpou">ЄДРПОУ/РНОКПП: </label>
-                    <input type="text" id="paymentEdrpou" name="paymentEdrpou" value={paymentEdrpou} onChange={handleChange} placeholder="Ваш ЄДРПОУ або РНОКПП" required className={classes.inputField} disabled={loading || !isProcurementOpen} style={{width:"78%"}}/>
+                    <input type="text" id="paymentEdrpou" name="paymentEdrpou" value={paymentEdrpou} onChange={handleChange} placeholder="Ваш ЄДРПОУ або РНОКПП" required className={classes.inputField} disabled={loading || !isProcurementOpen} style={{width:"78.8%"}}/>
                     <br/>
 
                     <label htmlFor="supplierIban">Номер рахунку (IBAN): </label>
-                    <input type="text" style={{width:"74%"}} id="supplierIban" name="supplierIban" value={supplierIban} onChange={handleChange} placeholder="UAXXXXXXXXXXXXXXXXXXXXXXXXX" required className={classes.inputField} disabled={loading || !isProcurementOpen} />
+                    <input type="text" style={{width:"74.5%"}} id="supplierIban" name="supplierIban" value={supplierIban} onChange={handleChange} placeholder="UAXXXXXXXXXXXXXXXXXXXXXXXXX" required className={classes.inputField} disabled={loading || !isProcurementOpen} />
                     <br/>
 
                     <label htmlFor="supplierBankName">Назва банку: </label>
-                    <input type="text" style={{width:"83.5%"}} id="supplierBankName" name="supplierBankName" value={supplierBankName} onChange={handleChange} placeholder="Наприклад, АТ КБ «ПриватБанк»" required className={classes.inputField} disabled={loading || !isProcurementOpen} />
+                    <input type="text" style={{width:"84.5%"}} id="supplierBankName" name="supplierBankName" value={supplierBankName} onChange={handleChange} placeholder="Наприклад, АТ КБ «ПриватБанк»" required className={classes.inputField} disabled={loading || !isProcurementOpen} />
                     <br/>
 
                     <label htmlFor="paymentIpn">ІПН : </label>
-                    <input type="text" id="paymentIpn" name="paymentIpn" value={paymentIpn} onChange={handleChange} placeholder="Ваш ІПН (для платників ПДВ)" className={classes.inputField} disabled={loading || !isProcurementOpen} style={{width:"91%"}} required />
+                    <input type="text" id="paymentIpn" name="paymentIpn" value={paymentIpn} onChange={handleChange} placeholder="Ваш ІПН (для платників ПДВ)" className={classes.inputField} disabled={loading || !isProcurementOpen} style={{width:"92%"}} required />
                     <br/>
                     
                     <label htmlFor="message">Ваше повідомлення: </label>
-                    <textarea id="message" name="message" value={message} onChange={handleChange} placeholder="Додайте деталі до вашої пропозиції..." rows="5" className={classes.textareaField} disabled={loading || !isProcurementOpen}></textarea>
+                    <textarea id="message" name="message" value={message} onChange={handleChange} placeholder="Додайте деталі до вашої пропозиції..." rows="5" className={classes.textareaField} disabled={loading || !isProcurementOpen} ></textarea>
                     <br/>
 
                     <label>Допоміжний документ: </label>
