@@ -12,12 +12,14 @@ wwwroot\uploads\offer_documents\557f0746-97d1-4286-a3a2-85be414fa931_Фон 1.jp
 wwwroot\uploads\offer_documents\6a84eac6-0513-43a1-98da-b42970efd0cb_Фон 1.jpg
 wwwroot\uploads\offer_documents\6f40046e-fca7-49e1-b236-1ca01b19cc93_Фон 1.jpg
 wwwroot\uploads\offer_documents\8f3157d3-47d4-4b5b-aa93-ba26419747f4_Фон 1.jpg
+wwwroot\uploads\offer_documents\972a6a85-3fe5-4626-b7d9-071355b338eb.jpg
 wwwroot\uploads\offer_documents\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg
 wwwroot\uploads\offer_documents\a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx
 wwwroot\uploads\offer_documents\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.jpg
 wwwroot\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg
 wwwroot\uploads\offer_documents\d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx
 wwwroot\uploads\offer_documents\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx
+wwwroot\uploads\offer_documents\db28069b-0bc6-4976-9762-e51fd22d119c.jpg
 wwwroot\uploads\offer_documents\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg
 wwwroot\uploads\offer_documents\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg
 wwwroot\uploads\offer_documents\ec0bbe70-45cf-4906-895d-dbbdcd721fcc.docx
@@ -76,4 +78,3 @@ wwwroot\uploads\procurement_documents\e405acc7-fce7-4da5-ba13-c1f34c8c783e_иф�
 wwwroot\uploads\procurement_documents\e657365a-4aa5-48f9-bb39-78a2bcc4dc62_WIN_20231106_20_01_58_Pro.jpg
 wwwroot\uploads\procurement_documents\ef2cc55e-c9aa-467d-9c08-06563eb6bec4_Фон 1.jpg
 wwwroot\uploads\procurement_documents\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx
-wwwroot\uploads\procurement_documents\faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg

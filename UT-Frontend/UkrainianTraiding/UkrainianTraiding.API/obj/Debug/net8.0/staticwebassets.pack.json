@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\8f3157d3-47d4-4b5b-aa93-ba26419747f4_Фон 1.jpg"
     },
     {
+      "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\972a6a85-3fe5-4626-b7d9-071355b338eb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\offer_documents\\972a6a85-3fe5-4626-b7d9-071355b338eb.jpg"
+    },
+    {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg",
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg"
     },
@@ -79,6 +83,10 @@
     {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx",
       "PackagePath": "staticwebassets\\uploads\\offer_documents\\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx"
+    },
+    {
+      "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\db28069b-0bc6-4976-9762-e51fd22d119c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\offer_documents\\db28069b-0bc6-4976-9762-e51fd22d119c.jpg"
     },
     {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\offer_documents\\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg",
@@ -311,10 +319,6 @@
     {
       "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx",
       "PackagePath": "staticwebassets\\uploads\\procurement_documents\\f9625f3e-f824-4eda-93ee-e25eb3e78116.docx"
-    },
-    {
-      "Id": "C:\\Users\\Albina\\Desktop\\my projects\\a-program-for-organizing-purchases\\UT-Frontend\\UkrainianTraiding\\UkrainianTraiding.API\\wwwroot\\uploads\\procurement_documents\\faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg",
-      "PackagePath": "staticwebassets\\uploads\\procurement_documents\\faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.UkrainianTraiding.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

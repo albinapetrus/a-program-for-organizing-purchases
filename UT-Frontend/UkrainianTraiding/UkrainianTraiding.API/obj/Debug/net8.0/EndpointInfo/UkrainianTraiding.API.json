@@ -80,7 +80,6 @@
                   "FullName",
                   "Ipn",
                   "LegalStatus",
-                  "Role",
                   "UserId"
                 ],
                 "type": "object",
