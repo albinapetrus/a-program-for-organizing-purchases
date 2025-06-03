@@ -15,23 +15,26 @@ export class footer extends Component {
 
 <div> 
   <h4>UkrainianTrading</h4>
-  <Link to="/about-us">
+  <Link to="/for-participants">
     Про нас
   </Link>
 
-  <Link to="/principles"> 
+  <Link to="/principle-of-work"> 
     Принцип роботи
   </Link>
+
+
+
 
 </div>
 
 <div> 
   <h4>Учасникам</h4>
-  <Link to="/for-customers"> 
+  <Link to="/CustomerInfo"> 
     Для Замовників
   </Link>
 
-  <Link to="/for-suppliers"> 
+  <Link to="/ProcurementInfo"> 
     Для Постачальників
   </Link>
 
@@ -39,7 +42,7 @@ export class footer extends Component {
 
 <div> 
   <h4>РЕСУРСИ</h4>
-  <Link to="/developers"> 
+  <Link to="/for-developers"> 
     Розробникам
   </Link>
 

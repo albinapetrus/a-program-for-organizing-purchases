@@ -11,7 +11,7 @@ export class header extends Component {
             <Link to="/news" className={classes.div}>Новини</Link>
             <Link to = "/market" className={classes.div}>UkrainianTrading маркет</Link>
             <Link to ="/infobox" className={classes.div}>Інфобокс</Link>
-            <Link to ="/local"className={classes.div}>Локалізація</Link>
+            <Link to ="/local"className={classes.div}>Переваги</Link>
         </nav>
         <section className={classes.section}>
         <a href="tel:+380800503400 " className={classes.h2} style={{marginTop:"0.7em"}}>Служба підтримки<br/>0-800-503-400 </a>

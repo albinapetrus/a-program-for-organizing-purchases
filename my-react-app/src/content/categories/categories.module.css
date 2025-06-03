@@ -92,3 +92,7 @@
     background-color: inherit;
   }
 }
+
+.container  ul, .container li, .container strong{
+  background-color: #d6eaf8; 
+}

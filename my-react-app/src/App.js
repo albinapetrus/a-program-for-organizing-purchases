@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import classes from "./index.module.css";
 import Header from "./components/header";
 import MyOffersPage from './supplier/MyOffersPage';
-import Section1 from "./components/section1";
 import MainContent from "./components/mainContent";
 import Footer from "./components/footer";
 import News from "./pages/News";
@@ -13,7 +12,6 @@ import News2 from "./pages/news2";
 import News3 from "./pages/news3";
 import News4 from "./pages/news4";
 import News5 from "./pages/news5";
-import News6 from "./pages/news6";
 import Market from "./categories/market";
 import Salers from "./categories/salers";
 import Infobox from "./categories/infobox";
@@ -52,6 +50,10 @@ import VariousInfo from "./content/categories/VariousInfo";
 import ResponsiveTextBlock from "./content/categories/ResponsiveTextBlock";
 import ProcurementSearch from "./supplier/ProcurementSearch";
 import { AuthProvider, useAuth } from './context/AuthContext';
+import PrincipleOfWorkInfo from './content/PrincipleOfWorkInfo';
+import ForParticipantsInfo from './content/ForParticipantsInfo';
+import ForDevelopersInfo from './content/ForDevelopersInfo';
+import ParticipantProtectionInfo from './content/ParticipantProtectionInfo';
 
 function AppContent() {
  const { isAuthenticated, loading, user } = useAuth();
@@ -91,7 +93,6 @@ function AppContent() {
         <Route path="/news3" element={<News3 />} />
         <Route path="/news4" element={<News4 />} />
         <Route path="/news5" element={<News5 />} />
-        <Route path="/news6" element={<News6 />} />
         <Route path="/market" element={<Market />} />
         <Route path="/salers" element={<Salers />} />
         <Route path="/infobox" element={<Infobox />} />
@@ -125,7 +126,11 @@ function AppContent() {
         <Route path="/ResearchInfo" element={<ResearchInfo />} />
         <Route path="/VariousInfo" element={<VariousInfo />} />
         <Route path="/ResponsiveTextBlock" element={<ResponsiveTextBlock />} />
-          <Route path="/my-procurements/:procurementId/offers" element={<CustomerOffersPage />} />
+        <Route path="/my-procurements/:procurementId/offers" element={<CustomerOffersPage />} />
+        <Route path="/principle-of-work" element={<PrincipleOfWorkInfo />} />
+        <Route path="/for-participants" element={<ForParticipantsInfo />} />
+        <Route path="/for-developers" element={<ForDevelopersInfo />} />
+        <Route path="/participant-protection" element={<ParticipantProtectionInfo />} /> 
       </Routes>
       {showHeaderFooter && <Footer />}
     </div>
