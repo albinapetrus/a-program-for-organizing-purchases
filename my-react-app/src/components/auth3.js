@@ -1,19 +1,15 @@
-// src/components/auth3.js
-
 import React, { Component } from 'react';
 import classes from './auth.module.css';
-import { Link } from 'react-router-dom'; // Navigate більше не потрібен тут
+import { Link } from 'react-router-dom'; 
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext'; // Перевірте шлях!
+import { useAuth } from '../context/AuthContext'; 
 import { useNavigate } from 'react-router-dom';
 
-// --- ОБГОРТКА ДЛЯ КЛАСОВОГО КОМПОНЕНТА ---
 function Auth3Wrapper() {
   const { login } = useAuth();
   const navigate = useNavigate();
   return <Auth3 login={login} navigate={navigate} />;
 }
-// --- КІНЕЦЬ ОБГОРТКИ ---
 
 export class Auth3 extends Component {
     constructor(props) {
@@ -62,9 +58,9 @@ export class Auth3 extends Component {
             const jwtToken = response.data.token;
 
             if (jwtToken) {
-                this.props.login(jwtToken); // AuthContext сам оновить всі стани та збереже токен
+                this.props.login(jwtToken); 
                 localStorage.removeItem('registeringUserId');
-                this.props.navigate('/cabinetCust');
+                this.props.navigate('/auth4');
             } else {
                 this.setState({ error: 'Реєстрація завершена, але токен для автоматичного логіну не отримано. Спробуйте увійти вручну.', loading: false });
             }

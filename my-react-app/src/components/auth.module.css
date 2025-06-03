@@ -193,7 +193,7 @@ font-weight: 700!important;
     gap:10px;
 }
 .auth input[type="radio"]:last-of-type {
-    margin-left: 1em; /* або margin-bottom: 10px; якщо вертикально */
+    margin-left: 1em; 
   }
   label[for="ur"], label[for="fiz"] {
     font-weight: 400;
@@ -204,13 +204,13 @@ font-weight: 700!important;
   }
 
   .activeRole, .activeRole .icon{
-    background-color: white; /* Синій */
+    background-color: white; 
     color: #2070d1;
   
   }
   
   .inactiveRole, .inactiveRole .icon {
-    background-color: #e0e0e0!important; /* Світло-сірий */
+    background-color: #e0e0e0!important;
   
   }
   .auth .errorMessage{

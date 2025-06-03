@@ -1,37 +1,30 @@
 import React, { Component } from 'react';
 import classes from './auth.module.css';
 import { Link, Navigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; // <<< ДОДАЙТЕ ЦЕЙ ІМПОРТ
-// import { SideMenuContext } from '../SideMenuContext'; // <<< ВИДАЛІТЬ ЦЕЙ РЯДОК
+import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { useAuth } from '../context/AuthContext'; // <<< ДОДАЙТЕ ЦЕЙ ІМПОРТ
+import { useAuth } from '../context/AuthContext';
 
-// --- ОБГОРТКА ДЛЯ КЛАСОВОГО КОМПОНЕНТА ---
-// Це необхідно, щоб класовий компонент міг використовувати хуки (наприклад, useNavigate, useAuth)
 function FormWrapper() {
-  const { login } = useAuth(); // Отримуємо функцію 'login' з AuthContext
-  const navigate = useNavigate(); // Отримуємо функцію 'navigate' для перенаправлення
-  return <Form login={login} navigate={navigate} />; // Передаємо їх як props класовому компоненту Form
+  const { login } = useAuth(); 
+  const navigate = useNavigate();
+  return <Form login={login} navigate={navigate} />; 
 }
-// --- КІНЕЦЬ ОБГОРТКИ ---
 
-
-export class Form extends Component { // Зверніть увагу: назва компонента з великої літери
-    // static contextType = SideMenuContext; // <<< ВИДАЛІТЬ ЦЕЙ РЯДОК
+export class Form extends Component { 
     constructor(props) {
         super(props);
         this.state = {
             email: '',
             password: '',
-            error: '', // Для відображення помилок
-            loading: false, // Додаємо стан завантаження
-            // redirect: false, // Цей стан більше не потрібен для перенаправлення через useNavigate
+            error: '', 
+            loading: false, 
         };
     }
 
     handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value, error: '' }); // Очищуємо помилку при зміні поля
+        this.setState({ [e.target.name]: e.target.value, error: '' }); 
     };
 
     handleSubmit = async (e) => {
@@ -44,7 +37,7 @@ export class Form extends Component { // Зверніть увагу: назва
             return;
         }
 
-        this.setState({ loading: true, error: '' }); // Встановлюємо стан завантаження, очищуємо попередні помилки
+        this.setState({ loading: true, error: '' }); 
 
         try {
             const response = await axios.post('/api/auth/login', { email, password });
@@ -54,31 +47,19 @@ export class Form extends Component { // Зверніть увагу: назва
             const token = response.data.token;
 
             if (token) {
-                // !!! ВИКЛИКАЄМО login З AuthContext !!!
-                // Ця функція сама збереже токен в localStorage, розшифрує його
-                // і оновить глобальний стан користувача.
-                this.props.login(token); // <<< Використовуємо login, переданий через props
+                this.props.login(token); 
 
-                // Розшифровуємо токен, щоб отримати роль для ПЕРЕНАПРАВЛЕННЯ
                 const decodedToken = jwtDecode(token);
-                // JWT claims можуть бути як 'role', так і 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
                 const userRole = decodedToken.role || decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
-                // !!! ТЕПЕР ПЕРЕНАПРАВЛЕННЯ ЧЕРЕЗ this.props.navigate !!!
                 if (userRole === 'customer') {
                     this.props.navigate('/cabinetCust');
                 } else if (userRole === 'supplier') {
                     this.props.navigate('/cabinetCust');
                 } else {
-                    this.props.navigate('/cabinetCust'); // Шлях за замовчуванням
+                    this.props.navigate('/cabinetCust'); 
                 }
 
-                // !!! ВИДАЛЯЄМО СТАРІ ВИКЛИКИ SideMenuContext ТА localStorage.setItem('role') !!!
-                // this.context.setIsSideMenuOpen(true); // <<< ВИДАЛІТЬ
-                // this.context.handleCompanyNameChange(companyName); // <<< ВИДАЛІТЬ
-                // localStorage.setItem('role', role); // <<< ВИДАЛІТЬ
-                // localStorage.setItem('companyName', companyName); // <<< ВИДАЛІТЬ
-                // this.setState({ redirect: true }); // <<< ВИДАЛІТЬ
             } else {
                 this.setState({ error: 'Логін успішний, але токен не отримано.', loading: false });
             }
@@ -89,10 +70,8 @@ export class Form extends Component { // Зверніть увагу: назва
             let errorMessage = 'Сталася помилка під час логіну.';
             if (error.response && error.response.data) {
                 if (error.response.data.message) {
-                    // Якщо бекенд повернув конкретне повідомлення про помилку
                     errorMessage = error.response.data.message;
                 } else if (error.response.data.errors) {
-                    // Якщо бекенд повернув валідаційні помилки (об'єкт)
                     try {
                         errorMessage = 'Помилки: <br/>' +
                             Object.entries(error.response.data.errors)
@@ -107,20 +86,14 @@ export class Form extends Component { // Зверніть увагу: назва
                     errorMessage =  JSON.stringify(error.response.data);
                 }
             } else if (error.message) {
-                // Загальні помилки мережі
                 errorMessage = 'Помилка мережі: ' + error.message;
             }
 
-            this.setState({ error: errorMessage, loading: false }); // Встановлюємо помилку для відображення
+            this.setState({ error: errorMessage, loading: false }); 
         }
     };
 
     render() {
-        // !!! ВИДАЛЯЄМО УМОВНЕ ПЕРЕНАПРАВЛЕННЯ З render !!!
-        // if (this.state.redirect) {
-        //     return <Navigate to="/myPurch" />;
-        // }
-
         return (
             <div className={classes.auth}>
                 <h2 className={classes.text1}>Форма авторизації</h2>
@@ -145,12 +118,9 @@ export class Form extends Component { // Зверніть увагу: назва
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
-                        {/* !!! МІСЦЕ ДЛЯ ВІДОБРАЖЕННЯ ПОМИЛКИ !!! */}
                         {this.state.error && (
                             <p className={classes.errorMessage} dangerouslySetInnerHTML={{ __html: this.state.error }} />
                         )}
-                        {/* !!! КІНЕЦЬ МІСЦЯ ДЛЯ ВІДОБРАЖЕННЯ ПОМИЛКИ !!! */}
-
                         <button type="submit" className={classes.submit} disabled={this.state.loading}>
                             {this.state.loading ? 'Завантаження...' : 'Увійти'}
                         </button>
@@ -167,5 +137,4 @@ export class Form extends Component { // Зверніть увагу: назва
     }
 }
 
-// !!! ВАЖЛИВО: ЕКСПОРТУЄМО ОБГОРТКУ, А НЕ САМ КЛАС !!!
 export default FormWrapper;

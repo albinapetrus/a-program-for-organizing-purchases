@@ -12,6 +12,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8rWNluW7l6lUEBxTDgrCq08W0MOla4/2QBiz\u002BojvDcA="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"81139"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228rWNluW7l6lUEBxTDgrCq08W0MOla4/2QBiz\u002BojvDcA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 22 May 2025 08:17:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/offer_documents/0dab97bd-a441-4f9f-88ca-04df071b06ae.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\0dab97bd-a441-4f9f-88ca-04df071b06ae.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:43:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/offer_documents/0dab97bd-a441-4f9f-88ca-04df071b06ae.g47twwrqlw.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\0dab97bd-a441-4f9f-88ca-04df071b06ae.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g47twwrqlw"},{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/offer_documents/0dab97bd-a441-4f9f-88ca-04df071b06ae.docx"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:43:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/offer_documents/0f6d53d2-9f3b-4d22-9cc2-51f85c0c2548_ipn.7k1f24xdup.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\0f6d53d2-9f3b-4d22-9cc2-51f85c0c2548_ipn.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -336,6 +348,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kGoPErgW0rS1Ci5jrI72N96t/LTVJC7mmFNqTvuFe3k="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"35464"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022kGoPErgW0rS1Ci5jrI72N96t/LTVJC7mmFNqTvuFe3k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 22 May 2025 10:07:59 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/2ab733af-95a1-41a3-9017-9f9b38c24cc0_a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\2ab733af-95a1-41a3-9017-9f9b38c24cc0_a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:36:42 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/2ab733af-95a1-41a3-9017-9f9b38c24cc0_a5b9e042-c309-4b61-b5a6-d6b05f72d22c.g47twwrqlw.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\2ab733af-95a1-41a3-9017-9f9b38c24cc0_a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g47twwrqlw"},{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/2ab733af-95a1-41a3-9017-9f9b38c24cc0_a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:36:42 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/2ab9d67a-dd60-40c3-afdd-2ace420a0e0b_архітектура 2025.c5ffz2lcgi.webp">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\2ab9d67a-dd60-40c3-afdd-2ace420a0e0b_архітектура 2025.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -576,6 +600,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kf6vun4y28"},{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/e7661984-cbf0-484c-b5d3-723f784b15bd_\u0424\u043E\u043D 1.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 09:46:06 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/e7c2917b-dc10-413b-a3ae-5a2bca79ad29_Lab_3.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\e7c2917b-dc10-413b-a3ae-5a2bca79ad29_Lab_3.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:09:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/e7c2917b-dc10-413b-a3ae-5a2bca79ad29_Lab_3.g47twwrqlw.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\e7c2917b-dc10-413b-a3ae-5a2bca79ad29_Lab_3.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g47twwrqlw"},{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/e7c2917b-dc10-413b-a3ae-5a2bca79ad29_Lab_3.docx"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:09:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/eb0c274e-0e95-4b65-86a4-38c08225bc47_фон2.4kdusps738.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\eb0c274e-0e95-4b65-86a4-38c08225bc47_фон2.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -756,6 +792,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kf6vun4y28"},{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/procurement_documents/820fe13a-c997-41ed-92bd-492c31cbf0b3_\u0424\u043E\u043D 1.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 14:37:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/procurement_documents/8b59be41-e269-4e46-9c4e-e1ef6669b00f.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\8b59be41-e269-4e46-9c4e-e1ef6669b00f.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:21:41 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/procurement_documents/8b59be41-e269-4e46-9c4e-e1ef6669b00f.g47twwrqlw.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\8b59be41-e269-4e46-9c4e-e1ef6669b00f.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g47twwrqlw"},{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/procurement_documents/8b59be41-e269-4e46-9c4e-e1ef6669b00f.docx"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 May 2025 10:21:41 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/procurement_documents/9ef6c2d4-7a52-444a-9022-28310bd4d3bf_me.34up0tsd1e.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\9ef6c2d4-7a52-444a-9022-28310bd4d3bf_me.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -887,6 +935,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g47twwrqlw"},{"Name":"integrity","Value":"sha256-sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/procurement_documents/f9625f3e-f824-4eda-93ee-e25eb3e78116.docx"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"776899"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u0022sGZUpp88K7DApldUKrQ4yI3vpNucqlHcCSGZs0QkKiM=\u0022"},{"Name":"Last-Modified","Value":"Tue, 27 May 2025 18:57:01 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/procurement_documents/faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 02 Jun 2025 11:48:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/procurement_documents/faa8b592-b8e1-472e-92bf-6a928cf21b8e.kf6vun4y28.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kf6vun4y28"},{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/procurement_documents/faa8b592-b8e1-472e-92bf-6a928cf21b8e.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 02 Jun 2025 11:48:15 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

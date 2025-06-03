@@ -2,8 +2,6 @@
 {
     public class OfferCustomerDto
     {
-
-
         public Guid Id { get; set; }
         public Guid ProcurementId { get; set; }
         public string ProcurementName { get; set; }
@@ -12,7 +10,7 @@
         public string? OfferDocumentPaths { get; set; }
         public DateTime ProposedDeliveryDate { get; set; }
         public DateTime OfferDate { get; set; }
-        public string Status { get; set; } // Статус пропозиції як рядок (Submitted, Accepted, Rejected)
+        public string Status { get; set; } 
         public string SupplierCompanyName { get; set; }
 
     }

@@ -1,5 +1,4 @@
-﻿// Models/DTO/OfferDetailsDto.cs
-namespace UkrainianTraiding.Models.DTO // Або DTOs
+﻿namespace UkrainianTraiding.Models.DTO 
 {
     public class OfferDetailsDto
     {
@@ -15,7 +14,6 @@ namespace UkrainianTraiding.Models.DTO // Або DTOs
         public DateTime OfferDate { get; set; }
         public string Status { get; set; } = string.Empty;
 
-        // --- Повні деталі постачальника та реквізити ---
         public string SupplierContactPhone { get; set; } = string.Empty;
         public string CustomerContactPhone { get; set; } = string.Empty;
         public DateTime ProposedDeliveryDate { get; set; }
@@ -24,6 +22,5 @@ namespace UkrainianTraiding.Models.DTO // Або DTOs
         public string SupplierIban { get; set; } = string.Empty;
         public string SupplierBankName { get; set; } = string.Empty;
         public string? PaymentIpn { get; set; }
-        // -------------------------------------------------
     }
 }

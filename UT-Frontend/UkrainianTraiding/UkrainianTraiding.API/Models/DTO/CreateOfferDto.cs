@@ -1,7 +1,6 @@
-﻿// Models/DTO/CreateOfferDto.cs
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http; // Для IFormFile
+using Microsoft.AspNetCore.Http; 
 
 namespace UkrainianTraiding.Models.DTO
 {
@@ -11,12 +10,6 @@ namespace UkrainianTraiding.Models.DTO
         public Guid ProcurementId { get; set; }
 
         [Required(ErrorMessage = "Запропонована ціна обов'язкова.")]
-        // Залишаємо string, якщо парсинг на бекенді тебе влаштовує.
-        // Але для чисельних значень краще використовувати decimal або double
-        // і відповідний type="number" на фронтенді.
-        // Якщо залишити string, то в контролері потрібно буде парсити:
-        // if (!decimal.TryParse(offerDto.ProposedPrice, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedPrice))
-        // { /* обробка помилки */ }
         public string ProposedPrice { get; set; } = string.Empty;
 
         [StringLength(1000, ErrorMessage = "Повідомлення не може перевищувати 1000 символів.")]
@@ -24,8 +17,6 @@ namespace UkrainianTraiding.Models.DTO
 
         [DataType(DataType.Upload)]
         public IFormFile? OfferDocument { get; set; }
-
-        // ----- НОВІ ПОЛЯ, ЯКІ МИ ДОДАЄМО -----
 
         [Required(ErrorMessage = "Контактний телефон постачальника є обов'язковим.")]
         [Phone(ErrorMessage = "Невірний формат телефонного номера. Приклад: +380XXXXXXXXX")]
@@ -42,8 +33,7 @@ namespace UkrainianTraiding.Models.DTO
 
         [Required(ErrorMessage = "ЄДРПОУ/РНОКПП є обов'язковим.")]
         [RegularExpression(@"^\d{8}(\d{2})?$", ErrorMessage = "ЄДРПОУ/РНОКПП має складатися з 8 або 10 цифр.")]
-        public string PaymentEdrpou { get; set; } = string.Empty; // ЄДРПОУ (8 цифр) або РНОКПП (10 цифр)
-
+        public string PaymentEdrpou { get; set; } = string.Empty;
         [Required(ErrorMessage = "Номер рахунку IBAN є обов'язковим.")]
         [RegularExpression(@"^UA\d{2}[\dA-Z]{25}$", ErrorMessage = "Невірний формат IBAN. Має починатися з UA, далі 2 цифри, далі 25 букв/цифр (всього 29 символів).")]
         public string SupplierIban { get; set; } = string.Empty;
@@ -52,9 +42,7 @@ namespace UkrainianTraiding.Models.DTO
         [StringLength(255, MinimumLength = 3, ErrorMessage = "Назва банку має містити від 3 до 255 символів.")]
         public string SupplierBankName { get; set; } = string.Empty;
 
-        // ІПН для платників ПДВ, може бути необов'язковим
         [RegularExpression(@"^\d{10}(\d{2})?$", ErrorMessage = "ІПН має складатися з 10 або 12 цифр (якщо це номер свідоцтва).")]
         public string? PaymentIpn { get; set; }
-        // ---------------------------------------------
     }
 }

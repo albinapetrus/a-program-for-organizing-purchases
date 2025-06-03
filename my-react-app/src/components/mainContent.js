@@ -37,27 +37,20 @@ export class mainContent extends Component {
 <div className={classes.first} >    <FaHandHoldingUsd className={classes.icon}  />
          <Link
           to="/ProcurementInfo"
-        // !!! Застосовуємо клас діва до Link !!!
-          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
-                                                                // Краще це зробити через CSS
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} 
+                                                                
         >
        
          Постачальникам
         </Link></div>
 <div className={classes.first}><FaBuildingUser className={classes.icon}/> <Link
           to="/CustomerInfo"
-        // !!! Застосовуємо клас діва до Link !!!
-          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
-                                                                // Краще це зробити через CSS
-        >
-       
-         Замовникам
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} >
+          Замовникам
         </Link></div>
 <div className={classes.first}><MdOutlinePeopleAlt className={classes.icon}/><Link
           to="/PublicInfo"
-        // !!! Застосовуємо клас діва до Link !!!
-          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
-                                                                // Краще це зробити через CSS
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} 
         >
        
          Громадськості
@@ -69,9 +62,7 @@ export class mainContent extends Component {
         <ul className={classes.secondStepsInfo}>
 <div className={classes.second}><BsBuildingCheck className={classes.icon1}/><Link
           to="/ConstructionInfo"
-        // !!! Застосовуємо клас діва до Link !!!
-          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }} // Тимчасові інлайн-стилі, щоб прибрати підкреслення та синій колір
-                                                                // Краще це зробити через CSS
+          style={{ textDecoration: 'none', color: 'inherit', backgroundColor:"inherit" }}
         >
        
         Будівництво

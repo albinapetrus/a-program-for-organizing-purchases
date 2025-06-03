@@ -1,9 +1,8 @@
-﻿// Models/DTO/CreateProcurementDto.cs
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http; // Для IFormFile
+using Microsoft.AspNetCore.Http; 
 
-namespace UkrainianTraiding.Models.DTO // Переконайся, що простір імен відповідає
+namespace UkrainianTraiding.Models.DTO 
 {
     public class CreateProcurementDto
     {
@@ -12,20 +11,16 @@ namespace UkrainianTraiding.Models.DTO // Переконайся, що прос�
         public string Name { get; set; } = string.Empty;
 
         [StringLength(1000, ErrorMessage = "Опис закупівлі не може перевищувати 1000 символів.")]
-        public string? Description { get; set; } // nullable string (string?) означає, що поле може бути відсутнім або null
+        public string? Description { get; set; } 
 
         [Required(ErrorMessage = "Категорія обов'язкова.")]
         [StringLength(100, ErrorMessage = "Категорія не може перевищувати 100 символів.")]
         public string Category { get; set; } = string.Empty;
 
-        // !!! ЗМІНЕНО ТИП НА string !!!
         [Required(ErrorMessage = "Кількість/Обсяг обов'язковий.")]
-        // Валідацію Range можна буде реалізувати після ручного парсингу в контролері
         public string QuantityOrVolume { get; set; } = string.Empty;
 
-        // !!! ЗМІНЕНО ТИП НА string !!!
         [Required(ErrorMessage = "Орієнтовний бюджет обов'язковий.")]
-        // Валідацію Range можна буде реалізувати після ручного парсингу в контролері
         public string EstimatedBudget { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Дата завершення закупівлі обов'язкова.")]
@@ -33,19 +28,11 @@ namespace UkrainianTraiding.Models.DTO // Переконайся, що прос�
         public DateTime CompletionDate { get; set; }
 
         [DataType(DataType.Upload)]
-        public IFormFile? SupportingDocument { get; set; } // nullable IFormFile (IFormFile?) означає, що файл може бути не завантажений
-
-        // Якщо документів декілька:
-        // public List<IFormFile>? SupportingDocuments { get; set; }
-
-        // ----- НОВІ ПОЛЯ -----
+        public IFormFile? SupportingDocument { get; set; } 
         [StringLength(500, ErrorMessage = "Адреса доставки не може перевищувати 500 символів.")]
-        public string? DeliveryAddress { get; set; } // Додаємо поле для адреси доставки, робимо його nullable (string?)
+        public string? DeliveryAddress { get; set; } 
 
         [StringLength(20, ErrorMessage = "Номер телефону не може перевищувати 20 символів.")]
-        // Для більш строгої валідації телефону можна використовувати регулярний вираз з [RegularExpression(...)]
-        // або атрибут [Phone] якщо він доступний і підходить
-        public string? ContactPhone { get; set; }    // Додаємо поле для контактного телефону, робимо його nullable (string?)
-        // ----------------------
+        public string? ContactPhone { get; set; }   
     }
 }

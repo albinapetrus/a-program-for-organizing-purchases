@@ -1,14 +1,11 @@
-import React, { Component } from 'react'; // Імпортуємо Component
+import React, { Component } from 'react'; 
 
-// Назви стилів можна залишити або перенести в окремий CSS файл, як у тебе з Universal.module.css
-// Для цього прикладу залишимо їх всередині компонента
-// import classes from './Universal.module.css' // Якщо стилі в CSS модулі
 
-export class ProcurementInfo extends Component { // Визначаємо клас, який наслідується від Component
-  render() { // Класові компоненти використовують метод render()
+export class ProcurementInfo extends Component {
+  render() { 
     const primaryColor = '#2070d1';
-    const backgroundColor = '#e0f2f7'; // Світлий відтінок синього для фону
-    const textColor = '#333'; // Темніший колір для кращої читабельності
+    const backgroundColor = '#e0f2f7'; 
+    const textColor = '#333';
 
     const containerStyle = {
       display: 'flex',
@@ -18,12 +15,9 @@ export class ProcurementInfo extends Component { // Визначаємо кла�
       border: `1px solid ${primaryColor}`,
       borderRadius: '5px',
       backgroundColor: backgroundColor,
-      // !!! ЗМІНЕНО: Центрування та встановлення ширини !!!
-      // maxWidth: '450px', // Прибираємо фіксований maxWidth
-      width: '60%', // Встановлюємо ширину 60%
-      minWidth: '450px', // Опціонально: можна додати minWidth, щоб блок не ставав занадто вузьким на маленьких екранах
-      margin: '5em auto', // Встановлюємо верхній/нижній margin 20px, а лівий/правий auto для центрування
-      // !!! КІНЕЦЬ ЗМІН !!!
+      width: '60%', 
+      minWidth: '450px', 
+      margin: '5em auto',
     };
 
     const titleStyle = {
@@ -52,7 +46,6 @@ export class ProcurementInfo extends Component { // Визначаємо кла�
       backgroundColor: 'inherit',
     };
 
-    // JSX структура залишається всередині render()
     return (
       <div style={containerStyle}>
         <div style={titleStyle}>Закупівлі: Перші кроки та інформація</div>

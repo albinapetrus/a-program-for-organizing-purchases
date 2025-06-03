@@ -1,23 +1,16 @@
-// src/contexts/AuthContext.js
-
 import React, { createContext, useState, useEffect, useContext, useMemo } from 'react';
 import { jwtDecode } from 'jwt-decode'; 
 
-// ЗМІНЮЄМО ЦЕЙ РЯДОК:
-// Було: const AuthContext = createContext(null);
-// Стало: export const AuthContext = createContext(null);
-export const AuthContext = createContext(null); // <--- Ось тут додаємо 'export'
-
-
+export const AuthContext = createContext(null); 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false); // ДОДАНО: Стан для сайд-меню
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false); 
 
   const decodeAndSetUser = (token) => {
     if (!token) {
       setUser(null);
-      setIsSideMenuOpen(false); // Закриваємо меню при виході
+      setIsSideMenuOpen(false);
       return;
     }
     try {
@@ -27,7 +20,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem('companyName'); 
         setUser(null);
-        setIsSideMenuOpen(false); // Закриваємо меню при виході
+        setIsSideMenuOpen(false);
         return;
       }
       setUser({
@@ -35,17 +28,14 @@ export const AuthProvider = ({ children }) => {
         role: decodedToken.role || decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'],
         email: decodedToken.email,
         userId: decodedToken.nameid,
-        //companyName: decodedToken.companyName || '' // Припускаємо, що companyName може бути в токені
       });
-      // Можливо, автоматично відкриваємо сайд-меню при успішному логіні
-      // Якщо сайд-меню має бути завжди відкритим для залогінених користувачів
       setIsSideMenuOpen(true); 
     } catch (error) {
       console.error("Помилка розшифровки токена:", error);
       localStorage.removeItem('jwtToken');
       localStorage.removeItem('companyName');
       setUser(null);
-      setIsSideMenuOpen(false); // Закриваємо меню при помилці токена
+      setIsSideMenuOpen(false); 
     }
   };
 
@@ -73,7 +63,6 @@ export const AuthProvider = ({ children }) => {
       ...prevUser,
       companyName: companyName
     }));
-    // Після успішного логіну можна відразу відкрити сайд-меню
     setIsSideMenuOpen(true); 
   };
 
@@ -81,13 +70,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('registeringUserId');
     localStorage.removeItem('companyName');
-    setUser(null); // Це призводить до оновлення `isAuthenticated`
+    setUser(null); 
     setIsSideMenuOpen(false);
-    console.log("AuthContext: logout() викликано."); // <-- Додайте цей лог
-    console.log("AuthContext: user після logout:", null); // <-- І цей лог
+    console.log("AuthContext: logout() викликано."); 
+    console.log("AuthContext: user після logout:", null); 
   };
 
-  const toggleSideMenu = () => { // ДОДАНО: Функція для перемикання стану сайд-меню
+  const toggleSideMenu = () => { 
     setIsSideMenuOpen(prev => !prev);
   };
 
@@ -99,10 +88,10 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     loading,
-    isSideMenuOpen,      // ДОДАНО: Передаємо стан сайд-меню
-    setIsSideMenuOpen,   // ДОДАНО: Передаємо функцію для прямого керування
-    toggleSideMenu       // ДОДАНО: Передаємо функцію для перемикання
-  }), [user, loading, isSideMenuOpen]); // Додаємо isSideMenuOpen до залежностей useMemo
+    isSideMenuOpen,    
+    setIsSideMenuOpen,  
+    toggleSideMenu      
+  }), [user, loading, isSideMenuOpen]); 
 
   return (
     <AuthContext.Provider value={authValue}>

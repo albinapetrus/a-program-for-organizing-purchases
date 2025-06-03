@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import classes from '../customer/Universal.module.css';
 import { GoPaperclip } from "react-icons/go";
-import { IoCloseCircleOutline } from "react-icons/io5"; // Для кнопки закриття модального вікна
+import { IoCloseCircleOutline } from "react-icons/io5"; 
 
 const BACKEND_BASE_URL = 'https://localhost:7078'; 
 
@@ -24,7 +24,7 @@ function OfferCreationPage() {
     const [supplierIban, setSupplierIban] = useState('');
     const [supplierBankName, setSupplierBankName] = useState('');
     
-    const [loading, setLoading] = useState(false); // Використовується для надсилання форми
+    const [loading, setLoading] = useState(false); 
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     
@@ -33,11 +33,9 @@ function OfferCreationPage() {
     const [procurementDetailsError, setProcurementDetailsError] = useState('');
     const [isProcurementOpen, setIsProcurementOpen] = useState(false);
 
-    // --- СТАН ДЛЯ МОДАЛЬНОГО ВІКНА ПІДТВЕРДЖЕННЯ НАДСИЛАННЯ ПРОПОЗИЦІЇ ---
     const [isSubmitConfirmModalOpen, setIsSubmitConfirmModalOpen] = useState(false);
     const [submitConfirmCheckbox, setSubmitConfirmCheckbox] = useState(false);
-    // -----------------------------------------------------------------
-
+ 
     const translateStatus = (status) => {
         if (!status) return 'Невідомо';
         switch (status.toLowerCase()) {
@@ -57,7 +55,7 @@ function OfferCreationPage() {
             setIsProcurementOpen(false);
             return;
         }
-        setProcurementDetailsLoading(true); // Встановлюємо перед запитом
+        setProcurementDetailsLoading(true); 
         try {
             const jwtToken = localStorage.getItem('jwtToken');
             const headers = jwtToken ? { 'Authorization': `Bearer ${jwtToken}` } : {};
@@ -80,7 +78,7 @@ function OfferCreationPage() {
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
-        setError(''); // Скидаємо помилки при будь-якій зміні
+        setError(''); 
         setSuccessMessage('');
 
         if (type === 'file') {
@@ -106,13 +104,11 @@ function OfferCreationPage() {
         }
     };
 
-    // --- ФУНКЦІЯ, ЯКА ВИКЛИКАЄТЬСЯ ПРИ НАТИСКАННІ КНОПКИ "Надіслати пропозицію" ---
     const handleOpenSubmitConfirmModal = (e) => {
-        e.preventDefault(); // Запобігаємо стандартній відправці форми
+        e.preventDefault(); 
         setError('');
         setSuccessMessage('');
 
-        // Валідація перед відкриттям модального вікна
         if (!isProcurementOpen) {
             setError(`Ви не можете подати пропозицію на цю закупівлю, оскільки вона має статус "${procurementDetails ? translateStatus(procurementDetails.status) : 'Неактивна'}".`);
             return;
@@ -149,8 +145,7 @@ function OfferCreationPage() {
             setError('ID закупівлі відсутній. Неможливо створити пропозицію.');
             return;
         }
-        // Якщо вся валідація пройшла, відкриваємо модальне вікно
-        setSubmitConfirmCheckbox(false); // Скидаємо чекбокс
+        setSubmitConfirmCheckbox(false); 
         setIsSubmitConfirmModalOpen(true);
     };
 
@@ -158,15 +153,14 @@ function OfferCreationPage() {
         setIsSubmitConfirmModalOpen(false);
     };
 
-    // --- ФУНКЦІЯ, ЯКА ВИКОНУЄ ФАКТИЧНЕ НАДСИЛАННЯ ПРОПОЗИЦІЇ ПІСЛЯ ПІДТВЕРДЖЕННЯ В МОДАЛЦІ ---
     const handleSubmitOfferConfirmed = async () => {
         if (!submitConfirmCheckbox) {
             alert("Будь ласка, підтвердіть вашу згоду, поставивши галочку.");
             return;
         }
-        closeSubmitConfirmModal(); // Закриваємо модалку підтвердження
+        closeSubmitConfirmModal(); 
 
-        setLoading(true); // Вмикаємо індикатор завантаження для надсилання
+        setLoading(true); 
         setError('');
         setSuccessMessage('');
 
@@ -197,7 +191,6 @@ function OfferCreationPage() {
             });
 
             setSuccessMessage(response.data.message || 'Пропозицію успішно надіслано!');
-            // Скидаємо всі поля форми
             setProposedPrice('');
             setMessage('');
             setOfferDocument(null);
@@ -208,11 +201,9 @@ function OfferCreationPage() {
             setSupplierFullName('');
             setSupplierIban('');
             setSupplierBankName('');
-            if(document.getElementById('offerDocumentFile')) { // Перевірка наявності елемента
+            if(document.getElementById('offerDocumentFile')) { 
                 document.getElementById('offerDocumentFile').value = null;
             }
-            // Можна додати перенаправлення або оновлення деталей закупівлі, якщо потрібно
-            // await fetchProcurementDetails(); // Якщо потрібно оновити статус закупівлі, наприклад
         } catch (err) {
             console.error('Помилка при подачі пропозиції:', err.response ? err.response.data : err.message);
             let errorMessage = 'Не вдалося подати пропозицію. Спробуйте пізніше.';
@@ -240,7 +231,6 @@ function OfferCreationPage() {
 
     return (
         <div className={classes.universal}>
-            {/* Блок деталей закупівлі */}
             <div className={classes.block}>
                 <h1 className={`${classes.label} ${classes.labelBlue}`}>
                     Створити пропозицію для закупівлі: <br/> "{procurementDetails ? procurementDetails.name : 'Завантаження...'}"
@@ -271,16 +261,14 @@ function OfferCreationPage() {
                         </p>
                     </div>
                 ) : null}
-                {!isProcurementOpen && !procurementDetailsLoading && procurementDetails && ( // Показуємо тільки якщо деталі завантажені, але закупівля не відкрита
+                {!isProcurementOpen && !procurementDetailsLoading && procurementDetails && ( 
                     <p style={{ color: 'red', fontWeight: 'bold', marginTop: '1.5em' }}>
                         Ця закупівля має статус "{translateStatus(procurementDetails.status)}", тому пропозиції на неї не приймаються.
                     </p>
                 )}
             </div>
 
-            {/* Форма створення пропозиції */}
             <div style={{paddingLeft:"4em"}}className={classes.block}>
-                {/* Змінено onSubmit форми на handleOpenSubmitConfirmModal */}
                 <form onSubmit={handleOpenSubmitConfirmModal} className={classes.form} style={{background:"white"}}>
                     <h2 style={{background:"white", marginBottom:"0.8em"}}>Заповніть форму пропозиції:</h2>
                     
@@ -327,8 +315,6 @@ function OfferCreationPage() {
                         <GoPaperclip className={classes.icon} /> 
                     </label>
                     <input type="file" id="offerDocumentFile" name="offerDocument" onChange={handleChange} style={{ display: "none" }} disabled={loading || !isProcurementOpen} />
-                    
-                    {/* Кнопка тепер викликає handleOpenSubmitConfirmModal */}
                     <button type="submit" style={{width:"33em", marginLeft:"10em"}} className={classes.submitButton} disabled={loading || !isProcurementOpen} >
                         {loading ? 'Обробка...' : 'Надіслати пропозицію'}
                     </button>
@@ -339,7 +325,6 @@ function OfferCreationPage() {
                 {successMessage && <p style={{ color: 'green', marginTop: '1em' }}>{successMessage}</p>}
             </div>
 
-            {/* --- МОДАЛЬНЕ ВІКНО ПІДТВЕРДЖЕННЯ НАДСИЛАННЯ ПРОПОЗИЦІЇ --- */}
             {isSubmitConfirmModalOpen && (
                 <div className={classes.modalOverlay} onClick={closeSubmitConfirmModal}>
                     <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
@@ -359,22 +344,22 @@ function OfferCreationPage() {
                                 id="submitOfferConfirmCheckbox" 
                                 checked={submitConfirmCheckbox}
                                 onChange={(e) => setSubmitConfirmCheckbox(e.target.checked)}
-                                style={{ all: 'revert', marginRight: '5px' }} // Повертаємо стандартний вигляд чекбокса
+                                style={{ all: 'revert', marginRight: '5px' }} 
                             />
                             <label htmlFor="submitOfferConfirmCheckbox">
                                 Я підтверджую свої зобов'язання.
                             </label>
                         </div>
                         <button 
-                            className={`${classes.submitButton} ${classes.acceptButton}`} // Можна використовувати ті ж стилі, що і для прийняття
+                            className={`${classes.submitButton} ${classes.acceptButton}`} 
                             onClick={handleSubmitOfferConfirmed}
-                            disabled={!submitConfirmCheckbox || loading} // Використовуємо loading
+                            disabled={!submitConfirmCheckbox || loading} 
                             style={{marginRight: '10px'}}
                         >
                             {loading ? 'Надсилання...' : 'Надіслати '}
                         </button>
                         <button 
-                            className={`${classes.submitButton} ${classes.rejectButton}`} // Можна використовувати ті ж стилі, що і для відхилення
+                            className={`${classes.submitButton} ${classes.rejectButton}`} 
                             onClick={closeSubmitConfirmModal}
                             disabled={loading}
                         >
@@ -383,7 +368,6 @@ function OfferCreationPage() {
                     </div>
                 </div>
             )}
-            {/* --------------------------------------------------------------------- */}
         </div>
     );
 }

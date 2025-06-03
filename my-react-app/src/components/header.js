@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import classes from './header.module.css'
 import { Link } from 'react-router-dom'; 
-import App from '../App';
-import News from '../pages/News'
-
 
 export class header extends Component {
   render() {

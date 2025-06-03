@@ -1,4 +1,3 @@
-// MedicineInfo.js
 import React, { Component } from 'react';
 import classes from './categories.module.css'; 
 

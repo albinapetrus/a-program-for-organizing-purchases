@@ -1,9 +1,5 @@
-﻿// Models/DTO/ProcurementDto.cs
-using System;
+﻿using System;
 using UkrainianTraiding.API.Models.Domain.Enums;
-// UkrainianTraiding.API.Models.Domain.Enums; // Цей using, схоже, не потрібен тут,
-// оскільки Status вже string
-
 namespace UkrainianTraiding.Models.DTO
 {
     public class ProcurementDto
@@ -13,23 +9,17 @@ namespace UkrainianTraiding.Models.DTO
         public string? Description { get; set; }
         public string Category { get; set; } = string.Empty;
         public double QuantityOrVolume { get; set; }
-        public decimal EstimatedBudget { get; set; } // Використовуй decimal, як у моделі
+        public decimal EstimatedBudget { get; set; } 
         public DateTime CompletionDate { get; set; }
-        public string? DocumentPaths { get; set; } // Шляхи до документів
-        public DateTime CreatedAt { get; set; } // Дата створення
-        public string Status { get; set; } = string.Empty; // Ініціалізація для non-nullable string
-        public string? CustomerName { get; set; } // Назва компанії замовника
+        public string? DocumentPaths { get; set; }
+        public DateTime CreatedAt { get; set; } 
+        public string Status { get; set; } = string.Empty; 
+        public string? CustomerName { get; set; } 
 
-        // ----- ДОДАНО НОВІ ПОЛЯ -----
         public string? DeliveryAddress { get; set; }
         public string? ContactPhone { get; set; }
 
         public Guid UserId { get; set; }
 
-        
-        // -----------------------------
-
-        // Зазвичай тут НЕ потрібно включати UserId або об'єкт User,
-        // оскільки фронтенд вже знає, що це закупівлі поточного користувача.
     }
 }

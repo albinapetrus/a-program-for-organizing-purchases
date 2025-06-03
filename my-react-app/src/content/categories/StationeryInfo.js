@@ -1,6 +1,5 @@
-// StationeryInfo.js
 import React, { Component } from 'react';
-import classes from './categories.module.css'; // !!! ІМПОРТУЄМО CSS MODULE !!!
+import classes from './categories.module.css';
 
 export class StationeryInfo extends Component {
   render() {

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import classes from './Universal.module.css'; // Переконайся, що шлях правильний
-import { FaBoxes, FaFilePdf, FaPrint, FaInfoCircle } from "react-icons/fa"; // Додали іконки
+import classes from './Universal.module.css';
+import { FaBoxes, FaFilePdf, FaPrint, FaInfoCircle } from "react-icons/fa"; 
 import { IoCloseCircleOutline } from "react-icons/io5";
-// import jsPDF from 'jspdf'; // Розкоментуй, якщо будеш використовувати jspdf
 const BACKEND_BASE_URL = 'https://localhost:7078';
-// ... (translateProcurementStatus, translateOfferStatus - без змін) ...
+
 const translateProcurementStatus = (status) => {
 if (!status) return 'Невідомо';
 switch (status.toLowerCase()) {
@@ -48,15 +47,12 @@ const [isConfirmAcceptModalOpen, setIsConfirmAcceptModalOpen] = useState(false);
 const [offerToConfirm, setOfferToConfirm] = useState(null);
 const [confirmAcceptCheckbox, setConfirmAcceptCheckbox] = useState(false);
 
-// --- НОВИЙ СТАН ДЛЯ МОДАЛЬНОГО ВІКНА З ДЕТАЛЯМИ ПРИЙНЯТОЇ ПРОПОЗИЦІЇ ---
-const [acceptedOfferDetails, setAcceptedOfferDetails] = useState(null); // Тут будуть дані з /api/offers/{id}
+const [acceptedOfferDetails, setAcceptedOfferDetails] = useState(null); 
 const [isAcceptedOfferModalOpen, setIsAcceptedOfferModalOpen] = useState(false);
-const [acceptedOfferLoading, setAcceptedOfferLoading] = useState(false); // Окремий лоадер
+const [acceptedOfferLoading, setAcceptedOfferLoading] = useState(false); 
 const [acceptedOfferError, setAcceptedOfferError] = useState('');
-// ------------------------------------------------------------------------
 
 const fetchInitialData = async () => {
-    // ... (без змін) ...
     setLoading(true);
     setError('');
     setMessage('');
@@ -116,7 +112,6 @@ useEffect(() => {
 }, [navigate, urlProcurementId]);
 
 useEffect(() => {
-    // ... (без змін) ...
     if (!selectedProcurementId) {
         setDisplayedOffers(allOffers);
         setMessage(allOffers.length === 0 && !loading && !error ? 'У вас ще немає пропозицій до ваших закупівель.' : '');
@@ -128,25 +123,21 @@ useEffect(() => {
 }, [selectedProcurementId, allOffers, loading, error]);
 
 const handleProcurementSelectChange = (e) => {
-    // ... (без змін) ...
     const newProcurementId = e.target.value;
     setSelectedProcurementId(newProcurementId);
 };
 
 const openConfirmAcceptModal = (offer) => {
-    // ... (без змін) ...
     setOfferToConfirm(offer);
     setConfirmAcceptCheckbox(false);
     setIsConfirmAcceptModalOpen(true);
 };
 
 const closeConfirmAcceptModal = () => {
-    // ... (без змін) ...
     setIsConfirmAcceptModalOpen(false);
     setOfferToConfirm(null);
 };
 
-// --- НОВА ФУНКЦІЯ ДЛЯ ВІДКРИТТЯ МОДАЛЬНОГО ВІКНА З ДЕТАЛЯМИ ПРИЙНЯТОЇ ПРОПОЗИЦІЇ ---
 const openAcceptedOfferDetailsModal = async (offerId) => {
     setIsAcceptedOfferModalOpen(true);
     setAcceptedOfferLoading(true);
@@ -160,7 +151,6 @@ const openAcceptedOfferDetailsModal = async (offerId) => {
         return;
     }
     try {
-        // Запит на отримання повних деталей пропозиції, включаючи реквізити
         const response = await axios.get(`${BACKEND_BASE_URL}/api/offers/${offerId}`, {
             headers: { 'Authorization': `Bearer ${jwtToken}` }
         });
@@ -178,7 +168,6 @@ const closeAcceptedOfferModal = () => {
     setAcceptedOfferDetails(null);
     setAcceptedOfferError('');
 };
-// ----------------------------------------------------------------------------
 
 const handleAcceptOfferConfirmed = async () => {
     if (!confirmAcceptCheckbox || !offerToConfirm) {
@@ -186,7 +175,7 @@ const handleAcceptOfferConfirmed = async () => {
         return;
     }
     
-    const offerIdToAccept = offerToConfirm.id; // Зберігаємо ID перед закриттям модалки
+    const offerIdToAccept = offerToConfirm.id; 
     closeConfirmAcceptModal(); 
     
     setActionFeedback('');
@@ -198,9 +187,8 @@ const handleAcceptOfferConfirmed = async () => {
             headers: { 'Authorization': `Bearer ${jwtToken}` }
         });
         setActionFeedback(response.data.message || 'Пропозицію успішно прийнято!');
-        await fetchInitialData(); // Оновлюємо списки на сторінці
-        
-        // Відкриваємо модальне вікно з деталями прийнятої пропозиції (реквізити)
+        await fetchInitialData(); 
+      
         openAcceptedOfferDetailsModal(offerIdToAccept);
 
     } catch (err) {
@@ -218,7 +206,7 @@ const handleAcceptOfferConfirmed = async () => {
 };
 
 const handleAcceptOfferClick = (offerId) => {
-    // ... (без змін) ...
+ 
     const offer = displayedOffers.find(o => o.id === offerId);
     if (offer) {
         openConfirmAcceptModal(offer);
@@ -226,7 +214,7 @@ const handleAcceptOfferClick = (offerId) => {
 };
 
 const handleRejectOffer = async (offerId) => {
-    // ... (без змін) ...
+ 
     setActionFeedback('');
     setActionLoading(true);
     const jwtToken = localStorage.getItem('jwtToken');
@@ -251,7 +239,7 @@ const handleRejectOffer = async (offerId) => {
 };
 
 const openDetailModal = async (procurementIdToLoad) => {
-    // ... (без змін) ...
+ 
     if (!procurementIdToLoad) {
         console.warn("Procurement ID is undefined, cannot open modal.");
         return;
@@ -280,38 +268,25 @@ const openDetailModal = async (procurementIdToLoad) => {
 };
 
 const closeDetailModal = () => {
-    // ... (без змін) ...
+ 
     setIsDetailModalOpen(false);
     setSelectedProcurementForDetail(null);
     setModalDetailError('');
 };
 
-// --- Функції для договору (поки що заглушки) ---
- const generateContractText = (offer, procurement, customer /* Доданий customer для гнучкості */) => {
-        // Якщо currentCustomerDetails передано і має дані, використовуємо їх, інакше - дані з procurement або заглушки
+ const generateContractText = (offer, procurement, customer ) => {
         const customerName = customer?.companyName || customer?.fullName || procurement?.customerName || "ЗАМОВНИК (Назва не вказана)";
-        const customerEdrpou = customer?.edrpou || "ЄДРПОУ ЗАМОВНИКА (не вказано)";
         const customerRepresentative = customer?.representativeName || customerName; 
         const customerBasis = customer?.basisOfActivity || "Статуту"; 
-        const customerLegalAddress = customer?.legalAddress || "не вказано";
-        const customerIpn = customer?.ipn || "не є платником ПДВ";
-        const customerIban = customer?.iban || "не вказано";
-        const customerBankName = customer?.bankName || "не вказано";
         const customerPhone = customer?.phoneNumber || procurement?.contactPhone || "не вказано";
-        const customerEmail = customer?.email || "не вказано";
-
-        // Дані Постачальника беруться з `offer`
         const supplierFullName = offer?.supplierFullName || "Постачальник (ПІБ не вказано)";
         const supplierPaymentEdrpou = offer?.paymentEdrpou || "не вказано";
         const supplierPaymentIpn = offer?.paymentIpn || "не є платником ПДВ";
         const supplierIban = offer?.supplierIban || "не вказано";
         const supplierBankName = offer?.supplierBankName || "не вказано";
         const supplierContactPhone = offer?.supplierContactPhone || "не вказано";
-        // Ці поля мають бути в `offer` (тобто `acceptedOfferDetails`), якщо ти їх хочеш бачити
         const supplierRepresentative = offer?.supplierRepresentativeName || supplierFullName; 
-        const supplierBasis = offer?.supplierBasisOfActivity || "Статуту"; 
         const supplierLegalAddress = offer?.supplierLegalAddress || "не вказано"; 
-        const supplierEmail = offer?.supplierEmail || "не вказано"; 
 
         const today = new Date().toLocaleDateString('uk-UA');
         const deliveryDate = offer?.proposedDeliveryDate ? new Date(offer.proposedDeliveryDate).toLocaleDateString('uk-UA') : 'не вказано';
@@ -326,7 +301,6 @@ const closeDetailModal = () => {
         };
         const priceInWords = numberToWordsUSD(offer?.proposedPrice);
 
-    // Твій шаблон договору
     return `ДОГОВІР ПОСТАВКИ № ${offerIdShort}-${procurementIdShort}
 м. Київ                                                                                                   "${today}"
 
@@ -376,31 +350,21 @@ ${customerName}                                ${supplierFullName}
 `;
     };
 
-    // --- ОНОВЛЕНА ФУНКЦІЯ ВІДОБРАЖЕННЯ ДОГОВОРУ ---
     const handleViewContract = () => {
-        // Перевірка, чи завантажені деталі прийнятої пропозиції
         if (!acceptedOfferDetails) {
             alert("Деталі пропозиції не завантажені. Будь ласка, відкрийте спочатку 'Реквізити та Інформація'.");
             return;
         }
-        
-        // Знаходимо відповідну закупівлю для договору
+
         const relatedProcurement = 
             customerProcurements.find(p => p.id === acceptedOfferDetails.procurementId) || 
             (selectedProcurementForDetail && selectedProcurementForDetail.id === acceptedOfferDetails.procurementId ? selectedProcurementForDetail : null);
 
         if (!relatedProcurement) {
             alert("Не вдалося знайти деталі закупівлі для договору. Спробуйте спочатку відкрити деталі закупівлі (клік на назву пропозиції).");
-            // Якщо потрібно, тут можна додати логіку асинхронного завантаження деталей закупівлі
-            // await openDetailModal(acceptedOfferDetails.procurementId);
-            // і потім викликати handleViewContract знову, але це ускладнить потік.
             return;
         }
-        
-        // Оскільки ти просив НЕ змінювати логіку отримання даних Замовника,
-        // ми передаємо `relatedProcurement` (який може містити `customerName` та інші поля з бекенду)
-        // та `currentCustomerDetails` (який може бути null, якщо fetchCurrentCustomerDetails не реалізовано/не працює).
-        // Функція generateContractText сама вирішить, які дані використовувати.
+
         const contractText = generateContractText(acceptedOfferDetails, relatedProcurement);
         
         const contractWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
@@ -497,23 +461,19 @@ ${customerName}                                ${supplierFullName}
             `);
             contractWindow.document.write('</head><body>');
             contractWindow.document.write('<div class="contract-page-container"><div class="contract-a4-sheet">');
-            // Видаляємо рядок "Use code with caution." якщо він є на початку
-            // та "ЗАМОВНИК:" якщо він йде одразу після шапки, бо ЗАМОВНИК вже є в тексті
             let actualContractText = contractText;
             if (actualContractText.trim().startsWith("Use code with caution.")) {
                  actualContractText = actualContractText.substring(actualContractText.indexOf("ДОГОВІР ПОСТАВКИ"));
             }
-            // Ця частина для видалення дублюючого "ЗАМОВНИК:" може бути не ідеальною,
-            // краще виправити шаблон generateContractText, щоб він не генерував його двічі
+
             const contractBodyStartIndex = actualContractText.indexOf("м. Київ");
             if (contractBodyStartIndex !== -1) {
                 const header = actualContractText.substring(0, contractBodyStartIndex);
                 let body = actualContractText.substring(contractBodyStartIndex);
                 if (body.trim().startsWith("ЗАМОВНИК:")) {
                     body = body.substring(body.indexOf("ЗАМОВНИК:") + "ЗАМОВНИК:".length).trimStart();
-                    body = `ЗАМОВНИК:${body}`; // Повертаємо один раз
+                    body = `ЗАМОВНИК:${body}`; 
                 }
-                 // Видаляємо повторювані заголовки, якщо вони є
                 const mainHeader = "ДОГОВІР ПОСТАВКИ №";
                 const firstOccurrence = actualContractText.indexOf(mainHeader);
                 if (firstOccurrence !== -1) {
@@ -544,12 +504,10 @@ ${customerName}                                ${supplierFullName}
         }
     };
 
-// ---------------------------------------------
 
 return (
     <div className={classes.universal}>
         <div className={classes.block}>
-            {/* ... (Заголовок та фільтр без змін) ... */}
             <h1 className={`${classes.label} ${classes.labelBlue}`}>
                 <FaBoxes className={classes.icon} /> Пропозиції до моїх закупівель
             </h1>
@@ -609,19 +567,17 @@ return (
                                 <p><strong>Статус закупівлі: </strong> <span style={{ fontWeight: 'bold', color: (procurementStatus && procurementStatus.toLowerCase() === 'open') ? 'blue' : (procurementStatus && procurementStatus.toLowerCase() === 'fulfilled') ? 'green' : 'red' }}>
                                     {translateProcurementStatus(procurementStatus)}</span>
                                 </p>
-                                
-                                {/* КНОПКИ ДІЙ */}
+
                                 {offer.status === 'Submitted' && (
                                     <div className={classes.offerActions}>
                                         <button className={`${classes.submitButton} ${classes.acceptButton}`} onClick={() => handleAcceptOfferClick(offer.id)} disabled={actionLoading || loading}>Прийняти</button>
                                         <button className={`${classes.submitButton} ${classes.rejectButton}`} onClick={() => handleRejectOffer(offer.id)} disabled={actionLoading || loading}>Відхилити</button>
                                     </div>
                                 )}
-                                {/* КНОПКИ ДЛЯ ПРИЙНЯТОЇ ПРОПОЗИЦІЇ */}
                                 {offer.status === 'Accepted' && (
                                     <div className={classes.offerActions} style={{marginTop: '10px'}}>
                                         <button 
-                                            className={classes.detailsButton} // Використовуй або створи схожий стиль
+                                            className={classes.detailsButton} 
                                             onClick={() => openAcceptedOfferDetailsModal(offer.id)}
                                             style={{ paddingLeft:"0.5em", paddingRight:"0.5em" , width:"40em"}}
                                         >
@@ -638,8 +594,7 @@ return (
             )}
         </div>
 
-        {/* Модальне вікно ДЕТАЛЕЙ ЗАКУПІВЛІ (яке вже було) */}
-        {isDetailModalOpen && ( /* ... без змін ... */ 
+        {isDetailModalOpen && (
             <div className={classes.modalOverlay} onClick={closeDetailModal}> 
                 <div className={classes.modalContent} onClick={e => e.stopPropagation()}> 
                     <button className={classes.modalCloseButton} onClick={closeDetailModal}>
@@ -667,8 +622,7 @@ return (
             </div>
         )}
 
-        {/* Модальне вікно ПІДТВЕРДЖЕННЯ прийняття пропозиції (без змін) */}
-        {isConfirmAcceptModalOpen && offerToConfirm && ( /* ... без змін ... */ 
+        {isConfirmAcceptModalOpen && offerToConfirm && ( 
              <div className={classes.modalOverlay} onClick={closeConfirmAcceptModal}>
                 <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
                     <button className={classes.modalCloseButton} onClick={closeConfirmAcceptModal}>
@@ -715,7 +669,6 @@ return (
             </div>
         )}
 
-        {/* --- НОВЕ МОДАЛЬНЕ ВІКНО З ДЕТАЛЯМИ ПРИЙНЯТОЇ ПРОПОЗИЦІЇ (РЕКВІЗИТИ І ДОГОВІР) --- */}
         {isAcceptedOfferModalOpen && acceptedOfferDetails && (
             <div className={classes.modalOverlay} onClick={closeAcceptedOfferModal}>
                 <div className={classes.modalContent} style={{maxWidth: '750px', maxHeight: '80vh', overflowY: 'auto'}} onClick={e => e.stopPropagation()}>
@@ -727,9 +680,6 @@ return (
                     <h4>Інформація про постачальника:</h4>
                     <p><strong>Постачальник (ФОП/ТОВ):</strong> {acceptedOfferDetails.supplierFullName || acceptedOfferDetails.supplierCompanyName || 'N/A'}</p>
                     <p><strong>Контактний телефон:</strong> {acceptedOfferDetails.supplierContactPhone}</p>
-                    {/* Потрібно додати Email постачальника в OfferDetailsDto та отримати його з User на бекенді */}
-                    {/* <p><strong>Email:</strong> {acceptedOfferDetails.supplierEmail || 'Не вказано'}</p> */}
-
                     <h4 style={{marginTop: '1em'}}>Платіжні реквізити:</h4>
                     <p><strong>ЄДРПОУ/РНОКПП:</strong> {acceptedOfferDetails.paymentEdrpou}</p>
                     {acceptedOfferDetails.paymentIpn && <p><strong>ІПН:</strong> {acceptedOfferDetails.paymentIpn}</p>}
@@ -745,7 +695,7 @@ return (
                     <div className={classes.offerActions} style={{ marginTop: '1.5em', justifyContent: 'center' }}>
                        
                         <button 
-                            className={classes.detailsButton} // Використовуй або створи схожий стиль
+                            className={classes.detailsButton} 
                             onClick={handleViewContract}
                             title="Сформувати та переглянути договір"
                             style={{ paddingLeft:"0.5em", paddingRight:"0.5em"}}
@@ -756,7 +706,6 @@ return (
                 </div>
             </div>
         )}
-        {/* --------------------------------------------------------------------------- */}
 
     </div>
 );

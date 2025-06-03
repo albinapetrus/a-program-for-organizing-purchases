@@ -1,5 +1,4 @@
-﻿// Models/DTOs/UpdateCompanyNameRequest.cs
-namespace UkrainianTraiding.Models.DTOs 
+﻿namespace UkrainianTraiding.Models.DTOs 
 {
     public class UpdateCompanyNameRequest
     {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import classes from './Universal.module.css'; // Переконайтеся, що шлях правильний
+import classes from './Universal.module.css'; 
 import { IoPersonSharp } from "react-icons/io5";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext'; // Переконайтеся, що шлях правильний
+import { AuthContext } from '../context/AuthContext'; 
 import { CiCircleCheck } from "react-icons/ci";
 import { CiCircleRemove } from "react-icons/ci";
 
@@ -192,7 +192,6 @@ export class CabinetCustComponent extends Component {
                                 <p style={{ fontWeight: "bold" }}>
                                     Назва компанії: {" "}
                                     {isEditingCompanyName ? (
-                                        // <<-- ПОЛЕ ВВЕДЕННЯ В РЕЖИМІ РЕДАГУВАННЯ та КНОПКИ ОБ'ЄДНАНІ В ОДИН БЛОК
                                         <div className={classes.companyNameEditGroup}>
                                             <input
                                                 type="text"
@@ -204,7 +203,6 @@ export class CabinetCustComponent extends Component {
                                             <button onClick={this.handleCancelEdit} className={classes.buttonCancel}><CiCircleRemove style={{color:"red", background:"white", fontSize:"1.5em"}}/></button>
                                         </div>
                                     ) : (
-                                        // <<-- ЗВИЧАЙНИЙ ТЕКСТ, КОЛИ НЕ РЕДАГУЄМО
                                         <span style={{ color: "orange" }}>{companyName}</span>
                                     )}
                                 </p>
@@ -218,8 +216,6 @@ export class CabinetCustComponent extends Component {
                         )}
                     </div>
                 </div>
-
-                {/* Умовне відображення кнопок залежно від ролі */}
                 {role === 'customer' && (
                     <>
                         <div className={classes.help2}>

@@ -1,11 +1,10 @@
-﻿// Controllers/ProcurementsController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UkrainianTraiding.API.Data;
-using UkrainianTraiding.Models.DTO; // Правильний простір імен для ProcurementDto
+using UkrainianTraiding.Models.DTO; 
 using UkrainianTraiding.API.Models.Domain;
 using System.Security.Claims;
-using Microsoft.EntityFrameworkCore; // Потрібно для .Include()
+using Microsoft.EntityFrameworkCore; 
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading.Tasks;
@@ -115,7 +114,7 @@ public class ProcurementsController : ControllerBase
 
         var userProcurements = await _context.Procurements
             .Where(p => p.UserId == userId)
-            .Include(p => p.User) // Додано Include для завантаження User
+            .Include(p => p.User) 
             .OrderByDescending(p => p.CreatedAt)
             .Select(p => new ProcurementDto
             {
@@ -131,7 +130,6 @@ public class ProcurementsController : ControllerBase
                 ContactPhone = p.ContactPhone,
                 CreatedAt = p.CreatedAt,
                 Status = p.Status.ToString(),
-                // Маппінг CustomerName (або CompanyName) з пов'язаного User
                 CustomerName = p.User != null ? p.User.CompanyName : "Невідомий замовник"
             })
             .ToListAsync();
@@ -140,11 +138,11 @@ public class ProcurementsController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize(Roles = "supplier")] // Якщо постачальникам теж треба бачити ім'я замовника
+    [Authorize(Roles = "supplier")] 
     public async Task<IActionResult> GetAllProcurements()
     {
         var allProcurements = await _context.Procurements
-            .Include(p => p.User) // Додано Include для завантаження User
+            .Include(p => p.User) 
             .OrderByDescending(p => p.CreatedAt)
             .Select(p => new ProcurementDto
             {
@@ -156,11 +154,10 @@ public class ProcurementsController : ControllerBase
                 EstimatedBudget = p.EstimatedBudget,
                 CompletionDate = p.CompletionDate,
                 DocumentPaths = p.DocumentPaths,
-                DeliveryAddress = p.DeliveryAddress, // Додав, якщо потрібно
-                ContactPhone = p.ContactPhone,     // Додав, якщо потрібно
+                DeliveryAddress = p.DeliveryAddress, 
+                ContactPhone = p.ContactPhone,     
                 CreatedAt = p.CreatedAt,
                 Status = p.Status.ToString(),
-                // Маппінг CustomerName (або CompanyName) з пов'язаного User
                 CustomerName = p.User != null ? p.User.CompanyName : "Інформація про замовника відсутня"
             })
             .ToListAsync();
@@ -169,7 +166,7 @@ public class ProcurementsController : ControllerBase
     }
 
     [HttpGet("search")]
-    [AllowAnonymous] // Якщо пошук доступний для всіх, інакше [Authorize] або [Authorize(Roles="supplier")]
+    [AllowAnonymous] 
     public async Task<IActionResult> SearchProcurements(
        [FromQuery] string? name,
        [FromQuery] string? category)
@@ -177,7 +174,7 @@ public class ProcurementsController : ControllerBase
         try
         {
             IQueryable<Procurement> query = _context.Procurements
-                                                .Include(p => p.User); // Додано Include
+                                                .Include(p => p.User); 
 
             query = query.Where(p => p.Status == ProcurementStatus.Open);
 
@@ -211,24 +208,23 @@ public class ProcurementsController : ControllerBase
                 })
                 .ToListAsync();
 
-            return Ok(procurementsDto); // Повертаємо список, навіть якщо він порожній
+            return Ok(procurementsDto); 
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error in SearchProcurements: {ex.ToString()}"); // Логування помилки
+            Console.WriteLine($"Error in SearchProcurements: {ex.ToString()}"); 
             return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при пошуку закупівель.", details = ex.Message });
         }
     }
 
     [HttpGet("{id}")]
-    // [AllowAnonymous] // Якщо деталі закупівлі можуть переглядати всі
     public async Task<IActionResult> GetProcurementById(Guid id)
     {
         try
         {
-            var procurementDto = await _context.Procurements // Змінив назву змінної
+            var procurementDto = await _context.Procurements 
                 .Where(p => p.Id == id)
-                .Include(p => p.User) // Додано Include для завантаження User
+                .Include(p => p.User) 
                 .Select(p => new ProcurementDto
                 {
                     Id = p.Id,
@@ -243,7 +239,6 @@ public class ProcurementsController : ControllerBase
                     ContactPhone = p.ContactPhone,
                     CreatedAt = p.CreatedAt,
                     Status = p.Status.ToString(),
-                    // Маппінг CustomerName (або CompanyName) з пов'язаного User
                     CustomerName = p.User != null ? p.User.CompanyName : "Інформація про замовника відсутня"
                 })
                 .FirstOrDefaultAsync();
@@ -257,8 +252,67 @@ public class ProcurementsController : ControllerBase
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error in GetProcurementById: {ex.ToString()}"); // Логування помилки
+            Console.WriteLine($"Error in GetProcurementById: {ex.ToString()}");
             return StatusCode(500, new { message = "Виникла внутрішня помилка сервера при отриманні закупівлі.", details = ex.Message });
         }
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> DeleteProcurement(Guid id)
+    {
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
+        {
+            return Unauthorized("Не вдалося ідентифікувати користувача.");
+        }
+
+        var procurementToDelete = await _context.Procurements.FindAsync(id);
+
+        if (procurementToDelete == null)
+        {
+            return NotFound(new { message = "Закупівлю не знайдено." });
+        }
+
+        if (procurementToDelete.UserId != userId)
+        {
+            return Forbid("Ви не маєте дозволу на видалення цієї закупівлі.");
+        }
+
+        if (procurementToDelete.Status == ProcurementStatus.Fulfilled)
+        {
+            return BadRequest(new { message = "Завершені закупівлі не можуть бути видалені." });
+        }
+
+        if (!string.IsNullOrEmpty(procurementToDelete.DocumentPaths))
+        {
+            try
+            {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, procurementToDelete.DocumentPaths.TrimStart('/'));
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Помилка при видаленні файлу документа: {ex.Message}");
+            }
+        }
+
+
+        var relatedOffers = await _context.Offers
+            .Where(o => o.ProcurementId == id)
+            .ToListAsync();
+
+        foreach (var offer in relatedOffers)
+        {
+            offer.Status = OfferStatus.Rejected;
+        }
+
+        _context.Procurements.Remove(procurementToDelete);
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = "Закупівлю успішно видалено." });
     }
 }

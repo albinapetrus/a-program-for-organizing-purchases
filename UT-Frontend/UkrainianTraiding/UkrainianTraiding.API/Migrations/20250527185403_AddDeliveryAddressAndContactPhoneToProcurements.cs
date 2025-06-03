@@ -4,10 +4,8 @@
 
 namespace UkrainianTraiding.API.Migrations
 {
-    /// <inheritdoc />
     public partial class AddDeliveryAddressAndContactPhoneToProcurements : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
@@ -25,7 +23,6 @@ namespace UkrainianTraiding.API.Migrations
                 nullable: true);
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(

@@ -10,6 +10,10 @@ axios.defaults.baseURL = 'https://localhost:7078';
 export class NewOne extends Component {
     constructor(props) {
         super(props);
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+
         this.state = {
             name: '',
             description: '',
@@ -18,11 +22,12 @@ export class NewOne extends Component {
             estimatedBudget: '',
             completionDate: '',
             supportingDocument: null,
-            deliveryAddress: '', // Нове поле
-            contactPhone: '',    // Нове поле
+            deliveryAddress: '',
+            contactPhone: '',
             error: '',
             loading: false,
             successMessage: '',
+            minCompletionDate: minDate, 
         };
     }
 
@@ -40,31 +45,34 @@ export class NewOne extends Component {
         e.preventDefault();
         const {
             name, description, category, quantityOrVolume, estimatedBudget, completionDate,
-            supportingDocument, deliveryAddress, contactPhone // Додали нові поля
+            supportingDocument, deliveryAddress, contactPhone, minCompletionDate
         } = this.state;
 
-        // Оновлена валідація, додайте перевірку нових полів, якщо вони обов'язкові
         if (!name || !category || quantityOrVolume === '' || estimatedBudget === '' || !completionDate) {
             this.setState({ error: "Будь ласка, заповніть всі обов'язкові поля." });
             return;
         }
-        // Приклад: Валідація для адреси доставки та телефону (якщо вони обов'язкові)
-        // if (!deliveryAddress) {
-        //     this.setState({ error: 'Будь ласка, вкажіть адресу доставки.' });
-        //     return;
-        // }
-        // if (!contactPhone) {
-        //     this.setState({ error: 'Будь ласка, вкажіть контактний номер телефону.' });
-        //     return;
-        // }
 
-        // Базова валідація формату телефону (можна покращити регулярний вираз)
-        const phoneRegex = /^\+?[0-9\s\(\)-]{10,18}$/; // Дозволяє + ( ) - та цифри, довжина 10-18
+        // Валідація дати завершення
+        if (completionDate) {
+            const selectedDate = new Date(completionDate);
+            const tomorrow = new Date(minCompletionDate); 
+            selectedDate.setHours(0, 0, 0, 0);
+            tomorrow.setHours(0, 0, 0, 0);
+
+
+            if (selectedDate < tomorrow) {
+                this.setState({ error: 'Дата завершення закупівлі не може бути раніше ніж завтра.' });
+                return;
+            }
+        }
+
+
+        const phoneRegex = /^\+?[0-9\s\(\)-]{10,18}$/;
         if (contactPhone && !phoneRegex.test(contactPhone)) {
              this.setState({ error: 'Некоректний формат номеру телефону. Введіть у форматі +380XXXXXXXXX або 0XXXXXXXXX.' });
              return;
         }
-
 
         if (parseFloat(quantityOrVolume) <= 0) {
             this.setState({ error: 'Кількість/Обсяг має бути більше нуля.' });
@@ -87,7 +95,6 @@ export class NewOne extends Component {
         if (completionDate) {
             formData.append('CompletionDate', completionDate);
         }
-        // Додаємо нові поля до FormData
         formData.append('DeliveryAddress', deliveryAddress);
         formData.append('ContactPhone', contactPhone);
 
@@ -122,8 +129,8 @@ export class NewOne extends Component {
                 estimatedBudget: '',
                 completionDate: '',
                 supportingDocument: null,
-                deliveryAddress: '', // Очищуємо нові поля
-                contactPhone: '',    // Очищуємо нові поля
+                deliveryAddress: '',
+                contactPhone: '',
             });
 
         } catch (error) {
@@ -159,8 +166,8 @@ export class NewOne extends Component {
     render() {
         const {
             name, description, category, quantityOrVolume, estimatedBudget, completionDate,
-            supportingDocument, deliveryAddress, contactPhone, // Деструктуризуємо нові поля
-            error, loading, successMessage
+            supportingDocument, deliveryAddress, contactPhone,
+            error, loading, successMessage, minCompletionDate 
         } = this.state;
 
         return (
@@ -180,18 +187,17 @@ export class NewOne extends Component {
                     />
 
                     <label htmlFor="purch_desc">Опис закупівлі:</label>
-                    <textarea // Змінив input на textarea для опису, це більш логічно
+                    <textarea
                         id="purch_desc"
                         placeholder="Тендер на закупівлю нових або в хорошому стані ....."
                         name="description"
                         value={description}
                         onChange={this.handleChange}
-                        rows={4} // Додано атрибут для висоти textarea
+                        rows={4}
                         style={{width:"70%", marginBottom:"1em"}}
                         required
                     />
 
-                    {/* НОВЕ ПОЛЕ: Адреса доставки */}
                     <label htmlFor="delivery_address">Адрес доставки:</label>
                     <textarea
                         id="delivery_address"
@@ -202,21 +208,19 @@ export class NewOne extends Component {
                         rows={3}
                         style={{width:"70%", marginBottom:"1em"}}
                         required
-                        
                     />
 
-                    {/* НОВЕ ПОЛЕ: Контактний номер телефону */}
                     <label htmlFor="contact_phone">Контактний номер телефону:</label>
                     <input
-                        type="tel" // Спеціальний тип для телефонів, дає кращу UX на мобільних
+                        type="tel"
                         id="contact_phone"
                         placeholder="+380 XX XXX XX XX"
                         name="contactPhone"
                         value={contactPhone}
                         onChange={this.handleChange}
                          style={{width:"70%", background:"rgb(243, 243, 247)", color:"black", border:"1px solid gray", height:"2em", marginBottom:"1em", paddingLeft:"0.5em"}}
-                         required // Якщо поле обов'язкове
-                         pattern="^\+?[0-9\s\(\)-]{10,18}$" // Можна додати патерн для HTML5 валідації
+                         required
+                         pattern="^\+?[0-9\s\(\)-]{10,18}$"
                     />
 
 
@@ -228,7 +232,7 @@ export class NewOne extends Component {
                         name="supportingDocument"
                         onChange={this.handleChange}
                         style={{ display: "none" }}
-                        required
+
                     />
                     {supportingDocument && <p>Обрано файл: {supportingDocument.name}</p>}
 
@@ -271,7 +275,8 @@ export class NewOne extends Component {
                             onChange={this.handleChange}
                             required
                             style={{ marginRight: "1em", marginLeft: "0.5em", height: "2em", width: "15%" }}
-                            min="0"
+                            min="0.01" 
+                            step="any"  
                         />
 
                         <label>Орієнтовний бюджет($)</label>
@@ -283,7 +288,8 @@ export class NewOne extends Component {
                             onChange={this.handleChange}
                             required
                             style={{ marginLeft: "0.5em", height: "2em", width: "15%" }}
-                            min="0"
+                            min="0.01" 
+                            step="any"  
                         />
                     </div>
 
@@ -296,6 +302,7 @@ export class NewOne extends Component {
                             value={completionDate}
                             onChange={this.handleChange}
                             required
+                            min={minCompletionDate} 
                         />
                     </div>
 

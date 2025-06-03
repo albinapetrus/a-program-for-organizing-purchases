@@ -4,10 +4,8 @@
 
 namespace UkrainianTraiding.API.Migrations
 {
-    /// <inheritdoc />
     public partial class Allowingnulltouserfields : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
@@ -42,8 +40,6 @@ namespace UkrainianTraiding.API.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
         }
-
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(

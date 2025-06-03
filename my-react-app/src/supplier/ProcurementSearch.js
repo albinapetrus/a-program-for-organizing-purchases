@@ -4,7 +4,6 @@ import classes from '../customer/Universal.module.css';
 import { IoSearchOutline } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 
-// Додано базовий URL бекенду
 const BACKEND_BASE_URL = 'https://localhost:7078';
 
 function ProcurementSearch() {
@@ -62,7 +61,6 @@ function ProcurementSearch() {
             setError('Не вдалося виконати пошук закупівель. Спробуйте пізніше.');
             if (err.response && err.response.status === 401) {
                 setError('Ви не авторизовані для перегляду закупівель. Будь ласка, увійдіть.');
-                // navigate('/form'); // Закоментовано, щоб не перенаправляти автоматично
             }
         } finally {
             setLoading(false);
@@ -79,7 +77,6 @@ function ProcurementSearch() {
 
     return (
         <div className={classes.universal}>
-            {/* Блок 1: Заголовок та форма пошуку */}
             <div className={classes.block}>
                 <h1 className={`${classes.label} ${classes.labelBlue}`}>
                     <IoSearchOutline className={classes.icon} />Пошук закупівель
@@ -124,9 +121,8 @@ function ProcurementSearch() {
                         </button>
                     </div>
                 </form>
-            </div> {/* Кінець Блоку 1 */}
+            </div> 
 
-            {/* Блок 2: Повідомлення про помилки/успіх (якщо є) */}
             {(error || message) && (
                 <div className={classes.block} style={{ marginTop: '1em' }}>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -134,7 +130,6 @@ function ProcurementSearch() {
                 </div>
             )}
 
-            {/* Блок 3: Відображення результатів пошуку */}
             {procurements.length > 0 && (
                 <div className={classes.block} style={{ marginTop: '1em' }}>
                     <div className={classes.resultsContainer}>
@@ -158,7 +153,6 @@ function ProcurementSearch() {
                                     {procurement.documentPaths && (
                                         <p>
                                             <strong>Документ: </strong>
-                                            {/* Змінено тут: додано BACKEND_BASE_URL */}
                                             <a href={`${BACKEND_BASE_URL}${procurement.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a>
                                         </p>
                                     )}

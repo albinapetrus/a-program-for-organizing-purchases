@@ -1,10 +1,6 @@
-// src/App.js
-
-import React from 'react'; // Обов'язково імпортувати React
+import React from 'react'; 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import classes from "./index.module.css";
-
-// Імпорти ваших компонентів (не обрізаю їх)
 import Header from "./components/header";
 import MyOffersPage from './supplier/MyOffersPage';
 import Section1 from "./components/section1";
@@ -27,7 +23,7 @@ import Form from "./components/form";
 import Auth2 from "./components/auth2";
 import Auth3 from "./components/auth3";
 import Auth4 from "./components/auth4";
-import SideMenu from "./inner/SideMenu"; // Шлях до SideMenu
+import SideMenu from "./inner/SideMenu"; 
 import NewOne from "./customer/newOne";
 import CabinetCust from "./customer/cabinetCust";
 import ProcurementInfo from "./content/ProcurementInfo"
@@ -55,42 +51,28 @@ import ResearchInfo from "./content/categories/ResearchInfo";
 import VariousInfo from "./content/categories/VariousInfo";
 import ResponsiveTextBlock from "./content/categories/ResponsiveTextBlock";
 import ProcurementSearch from "./supplier/ProcurementSearch";
-// !!! Обов'язково імпортуйте AuthProvider та useAuth !!!
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-
-// Це компонент, який містить основний вміст вашого додатку.
-// Він обгорнутий у <AuthProvider>, тому може використовувати useAuth().
 function AppContent() {
-  // Отримуємо стан автентифікації з AuthContext
- const { isAuthenticated, loading, user } = useAuth(); // Додайте 'user' для дебагу
+ const { isAuthenticated, loading, user } = useAuth();
   console.log("AppContent: рендер. isAuthenticated:", isAuthenticated, "loading:", loading, "user:", user); 
-  // Логіка умовного рендерингу для Header/Footer та SideMenu
-  // Header та Footer відображаються, якщо користувач НЕ автентифікований
   const showHeaderFooter = !isAuthenticated;
-  // SideMenu відображається, якщо користувач АВТЕНТИФІКОВАНИЙ
-  const showSideMenu = isAuthenticated; // Можна додати && !loading, якщо SideMenu має чекати завантаження
+  const showSideMenu = isAuthenticated; 
 
-  // Якщо дані контексту ще завантажуються, або якщо ви хочете
-  // приховати весь UI до визначення статусу
   if (loading) {
     return (
       <div className={classes.loadingScreen}>
         <p>Завантаження даних...</p>
-        {/* Можливо, тут якийсь спінер */}
       </div>
     );
   }
 
   return (
     <div className={classes.render}>
-      {/* Рендеримо Header, якщо showHeaderFooter є true */}
       {showHeaderFooter && <Header />}
 
-      {/* Рендеримо SideMenu, якщо showSideMenu є true */}
       {showSideMenu && <SideMenu />}
 
-      {/* Основний вміст маршрутів */}
       <Routes>
         <Route path="/" element={
           <>
@@ -98,7 +80,6 @@ function AppContent() {
             <MainContent />
           </>}
         />
-        {/* Всі ваші інші маршрути тут */}
         <Route path="/news" element={<News />} />
         <Route path="/myoffers" element={<MyOffersPage/>} />
         <Route path="/customeroffers" element={<CustomerOffersPage/>} />
@@ -146,19 +127,16 @@ function AppContent() {
         <Route path="/ResponsiveTextBlock" element={<ResponsiveTextBlock />} />
           <Route path="/my-procurements/:procurementId/offers" element={<CustomerOffersPage />} />
       </Routes>
-
-      {/* Рендеримо Footer, якщо showHeaderFooter є true */}
       {showHeaderFooter && <Footer />}
     </div>
   );
 }
 
-// Головний компонент App, який обгортає все в AuthProvider та Router
 function App() {
   return (
-    <AuthProvider> {/* <--- ЦЕЙ ОБГОРТКА КРИТИЧНО ВАЖЛИВА! */}
+    <AuthProvider> 
       <Router>
-        <AppContent /> {/* AppContent містить увесь ваш UI, який потребує AuthContext */}
+        <AppContent />
       </Router>
     </AuthProvider>
   );

@@ -43,7 +43,7 @@ export class footer extends Component {
     Розробникам
   </Link>
 
-  <Link to="/participant-protection"> {/* !!! ЗАМІНИ "/participant-protection" НА РЕАЛЬНИЙ ШЛЯХ !!! */}
+  <Link to="/participant-protection"> 
     Захист учасників
   </Link>
 

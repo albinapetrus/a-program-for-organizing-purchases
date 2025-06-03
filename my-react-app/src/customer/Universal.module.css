@@ -223,10 +223,10 @@ button.submitButton.acceptButton{
 }
 .offerActions {
     display: flex;
-    gap: 1em; /* Відстань між кнопками */
-    justify-content: flex-start; /* Центрування групи кнопок по горизонталі */
-    margin-top: 1em; /* Відступ зверху від кнопок */
-    flex-wrap: wrap; /* Дозволяє кнопкам переноситися на новий рядок, якщо не вистачає місця */
+    gap: 1em; 
+    justify-content: flex-start; 
+    margin-top: 1em; 
+    flex-wrap: wrap; 
     background-color: white;
 }
 .modalOverlay {
@@ -235,11 +235,11 @@ button.submitButton.acceptButton{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Напівпрозорий фон */
+    background-color: rgba(0, 0, 0, 0.7); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Щоб модальне вікно було поверх іншого вмісту */
+    z-index: 1000; 
 }
 
 .modalContent {
@@ -248,10 +248,10 @@ button.submitButton.acceptButton{
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
-    max-width: 600px; /* Максимальна ширина модального вікна */
-    width: 90%; /* Ширина на менших екранах */
-    max-height: 80vh; /* Максимальна висота */
-    overflow-y: auto; /* Дозволяє прокрутку, якщо вмісту багато */
+    max-width: 600px; 
+    width: 90%; 
+    max-height: 80vh; 
+    overflow-y: auto; 
 }
 
 .modalCloseButton {
@@ -260,24 +260,22 @@ button.submitButton.acceptButton{
     right: 10px;
     background: none;
     border: none;
-    font-size: 1.5em; /* Розмір іконки */
-    cursor: pointer;
+    font-size: 1.5em; 
     color: #555;
     transition: color 0.2s;
 }
 
 .modalCloseButton:hover {
-    color: #f44336; /* Червоний колір при наведенні */
+    color: #f44336; 
 }
 
 .modalTitle {
-    color: #0056b3; /* Синій колір заголовка */
+    color: #0056b3; 
     margin-top: 0;
     margin-bottom: 1em;
     font-size: 1.8em;
 }
 
-/* Стилі для полів у модальному вікні, якщо потрібно */
 .modalContent p {
     margin-bottom: 0.5em;
     line-height: 1.5;
@@ -288,7 +286,7 @@ button.submitButton.acceptButton{
 }
 
 .modalContent a {
-    color: #007bff; /* Колір посилань */
+    color: #007bff;
     text-decoration: none;
 }
 

@@ -1,9 +1,7 @@
-﻿// Controllers/OffersController.cs
-// Controllers/OffersController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UkrainianTraiding.API.Data;
-using UkrainianTraiding.Models.DTO; // Для CreateOfferDto та OfferDetailsDto
+using UkrainianTraiding.Models.DTO; 
 using UkrainianTraiding.API.Models.Domain;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using UkrainianTraiding.API.Models.Domain.Enums; // Для ProcurementStatus та OfferStatus
+using UkrainianTraiding.API.Models.Domain.Enums; 
 
 [Route("api/[controller]")]
 [ApiController]
@@ -223,7 +221,7 @@ public class OffersController : ControllerBase
             return Forbid("Вам заборонено переглядати деталі цієї пропозиції.");
         }
 
-        var offerDetails = new OfferDetailsDto // Використовуємо OfferDetailsDto
+        var offerDetails = new OfferDetailsDto 
         {
             Id = offer.Id,
             ProcurementId = offer.ProcurementId,
@@ -295,8 +293,7 @@ public class OffersController : ControllerBase
                 .Where(o => o.SupplierUserId == supplierUserId)
                 .Include(o => o.Procurement)
                 .OrderByDescending(o => o.OfferDate)
-                .Select(o => new OfferDetailsDto // Змінено на OfferDetailsDto для простоти,
-                                                 // але можна створити окремий OfferSummaryDto для списку, якщо потрібна оптимізація
+                .Select(o => new OfferDetailsDto 
                 {
                     Id = o.Id,
                     ProcurementId = o.ProcurementId,
@@ -308,8 +305,6 @@ public class OffersController : ControllerBase
                     OfferDocumentPaths = o.OfferDocumentPaths,
                     OfferDate = o.OfferDate,
                     Status = o.Status.ToString(),
-                    // Якщо для цього списку не потрібні всі реквізити, їх можна не мапити,
-                    // або створити легший DTO. Для прикладу - мапимо все.
                     SupplierContactPhone = o.SupplierContactPhone,
                     ProposedDeliveryDate = o.ProposedDeliveryDate,
                     SupplierFullName = o.SupplierFullName,
@@ -343,7 +338,7 @@ public class OffersController : ControllerBase
             .Include(o => o.SupplierUser)
             .Where(o => o.Procurement.UserId == customerUserId)
             .OrderByDescending(o => o.OfferDate)
-            .Select(o => new OfferDetailsDto // Використовуємо OfferDetailsDto, так як замовнику, ймовірно, потрібні всі деталі
+            .Select(o => new OfferDetailsDto 
             {
                 Id = o.Id,
                 ProcurementId = o.ProcurementId,

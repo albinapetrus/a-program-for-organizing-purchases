@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UkrainianTraiding.API.Migrations
 {
-    /// <inheritdoc />
     public partial class AddedFullSupplierAndPaymentDetailsToOffers : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
@@ -66,7 +64,6 @@ namespace UkrainianTraiding.API.Migrations
                 defaultValue: "");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(

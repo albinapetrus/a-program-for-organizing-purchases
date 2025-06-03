@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UkrainianTraiding.API.Migrations
 {
-    /// <inheritdoc />
     public partial class InitialCreateWithGuid : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -24,8 +22,6 @@ namespace UkrainianTraiding.API.Migrations
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }
-
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

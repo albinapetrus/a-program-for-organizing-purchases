@@ -353,6 +353,22 @@
   },
   {
     "ContainingType": "ProcurementsController",
+    "Method": "DeleteProcurement",
+    "RelativePath": "api/Procurements/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProcurementsController",
     "Method": "GetMyProcurements",
     "RelativePath": "api/Procurements/my",
     "HttpMethod": "GET",

@@ -1,4 +1,4 @@
-﻿// Models/Domain/Offer.cs
+﻿
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,12 +13,12 @@ namespace UkrainianTraiding.API.Models.Domain
         [Required]
         public Guid ProcurementId { get; set; }
         [ForeignKey("ProcurementId")]
-        public virtual Procurement Procurement { get; set; } = null!; // Додав virtual для lazy loading (якщо використовується)
+        public virtual Procurement Procurement { get; set; } = null!; 
 
         [Required]
-        public Guid SupplierUserId { get; set; } // Змінив назву на SupplierUserId для ясності
+        public Guid SupplierUserId { get; set; } 
         [ForeignKey("SupplierUserId")]
-        public virtual User SupplierUser { get; set; } = null!; // Додав virtual
+        public virtual User SupplierUser { get; set; } = null!; 
 
         [Required]
         [Column(TypeName = "decimal(18, 2)")]
@@ -33,7 +33,7 @@ namespace UkrainianTraiding.API.Models.Domain
 
         public OfferStatus Status { get; set; } = OfferStatus.Submitted;
 
-        // ----- НОВІ ПОЛЯ, ЯКІ МИ ДОДАЄМО -----
+      
         [Required(ErrorMessage = "Контактний телефон постачальника є обов'язковим.")]
         [StringLength(20, ErrorMessage = "Телефон не може перевищувати 20 символів.")]
         public string SupplierContactPhone { get; set; } = string.Empty;
@@ -47,24 +47,24 @@ namespace UkrainianTraiding.API.Models.Domain
         public string SupplierFullName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "ЄДРПОУ/РНОКПП є обов'язковим.")]
-        [StringLength(10, ErrorMessage = "ЄДРПОУ/РНОКПП має містити 8 або 10 цифр.")] // 8 для ЄДРПОУ, 10 для РНОКПП
+        [StringLength(10, ErrorMessage = "ЄДРПОУ/РНОКПП має містити 8 або 10 цифр.")] 
         public string PaymentEdrpou { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Номер рахунку IBAN є обов'язковим.")]
-        [StringLength(34, ErrorMessage = "IBAN не може перевищувати 34 символи.")] // Загальний стандарт IBAN
+        [StringLength(34, ErrorMessage = "IBAN не може перевищувати 34 символи.")] 
         public string SupplierIban { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Назва банку є обов'язковою.")]
         [StringLength(255, ErrorMessage = "Назва банку не може перевищувати 255 символів.")]
         public string SupplierBankName { get; set; } = string.Empty;
 
-        [StringLength(12, ErrorMessage = "ІПН не може перевищувати 12 символів.")] // ІПН може бути необов'язковим
+        [StringLength(12, ErrorMessage = "ІПН не може перевищувати 12 символів.")] 
         public string? PaymentIpn { get; set; }
-        // ---------------------------------------------
+      
     }
 }
 
-// Enum OfferStatus залишається тут або може бути винесений в окремий файл в папку Enums, якщо така є
+
  public enum OfferStatus
  {
      Submitted,

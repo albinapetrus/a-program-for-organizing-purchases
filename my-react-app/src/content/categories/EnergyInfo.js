@@ -1,6 +1,5 @@
-// EnergyInfo.js
 import React, { Component } from 'react';
-import classes from './categories.module.css'; // !!! ІМПОРТУЄМО CSS MODULE !!!
+import classes from './categories.module.css';
 
 export class EnergyInfo extends Component {
   render() {
