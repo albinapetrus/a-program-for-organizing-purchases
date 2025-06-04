@@ -342,6 +342,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\d1e0c3a2-8041-4cd9-aad7-ca1104fdea6c.docx'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/offer_documents/d1e0c3a2-8041-4cd9-aad7-ca1104fdea6c.docx</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ctbpugjwf4</Fingerprint>
+      <Integrity>8Kmdbf9y4/GyvYb/LQvAifbJvVk4nqGIJaSC1Fdhw0w=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\d1e0c3a2-8041-4cd9-aad7-ca1104fdea6c.docx'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\offer_documents\d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx'))">
       <SourceType>Package</SourceType>
       <SourceId>UkrainianTraiding.API</SourceId>
@@ -701,6 +719,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\5a5bbe00-37e3-476c-b6d8-95d7b571a890_фон2.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\5b49ba6b-4789-483e-931d-d5975f17c788_супровідний документ.docx'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/passport_photos/5b49ba6b-4789-483e-931d-d5975f17c788_супровідний документ.docx</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ohmtpyxkz5</Fingerprint>
+      <Integrity>HKjUtnozUVJzp16qoyjc2br2sMjhDyyBvMjz2Jose4Y=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\5b49ba6b-4789-483e-931d-d5975f17c788_супровідний документ.docx'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\5ba4c6a9-a7da-4899-ab76-c1508eef8fd9_Фон 1.jpg'))">
       <SourceType>Package</SourceType>
@@ -1080,6 +1116,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\11c800f8-47dd-453b-af99-1341f330e3b0_фон2.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\17473b9b-ff14-430d-9480-23d3795e2ce7.docx'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/procurement_documents/17473b9b-ff14-430d-9480-23d3795e2ce7.docx</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ohmtpyxkz5</Fingerprint>
+      <Integrity>HKjUtnozUVJzp16qoyjc2br2sMjhDyyBvMjz2Jose4Y=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\17473b9b-ff14-430d-9480-23d3795e2ce7.docx'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\2c4aa6c3-e9a7-493c-99fd-92397e0e6281.docx'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/procurement_documents/2c4aa6c3-e9a7-493c-99fd-92397e0e6281.docx</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ctbpugjwf4</Fingerprint>
+      <Integrity>8Kmdbf9y4/GyvYb/LQvAifbJvVk4nqGIJaSC1Fdhw0w=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\2c4aa6c3-e9a7-493c-99fd-92397e0e6281.docx'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\311e9317-5160-4bf9-903a-983701a34a69_фон2.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>UkrainianTraiding.API</SourceId>
@@ -1169,6 +1241,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\451d709c-1df1-40a3-bb41-c2c5c475c95f_mynewarch.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\5c83a2cc-2177-4596-97de-ddfb8797ec49.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>UkrainianTraiding.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UkrainianTraiding.API</BasePath>
+      <RelativePath>uploads/procurement_documents/5c83a2cc-2177-4596-97de-ddfb8797ec49.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>6luq6vroye</Fingerprint>
+      <Integrity>Wm+dpStvgells1ckQZ6jRxxKWdHKpeJ0FHeicZxL5vc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\5c83a2cc-2177-4596-97de-ddfb8797ec49.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procurement_documents\6860a173-b76b-42e2-921b-36e0b9f06bdd_архітектура 2025.webp'))">
       <SourceType>Package</SourceType>

@@ -474,10 +474,10 @@ ${customerName}                                      ${supplierFullName}
                                                             onClick={() => handleDeleteOffer(offer.id, offer.procurementName)}
                                                             className={`${classes.actionButton} ${classes.deleteButton}`} 
                                                             title="Видалити цю пропозицію"
-                                                            style={{ padding: "0.5em 1em", minWidth: "180px", backgroundColor: '#dc3545', color: 'white' }}
+                                                            style={{ padding: "0 1em", minWidth: "180px", backgroundColor: '#dc3545', color: 'white' }}
                                                             disabled={loading} 
                                                         >
-                                                            <FaTrashAlt style={{ marginRight: '5px' }} /> Видалити пропозицію
+                                                            <FaTrashAlt style={{ marginRight: '5px', backgroundColor: '#dc3545' }} /> Видалити пропозицію
                                                         </button>
                                                     )}
                                                 </div>

@@ -209,6 +209,7 @@ function MyProcurementsPage() {
                                             {translateStatus(procurement.status)}
                                         </span>
                                     </p>
+                                    <div  style={{background: "white", display: 'flex', justifyContent: 'start', gap: "1em", flexWrap: 'wrap'}}>
                                     <Link
                                         to={`/my-procurements/${currentProcurementId}/offers`}
                                         className={classes.respondButtonLink}
@@ -232,6 +233,7 @@ function MyProcurementsPage() {
                                             Видалити закупівлю
                                         </button>
                                     )}
+                                    </div>
                                     <hr />
                                 </div>
                             );
