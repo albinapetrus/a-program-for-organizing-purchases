@@ -2,224 +2,297 @@ import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import classes from '../customer/Universal.module.css';
-import { FaBoxes, FaInfoCircle, FaFilePdf, FaTrashAlt } from "react-icons/fa"; 
-import { IoCloseCircleOutline } from "react-icons/io5";
+import { FaBoxes, FaInfoCircle, FaFilePdf, FaTrashAlt } from 'react-icons/fa';
+import { IoCloseCircleOutline } from 'react-icons/io5';
 
 const BACKEND_BASE_URL = 'https://localhost:7078';
 
 const translateOfferStatus = (status) => {
-    switch (status) {
-        case 'Submitted': return 'Розглядається';
-        case 'Accepted': return 'Прийнято';
-        case 'Rejected': return 'Відхилено';
-        default: return status || 'Невідомо';
-    }
+  switch (status) {
+    case 'Submitted':
+      return 'Розглядається';
+    case 'Accepted':
+      return 'Прийнято';
+    case 'Rejected':
+      return 'Відхилено';
+    default:
+      return status || 'Невідомо';
+  }
 };
 
 const translateProcurementStatus = (status) => {
-    if (!status) return 'Невідомо';
-    switch (status.toLowerCase()) {
-        case 'open': return 'Активна';
-        case 'fulfilled': return 'Завершена';
-        case 'closed': return 'Закрита';
-        case 'overdue': return 'Протермінована';
-        default: return status;
-    }
+  if (!status) return 'Невідомо';
+  switch (status.toLowerCase()) {
+    case 'open':
+      return 'Активна';
+    case 'fulfilled':
+      return 'Завершена';
+    case 'closed':
+      return 'Закрита';
+    case 'overdue':
+      return 'Протермінована';
+    default:
+      return status;
+  }
 };
 
-
 function MyOffersPage() {
-    const [allMyOffers, setAllMyOffers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-    const [message, setMessage] = useState(''); 
-    const [deleteMessage, setDeleteMessage] = useState(''); 
-    const [deleteError, setDeleteError] = useState(''); 
-    const [selectedStatusFilter, setSelectedStatusFilter] = useState('');
-    const navigate = useNavigate();
+  const [allMyOffers, setAllMyOffers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [deleteMessage, setDeleteMessage] = useState('');
+  const [deleteError, setDeleteError] = useState('');
+  const [selectedStatusFilter, setSelectedStatusFilter] = useState('');
+  const navigate = useNavigate();
 
-    const [isProcurementModalOpen, setIsProcurementModalOpen] = useState(false);
-    const [selectedProcurement, setSelectedProcurement] = useState(null);
-    const [procurementModalLoading, setProcurementModalLoading] = useState(false);
-    const [procurementModalError, setProcurementModalError] = useState('');
+  const [isProcurementModalOpen, setIsProcurementModalOpen] = useState(false);
+  const [selectedProcurement, setSelectedProcurement] = useState(null);
+  const [procurementModalLoading, setProcurementModalLoading] = useState(false);
+  const [procurementModalError, setProcurementModalError] = useState('');
 
-    const [isAcceptedOfferDetailsModalOpen, setIsAcceptedOfferDetailsModalOpen] = useState(false);
-    const [selectedAcceptedOffer, setSelectedAcceptedOffer] = useState(null);
-    const [acceptedOfferLoading, setAcceptedOfferLoading] = useState(false);
-    const [acceptedOfferError, setAcceptedOfferError] = useState('');
+  const [isAcceptedOfferDetailsModalOpen, setIsAcceptedOfferDetailsModalOpen] =
+    useState(false);
+  const [selectedAcceptedOffer, setSelectedAcceptedOffer] = useState(null);
+  const [acceptedOfferLoading, setAcceptedOfferLoading] = useState(false);
+  const [acceptedOfferError, setAcceptedOfferError] = useState('');
 
-    const statusFilterOptions = [
-        { value: '', label: 'Всі пропозиції' },
-        { value: 'Submitted', label: 'Розглядаються' },
-        { value: 'Accepted', label: 'Прийняті' },
-        { value: 'Rejected', label: 'Відхилені' },
-    ];
+  const statusFilterOptions = [
+    { value: '', label: 'Всі пропозиції' },
+    { value: 'Submitted', label: 'Розглядаються' },
+    { value: 'Accepted', label: 'Прийняті' },
+    { value: 'Rejected', label: 'Відхилені' },
+  ];
 
-    const fetchMyOffers = async () => {
-        setLoading(true);
-        setError('');
-        setDeleteMessage('');
-        setDeleteError('');
-        const jwtToken = localStorage.getItem('jwtToken');
-        if (!jwtToken) {
-            setError('Ви не авторизовані. Будь ласка, увійдіть.');
-            setLoading(false);
-            navigate('/form');
-            return;
+  const fetchMyOffers = async () => {
+    setLoading(true);
+    setError('');
+    setDeleteMessage('');
+    setDeleteError('');
+    const jwtToken = localStorage.getItem('jwtToken');
+    if (!jwtToken) {
+      setError('Ви не авторизовані. Будь ласка, увійдіть.');
+      setLoading(false);
+      navigate('/form');
+      return;
+    }
+    try {
+      const response = await axios.get(`${BACKEND_BASE_URL}/api/offers/my`, {
+        headers: { Authorization: `Bearer ${jwtToken}` },
+      });
+      console.log('Отримані пропозиції:', response.data);
+      setAllMyOffers(response.data || []);
+    } catch (err) {
+      console.error(
+        'Помилка завантаження моїх пропозицій:',
+        err.response ? err.response.data : err.message
+      );
+      let errorMessage =
+        'Не вдалося завантажити ваші пропозиції. Спробуйте пізніше.';
+      if (err.response) {
+        if (err.response.status === 401 || err.response.status === 403) {
+          errorMessage =
+            'У вас немає дозволу на перегляд цієї сторінки або ваша сесія закінчилася. Будь ласка, увійдіть знову.';
+          localStorage.removeItem('jwtToken');
+          navigate('/form');
+        } else if (err.response.data && err.response.data.message) {
+          errorMessage = err.response.data.message;
+        } else if (typeof err.response.data === 'string') {
+          errorMessage = err.response.data;
         }
-        try {
-            const response = await axios.get(`${BACKEND_BASE_URL}/api/offers/my`, {
-                headers: { 'Authorization': `Bearer ${jwtToken}` }
-            });
-            console.log('Отримані пропозиції:', response.data);
-            setAllMyOffers(response.data || []);
-        } catch (err) {
-            console.error('Помилка завантаження моїх пропозицій:', err.response ? err.response.data : err.message);
-            let errorMessage = 'Не вдалося завантажити ваші пропозиції. Спробуйте пізніше.';
-            if (err.response) {
-                if (err.response.status === 401 || err.response.status === 403) {
-                    errorMessage = 'У вас немає дозволу на перегляд цієї сторінки або ваша сесія закінчилася. Будь ласка, увійдіть знову.';
-                    localStorage.removeItem('jwtToken');
-                    navigate('/form');
-                } else if (err.response.data && err.response.data.message) {
-                    errorMessage = err.response.data.message;
-                } else if (typeof err.response.data === 'string') {
-                    errorMessage = err.response.data;
-                }
-            }
-            setError(errorMessage);
-            setAllMyOffers([]);
-        } finally {
-            setLoading(false);
+      }
+      setError(errorMessage);
+      setAllMyOffers([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchMyOffers();
+  }, [navigate]);
+
+  const filteredOffers = useMemo(() => {
+    if (!selectedStatusFilter) {
+      return allMyOffers;
+    }
+    return allMyOffers.filter((offer) => offer.status === selectedStatusFilter);
+  }, [allMyOffers, selectedStatusFilter]);
+
+  useEffect(() => {
+    if (!loading && !error) {
+      if (allMyOffers.length === 0 && !deleteMessage && !deleteError) {
+        setMessage('У вас ще немає надісланих пропозицій.');
+      } else if (
+        filteredOffers.length === 0 &&
+        selectedStatusFilter &&
+        !deleteMessage &&
+        !deleteError
+      ) {
+        setMessage('Пропозицій з вибраним статусом не знайдено.');
+      } else {
+        setMessage('');
+      }
+    } else if (error) {
+      setMessage('');
+    }
+  }, [
+    loading,
+    error,
+    allMyOffers,
+    filteredOffers,
+    selectedStatusFilter,
+    deleteMessage,
+    deleteError,
+  ]);
+
+  const handleStatusFilterChange = (event) => {
+    setSelectedStatusFilter(event.target.value);
+  };
+
+  const handleProcurementClick = async (procurementId) => {
+    setIsProcurementModalOpen(true);
+    setProcurementModalLoading(true);
+    setProcurementModalError('');
+    setSelectedProcurement(null);
+    const jwtToken = localStorage.getItem('jwtToken');
+    if (!jwtToken) {
+      setProcurementModalError(
+        'Для перегляду деталей закупівлі потрібна авторизація.'
+      );
+      setProcurementModalLoading(false);
+      return;
+    }
+    try {
+      const response = await axios.get(
+        `${BACKEND_BASE_URL}/api/procurements/${procurementId}`,
+        {
+          headers: { Authorization: `Bearer ${jwtToken}` },
         }
-    };
+      );
+      setSelectedProcurement(response.data);
+    } catch (err) {
+      console.error(
+        'Помилка завантаження деталей закупівлі:',
+        err.response ? err.response.data : err.message
+      );
+      setProcurementModalError('Не вдалося завантажити деталі закупівлі.');
+    } finally {
+      setProcurementModalLoading(false);
+    }
+  };
 
-    useEffect(() => {
-        fetchMyOffers();
-    }, [navigate]);
+  const closeProcurementModal = () => {
+    setIsProcurementModalOpen(false);
+    setSelectedProcurement(null);
+    setProcurementModalError('');
+  };
 
-    const filteredOffers = useMemo(() => {
-        if (!selectedStatusFilter) {
-            return allMyOffers;
-        }
-        return allMyOffers.filter(offer => offer.status === selectedStatusFilter);
-    }, [allMyOffers, selectedStatusFilter]);
+  const openAcceptedOfferModal = async (offer) => {
+    setAcceptedOfferLoading(true);
+    setIsAcceptedOfferDetailsModalOpen(true);
+    setSelectedAcceptedOffer(null);
+    setAcceptedOfferError('');
 
-    useEffect(() => {
-        if (!loading && !error) {
-            if (allMyOffers.length === 0 && !deleteMessage && !deleteError) { 
-                setMessage('У вас ще немає надісланих пропозицій.');
-            } else if (filteredOffers.length === 0 && selectedStatusFilter && !deleteMessage && !deleteError) {
-                setMessage('Пропозицій з вибраним статусом не знайдено.');
-            } else {
-                 setMessage('');
-            }
-        } else if (error) {
-            setMessage('');
-        }
-    }, [loading, error, allMyOffers, filteredOffers, selectedStatusFilter, deleteMessage, deleteError]);
+    let enrichedOfferData = { ...offer };
+    const needsProcurementDetails =
+      !offer.customerContactPhone ||
+      !offer.deliveryAddress ||
+      !offer.customerName;
 
-
-    const handleStatusFilterChange = (event) => {
-        setSelectedStatusFilter(event.target.value);
-    };
-
-    const handleProcurementClick = async (procurementId) => {
-        setIsProcurementModalOpen(true);
-        setProcurementModalLoading(true);
-        setProcurementModalError('');
-        setSelectedProcurement(null);
-        const jwtToken = localStorage.getItem('jwtToken');
-        if (!jwtToken) {
-            setProcurementModalError('Для перегляду деталей закупівлі потрібна авторизація.');
-            setProcurementModalLoading(false);
-            return;
-        }
-        try {
-            const response = await axios.get(`${BACKEND_BASE_URL}/api/procurements/${procurementId}`, {
-                headers: { 'Authorization': `Bearer ${jwtToken}` }
-            });
-            setSelectedProcurement(response.data);
-        } catch (err) {
-            console.error('Помилка завантаження деталей закупівлі:', err.response ? err.response.data : err.message);
-            setProcurementModalError('Не вдалося завантажити деталі закупівлі.');
-        } finally {
-            setProcurementModalLoading(false);
-        }
-    };
-
-    const closeProcurementModal = () => { 
-        setIsProcurementModalOpen(false);
-        setSelectedProcurement(null);
-        setProcurementModalError('');
-    };
-
-    const openAcceptedOfferModal = async (offer) => {
-        setAcceptedOfferLoading(true);
-        setIsAcceptedOfferDetailsModalOpen(true);
-        setSelectedAcceptedOffer(null); 
-        setAcceptedOfferError('');
-        
-        let enrichedOfferData = { ...offer };
-        const needsProcurementDetails = !offer.customerContactPhone || !offer.deliveryAddress || !offer.customerName;
-
-        if (needsProcurementDetails && offer.procurementId) {
-            const jwtToken = localStorage.getItem('jwtToken');
-            if (!jwtToken) {
-                setAcceptedOfferError('Потрібна авторизація для завантаження деталей закупівлі.');
-                setAcceptedOfferLoading(false);
-                setSelectedAcceptedOffer(enrichedOfferData);
-                return;
-            }
-            try {
-                const procDetailsResponse = await axios.get(`${BACKEND_BASE_URL}/api/procurements/${offer.procurementId}`, {
-                     headers: { 'Authorization': `Bearer ${jwtToken}` }
-                });
-                enrichedOfferData.customerContactPhone = procDetailsResponse.data?.contactPhone; 
-                enrichedOfferData.deliveryAddress = procDetailsResponse.data?.deliveryAddress;
-                enrichedOfferData.customerName = procDetailsResponse.data?.customerName;
-                enrichedOfferData.procurementDetails = procDetailsResponse.data;
-            } catch (err) {
-                console.error("Помилка завантаження деталей закупівлі для прийнятої пропозиції:", err);
-                setAcceptedOfferError("Не вдалося завантажити повні деталі закупівлі.");
-            }
-        }
-        setSelectedAcceptedOffer(enrichedOfferData);
+    if (needsProcurementDetails && offer.procurementId) {
+      const jwtToken = localStorage.getItem('jwtToken');
+      if (!jwtToken) {
+        setAcceptedOfferError(
+          'Потрібна авторизація для завантаження деталей закупівлі.'
+        );
         setAcceptedOfferLoading(false);
-    };
+        setSelectedAcceptedOffer(enrichedOfferData);
+        return;
+      }
+      try {
+        const procDetailsResponse = await axios.get(
+          `${BACKEND_BASE_URL}/api/procurements/${offer.procurementId}`,
+          {
+            headers: { Authorization: `Bearer ${jwtToken}` },
+          }
+        );
+        enrichedOfferData.customerContactPhone =
+          procDetailsResponse.data?.contactPhone;
+        enrichedOfferData.deliveryAddress =
+          procDetailsResponse.data?.deliveryAddress;
+        enrichedOfferData.customerName = procDetailsResponse.data?.customerName;
+        enrichedOfferData.procurementDetails = procDetailsResponse.data;
+      } catch (err) {
+        console.error(
+          'Помилка завантаження деталей закупівлі для прийнятої пропозиції:',
+          err
+        );
+        setAcceptedOfferError('Не вдалося завантажити повні деталі закупівлі.');
+      }
+    }
+    setSelectedAcceptedOffer(enrichedOfferData);
+    setAcceptedOfferLoading(false);
+  };
 
-    const closeAcceptedOfferDetailsModal = () => { 
-        setIsAcceptedOfferDetailsModalOpen(false);
-        setSelectedAcceptedOffer(null);
-        setAcceptedOfferError('');
-    };
+  const closeAcceptedOfferDetailsModal = () => {
+    setIsAcceptedOfferDetailsModalOpen(false);
+    setSelectedAcceptedOffer(null);
+    setAcceptedOfferError('');
+  };
 
-    const generateContractTextForSupplier = (offerWithDetails, procurementDetails) => {
-        const customerName = procurementDetails?.customerName || "ЗАМОВНИК (Назва не вказана)";
-        const customerRepresentative = procurementDetails?.customerRepresentativeName || customerName; 
-        const customerBasis = procurementDetails?.customerBasisOfActivity || "Статуту"; 
-        const supplierFullName = offerWithDetails?.supplierFullName || "Постачальник (ПІБ не вказано)";
-        const supplierPaymentEdrpou = offerWithDetails?.paymentEdrpou || "не вказано";
-        const supplierPaymentIpn = offerWithDetails?.paymentIpn || "не є платником ПДВ";
-        const supplierIban = offerWithDetails?.supplierIban || "не вказано";
-        const supplierBankName = offerWithDetails?.supplierBankName || "не вказано";
-        const supplierContactPhone = offerWithDetails?.supplierContactPhone || "не вказано";
-        const supplierRepresentative = offerWithDetails?.supplierRepresentativeName || supplierFullName; 
-        const supplierBasis = offerWithDetails?.supplierBasisOfActivity || "Статуту"; 
-        const supplierEmail = offerWithDetails?.supplierEmail || "не вказано"; 
-        const customerContactPhone = procurementDetails?.contactPhone || "не вказано";
-        const today = new Date().toLocaleDateString('uk-UA');
-        const deliveryDate = offerWithDetails?.proposedDeliveryDate ? new Date(offerWithDetails.proposedDeliveryDate).toLocaleDateString('uk-UA') : 'не вказано';
-        const paymentDueDate = offerWithDetails?.proposedDeliveryDate ? new Date(new Date(offerWithDetails.proposedDeliveryDate).setDate(new Date(offerWithDetails.proposedDeliveryDate).getDate() + 3)).toLocaleDateString('uk-UA') : 'не вказано';
-        const offerDate = offerWithDetails?.offerDate ? new Date(offerWithDetails.offerDate).toLocaleDateString('uk-UA') : 'не вказано';
-        const offerIdShort = offerWithDetails?.id?.substring(0, 6) || 'XXXXXX';
-        const procurementIdShort = procurementDetails?.id?.substring(0, 6) || 'YYYYYY';
-        
-        const numberToWordsUSD = (num) => {
-            if (num === undefined || num === null) return "сума не вказана";
-            return `${num.toFixed(2)} доларів США`; 
-        };
-        const priceInWords = numberToWordsUSD(offerWithDetails?.proposedPrice);
+  const generateContractTextForSupplier = (
+    offerWithDetails,
+    procurementDetails
+  ) => {
+    const customerName =
+      procurementDetails?.customerName || 'ЗАМОВНИК (Назва не вказана)';
+    const customerRepresentative =
+      procurementDetails?.customerRepresentativeName || customerName;
+    const customerBasis =
+      procurementDetails?.customerBasisOfActivity || 'Статуту';
+    const supplierFullName =
+      offerWithDetails?.supplierFullName || 'Постачальник (ПІБ не вказано)';
+    const supplierPaymentEdrpou =
+      offerWithDetails?.paymentEdrpou || 'не вказано';
+    const supplierPaymentIpn =
+      offerWithDetails?.paymentIpn || 'не є платником ПДВ';
+    const supplierIban = offerWithDetails?.supplierIban || 'не вказано';
+    const supplierBankName = offerWithDetails?.supplierBankName || 'не вказано';
+    const supplierContactPhone =
+      offerWithDetails?.supplierContactPhone || 'не вказано';
+    const supplierRepresentative =
+      offerWithDetails?.supplierRepresentativeName || supplierFullName;
+    const supplierBasis =
+      offerWithDetails?.supplierBasisOfActivity || 'Статуту';
+    const supplierEmail = offerWithDetails?.supplierEmail || 'не вказано';
+    const customerContactPhone =
+      procurementDetails?.contactPhone || 'не вказано';
+    const today = new Date().toLocaleDateString('uk-UA');
+    const deliveryDate = offerWithDetails?.proposedDeliveryDate
+      ? new Date(offerWithDetails.proposedDeliveryDate).toLocaleDateString(
+          'uk-UA'
+        )
+      : 'не вказано';
+    const paymentDueDate = offerWithDetails?.proposedDeliveryDate
+      ? new Date(
+          new Date(offerWithDetails.proposedDeliveryDate).setDate(
+            new Date(offerWithDetails.proposedDeliveryDate).getDate() + 3
+          )
+        ).toLocaleDateString('uk-UA')
+      : 'не вказано';
+    const offerDate = offerWithDetails?.offerDate
+      ? new Date(offerWithDetails.offerDate).toLocaleDateString('uk-UA')
+      : 'не вказано';
+    const offerIdShort = offerWithDetails?.id?.substring(0, 6) || 'XXXXXX';
+    const procurementIdShort =
+      procurementDetails?.id?.substring(0, 6) || 'YYYYYY';
+
+    const numberToWordsUSD = (num) => {
+      if (num === undefined || num === null) return 'сума не вказана';
+      return `${num.toFixed(2)} доларів США`;
+    };
+    const priceInWords = numberToWordsUSD(offerWithDetails?.proposedPrice);
 
     return `ДОГОВІР ПОСТАВКИ № ${offerIdShort}-${procurementIdShort}
 м. Київ                                                                                                   "${today}"
@@ -265,45 +338,62 @@ ${customerName}                                      ${supplierFullName}
                                                      Тел: ${supplierContactPhone}
                                                      Email: ${supplierEmail} 
 `;
-    };
-    
-    const handleViewSupplierContract = async (offer) => { 
-        if (!offer || !offer.procurementId) {
-            alert("Недостатньо даних пропозиції для формування договору.");
-            return;
-        }
-        let procurementDetailsForContract = null;
-        if (selectedProcurement && selectedProcurement.id === offer.procurementId) {
-            procurementDetailsForContract = selectedProcurement;
-        } else {
-            const jwtToken = localStorage.getItem('jwtToken');
-            if (!jwtToken) {
-                alert("Потрібна авторизація для завантаження деталей закупівлі.");
-                return;
-            }
-            try {
-                setProcurementModalLoading(true); 
-                const response = await axios.get(`${BACKEND_BASE_URL}/api/procurements/${offer.procurementId}`, {
-                    headers: { 'Authorization': `Bearer ${jwtToken}` }
-                });
-                procurementDetailsForContract = response.data;
-                setProcurementModalLoading(false);
-            } catch (err) {
-                setProcurementModalLoading(false);
-                alert("Не вдалося завантажити деталі закупівлі для формування договору.");
-                console.error("Помилка завантаження деталей закупівлі для договору:", err);
-                return;
-            }
-        }
-        if (!procurementDetailsForContract) {
-             alert("Не вдалося отримати деталі закупівлі для договору.");
-             return;
-        }
-        const contractText = generateContractTextForSupplier(offer, procurementDetailsForContract);
-        const contractWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
-        if (contractWindow) {
-            contractWindow.document.write('<html><head><title>Договір Поставки</title>');
-            contractWindow.document.write(`
+  };
+
+  const handleViewSupplierContract = async (offer) => {
+    if (!offer || !offer.procurementId) {
+      alert('Недостатньо даних пропозиції для формування договору.');
+      return;
+    }
+    let procurementDetailsForContract = null;
+    if (selectedProcurement && selectedProcurement.id === offer.procurementId) {
+      procurementDetailsForContract = selectedProcurement;
+    } else {
+      const jwtToken = localStorage.getItem('jwtToken');
+      if (!jwtToken) {
+        alert('Потрібна авторизація для завантаження деталей закупівлі.');
+        return;
+      }
+      try {
+        setProcurementModalLoading(true);
+        const response = await axios.get(
+          `${BACKEND_BASE_URL}/api/procurements/${offer.procurementId}`,
+          {
+            headers: { Authorization: `Bearer ${jwtToken}` },
+          }
+        );
+        procurementDetailsForContract = response.data;
+        setProcurementModalLoading(false);
+      } catch (err) {
+        setProcurementModalLoading(false);
+        alert(
+          'Не вдалося завантажити деталі закупівлі для формування договору.'
+        );
+        console.error(
+          'Помилка завантаження деталей закупівлі для договору:',
+          err
+        );
+        return;
+      }
+    }
+    if (!procurementDetailsForContract) {
+      alert('Не вдалося отримати деталі закупівлі для договору.');
+      return;
+    }
+    const contractText = generateContractTextForSupplier(
+      offer,
+      procurementDetailsForContract
+    );
+    const contractWindow = window.open(
+      '',
+      '_blank',
+      'width=900,height=700,scrollbars=yes,resizable=yes'
+    );
+    if (contractWindow) {
+      contractWindow.document.write(
+        '<html><head><title>Договір Поставки</title>'
+      );
+      contractWindow.document.write(`
                 <style>
                     body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; margin: 0; padding: 0; background-color: #EAEAEA; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; overflow-y: auto; }
                     .contract-page-container { padding: 20px 0; width: 100%; display: flex; justify-content: center; }
@@ -321,12 +411,18 @@ ${customerName}                                      ${supplierFullName}
                     }
                 </style>
             `);
-            contractWindow.document.write('</head><body>');
-            contractWindow.document.write('<div class="contract-page-container"><div class="contract-a4-sheet">');
-            const actualContractText = contractText.includes("Use code with caution.") ? contractText.substring(contractText.indexOf("ДОГОВІР ПОСТАВКИ")) : contractText;
-            contractWindow.document.write(`<pre class="contract-text">${actualContractText}</pre>`);
-            contractWindow.document.write('</div></div>');
-            contractWindow.document.write(`
+      contractWindow.document.write('</head><body>');
+      contractWindow.document.write(
+        '<div class="contract-page-container"><div class="contract-a4-sheet">'
+      );
+      const actualContractText = contractText.includes('Use code with caution.')
+        ? contractText.substring(contractText.indexOf('ДОГОВІР ПОСТАВКИ'))
+        : contractText;
+      contractWindow.document.write(
+        `<pre class="contract-text">${actualContractText}</pre>`
+      );
+      contractWindow.document.write('</div></div>');
+      contractWindow.document.write(`
                 <div class="print-button-container">
                     <button class="print-button" onclick="window.print()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
@@ -336,230 +432,482 @@ ${customerName}                                      ${supplierFullName}
                     </button>
                 </div>
             `);
-            contractWindow.document.write('</body></html>');
-            contractWindow.document.close();
-        } else {
-            alert("Не вдалося відкрити нове вікно. Можливо, блокувальник спливаючих вікон увімкнений.");
-        }
-    };
+      contractWindow.document.write('</body></html>');
+      contractWindow.document.close();
+    } else {
+      alert(
+        'Не вдалося відкрити нове вікно. Можливо, блокувальник спливаючих вікон увімкнений.'
+      );
+    }
+  };
 
-    const handleDeleteOffer = async (offerId, offerProcurementName) => {
-        console.log(`Спроба видалення пропозиції ID: ${offerId} до закупівлі: "${offerProcurementName}"`);
-        if (!offerId) {
-            setDeleteError('Не вдалося отримати ID пропозиції для видалення.');
-            return;
-        }
-
-        if (!window.confirm(`Ви впевнені, що хочете видалити вашу пропозицію до закупівлі "${offerProcurementName}"? Цю дію неможливо буде скасувати.`)) {
-            return;
-        }
-
-        setLoading(true); 
-        setDeleteError('');
-        setDeleteMessage('');
-        const jwtToken = localStorage.getItem('jwtToken');
-
-        try {
-            const response = await axios.delete(`${BACKEND_BASE_URL}/api/offers/${offerId}`, {
-                headers: {
-                    'Authorization': `Bearer ${jwtToken}`
-                }
-            });
-            setDeleteMessage(response.data.message || 'Пропозицію успішно видалено!');
-            fetchMyOffers();
-        } catch (err) {
-            console.error('Помилка видалення пропозиції:', err.response ? err.response.data : err.message);
-            let errorMessage = 'Не вдалося видалити пропозицію. Спробуйте пізніше.';
-            if (err.response) {
-                if (err.response.status === 401 || err.response.status === 403) {
-                    errorMessage = err.response.data?.message || 'У вас немає дозволу на видалення цієї пропозиції або ваша сесія закінчилася.';
-                } else if (err.response.status === 404) {
-                    errorMessage = `Пропозицію з ID ${offerId} не знайдено. Можливо, її вже видалено.`;
-                } else if (err.response.data && err.response.data.message) {
-                    errorMessage = err.response.data.message;
-                } else if (typeof err.response.data === 'string') {
-                    errorMessage = err.response.data;
-                }
-            }
-            setDeleteError(errorMessage);
-            setLoading(false); 
-        }
-    };
-
-    return (
-        <div className={classes.universal}>
-            <div className={classes.block}>
-                <h1 className={`${classes.label} ${classes.labelBlue}`}>
-                    <FaBoxes className={classes.icon} /> Мої пропозиції
-                </h1>
-
-                <div className={classes.filterContainer} style={{ marginBottom: '1em', background: "white" }}>
-                    <label htmlFor="statusFilter" style={{ marginRight: '0.5em' }}>Статус:    </label>
-                    <select
-                        id="statusFilter"
-                        value={selectedStatusFilter}
-                        onChange={handleStatusFilterChange}
-                        className={classes.selectField}
-                        style={{ width: "30em" }}
-                        disabled={loading}
-                    >
-                        {statusFilterOptions.map(option => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-
-                {deleteMessage && <p style={{ color: 'green', marginTop: '1em', fontWeight: 'bold' }}>{deleteMessage}</p>}
-                {deleteError && <p style={{ color: 'red', marginTop: '1em', fontWeight: 'bold' }}>{deleteError}</p>}
-
-
-                {loading ? (<p>Завантаження ваших пропозицій...</p>)
-                    : error ? (<p style={{ color: 'red', marginTop: '1em' }}>{error}</p>)
-                        : (
-                            <>
-                                {message && filteredOffers.length === 0 && <p style={{ color: 'blue', marginTop: '1em' }}>{message}</p>}
-
-                                {filteredOffers.length > 0 && (
-                                    <div className={classes.resultsContainer}>
-                                        {filteredOffers.map((offer) => (
-                                            <div key={offer.id} className={classes.procurementCard}>
-                                                <div onClick={() => handleProcurementClick(offer.procurementId)} style={{ cursor: 'pointer' }}>
-                                                    <h4 style={{ background: "white", color: "#007bff" }} title="Натисніть, щоб переглянути деталі закупівлі">
-                                                        Пропозиція до закупівлі: "{offer.procurementName || 'N/A'}"
-                                                    </h4>
-                                                </div>
-                                                <p><strong>Запропонована ціна:</strong> ${offer.proposedPrice}</p>
-                                                {offer.proposedDeliveryDate && (
-                                                    <p><strong>Пропонована дата доставки:</strong> {new Date(offer.proposedDeliveryDate).toLocaleDateString()}</p>
-                                                )}
-                                                <p><strong>Повідомлення:</strong> {offer.message || 'Не вказано'}</p>
-                                                {offer.offerDocumentPaths && (
-                                                    <p><strong>Документ:  </strong><a href={`${BACKEND_BASE_URL}${offer.offerDocumentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a></p>
-                                                )}
-                                                <p><strong>Дата пропозиції:</strong> {new Date(offer.offerDate).toLocaleDateString()}</p>
-                                                <p><strong>Статус: </strong>
-                                                    <span style={{ fontWeight: 'bold', color: offer.status === 'Accepted' ? 'green' : offer.status === 'Rejected' ? 'red' : 'orange' }}>
-                                                        {translateOfferStatus(offer.status)}
-                                                    </span>
-                                                </p>
-
-                                                <div style={{ marginTop: '10px', background: "white", display: 'flex', justifyContent: 'start', gap: "1em", flexWrap: 'wrap' }}>
-                                                    {offer.status === 'Accepted' && (
-                                                        <>
-                                                            <button
-                                                                className={classes.detailsButton}
-                                                                onClick={() => openAcceptedOfferModal(offer)}
-                                                                disabled={acceptedOfferLoading && selectedAcceptedOffer?.id === offer.id}
-                                                                style={{  minWidth: "180px" }}
-                                                            >
-                                                                <FaInfoCircle style={{ marginRight: '5px', background: "#2070d1" }} />
-                                                                {acceptedOfferLoading && selectedAcceptedOffer?.id === offer.id ? 'Завантаження...' : 'Реквізити та інфо'}
-                                                            </button>
-
-                                                            <button
-                                                                className={classes.detailsButton}
-                                                                onClick={() => handleViewSupplierContract(offer)}
-                                                                disabled={procurementModalLoading}
-                                                                title="Переглянути договір для цієї пропозиції"
-                                                                style={{  minWidth: "180px" }}
-                                                            >
-                                                                <FaFilePdf style={{ marginRight: '5px', background: "#2070d1" }} /> Договір
-                                                            </button>
-                                                        </>
-                                                    )}
-                                                    {offer.status === 'Submitted' && (
-                                                        <button
-                                                            onClick={() => handleDeleteOffer(offer.id, offer.procurementName)}
-                                                            className={`${classes.actionButton} ${classes.deleteButton}`} 
-                                                            title="Видалити цю пропозицію"
-                                                            style={{ padding: "0 1em", minWidth: "180px", backgroundColor: '#dc3545', color: 'white' }}
-                                                            disabled={loading} 
-                                                        >
-                                                            <FaTrashAlt style={{ marginRight: '5px', backgroundColor: '#dc3545' }} /> Видалити пропозицію
-                                                        </button>
-                                                    )}
-                                                </div>
-                                                <hr />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </>
-                        )}
-            </div>
-
-            {isProcurementModalOpen && (
-                <div className={classes.modalOverlay} onClick={closeProcurementModal}>
-                    <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
-                        <button className={classes.modalCloseButton} onClick={closeProcurementModal}>
-                            <IoCloseCircleOutline className={classes.cancelOutline} size={30} />
-                        </button>
-                        {procurementModalLoading ? ( <p>Завантаження деталей закупівлі...</p> )
-                        : procurementModalError ? ( <p style={{ color: 'red' }}>{procurementModalError}</p> )
-                        : selectedProcurement ? (
-                            <>
-                                <h2 className={classes.modalTitle}>{selectedProcurement.name}</h2>
-                                <p><strong>Замовник:</strong> {selectedProcurement.customerName || 'Не вказано'}</p>
-                                <p><strong>Опис:</strong> {selectedProcurement.description || 'Не вказано'}</p>
-                                <p><strong>Категорія:</strong> {selectedProcurement.category}</p>
-                                <p><strong>Кількість/Обсяг:</strong> {selectedProcurement.quantityOrVolume}</p>
-                                <p><strong>Орієнтовний бюджет:</strong> ${selectedProcurement.estimatedBudget}</p>
-                                <p><strong>Дата завершення:</strong> {new Date(selectedProcurement.completionDate).toLocaleDateString()}</p>
-                                {selectedProcurement.deliveryAddress && (<p><strong>Адреса доставки:</strong> {selectedProcurement.deliveryAddress}</p>)}
-                                {selectedProcurement.contactPhone && (<p><strong>Контактний телефон:</strong> {selectedProcurement.contactPhone}</p>)}
-                                {selectedProcurement.documentPaths && (
-                                    <p><strong>Документ: </strong><a href={`${BACKEND_BASE_URL}${selectedProcurement.documentPaths}`} target="_blank" rel="noopener noreferrer">Переглянути</a></p>
-                                )}
-                                <p><strong>Статус закупівлі: </strong>
-                                    <span style={{ fontWeight: 'bold', color: selectedProcurement.status && selectedProcurement.status.toLowerCase() === 'open' ? 'blue' : selectedProcurement.status && selectedProcurement.status.toLowerCase() === 'fulfilled' ? 'green' : 'red' }}>
-                                        {translateProcurementStatus(selectedProcurement.status)}
-                                    </span>
-                                </p>
-                            </>
-                        ) : ( <p>Не вдалося завантажити деталі закупівлі.</p> )}
-                    </div>
-                </div>
-            )}
-
-            {isAcceptedOfferDetailsModalOpen && selectedAcceptedOffer && (
-                 <div className={classes.modalOverlay} onClick={closeAcceptedOfferDetailsModal}>
-                    <div className={classes.modalContent} style={{maxWidth: '600px'}} onClick={e => e.stopPropagation()}>
-                        <button className={classes.modalCloseButton} onClick={closeAcceptedOfferDetailsModal}>
-                            <IoCloseCircleOutline className={classes.cancelOutline} size={30} />
-                        </button>
-                        <h3 className={classes.modalTitle}>Деталі по прийнятій пропозиції</h3>
-                        {acceptedOfferLoading ? (<p>Завантаження...</p>) : 
-                         acceptedOfferError ? (<p style={{color: 'red'}}>{acceptedOfferError}</p>) :
-                        (<>
-                            <p><strong>Закупівля:</strong> {selectedAcceptedOffer.procurementName || 'N/A'}</p>
-                            <h4 style={{marginTop: '1em'}}>Інформація від Замовника:</h4>
-                            <p><strong>Контактний телефон Замовника:</strong> {selectedAcceptedOffer.customerContactPhone || 'Не вказано'}</p>
-                            <p><strong>Адреса доставки Замовника:</strong> {selectedAcceptedOffer.deliveryAddress || 'Не вказано'}</p>
-                            
-                            <h4 style={{marginTop: '1em'}}>Ваша пропозиція (Постачальника):</h4>
-                            <p><strong>Запропонована дата доставки:</strong> {selectedAcceptedOffer.proposedDeliveryDate ? new Date(selectedAcceptedOffer.proposedDeliveryDate).toLocaleDateString() : 'Не вказано'}</p>
-                            <p><strong>Запропонована сума:</strong> ${selectedAcceptedOffer.proposedPrice}</p>
-                            
-                            {selectedAcceptedOffer.supplierFullName && (
-                                <>
-                                    <h4 style={{marginTop: '1em'}}>Ваші реквізити (як постачальника):</h4>
-                                    <p><strong>Повне найменування:</strong> {selectedAcceptedOffer.supplierFullName}</p>
-                                    <p><strong>Телефон:</strong> {selectedAcceptedOffer.supplierContactPhone}</p> 
-                                    <p><strong>ЄДРПОУ/РНОКПП:</strong> {selectedAcceptedOffer.paymentEdrpou}</p>
-                                    {selectedAcceptedOffer.paymentIpn && <p><strong>ІПН:</strong> {selectedAcceptedOffer.paymentIpn}</p>}
-                                    <p><strong>IBAN:</strong> {selectedAcceptedOffer.supplierIban}</p>
-                                    <p><strong>Банк:</strong> {selectedAcceptedOffer.supplierBankName}</p>
-                                </>
-                            )}
-                            <p style={{color:"red"}}>Ви зобов'язані доставити товар у вкзанаому замовником обсязі на адресу: {selectedAcceptedOffer.deliveryAddress || 'Не вказано'} до зазначеного дедлайну: {selectedAcceptedOffer.proposedDeliveryDate ? new Date(selectedAcceptedOffer.proposedDeliveryDate).toLocaleDateString() : 'Не вказано'} </p>
-                        </>)}
-                    </div>
-                </div>
-            )}
-        </div>
+  const handleDeleteOffer = async (offerId, offerProcurementName) => {
+    console.log(
+      `Спроба видалення пропозиції ID: ${offerId} до закупівлі: "${offerProcurementName}"`
     );
+    if (!offerId) {
+      setDeleteError('Не вдалося отримати ID пропозиції для видалення.');
+      return;
+    }
+
+    if (
+      !window.confirm(
+        `Ви впевнені, що хочете видалити вашу пропозицію до закупівлі "${offerProcurementName}"? Цю дію неможливо буде скасувати.`
+      )
+    ) {
+      return;
+    }
+
+    setLoading(true);
+    setDeleteError('');
+    setDeleteMessage('');
+    const jwtToken = localStorage.getItem('jwtToken');
+
+    try {
+      const response = await axios.delete(
+        `${BACKEND_BASE_URL}/api/offers/${offerId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        }
+      );
+      setDeleteMessage(response.data.message || 'Пропозицію успішно видалено!');
+      fetchMyOffers();
+    } catch (err) {
+      console.error(
+        'Помилка видалення пропозиції:',
+        err.response ? err.response.data : err.message
+      );
+      let errorMessage = 'Не вдалося видалити пропозицію. Спробуйте пізніше.';
+      if (err.response) {
+        if (err.response.status === 401 || err.response.status === 403) {
+          errorMessage =
+            err.response.data?.message ||
+            'У вас немає дозволу на видалення цієї пропозиції або ваша сесія закінчилася.';
+        } else if (err.response.status === 404) {
+          errorMessage = `Пропозицію з ID ${offerId} не знайдено. Можливо, її вже видалено.`;
+        } else if (err.response.data && err.response.data.message) {
+          errorMessage = err.response.data.message;
+        } else if (typeof err.response.data === 'string') {
+          errorMessage = err.response.data;
+        }
+      }
+      setDeleteError(errorMessage);
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={classes.universal}>
+      <div className={classes.block}>
+        <h1 className={`${classes.label} ${classes.labelBlue}`}>
+          <FaBoxes className={classes.icon} /> Мої пропозиції
+        </h1>
+
+        <div
+          className={classes.filterContainer}
+          style={{ marginBottom: '1em', background: 'white' }}
+        >
+          <label htmlFor="statusFilter" style={{ marginRight: '0.5em' }}>
+            Статус:{' '}
+          </label>
+          <select
+            id="statusFilter"
+            value={selectedStatusFilter}
+            onChange={handleStatusFilterChange}
+            className={classes.selectField}
+            style={{ width: '30em' }}
+            disabled={loading}
+          >
+            {statusFilterOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {deleteMessage && (
+          <p style={{ color: 'green', marginTop: '1em', fontWeight: 'bold' }}>
+            {deleteMessage}
+          </p>
+        )}
+        {deleteError && (
+          <p style={{ color: 'red', marginTop: '1em', fontWeight: 'bold' }}>
+            {deleteError}
+          </p>
+        )}
+
+        {loading ? (
+          <p>Завантаження ваших пропозицій...</p>
+        ) : error ? (
+          <p style={{ color: 'red', marginTop: '1em' }}>{error}</p>
+        ) : (
+          <>
+            {message && filteredOffers.length === 0 && (
+              <p style={{ color: 'blue', marginTop: '1em' }}>{message}</p>
+            )}
+
+            {filteredOffers.length > 0 && (
+              <div className={classes.resultsContainer}>
+                {filteredOffers.map((offer) => (
+                  <div key={offer.id} className={classes.procurementCard}>
+                    <div
+                      onClick={() =>
+                        handleProcurementClick(offer.procurementId)
+                      }
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <h4
+                        style={{ background: 'white', color: '#007bff' }}
+                        title="Натисніть, щоб переглянути деталі закупівлі"
+                      >
+                        Пропозиція до закупівлі: "
+                        {offer.procurementName || 'N/A'}"
+                      </h4>
+                    </div>
+                    <p>
+                      <strong>Запропонована ціна:</strong> $
+                      {offer.proposedPrice}
+                    </p>
+                    {offer.proposedDeliveryDate && (
+                      <p>
+                        <strong>Пропонована дата доставки:</strong>{' '}
+                        {new Date(
+                          offer.proposedDeliveryDate
+                        ).toLocaleDateString()}
+                      </p>
+                    )}
+                    <p>
+                      <strong>Повідомлення:</strong>{' '}
+                      {offer.message || 'Не вказано'}
+                    </p>
+                    {offer.offerDocumentPaths && (
+                      <p>
+                        <strong>Документ: </strong>
+                        <a
+                          href={`${BACKEND_BASE_URL}${offer.offerDocumentPaths}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Переглянути
+                        </a>
+                      </p>
+                    )}
+                    <p>
+                      <strong>Дата пропозиції:</strong>{' '}
+                      {new Date(offer.offerDate).toLocaleDateString()}
+                    </p>
+                    <p>
+                      <strong>Статус: </strong>
+                      <span
+                        style={{
+                          fontWeight: 'bold',
+                          color:
+                            offer.status === 'Accepted'
+                              ? 'green'
+                              : offer.status === 'Rejected'
+                                ? 'red'
+                                : 'orange',
+                        }}
+                      >
+                        {translateOfferStatus(offer.status)}
+                      </span>
+                    </p>
+
+                    <div
+                      style={{
+                        marginTop: '10px',
+                        background: 'white',
+                        display: 'flex',
+                        justifyContent: 'start',
+                        gap: '1em',
+                        flexWrap: 'wrap',
+                      }}
+                    >
+                      {offer.status === 'Accepted' && (
+                        <>
+                          <button
+                            className={classes.detailsButton}
+                            onClick={() => openAcceptedOfferModal(offer)}
+                            disabled={
+                              acceptedOfferLoading &&
+                              selectedAcceptedOffer?.id === offer.id
+                            }
+                            style={{ minWidth: '180px' }}
+                          >
+                            <FaInfoCircle
+                              style={{
+                                marginRight: '5px',
+                                background: '#2070d1',
+                              }}
+                            />
+                            {acceptedOfferLoading &&
+                            selectedAcceptedOffer?.id === offer.id
+                              ? 'Завантаження...'
+                              : 'Реквізити та інфо'}
+                          </button>
+
+                          <button
+                            className={classes.detailsButton}
+                            onClick={() => handleViewSupplierContract(offer)}
+                            disabled={procurementModalLoading}
+                            title="Переглянути договір для цієї пропозиції"
+                            style={{ minWidth: '180px' }}
+                          >
+                            <FaFilePdf
+                              style={{
+                                marginRight: '5px',
+                                background: '#2070d1',
+                              }}
+                            />{' '}
+                            Договір
+                          </button>
+                        </>
+                      )}
+                      {offer.status === 'Submitted' && (
+                        <button
+                          onClick={() =>
+                            handleDeleteOffer(offer.id, offer.procurementName)
+                          }
+                          className={`${classes.actionButton} ${classes.deleteButton}`}
+                          title="Видалити цю пропозицію"
+                          style={{
+                            padding: '0 1em',
+                            minWidth: '180px',
+                            backgroundColor: '#dc3545',
+                            color: 'white',
+                          }}
+                          disabled={loading}
+                        >
+                          <FaTrashAlt
+                            style={{
+                              marginRight: '5px',
+                              backgroundColor: '#dc3545',
+                            }}
+                          />{' '}
+                          Видалити пропозицію
+                        </button>
+                      )}
+                    </div>
+                    <hr />
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+
+      {isProcurementModalOpen && (
+        <div className={classes.modalOverlay} onClick={closeProcurementModal}>
+          <div
+            className={classes.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className={classes.modalCloseButton}
+              onClick={closeProcurementModal}
+            >
+              <IoCloseCircleOutline
+                className={classes.cancelOutline}
+                size={30}
+              />
+            </button>
+            {procurementModalLoading ? (
+              <p>Завантаження деталей закупівлі...</p>
+            ) : procurementModalError ? (
+              <p style={{ color: 'red' }}>{procurementModalError}</p>
+            ) : selectedProcurement ? (
+              <>
+                <h2 className={classes.modalTitle}>
+                  {selectedProcurement.name}
+                </h2>
+                <p>
+                  <strong>Замовник:</strong>{' '}
+                  {selectedProcurement.customerName || 'Не вказано'}
+                </p>
+                <p>
+                  <strong>Опис:</strong>{' '}
+                  {selectedProcurement.description || 'Не вказано'}
+                </p>
+                <p>
+                  <strong>Категорія:</strong> {selectedProcurement.category}
+                </p>
+                <p>
+                  <strong>Кількість/Обсяг:</strong>{' '}
+                  {selectedProcurement.quantityOrVolume}
+                </p>
+                <p>
+                  <strong>Орієнтовний бюджет:</strong> $
+                  {selectedProcurement.estimatedBudget}
+                </p>
+                <p>
+                  <strong>Дата завершення:</strong>{' '}
+                  {new Date(
+                    selectedProcurement.completionDate
+                  ).toLocaleDateString()}
+                </p>
+                {selectedProcurement.deliveryAddress && (
+                  <p>
+                    <strong>Адреса доставки:</strong>{' '}
+                    {selectedProcurement.deliveryAddress}
+                  </p>
+                )}
+                {selectedProcurement.contactPhone && (
+                  <p>
+                    <strong>Контактний телефон:</strong>{' '}
+                    {selectedProcurement.contactPhone}
+                  </p>
+                )}
+                {selectedProcurement.documentPaths && (
+                  <p>
+                    <strong>Документ: </strong>
+                    <a
+                      href={`${BACKEND_BASE_URL}${selectedProcurement.documentPaths}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Переглянути
+                    </a>
+                  </p>
+                )}
+                <p>
+                  <strong>Статус закупівлі: </strong>
+                  <span
+                    style={{
+                      fontWeight: 'bold',
+                      color:
+                        selectedProcurement.status &&
+                        selectedProcurement.status.toLowerCase() === 'open'
+                          ? 'blue'
+                          : selectedProcurement.status &&
+                              selectedProcurement.status.toLowerCase() ===
+                                'fulfilled'
+                            ? 'green'
+                            : 'red',
+                    }}
+                  >
+                    {translateProcurementStatus(selectedProcurement.status)}
+                  </span>
+                </p>
+              </>
+            ) : (
+              <p>Не вдалося завантажити деталі закупівлі.</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {isAcceptedOfferDetailsModalOpen && selectedAcceptedOffer && (
+        <div
+          className={classes.modalOverlay}
+          onClick={closeAcceptedOfferDetailsModal}
+        >
+          <div
+            className={classes.modalContent}
+            style={{ maxWidth: '600px' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className={classes.modalCloseButton}
+              onClick={closeAcceptedOfferDetailsModal}
+            >
+              <IoCloseCircleOutline
+                className={classes.cancelOutline}
+                size={30}
+              />
+            </button>
+            <h3 className={classes.modalTitle}>
+              Деталі по прийнятій пропозиції
+            </h3>
+            {acceptedOfferLoading ? (
+              <p>Завантаження...</p>
+            ) : acceptedOfferError ? (
+              <p style={{ color: 'red' }}>{acceptedOfferError}</p>
+            ) : (
+              <>
+                <p>
+                  <strong>Закупівля:</strong>{' '}
+                  {selectedAcceptedOffer.procurementName || 'N/A'}
+                </p>
+                <h4 style={{ marginTop: '1em' }}>Інформація від Замовника:</h4>
+                <p>
+                  <strong>Контактний телефон Замовника:</strong>{' '}
+                  {selectedAcceptedOffer.customerContactPhone || 'Не вказано'}
+                </p>
+                <p>
+                  <strong>Адреса доставки Замовника:</strong>{' '}
+                  {selectedAcceptedOffer.deliveryAddress || 'Не вказано'}
+                </p>
+
+                <h4 style={{ marginTop: '1em' }}>
+                  Ваша пропозиція (Постачальника):
+                </h4>
+                <p>
+                  <strong>Запропонована дата доставки:</strong>{' '}
+                  {selectedAcceptedOffer.proposedDeliveryDate
+                    ? new Date(
+                        selectedAcceptedOffer.proposedDeliveryDate
+                      ).toLocaleDateString()
+                    : 'Не вказано'}
+                </p>
+                <p>
+                  <strong>Запропонована сума:</strong> $
+                  {selectedAcceptedOffer.proposedPrice}
+                </p>
+
+                {selectedAcceptedOffer.supplierFullName && (
+                  <>
+                    <h4 style={{ marginTop: '1em' }}>
+                      Ваші реквізити (як постачальника):
+                    </h4>
+                    <p>
+                      <strong>Повне найменування:</strong>{' '}
+                      {selectedAcceptedOffer.supplierFullName}
+                    </p>
+                    <p>
+                      <strong>Телефон:</strong>{' '}
+                      {selectedAcceptedOffer.supplierContactPhone}
+                    </p>
+                    <p>
+                      <strong>ЄДРПОУ/РНОКПП:</strong>{' '}
+                      {selectedAcceptedOffer.paymentEdrpou}
+                    </p>
+                    {selectedAcceptedOffer.paymentIpn && (
+                      <p>
+                        <strong>ІПН:</strong> {selectedAcceptedOffer.paymentIpn}
+                      </p>
+                    )}
+                    <p>
+                      <strong>IBAN:</strong>{' '}
+                      {selectedAcceptedOffer.supplierIban}
+                    </p>
+                    <p>
+                      <strong>Банк:</strong>{' '}
+                      {selectedAcceptedOffer.supplierBankName}
+                    </p>
+                  </>
+                )}
+                <p style={{ color: 'red' }}>
+                  Ви зобов'язані доставити товар у вкзанаому замовником обсязі
+                  на адресу:{' '}
+                  {selectedAcceptedOffer.deliveryAddress || 'Не вказано'} до
+                  зазначеного дедлайну:{' '}
+                  {selectedAcceptedOffer.proposedDeliveryDate
+                    ? new Date(
+                        selectedAcceptedOffer.proposedDeliveryDate
+                      ).toLocaleDateString()
+                    : 'Не вказано'}{' '}
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default MyOffersPage;

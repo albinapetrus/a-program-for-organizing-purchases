@@ -1,122 +1,153 @@
-.row{
-    max-width: 600px;
-    width: 100%;
-   
+.row {
+  max-width: 600px;
+  width: 100%;
 }
-.row6{
-    max-width: 500px;
-    width: 100%;
-    margin-left: 70px;
-    background-color: white;
-    border-radius: 20px; 
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    max-height: 150px;
+.row6 {
+  max-width: 500px;
+  width: 100%;
+  margin-left: 4.375rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 1.25rem;
 }
-.row6 p{
-    background-color: white;
+.row6 p {
+  background-color: white;
 }
-.line{
-    margin-top: 50px;
-    margin-bottom: 50px;
+.line {
+  margin-top: 3.125rem;
+  margin-bottom: 3.125rem;
 }
-.grid{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    margin-left: 126px;
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.news{
-max-width: 1200px;
-background-color: white;
-margin-left: 126px;
-padding: 30px;
-margin-bottom: 30px;
-margin-bottom: 50px;
+.local .news {
+  max-width: 1200px;
+  background-color: white;
+  padding: 1.875rem;
+  margin: 0 auto 3.125rem auto;
 }
-.news h4, .news h2{
-background-color: white;
+.local .news h4,
+.local .news h2 {
+  background-color: white;
 }
 summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
-.icon{
-    color: gray;
+.icon {
+  color: gray;
 }
-.news details, .news summary, .news p,.news code, .news .icon, .news var{
-    background-color: white;
+.news details,
+.news summary,
+.news p,
+.news code,
+.news .icon,
+.news var {
+  background-color: white;
 }
-.news summary{
-    font-weight: 600;
-    padding: 10px;
-    font-size: 17px;
-    position: relative;
+.news summary {
+  font-weight: 600;
+  padding: 0.625rem;
+  font-size: 1.063rem;
+  position: relative;
 }
 summary::after {
-    content: "";
-    background-image: url("./arrowd.png");
-    background-size: contain;
-    width: 16px;
-    height: 16px;
-    display: inline-block;
- position: absolute;
- right: 1em;
-  }
-  
-  details[open] summary::after {
-    background-image: url("./arrow.png");
+  content: '';
+  background-image: url('./arrowd.png');
+  background-size: contain;
+  width: 1.063rem;
+  height: 1.063rem;
+  display: inline-block;
+  position: absolute;
+  right: 1em;
+}
 
+details[open] summary::after {
+  background-image: url('./arrow.png');
+}
+.news p {
+  padding-left: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+.news h2 {
+  padding-left: 0.625rem;
+}
+.h33,
+.h44 {
+  padding-left: 2.5rem;
+}
+.news ul,
+.news li {
+  background-color: white;
+}
+.bookmark {
+  text-decoration: none;
+  color: white;
+  padding: 0.625rem;
+  background-color: #2070d1;
+}
+.title {
+  color: #2070d1;
+  font-weight: 400;
+  margin-bottom: 0;
+  padding-bottom: 0.625rem;
+  font-size: 3.125rem;
+  margin-top: 0;
+}
+.local .container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  max-width: 1200px;
+  gap: 1.875rem;
+  margin: 3.125rem auto 0 auto;
+}
+.bookmark1 {
+  margin-left: 0.563rem;
+}
+.information {
+  margin-bottom: 1.875rem;
+}
+summary::marker {
+  display: none !important;
+  font-size: 0;
+}
+
+@media (max-width: 1250px) {
+  .local .img {
+    max-width: 400px;
+    height: auto;
   }
-  .news p{
-    padding-left: 10px;
-    padding-bottom: 10px;
+  .local {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .news h2{
-    padding-left: 10px;
+}
+@media (max-width: 980px) {
+  .local .img {
+    display: none;
   }
-  .h33 , .h44{
-    padding-left: 40px;
+  .local .title,
+  .local .information {
+    display: block;
+    margin-left: auto;
   }
-  .news ul, .news li{
-    background-color: white;
+
+  .grid {
+    flex-direction: column;
   }
-  .bookmark{
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    background-color: #2070D1;
-    
+  .row6 {
+    margin-left: 0;
   }
- .title{
-    color: #2070d1;
-    font-weight: 400;
-    margin-bottom: 0;
-    padding-bottom: 10px;
-    font-size: 50px;
-    margin-top: 0;
- }
- .container{
-    display: flex;
-    align-items:flex-start;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin-left: 126px;
-    gap: 30px;
-    margin-top: 50px;
- }
- .bookmark1{
-  
-    margin-left: 9px;
-  }
-  .information{
-    margin-bottom: 30px;
-  }
-  summary::marker{
-display: none!important;
-font-size: 0;
-  }
+}

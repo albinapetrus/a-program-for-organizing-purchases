@@ -1,59 +1,57 @@
-.menu_button{
-    border: none;
-    color: black;
-    font-size: 2em;
+.menu_button {
+  border: none;
+  color: black;
+  font-size: 2em;
   padding: 0 0.5em 0.5em 0.5em;
   position: fixed;
 }
-.offcanvas .offcanvas-header .label10{
-    all: unset;
-    color: orange!important;
-    padding: 0.5em;
-    font-weight: bold;
-    font-size: 1.5em;
+.offcanvas .offcanvas-header .label10 {
+  all: unset;
+  color: orange !important;
+  padding: 0.5em;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 .my-offcanvas {
-    background-color: #fff !important;
-  }
-  .offcanvas-header{
-    background-color: white;
-  }
-  .list{
-    list-style: none;
-    padding: 0 0.5em;
-  
-  }
-  .list a{
-    text-decoration: none;
-    color: black;
-  }
-  .list .li:hover a, .list .li:hover .icon{
-    background-color: rgb(224, 224, 224)!important;
-  }
-  .list .li:hover{
-    background-color: rgb(224, 224, 224)!important;
-    
-
-  }
-  .list .li{
-    cursor: pointer;
-    padding: 0.2em;
-    border-radius: 3px;
-  }
-.icon{
-background-color: #fff;
-font-size: 1.5em;
-margin-right: 0.5em;
+  background-color: #fff !important;
 }
-.exit{ position: fixed;
-    bottom: 2em;
-    border: none;
-    font-weight: bold;
-    color:  #2070d1;
+.offcanvas-header {
+  background-color: white;
 }
-.help{
-    position: fixed;
-    bottom: 3.5em;
-    margin-left: 0.7em;
-   
+.list {
+  list-style: none;
+  padding: 0 0.5em;
+}
+.list a {
+  text-decoration: none;
+  color: black;
+}
+.list .li:hover a,
+.list .li:hover .icon {
+  background-color: rgb(224, 224, 224) !important;
+}
+.list .li:hover {
+  background-color: rgb(224, 224, 224) !important;
+}
+.list .li {
+  cursor: pointer;
+  padding: 0.2em;
+  border-radius: 3px;
+}
+.icon {
+  background-color: #fff;
+  font-size: 1.5em;
+  margin-right: 0.5em;
+}
+.exit {
+  position: fixed;
+  bottom: 2em;
+  border: none;
+  font-weight: bold;
+  color: #2070d1;
+}
+.help {
+  position: fixed;
+  bottom: 3.5em;
+  margin-left: 0.7em;
 }

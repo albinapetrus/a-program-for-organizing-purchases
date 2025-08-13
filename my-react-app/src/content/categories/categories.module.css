@@ -2,20 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 2em; 
-  border: 0.1em solid #1a5276; 
-  border-radius: 0.8em; 
-  background-color: #d6eaf8; 
-  color: #2c3e50; 
-  width: 65%; 
-  min-width: 30em; 
-  margin: 3em auto; 
+  padding: 2em;
+  border: 0.1em solid #1a5276;
+  border-radius: 0.8em;
+  background-color: #d6eaf8;
+  color: #2c3e50;
+  width: 65%;
+  min-width: 30em;
+  margin: 3em auto;
   box-sizing: border-box;
-  font-size: 16px; 
+  font-size: 16px;
 }
 
 .title {
-  font-size: 1.5em; 
+  font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 1em;
   color: #1a5276;
@@ -23,76 +23,78 @@
 }
 
 .sectionTitle {
-  font-size: 1.2em; 
+  font-size: 1.2em;
   font-weight: bold;
   margin-top: 1.5em;
   margin-bottom: 0.8em;
-  color: #1a5276; 
+  color: #1a5276;
   background-color: inherit;
 }
 
 .text {
-  font-size: 1em; 
+  font-size: 1em;
   margin-bottom: 1em;
-  color: #2c3e50; 
+  color: #2c3e50;
   line-height: 1.6;
   background-color: inherit;
 }
 @media (max-width: 768px) {
   .container {
-    width: 85%; 
+    width: 85%;
     min-width: auto;
-    padding: 1.5em; 
+    padding: 1.5em;
     margin: 2em auto;
-    font-size: 15px; 
+    font-size: 15px;
   }
 
   .title {
-    font-size: 1.3em; 
+    font-size: 1.3em;
     margin-bottom: 0.8em;
   }
 
   .sectionTitle {
-    font-size: 1.1em; 
+    font-size: 1.1em;
     margin-top: 1em;
     margin-bottom: 0.6em;
   }
 
   .text {
-    font-size: 1em; 
+    font-size: 1em;
     margin-bottom: 0.8em;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    width: 95%; 
-    padding: 1em; 
-    margin: 1.5em auto; 
-    border-radius: 0.5em; 
-    font-size: 14px; 
+    width: 95%;
+    padding: 1em;
+    margin: 1.5em auto;
+    border-radius: 0.5em;
+    font-size: 14px;
   }
 
-   .title {
-    font-size: 1.2em; 
+  .title {
+    font-size: 1.2em;
     margin-bottom: 0.6em;
     background-color: inherit;
   }
 
   .sectionTitle {
-    font-size: 1em; 
+    font-size: 1em;
     margin-top: 0.8em;
     margin-bottom: 0.5em;
     background-color: inherit;
   }
 
   .text {
-    font-size: 1em; 
+    font-size: 1em;
     margin-bottom: 0.6em;
     background-color: inherit;
   }
 }
 
-.container  ul, .container li, .container strong{
-  background-color: #d6eaf8; 
+.container ul,
+.container li,
+.container strong {
+  background-color: #d6eaf8;
 }

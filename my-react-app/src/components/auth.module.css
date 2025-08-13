@@ -1,222 +1,223 @@
-.auth{
-    display: flex;
-    flex-direction: column;
-    
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 100px;
-    margin-top: 30px;
+.auth {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-top: 30px;
 }
 .email {
-    background-color: white ;
-    border: 1px solid gray;
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  
-    border-radius: 3px;
-    width:60%
-}
-.form{
-    background-color: white;
-    padding: 50px;
-     text-align: center;
-     max-width: 500px;
-     width: 100%;
-     height: auto;
-     box-shadow: 1px 1px 10px black;
-}
-.label{
-    background-color: white;
-    font-family: bold;
-font-weight: 500;
-font-size: 110%;
-   
-}
-.submit{
-    border: 1px solid darkblue!important;
-    background-color:#2070d1 !important;
-    padding: 5px;
-    border-radius: 3px;
-    font-weight: 700;
-    color: white;
-    margin-top: 1em!important;
-    margin-bottom: 2.5em!important;
-    cursor: pointer;
-}
-.text{
-    font-size: 110%;
-margin-left: 6em;
-    
-}
-.text1{
-    padding-bottom: 15px;
-}
-.container{
-    margin-right: 28%;
-}
-.fieldset{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    align-items: start;
-    padding: 3em 10em 3em 10em;
-    text-align: start;
-   border: none;
-   box-sizing: border-box;
-   box-shadow: 1px 1px 10px black;
-}
-.fieldset label, .fieldset input{
-background-color: white;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 
-margin-top: 5px;
+  border-radius: 3px;
+  width: 60%;
 }
-.fieldset div{
-    background-color: white; 
+.form {
+  background-color: white;
+  padding: 50px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  box-shadow: 1px 1px 10px black;
 }
-.fieldset label{
-    margin-top: 40px;
-    font-weight: 500;
-   font-size: 110%;
-    
+.label {
+  background-color: white;
+  font-family: bold;
+  font-weight: 500;
+  font-size: 110%;
 }
-.fieldset input{
-    border: 1px solid gray;
-   
+.submit {
+  border: 1px solid darkblue !important;
+  background-color: #2070d1 !important;
+  padding: 5px;
+  border-radius: 3px;
+  font-weight: 700;
+  color: white;
+  margin-top: 1em !important;
+  margin-bottom: 2.5em !important;
+  cursor: pointer;
 }
-.styledFile{
-    display: block;
-    background: #2070d1!important;
-    border: 1px solid darkblue;
-    color: white;
+.text {
+  font-size: 110%;
+  margin-left: 6em;
+}
+.text1 {
+  padding-bottom: 15px;
+}
+.container {
+  margin-right: 28%;
+}
+.fieldset {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  align-items: start;
+  padding: 3rem 10rem 3rem 10rem;
+  text-align: start;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 10px black;
+}
+.fieldset label,
+.fieldset input {
+  background-color: white;
+
+  margin-top: 5px;
+}
+.fieldset div {
+  background-color: white;
+}
+.fieldset label {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 110%;
+}
+.fieldset input {
+  border: 1px solid gray;
+}
+.styledFile {
+  display: block;
+  background: #2070d1 !important;
+  border: 1px solid darkblue;
+  color: white;
   border-radius: 0.2em;
-    text-transform: lowercase;
-    padding: 0.2em;
-    cursor: pointer;
-    margin-top: 0.6em!important;
-    margin: auto;
-    margin-bottom: 4em;
-    box-sizing: border-box;
-    max-width: 7em;
-    height: auto;
-    font-size: 90%!important;
+  text-transform: lowercase;
+  padding: 0.2em;
+  cursor: pointer;
+  margin-top: 0.6em !important;
+  margin: auto;
+  margin-bottom: 4em;
+  box-sizing: border-box;
+  max-width: 7em;
+  height: auto;
+  font-size: 90% !important;
 }
-.fieldset input:focus{
-  
-    border: 2px solid blue!important;
-   
+.fieldset input:focus {
+  border: 2px solid blue !important;
 }
-.submit{
-    margin: auto;
+.submit {
+  margin: auto;
 }
-.circle{
-    width: 40px;
-    height: 40px;
-    background-color: lightgrey;
-    border-radius: 50%;
-   float: left;
-   text-align: center;
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  float: left;
+  text-align: center;
   padding-top: 8px;
   box-sizing: border-box;
   color: white;
   font-weight: bolder;
   margin-right: 5px;
 }
-.circle1{
-    background-color:  #2070d1 !important;
+.circle1 {
+  background-color: #2070d1 !important;
 }
-.around{
-   border: 1px solid lightblue;
-    background-color: lightcyan;
-    padding: 7px;
+.around {
+  border: 1px solid lightblue;
+  background-color: lightcyan;
+  padding: 7px;
   border-radius: 5em;
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
-.auth input[type="text"], .auth select{
-    width: 100%;
-    height: 2em;
+.auth input[type='text'],
+.auth select {
+  width: 100%;
+  height: 2em;
 }
-.auth input[type="email"], .auth input[type="password"] {
-    width: 20.5em!important;
-    height: 2em;
-    
+.auth input[type='email'],
+.auth input[type='password'] {
+  width: 20.5em !important;
+  height: 2em;
 }
-.auth input[type="date"]{
-    width: 8em;
-   padding: 0.5em 1em;
+.auth input[type='date'] {
+  width: 8em;
+  padding: 0.5em 1em;
 }
-.role{
-position:absolute;
-top:0;
-margin-top: 0!important;
+.role {
+  position: absolute;
+  top: 0;
+  margin-top: 0 !important;
 
+  padding: 0.5em 4em 1em 4em;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 120% !important;
+  font-weight: 700 !important;
+}
+.role:hover,
+.role:hover .icon {
+  color: #2070d1;
+  cursor: pointer;
+}
+.role1 {
+  right: 0;
+}
+.role2 {
+  left: 0;
+}
+.role .icon {
+  background-color: white;
+  color: #2070d1;
+  font-size: 200%;
+}
+.form1 {
+  box-sizing: border-box;
+}
+.auth select {
+  background-color: white;
+  margin-top: 5px;
+}
+.auth input[type='file'] {
+  display: none;
+}
+.auth input[type='radio'] {
+  margin-top: 0.5em;
+  gap: 10px;
+}
+.auth input[type='radio']:last-of-type {
+  margin-left: 1em;
+}
+label[for='ur'],
+label[for='fiz'] {
+  font-weight: 400;
+  font-size: 1rem;
+}
+.auth .first {
+  margin-top: 4em;
+}
 
-padding: 0.5em 4em 1em 4em;
-width:50%;
-box-sizing: border-box;
-text-align: center;
-font-size: 120%!important;
-font-weight: 700!important;
+.activeRole,
+.activeRole .icon {
+  background-color: white;
+  color: #2070d1;
+}
 
-
+.inactiveRole,
+.inactiveRole .icon {
+  background-color: #e0e0e0 !important;
 }
-.role:hover ,.role:hover .icon {
-    color:#2070d1;
-    cursor: pointer;
+.auth .errorMessage {
+  background-color: white;
+  color: red;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.role1{
-    right:0;
-}
-.role2{
-    left: 0;
-}
-.role .icon{
-    background-color: white;
-     color:  #2070d1;
-    font-size: 200%;
-
-}
-.form1{
-    box-sizing: border-box;
-}
-.auth select{
-    background-color: white;
-    margin-top: 5px;
-}
-.auth input[type=file]{
-    display: none;
-}
-.auth input[type=radio]{
-    margin-top: 0.5em;
-    gap:10px;
-}
-.auth input[type="radio"]:last-of-type {
-    margin-left: 1em; 
-  }
-  label[for="ur"], label[for="fiz"] {
-    font-weight: 400;
-    font-size: 1rem;
-  }
-  .auth .first{
-    margin-top: 4em;
-  }
-
-  .activeRole, .activeRole .icon{
-    background-color: white; 
-    color: #2070d1;
-  
-  }
-  
-  .inactiveRole, .inactiveRole .icon {
-    background-color: #e0e0e0!important;
-  
-  }
-  .auth .errorMessage{
-    background-color: white;
-    color: red;
-    display: block;
-    margin-left:auto;
+@media (max-width: 850px) {
+  .fieldset {
+    width: 90%;
+    margin-left: auto;
     margin-right: auto;
   }
+}

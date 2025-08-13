@@ -1,60 +1,60 @@
-.step4 .box{
-   
-    max-width: 80%;
-    height: auto;
-    background-color: white;
-    box-sizing: border-box;
-    padding: 2em;
-    margin: 3em auto;
+.step4 .box {
+  max-width: 80%;
+  height: auto;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 2em;
+  margin: 3em auto;
 }
-.step4 .box h1, .step4 .box p{
-    background-color: white; 
+.step4 .box h1,
+.step4 .box p {
+  background-color: white;
 }
-.circle{
-    width: 40px;
-    height: 40px;
-    background-color: lightgrey;
-    border-radius: 50%;
-   float: left;
-   text-align: center;
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  float: left;
+  text-align: center;
   padding-top: 8px;
   box-sizing: border-box;
   color: white;
   font-weight: bolder;
   margin-right: 5px;
 }
-.circle1{
-    background-color:  #2070d1 !important;
+.circle1 {
+  background-color: #2070d1 !important;
 }
-.around{
-   border: 1px solid lightblue;
-    background-color: lightcyan;
-    padding: 7px;
+.around {
+  border: 1px solid lightblue;
+  background-color: lightcyan;
+  padding: 7px;
   border-radius: 5em;
-    margin-bottom: 2em;
-    display: inline-block;
+  margin-bottom: 2em;
+  display: inline-block;
 }
-.step4{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-margin-top: 30px;
+.step4 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
 }
-.step4 .img{
-    background-color: white;
-    float: left;
-    width: 30%;
-    height: auto;
-    margin-right: 2em;
+.step4 .img {
+  background-color: white;
+  float: left;
+  width: 30%;
+  height: auto;
+  margin-right: 2em;
 }
-.step4 button{
-    background-color: #2070d1;
-    color: white;
-    border: 1px solid darkblue;
-    padding: 0.5em;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 100%;
-    font-weight: 600;
+.step4 button {
+  background-color: #2070d1;
+  color: white;
+  border: 1px solid darkblue;
+  padding: 0.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 100%;
+  font-weight: 600;
 }

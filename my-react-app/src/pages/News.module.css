@@ -1,37 +1,60 @@
-.news{
-    margin-top:50px;
-    margin-left: 280px;
-    max-width: 1044px;
-    width: 100%;
-    background-color: white;
+.news {
+  margin: 3.125rem auto 0 auto;
+  max-width: 1044px;
+  width: 100%;
+  background-color: white;
 }
-.news p{
-    background-color: white;
-    color:gray;
+.news p {
+  background-color: white;
+  color: gray;
 }
-.news a{
-    background-color: white;
-    color: blue;
-    cursor: pointer;
-    font-weight: 700;
-    text-decoration: none;
-    margin-bottom: 0.5em;
-    display: block;
-    font-size: 150%;
+.news a {
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 0.5em;
+  display: block;
+  font-size: 150%;
 }
-.news a:hover{
-    text-decoration: underline;
+.news a:hover {
+  text-decoration: underline;
 }
-.news h4{
-    background-color: white;
-    font-weight: normal;
+.news h4 {
+  background-color: white;
+  font-weight: normal;
 }
 
-.news article{
-    background-color: white;
-    padding: 40px;
+.news article {
+  background-color: white;
+  padding: 2.5rem;
 }
-.news h1{
-    padding-bottom: 30px;
-    font-size: 30px;
+.news h1 {
+  padding-bottom: 1.875rem;
+  font-size: 1.875rem;
+}
+@media (max-width: 767px) {
+  .news {
+    margin-top: 2rem;
+  }
+
+  .news h1 {
+    font-size: 1.75rem;
+  }
+
+  .news a {
+    font-size: 1.25rem;
+  }
+
+  .news article {
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 1090px) {
+  .news {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 95%;
+  }
 }
