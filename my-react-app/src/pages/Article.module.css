@@ -36,3 +36,11 @@
     width: 95%;
   }
 }
+@media (max-width: 767px) {
+  .article h1{
+    font-size: 1.5rem;
+  }
+  .article h2{
+    font-size: 1.35rem;
+  }
+}

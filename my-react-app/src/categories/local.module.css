@@ -150,4 +150,7 @@ summary::marker {
   .row6 {
     margin-left: 0;
   }
+  .local .title, .local .h33{
+    font-size: 1.5rem;
+  }
 }
