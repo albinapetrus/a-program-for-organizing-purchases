@@ -216,8 +216,24 @@ label[for='fiz'] {
 }
 @media (max-width: 850px) {
   .fieldset {
-    width: 90%;
+    box-sizing: border-box;
+    padding: 2rem 6rem;
     margin-left: auto;
     margin-right: auto;
+    width: 96%;
+  }
+  .auth input[type='email'], .auth input[type='password'] {
+    width: 9em!important;
+    height: 1.5em;
+  }
+  
+  .fieldset label{
+    font-size: 1rem;
+  }
+  .role .icon{
+    font-size: 2rem;
+  }
+  .role{
+  padding: 1rem;
   }
 }

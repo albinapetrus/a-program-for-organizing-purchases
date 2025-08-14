@@ -162,6 +162,5 @@ public class AuthController : ControllerBase
         string token = _jwtService.GenerateToken(user);
 
         return Ok(new { message = "Реєстрація успішно завершена!", token = token });
-
     }
 }

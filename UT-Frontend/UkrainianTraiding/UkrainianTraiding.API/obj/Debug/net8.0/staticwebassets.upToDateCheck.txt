@@ -17,22 +17,29 @@ wwwroot\uploads\offer_documents\a1b80256-4ed2-40ed-bb1e-d76c9b7618c3_фон2.jpg
 wwwroot\uploads\offer_documents\a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx
 wwwroot\uploads\offer_documents\b6dd9d11-9bf0-4107-9afa-98d873f7d38c_mynewarch.jpg
 wwwroot\uploads\offer_documents\ba643de9-934c-47b6-a30f-c41b03199fe0_mynewarch.jpg
+wwwroot\uploads\offer_documents\be87d5e3-0794-4ceb-b6eb-a15e4696ed5e.docx
 wwwroot\uploads\offer_documents\d1e0c3a2-8041-4cd9-aad7-ca1104fdea6c.docx
 wwwroot\uploads\offer_documents\d49f5468-15ff-4c08-b5b8-3c792cb18e70.docx
 wwwroot\uploads\offer_documents\d88b3eb6-558e-4625-a8e8-78c8c2c9fa35.docx
 wwwroot\uploads\offer_documents\db28069b-0bc6-4976-9762-e51fd22d119c.jpg
 wwwroot\uploads\offer_documents\dc89d4fa-e36f-421e-97c2-19663c521c66_Фон 1.jpg
+wwwroot\uploads\offer_documents\e8b29df4-a979-41f6-a4f2-fa009a337160.docx
 wwwroot\uploads\offer_documents\e9696d5b-4bd5-4299-b268-a25c1ef667c1_newarchitecture.jpg
 wwwroot\uploads\offer_documents\ec0bbe70-45cf-4906-895d-dbbdcd721fcc.docx
+wwwroot\uploads\offer_documents\f46384fe-ac69-4ce6-ad7c-050ee1465942.docx
 wwwroot\uploads\offer_documents\f7a44637-5fe0-4b02-9b17-bddd8de9858c.docx
+wwwroot\uploads\offer_documents\fd144725-668e-4c63-9dc1-8f0fe4c847d4.docx
+wwwroot\uploads\offer_documents\fe48b1e6-aba6-4b20-b139-148d1356429c.docx
 wwwroot\uploads\passport_photos\01893a5d-7575-4a1b-b2d9-71f8cf03861e_Фон 1.jpg
 wwwroot\uploads\passport_photos\0f606565-0077-4e02-97ea-dd7630107603_WIN_20231106_19_55_10_Pro.jpg
+wwwroot\uploads\passport_photos\1b56df8f-43fb-4a09-bfb6-2cd48f72c744_супровідний документ.docx
 wwwroot\uploads\passport_photos\1f192c02-1bb6-436a-8714-80a5e1acbc74_Фон 1.jpg
 wwwroot\uploads\passport_photos\218cb2a6-30ec-482e-bf87-991b0e388594_me.jpg
 wwwroot\uploads\passport_photos\26a8e620-e93f-4c20-9e98-518dd5b33f61_архітектура 2025.webp
 wwwroot\uploads\passport_photos\2ab733af-95a1-41a3-9017-9f9b38c24cc0_a5b9e042-c309-4b61-b5a6-d6b05f72d22c.docx
 wwwroot\uploads\passport_photos\2ab9d67a-dd60-40c3-afdd-2ace420a0e0b_архітектура 2025.webp
 wwwroot\uploads\passport_photos\31ec1f50-2c9c-4e93-82a9-a51133516d07_фон2.jpg
+wwwroot\uploads\passport_photos\32157932-5d67-491c-bfeb-4023a2f023f0_супровідний документ.docx
 wwwroot\uploads\passport_photos\37c0d5ad-47c0-4f2a-9e84-37fdfb3f7959_фон2.jpg
 wwwroot\uploads\passport_photos\4d992f86-db2b-42e2-ad02-df698fd60cdd_mynewarch.jpg
 wwwroot\uploads\passport_photos\52db7d0d-2881-43e0-a0e0-34e9c55b31ac_Фон 1.jpg
@@ -57,8 +64,10 @@ wwwroot\uploads\passport_photos\eb0c274e-0e95-4b65-86a4-38c08225bc47_фон2.jpg
 wwwroot\uploads\passport_photos\f1da9702-08b6-4740-aeac-66f561c398ca_фон2.jpg
 wwwroot\uploads\passport_photos\fb7f3ccd-3a2b-4b19-81da-1212ca7e66bf_фон2.jpg
 wwwroot\uploads\passport_photos\fd4158dc-0917-4bf9-8664-07b071b1d0fb_архітектура 2025.webp
+wwwroot\uploads\passport_photos\fe394b42-a412-4588-8e4c-a148cf1efb91_супровідний документ.docx
 wwwroot\uploads\passport_photos\ff3b1df9-5694-4322-a90f-797553638db5_фон2.jpg
 wwwroot\uploads\procurement_documents\01f37d73-6ef3-411f-8446-8c46b57c6d69_архітектура 2025.webp
+wwwroot\uploads\procurement_documents\0d5182c6-11a3-4623-8f73-db93d22ac87a.docx
 wwwroot\uploads\procurement_documents\11c800f8-47dd-453b-af99-1341f330e3b0_фон2.jpg
 wwwroot\uploads\procurement_documents\17473b9b-ff14-430d-9480-23d3795e2ce7.docx
 wwwroot\uploads\procurement_documents\2c4aa6c3-e9a7-493c-99fd-92397e0e6281.docx
@@ -72,9 +81,11 @@ wwwroot\uploads\procurement_documents\6860a173-b76b-42e2-921b-36e0b9f06bdd_ар�
 wwwroot\uploads\procurement_documents\7b611eb5-f3ed-4a8c-81ab-b78c9ad904a2.docx
 wwwroot\uploads\procurement_documents\820fe13a-c997-41ed-92bd-492c31cbf0b3_Фон 1.jpg
 wwwroot\uploads\procurement_documents\8b59be41-e269-4e46-9c4e-e1ef6669b00f.docx
+wwwroot\uploads\procurement_documents\93e6cb23-7faf-49f5-93de-ac7881f39417.docx
 wwwroot\uploads\procurement_documents\9ef6c2d4-7a52-444a-9022-28310bd4d3bf_me.jpg
 wwwroot\uploads\procurement_documents\a1d45e80-9fcc-4f7e-890e-d8444e8a0158_Фон 1.jpg
 wwwroot\uploads\procurement_documents\a8164296-5d40-4f92-8320-42bbac423d1b_mynewarch.jpg
+wwwroot\uploads\procurement_documents\ab0a9fdf-f810-4e1d-958a-1e8bdae6d982.docx
 wwwroot\uploads\procurement_documents\c04c59b6-f1a1-4d2d-b288-15550e7287e4.docx
 wwwroot\uploads\procurement_documents\cf7e357f-5a38-44f8-830f-ded24cf59c3c_ифп.jpg
 wwwroot\uploads\procurement_documents\d796bb63-78ef-4e5d-8533-9b2322d046c1_Фон 1.jpg
