@@ -116,13 +116,8 @@ function ProcurementSearch() {
           />
           <br />
           <div
-            style={{
-              display: 'flex',
-              alignItems: 'spacebetween',
-              flexWrap: 'nowrap',
-              background: 'white',
-            }}
-          >
+          className={classes.containerSerch}
+           >
             <label htmlFor="searchCategory">Категорія:</label>
             <select
               id="searchCategory"

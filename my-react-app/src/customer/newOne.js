@@ -67,7 +67,7 @@ export class NewOne extends Component {
       return;
     }
 
-    // Валідація дати завершення
+    
     if (completionDate) {
       const selectedDate = new Date(completionDate);
       const tomorrow = new Date(minCompletionDate);

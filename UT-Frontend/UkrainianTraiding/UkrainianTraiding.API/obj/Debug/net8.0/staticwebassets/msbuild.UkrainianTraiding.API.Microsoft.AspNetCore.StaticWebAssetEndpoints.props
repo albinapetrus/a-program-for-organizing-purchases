@@ -408,6 +408,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"unaslp3gem"},{"Name":"integrity","Value":"sha256-BnLgzoFVWR7VlHWxUDfz4q6QLCzWGin\u002BeQLB7VwrYvk="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/0f606565-0077-4e02-97ea-dd7630107603_WIN_20231106_19_55_10_Pro.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"109811"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022BnLgzoFVWR7VlHWxUDfz4q6QLCzWGin\u002BeQLB7VwrYvk=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 14:48:33 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/11dcca11-60e5-4737-b089-ba39740802f8_Фон 1.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\11dcca11-60e5-4737-b089-ba39740802f8_Фон 1.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 14 Aug 2025 15:39:21 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/11dcca11-60e5-4737-b089-ba39740802f8_Фон 1.kf6vun4y28.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\11dcca11-60e5-4737-b089-ba39740802f8_Фон 1.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kf6vun4y28"},{"Name":"integrity","Value":"sha256-UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM="},{"Name":"label","Value":"_content/UkrainianTraiding.API/uploads/passport_photos/11dcca11-60e5-4737-b089-ba39740802f8_\u0424\u043E\u043D 1.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"243268"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022UIyuJM9TK2MZarZuO1q7uhe2Px0qfHAF3g25gJvvwpM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 14 Aug 2025 15:39:21 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/UkrainianTraiding.API/uploads/passport_photos/1b56df8f-43fb-4a09-bfb6-2cd48f72c744_супровідний документ.docx">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\passport_photos\1b56df8f-43fb-4a09-bfb6-2cd48f72c744_супровідний документ.docx'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

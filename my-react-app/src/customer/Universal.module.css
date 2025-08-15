@@ -336,3 +336,49 @@ button.submitButton.acceptButton {
 .modalContent h4 {
   background: white;
 }
+.universal .containerSerch{
+   display: flex;
+              align-items: space-between;
+            flex-wrap: wrap;
+              background: white;
+}
+@media (max-width: 767px) {
+ .labelBlue {font-size: 1.25rem!important;}
+ .universal .help{
+ width: 90%;
+}
+.universal p{
+  font-size: 1rem;
+}
+.universal .block2{
+  padding: 1rem 2rem;
+  width: 90%;
+}
+.universal .help2{
+  width: 100%;
+}
+}
+
+@media(max-width: 1023.98px){
+.universal select{
+  max-width: 15rem;
+}
+.universal .inputField{
+  max-width: 13rem;
+}
+.universal .block{
+  width: 95%!important;
+  padding: 1rem!important;
+  margin: 3rem auto;
+ 
+}
+.universal .textareaField{
+    max-width: 13rem;
+}
+.universal .form{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 95%;
+  flex-direction: column;
+}
+}

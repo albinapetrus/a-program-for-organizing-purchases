@@ -15,7 +15,6 @@ export class PublicInfo extends Component {
       borderRadius: '5px',
       backgroundColor: backgroundColor,
       width: '60%',
-      minWidth: '450px', //
       margin: '5em auto',
     };
 

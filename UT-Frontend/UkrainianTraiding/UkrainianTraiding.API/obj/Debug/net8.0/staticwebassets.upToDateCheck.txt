@@ -32,6 +32,7 @@ wwwroot\uploads\offer_documents\fd144725-668e-4c63-9dc1-8f0fe4c847d4.docx
 wwwroot\uploads\offer_documents\fe48b1e6-aba6-4b20-b139-148d1356429c.docx
 wwwroot\uploads\passport_photos\01893a5d-7575-4a1b-b2d9-71f8cf03861e_Фон 1.jpg
 wwwroot\uploads\passport_photos\0f606565-0077-4e02-97ea-dd7630107603_WIN_20231106_19_55_10_Pro.jpg
+wwwroot\uploads\passport_photos\11dcca11-60e5-4737-b089-ba39740802f8_Фон 1.jpg
 wwwroot\uploads\passport_photos\1b56df8f-43fb-4a09-bfb6-2cd48f72c744_супровідний документ.docx
 wwwroot\uploads\passport_photos\1f192c02-1bb6-436a-8714-80a5e1acbc74_Фон 1.jpg
 wwwroot\uploads\passport_photos\218cb2a6-30ec-482e-bf87-991b0e388594_me.jpg

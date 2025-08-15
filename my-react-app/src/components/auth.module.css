@@ -224,7 +224,7 @@ label[for='fiz'] {
   }
   .auth input[type='email'], .auth input[type='password'] {
     width: 9em!important;
-    height: 1.5em;
+    height: 2em;
   }
   
   .fieldset label{
